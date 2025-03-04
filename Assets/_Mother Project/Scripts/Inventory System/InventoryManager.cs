@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
         // Subscribe to item addition and removal events
         CurrencySystem.OnItemAdded += AddItem;
         CurrencySystem.OnItemRemoved += RemoveItem;
+        CurrencySystem.OnItemUsed += UseItem;
     }
 
     private void OnDisable()
@@ -28,6 +29,7 @@ public class InventoryManager : MonoBehaviour
         // Unsubscribe from item addition and removal events
         CurrencySystem.OnItemAdded -= AddItem;
         CurrencySystem.OnItemRemoved -= RemoveItem;
+        CurrencySystem.OnItemUsed -= UseItem;
     }
 
     private void Start()

@@ -69,6 +69,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
 
         //GridSystem.OnGridGenerationSpawn += AssignSpawnPosition;
         HealthManager.OnGridDisable += onEndFunction;
+        WaveManager.OnGridReady += SetWeaponActions;
         ExperienceManager.instance.OnExperienceChanged += HandleExperienceChange;
 
     }
@@ -78,6 +79,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
         
         //GridSystem.OnGridGenerationSpawn -= AssignSpawnPosition;
         HealthManager.OnGridDisable -= onEndFunction;
+        WaveManager.OnGridReady -= SetWeaponActions;
         ExperienceManager.instance.OnExperienceChanged -= HandleExperienceChange;
     }
 

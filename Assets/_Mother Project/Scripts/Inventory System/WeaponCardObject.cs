@@ -23,6 +23,6 @@ public class WeaponCardObject : ItemClass
 
     public override void UseObject(TemporaryStats player)
     {
-
+       
     }
 }

@@ -71,11 +71,17 @@ public class Inventory_UI : MonoBehaviour
         }
         GameObject itemDetailsPanel = Instantiate(itemDetailPanel_Prefab, details_Panel);
         Button detButton = itemDetailsPanel.transform.Find("Remove_Button").GetComponent<Button>();
+        Button useButton = itemDetailsPanel.transform.Find("Use_Button").GetComponent<Button>();
         Image sprite = itemDetailsPanel.transform.Find("Item_Image").GetComponent<Image>();
         sprite.sprite = item.itemClass.itemIcon;
         detButton.onClick.AddListener(() =>
         {
             CurrencySystem.instance.ItemToRemove(item.itemClass);
+            RefreshInventoryUI();
+        });
+        useButton.onClick.AddListener(() =>
+        {
+            CurrencySystem.instance.ItemToUse(item.itemClass);
             RefreshInventoryUI();
         });
 

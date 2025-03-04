@@ -28,6 +28,10 @@ public class WeaponManager : MonoBehaviour
     {
         return DaggerAvailableActions;
     }
+    public void SetDaggerAvailableActions(ImprovedActionStat action)
+    {
+        DaggerAvailableActions.Add(action);
+    }
     public List<ImprovedActionStat> GetSwordAvailableActions()
     {
         return SwordAvailableActions;

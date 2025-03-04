@@ -11,6 +11,9 @@ public class CurrencySystem : MonoBehaviour
 
     public static event ItemRemoved OnItemRemoved;
     public delegate void ItemRemoved(ItemClass item);
+
+    public static event ItemUsed OnItemUsed;
+    public delegate void ItemUsed(ItemClass item);
     private void Start()
     {
         if(instance == null)
@@ -27,5 +30,9 @@ public class CurrencySystem : MonoBehaviour
     public void ItemToRemove(ItemClass item)
     {
         OnItemRemoved?.Invoke(item);
+    }
+    public void ItemToUse(ItemClass item)
+    {
+        OnItemUsed?.Invoke(item);
     }
 }
