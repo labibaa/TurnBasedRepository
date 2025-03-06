@@ -24,6 +24,6 @@ public class ToolObject : ItemClass
     public override void UseObject(TemporaryStats player)
     {
         Debug.Log("Waponsss");
-        WeaponManager.instance.SetDaggerAvailableActions(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Buff"));
+        WeaponManager.instance.SetDaggerAvailableActions(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch"));
     }
 }
