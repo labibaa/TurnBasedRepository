@@ -6,6 +6,7 @@ public abstract class ItemClass : ScriptableObject
 {
     public string itemName;
     public Sprite itemIcon;
+    public int itemPrice;
 
     public abstract ItemClass GetItem();
     public abstract ToolObject GetToolObject();

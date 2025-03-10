@@ -14,6 +14,9 @@ public class CurrencySystem : MonoBehaviour
 
     public static event ItemUsed OnItemUsed;
     public delegate void ItemUsed(ItemClass item);
+
+    [SerializeField]protected int CurrentXp = 0; //xp is currency
+
     private void Start()
     {
         if(instance == null)
@@ -25,7 +28,11 @@ public class CurrencySystem : MonoBehaviour
     public void ItemToAdd(ItemClass item)
     {
         //add condition to buy the item 
-        OnItemAdded?.Invoke(item);
+        if (item.GetItem() != null)
+        {
+            OnItemAdded?.Invoke(item);
+            CurrentXp -= item.itemPrice;
+        }  
     }
     public void ItemToRemove(ItemClass item)
     {
@@ -34,5 +41,15 @@ public class CurrencySystem : MonoBehaviour
     public void ItemToUse(ItemClass item)
     {
         OnItemUsed?.Invoke(item);
+    }
+
+    public void SetCurrency(int xp) //have to set cureency every time item is added
+    {
+        CurrentXp = xp; //current mc player currrent xp;
+    }
+
+    public int GetCurrency()
+    {
+        return CurrentXp;
     }
 }

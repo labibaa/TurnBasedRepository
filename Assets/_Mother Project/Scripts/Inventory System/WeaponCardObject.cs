@@ -13,7 +13,11 @@ public class WeaponCardObject : ItemClass
 
     public override ItemClass GetItem()
     {
-        return this;
+        if (itemPrice <= CurrencySystem.instance.GetCurrency())
+        {
+            return this;
+        }
+        return null;
     }
 
     public override ToolObject GetToolObject()

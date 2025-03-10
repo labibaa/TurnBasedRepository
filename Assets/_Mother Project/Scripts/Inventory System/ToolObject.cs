@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Inventory Tool", menuName = "ScriptableObjects/Tool")]
 public class ToolObject : ItemClass
@@ -13,7 +14,12 @@ public class ToolObject : ItemClass
 
     public override ItemClass GetItem()
     {
-        return this;
+        if (itemPrice <= CurrencySystem.instance.GetCurrency())
+        {
+            return this;
+        }
+        UI.instance.SendNotification("Not enough EXP");
+        return null;
     }
 
     public override ToolObject GetToolObject()

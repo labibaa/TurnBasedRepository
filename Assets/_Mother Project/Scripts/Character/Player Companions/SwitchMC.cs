@@ -12,9 +12,11 @@ public class SwitchMC : MonoBehaviour
 
     public static event Action<GameObject> OnCharacterRemove;
     public static event Action OnPrevScene;
+    public static event Action OnCharacterChange;
 
     public List<GameObject> characters = new List<GameObject>();
     int currentMainPlayerIndex = -1;
+    public GameObject mainCharacter;
 
     private void OnEnable()
     {
@@ -60,6 +62,7 @@ public class SwitchMC : MonoBehaviour
             StartCoroutine(ResetCharacter(character));
             if (character.GetComponent<TemporaryStats>().isMainCharacter)
             {
+                mainCharacter = character;
                 character.GetComponent<ThirdPersonController>().enabled = true;
                 character.GetComponent<PlayerInput>().enabled = true;
                 character.GetComponent<NavMeshAgent>().enabled = false;
@@ -103,7 +106,8 @@ public class SwitchMC : MonoBehaviour
             characters[currentMainPlayerIndex].GetComponent<TemporaryStats>().isMainCharacter = true;
 
             SetMainPlayer(currentMainPlayerIndex);
-
+            OnCharacterChange?.Invoke();
+            mainCharacter = characters[currentMainPlayerIndex];
             Debug.Log($"Character {currentMainPlayerIndex} is now the main player.");
         }
     

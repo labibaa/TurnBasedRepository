@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     // Reference to the player's character stats
-    public TemporaryStats playerCharacter;
+    [SerializeField] TemporaryStats playerCharacter;
 
     // List of inventory items
     public List<InventoryItem> InventoryObjects = new List<InventoryItem>();
@@ -22,6 +22,7 @@ public class InventoryManager : MonoBehaviour
         CurrencySystem.OnItemAdded += AddItem;
         CurrencySystem.OnItemRemoved += RemoveItem;
         CurrencySystem.OnItemUsed += UseItem;
+        SwitchMC.OnCharacterChange += SetCurrentMC;
     }
 
     private void OnDisable()
@@ -30,6 +31,7 @@ public class InventoryManager : MonoBehaviour
         CurrencySystem.OnItemAdded -= AddItem;
         CurrencySystem.OnItemRemoved -= RemoveItem;
         CurrencySystem.OnItemUsed -= UseItem;
+        SwitchMC.OnCharacterChange -= SetCurrentMC;
     }
 
     private void Start()
@@ -96,4 +98,11 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    public void SetCurrentMC()
+    {
+        playerCharacter = SwitchMC.Instance.mainCharacter.GetComponent<TemporaryStats>();
+        CurrencySystem.instance.SetCurrency(playerCharacter.CurrentExp);
+    }
+
 }
