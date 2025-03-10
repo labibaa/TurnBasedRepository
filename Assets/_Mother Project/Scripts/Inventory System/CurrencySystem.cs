@@ -28,11 +28,29 @@ public class CurrencySystem : MonoBehaviour
     public void ItemToAdd(ItemClass item)
     {
         //add condition to buy the item 
-        if (item.GetItem() != null)
+        GameObject currentMC = InventoryManager.Instance.GetCurrentMC();
+        if (currentMC.GetComponent<CharacterBaseClasses>().characterName == "Mon")
         {
-            OnItemAdded?.Invoke(item);
-            CurrentXp -= item.itemPrice;
-        }  
+            if (item.GetItem() != null && item.GetToolObject() != null)
+            {
+                OnItemAdded?.Invoke(item);
+
+                CurrentXp -= item.itemPrice;
+                currentMC.GetComponent<TemporaryStats>().CurrentExp = CurrentXp;
+            }
+           
+        }
+        else if (currentMC.GetComponent<CharacterBaseClasses>().characterName == "Roud")
+        {
+            if (item.GetItem() != null && item.GetConsumableObject() != null)
+            {
+                OnItemAdded?.Invoke(item);
+
+                CurrentXp -= item.itemPrice;
+                currentMC.GetComponent<TemporaryStats>().CurrentExp = CurrentXp;
+            }
+
+        }
     }
     public void ItemToRemove(ItemClass item)
     {

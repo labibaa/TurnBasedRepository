@@ -105,4 +105,8 @@ public class InventoryManager : MonoBehaviour
         CurrencySystem.instance.SetCurrency(playerCharacter.CurrentExp);
     }
 
+    public GameObject GetCurrentMC()
+    {
+        return playerCharacter.gameObject;
+    }
 }
