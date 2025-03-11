@@ -57,8 +57,8 @@ public class RangedAttack : ICommand
                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                await HandleAnimation();
                UI.instance.ShowFlyingText((damage * -1).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-               await HealthManager.instance.PlayerMortality(playerTempStats, attackOrder);
-               await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+               await HealthManager.instance.PlayerMortality(playerTempStats, attackOrder, playerTempStats);
+               await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
                targetTempStats.IsCounterActive= false;
 
                 //ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch");
@@ -72,7 +72,7 @@ public class RangedAttack : ICommand
                
                 await HandleAnimation();
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
             }
 
 

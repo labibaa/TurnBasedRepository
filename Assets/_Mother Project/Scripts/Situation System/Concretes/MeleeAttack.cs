@@ -70,8 +70,8 @@ public class MeleeAttack : ICommand
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 await HandleAnimation();
                 UI.instance.ShowFlyingText((damage * -1).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(playerTempStats,attackOrder);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+                await HealthManager.instance.PlayerMortality(playerTempStats,attackOrder, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
 
                 //ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch");
                 //ICommand meleeAction = new MeleeAttack(target, player, targetTempStats, playerTempStats, meleeScriptable, "SingleMelee");
@@ -85,7 +85,7 @@ public class MeleeAttack : ICommand
                 await HandleAnimation();
 
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats,attackOrder);
+                await HealthManager.instance.PlayerMortality(targetTempStats,attackOrder, playerTempStats);
 
             }
 

@@ -54,7 +54,7 @@ public class HealthManager : MonoBehaviour
 
 
 
-    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder) //add attacker
+    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder, TemporaryStats killer) //add attacker
     {
         
         if (playerStat.CurrentHealth < 1)
@@ -62,6 +62,7 @@ public class HealthManager : MonoBehaviour
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
             playerStat.playerMortality = Mortality.Dead;
             OnCharacterDeath?.Invoke();
+            killer.playerUltimateBarCount = playerStat.playerUltimateBarCount + 1;//deadplayer give ulti points
             Debug.Log(deadPlayerTurn.name + "dead");
             TurnManager.instance.players.Remove(deadPlayerTurn);
             Debug.Log(deadPlayerTurn.name + "dead20");
