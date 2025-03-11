@@ -54,7 +54,7 @@ public class HealthManager : MonoBehaviour
 
 
 
-    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder)
+    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder) //add attacker
     {
         
         if (playerStat.CurrentHealth < 1)

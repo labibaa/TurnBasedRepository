@@ -1,24 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    // Singleton instance of the InventoryManager
     public static InventoryManager Instance;
 
-    // Reference to the player's character stats
-    [SerializeField] TemporaryStats playerCharacter;
+    // Dictionary to store character inventories (fast lookup)
+    private Dictionary<GameObject, Dictionary<ItemClass, InventoryItem>> itemDictionaries = new Dictionary<GameObject, Dictionary<ItemClass, InventoryItem>>();
 
-    // List of inventory items
-    public List<InventoryItem> InventoryObjects = new List<InventoryItem>();
-    // Dictionary to quickly look up items in the inventory
-    private Dictionary<ItemClass, InventoryItem> itemDictionary = new Dictionary<ItemClass, InventoryItem>();
+    private GameObject currentCharacter; // The currently active character
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     private void OnEnable()
     {
-        // Subscribe to item addition and removal events
         CurrencySystem.OnItemAdded += AddItem;
         CurrencySystem.OnItemRemoved += RemoveItem;
         CurrencySystem.OnItemUsed += UseItem;
@@ -27,7 +34,6 @@ public class InventoryManager : MonoBehaviour
 
     private void OnDisable()
     {
-        // Unsubscribe from item addition and removal events
         CurrencySystem.OnItemAdded -= AddItem;
         CurrencySystem.OnItemRemoved -= RemoveItem;
         CurrencySystem.OnItemUsed -= UseItem;
@@ -36,77 +42,125 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        // Ensure only one instance of InventoryManager exists
-        if (Instance == null)
+        if (SwitchMC.Instance != null)
         {
-            Instance = this;
-        }
-    }
-
-    // Adds an item to the inventory
-    public void AddItem(ItemClass item)
-    {
-        // Check if the item already exists in the inventory
-        if (itemDictionary.TryGetValue(item, out InventoryItem inventoryItem))
-        {
-            // Increase the item stack count if it exists
-            inventoryItem.AddToStack();
-            Debug.Log(item + " Added to stack");
-        }
-        else
-        {
-            // Create a new inventory item and add it to the list and dictionary
-            InventoryItem newInventoryItem = new InventoryItem(item);
-            InventoryObjects.Add(newInventoryItem);
-            itemDictionary.Add(item, newInventoryItem);
-            Debug.Log(item + " Added to inventory");
-        }
-    }
-
-    // Removes an item from the inventory
-    public void RemoveItem(ItemClass item)
-    {
-        // Check if the item exists in the inventory
-        if (itemDictionary.TryGetValue(item, out InventoryItem inventoryItem))
-        {
-            // Reduce the stack size of the item
-            inventoryItem.RemoveFromStack();
-            // If the stack size reaches zero, remove the item from inventory
-            if (inventoryItem.StackSize == 0)
-            {
-                InventoryObjects.Remove(inventoryItem);
-                itemDictionary.Remove(item);
-            }
-        }
-    }
-
-    // Uses an item and removes it from inventory if necessary
-    public void UseItem(ItemClass item)
-    {
-        // Check if the item exists in the inventory
-        if (itemDictionary.TryGetValue(item, out InventoryItem inventoryItem))
-        {
-            // Apply the item's effect to the player character
-            item.UseObject(playerCharacter);
-            // Reduce the stack size of the item
-            inventoryItem.RemoveFromStack();
-            // If the stack size reaches zero, remove the item from inventory
-            if (inventoryItem.StackSize == 0)
-            {
-                InventoryObjects.Remove(inventoryItem);
-                itemDictionary.Remove(item);
-            }
+            SetCurrentMC();
         }
     }
 
     public void SetCurrentMC()
     {
-        playerCharacter = SwitchMC.Instance.mainCharacter.GetComponent<TemporaryStats>();
-        CurrencySystem.instance.SetCurrency(playerCharacter.CurrentExp);
+        if (SwitchMC.Instance == null || SwitchMC.Instance.mainCharacter == null)
+        {
+            Debug.LogError("SwitchMC or mainCharacter is missing!");
+            return;
+        }
+
+        currentCharacter = SwitchMC.Instance.mainCharacter;
+
+        if (!itemDictionaries.ContainsKey(currentCharacter))
+        {
+            itemDictionaries[currentCharacter] = new Dictionary<ItemClass, InventoryItem>();
+        }
+
+        TemporaryStats playerStats = currentCharacter.GetComponent<TemporaryStats>();
+        if (playerStats == null)
+        {
+            Debug.LogError("TemporaryStats component missing on mainCharacter.");
+            return;
+        }
+
+        CurrencySystem.instance.SetCurrency(playerStats.CurrentExp);
+    }
+
+    public void AddItem(ItemClass item)
+    {
+        if (currentCharacter == null)
+        {
+            Debug.LogError("No current character set!");
+            return;
+        }
+
+        var dictionary = itemDictionaries[currentCharacter];
+
+        if (dictionary.TryGetValue(item, out InventoryItem inventoryItem))
+        {
+            inventoryItem.AddToStack();
+            Debug.Log($"{item} added to stack for {currentCharacter.name}");
+        }
+        else
+        {
+            InventoryItem newInventoryItem = new InventoryItem(item);
+            dictionary[item] = newInventoryItem;
+            Debug.Log($"{item} added to inventory for {currentCharacter.name}");
+        }
+    }
+
+    public void RemoveItem(ItemClass item)
+    {
+        if (currentCharacter == null)
+        {
+            Debug.LogError("No current character set!");
+            return;
+        }
+
+        var dictionary = itemDictionaries[currentCharacter];
+
+        if (dictionary.TryGetValue(item, out InventoryItem inventoryItem))
+        {
+            inventoryItem.RemoveFromStack();
+
+            if (inventoryItem.StackSize == 0)
+            {
+                dictionary.Remove(item);
+                Debug.Log($"{item} removed from {currentCharacter.name}'s inventory");
+            }
+        }
+    }
+
+    public void UseItem(ItemClass item)
+    {
+        if (currentCharacter == null)
+        {
+            Debug.LogError("No current character set!");
+            return;
+        }
+
+        var dictionary = itemDictionaries[currentCharacter];
+
+        if (dictionary.TryGetValue(item, out InventoryItem inventoryItem))
+        {
+            TemporaryStats playerStats = currentCharacter.GetComponent<TemporaryStats>();
+            if (playerStats == null)
+            {
+                Debug.LogError("TemporaryStats component missing on current character.");
+                return;
+            }
+
+            item.UseObject(playerStats);
+            inventoryItem.RemoveFromStack();
+
+            if (inventoryItem.StackSize == 0)
+            {
+                dictionary.Remove(item);
+                Debug.Log($"{item} used and removed from {currentCharacter.name}'s inventory");
+            }
+        }
+    }
+
+    public List<InventoryItem> GetCurrentInventory()
+    {
+        if (currentCharacter == null)
+        {
+            Debug.LogError("No current character set!");
+            return new List<InventoryItem>();
+        }
+
+        return new List<InventoryItem>(itemDictionaries[currentCharacter].Values);
     }
 
     public GameObject GetCurrentMC()
     {
-        return playerCharacter.gameObject;
+        return currentCharacter;
     }
 }
