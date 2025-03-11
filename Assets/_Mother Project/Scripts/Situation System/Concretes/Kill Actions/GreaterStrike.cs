@@ -52,12 +52,12 @@ public class GreaterStrike : ICommand
             if (targetTempStats.IsCounterActive)
             {
                 playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                HealthManager.instance.PlayerMortality(playerTempStats, 0);
+                HealthManager.instance.PlayerMortality(playerTempStats, 0, playerTempStats);
             }
             else
             {
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                HealthManager.instance.PlayerMortality(targetTempStats, 0);
+                HealthManager.instance.PlayerMortality(targetTempStats, 0, playerTempStats);
             }
           
             

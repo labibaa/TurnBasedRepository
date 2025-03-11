@@ -17,7 +17,7 @@ public class CurrencySystem : MonoBehaviour
 
     [SerializeField]protected int CurrentXp = 0; //xp is currency
 
-    private void Start()
+    private void Awake()
     {
         if(instance == null)
         {

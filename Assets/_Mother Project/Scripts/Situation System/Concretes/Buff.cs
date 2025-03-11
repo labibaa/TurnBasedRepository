@@ -44,7 +44,7 @@ public class Buff : ICommand
             targetTempStats.CurrentDamageMultiplier = targetTempStats.CurrentDamageMultiplier * 2;
             UI.instance.SendNotification(target.name +"'s Attack Buffed by " + targetTempStats.CurrentDamageMultiplier.ToString());
             await HandleAnimation();
-            await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+            await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder,playerTempStats);
 
 
 

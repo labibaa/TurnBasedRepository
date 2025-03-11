@@ -52,7 +52,7 @@ public class Devour : ICommand
                 targetTempStats.CurrentHealth = 0;
                 playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(-damage / 2.0f, playerTempStats.CurrentHealth); ;
                 Debug.Log("health done");
-                HealthManager.instance.PlayerMortality(targetTempStats,0);
+                HealthManager.instance.PlayerMortality(targetTempStats,0,playerTempStats);
             }
 
         }

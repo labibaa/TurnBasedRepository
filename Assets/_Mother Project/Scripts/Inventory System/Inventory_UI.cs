@@ -22,7 +22,7 @@ public class Inventory_UI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (var item in InventoryManager.Instance.InventoryObjects)
+        foreach (var item in InventoryManager.Instance.GetCurrentInventory())
         {
             Button ItemButton = Instantiate(inventoryItem_buttonPrefab,inventoryItem_panel);
             TextMeshProUGUI SizeComponent = ItemButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();

@@ -199,7 +199,7 @@ public class PushBack : ICommand
                 await HandleAnimation();
 
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
 
             }
             //play animation
