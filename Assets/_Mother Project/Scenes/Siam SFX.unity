@@ -84618,6 +84618,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848092593}
   m_CullTransparentMesh: 1
+--- !u!1001 &850594243
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1027883241}
+    m_Modifications:
+    - target: {fileID: 1496662378954331852, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_Name
+      value: rain Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a3c19c03e77ce5c47b7dd7bb3f98296e, type: 3}
 --- !u!1 &852763215
 GameObject:
   m_ObjectHideFlags: 0
@@ -102690,6 +102758,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8529738019043942148, guid: 7bc12c9a16b130546aeedc8d8de2e5a0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1668232635}
     - targetCorrespondingSourceObject: {fileID: 8876634085237526644, guid: 7bc12c9a16b130546aeedc8d8de2e5a0,
         type: 3}
       insertIndex: 6
@@ -120960,10 +121032,8 @@ MonoBehaviour:
   hoverDisplayStats: {fileID: 281768758}
   SummaryStatParent: {fileID: 1779644319840787455}
   SummaryStatParentEnemy: {fileID: 1452275688}
-  AvatarSummaryPrefab: {fileID: 6825553691945787511, guid: 460d40ec606390449b1cb5141ae64b9c,
-    type: 3}
-  AvatarSummaryPrefabEnemy: {fileID: 6825553691945787511, guid: 2f2d783d60d86fd4b9604802621a9e8c,
-    type: 3}
+  AvatarSummaryPrefab: {fileID: 0}
+  AvatarSummaryPrefabEnemy: {fileID: 0}
   CharacterUIList: []
   playerStatDetailsPanel: {fileID: 933599975}
   playerAvatarDetails: {fileID: 1319574001}
@@ -124729,6 +124799,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkSpeed: 1
+--- !u!4 &1668232635 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4201385693358333684, guid: a3c19c03e77ce5c47b7dd7bb3f98296e,
+    type: 3}
+  m_PrefabInstance: {fileID: 850594243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &1670245467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -143664,6 +143740,7 @@ MonoBehaviour:
   characters:
   - {fileID: 1800869734}
   - {fileID: 3571700953067278483}
+  mainCharacter: {fileID: 0}
 --- !u!114 &2046127001
 MonoBehaviour:
   m_ObjectHideFlags: 0
