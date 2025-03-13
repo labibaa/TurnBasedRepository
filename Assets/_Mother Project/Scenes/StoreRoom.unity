@@ -130304,6 +130304,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16642268}
     m_Modifications:
+    - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: playerUltimateBarCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -133796,6 +133801,7 @@ MonoBehaviour:
   characters:
   - {fileID: 1800869734}
   - {fileID: 3571700953067278483}
+  mainCharacter: {fileID: 0}
 --- !u!114 &2046127001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164769,7 +164775,7 @@ Transform:
   m_GameObject: {fileID: 3954000482663074368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.3114565e-24, w: 1}
-  m_LocalPosition: {x: -585.8486, y: -334.06128, z: 132.43927}
+  m_LocalPosition: {x: -585.8486, y: -334.06128, z: 131.43927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -248824,7 +248830,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 19
+  m_CameraDistance: 20
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
