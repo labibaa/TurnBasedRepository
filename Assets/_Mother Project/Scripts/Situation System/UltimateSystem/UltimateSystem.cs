@@ -17,13 +17,7 @@ public class UltimateSystem : MonoBehaviour
             _instance = this;
         }
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            
-        }
-    }
+ 
     public bool checkUltimateAvailability(CharacterBaseClasses player,TemporaryStats playerTemp)
     {
         //return player.GetPlayerUltimate().GetultimateThreshold() <= playerTemp.playerUltimateBarCount;//in case of action count being the ultimate decider

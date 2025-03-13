@@ -19,6 +19,7 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     [SerializeField] private float mind;
     [SerializeField] float damageMultiplier;
     [SerializeField] int MaxExp;
+    [SerializeField] int lootUltiPoints;
     public CurrentWeapon EquipedWeapon;
     [SerializeField]
     protected List<ImprovedActionStat> characterAvailableActions = new List<ImprovedActionStat>();
@@ -54,6 +55,7 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     // public int BaseDamage { get => baseDamage; set => baseDamage = value; }
     public float DamageMultiplier { get => damageMultiplier; set => damageMultiplier = value; }
     public int MaxExperiencePoint { get => MaxExp; set => MaxExp = value; }
+    public int LootUltiPoints { get => lootUltiPoints; set => lootUltiPoints = value; }
 
     //public float BaseDamage;
 

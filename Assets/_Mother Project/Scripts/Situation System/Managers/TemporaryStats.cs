@@ -236,7 +236,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
         IsDodgeActive = false;
         AutoMove = false;
         playerVisiblity = 1;
-        playerUltimateBarCount = 0;
+       // playerUltimateBarCount = 0;
         playerMortality = Mortality.Alive;
         GetComponent<PlayerTurn>().isMoveOn = true;
         CurrentAP = PlayerAP;
