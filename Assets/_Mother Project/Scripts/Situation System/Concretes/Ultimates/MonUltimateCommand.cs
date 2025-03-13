@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,23 +23,39 @@ public class MonUltimateCommand : IUltimate
         GridMovement.instance.ResetHighlightedPath();
         playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
        
-        CutsceneManager.instance.virtualCamera.LookAt = playerCharacter.gameObject.transform;
-        CutsceneManager.instance.virtualCamera.Follow = playerCharacter.gameObject.transform;
+       // CutsceneManager.instance.virtualCamera.LookAt = playerCharacter.gameObject.transform;
+       // CutsceneManager.instance.virtualCamera.Follow = playerCharacter.gameObject.transform;
 
         //CutsceneManager.instance.virtualCamera.Priority = 15;
-        await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, "Ult1");
+        //await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, "Ult1");
         foreach (CharacterBaseClasses target in targets)
         {
             TemporaryStats targetTempStats = target.GetComponent<TemporaryStats>();
 
             targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(targetTempStats.CurrentHealth/2, targetTempStats.CurrentHealth);
 
-           
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
+
             UI.instance.ShowFlyingText((targetTempStats.CurrentHealth / 2).ToString(), targetTempStats.FlyingTextParent, Color.red);
             //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
         }
+        await HandleAnimation();
         PlayerStatUI.instance.UpdateSummaryHUDUI();
         Debug.Log("Ultimate executed");
+    }
+    async UniTask HandleAnimation()
+    {
+       // TempManager.instance.CharacterRotation(target, player, 2f);
+
+        playerCharacter.GetComponent<SpawnVFX>().SetOwnVFXPosition(playerCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.CharacterBodyLocation]);
+        playerCharacter.GetComponent<SpawnVFX>().SetVFXPrefab(ultimateScriptable.PlayerActionVFX);
+        playerCharacter.GetComponent<SpawnVFX>().SetTargetHitVFXPrefab(ultimateScriptable.TargetHitVFX);
+        playerCharacter.GetComponent<SpawnVFX>().SetParticle(ultimateScriptable.particle);
+        playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
+        playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimation(ultimateScriptable.TargetHurtAnimation);
+
+        await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, GetUltimateActionName());
     }
 
     public void setValues(CharacterBaseClasses playerCh,TemporaryStats playerTemp)
@@ -50,6 +68,8 @@ public class MonUltimateCommand : IUltimate
        
         return ultimateScriptable.actionThreshold;
     }
-
-    
+    public string GetUltimateActionName()
+    {
+        return ultimateScriptable.UltimateName;
+    }
 }

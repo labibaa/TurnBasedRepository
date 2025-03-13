@@ -9,6 +9,11 @@ public class Ultimate2Command : IUltimate
         throw new System.NotImplementedException();
     }
 
+    public string GetUltimateActionName()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public int GetultimateThreshold()
     {
         throw new System.NotImplementedException();

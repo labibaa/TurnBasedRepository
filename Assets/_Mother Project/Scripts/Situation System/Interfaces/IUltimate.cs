@@ -8,5 +8,5 @@ public interface IUltimate
     void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp);
     void Execute();
     int GetultimateThreshold();
-
+    string GetUltimateActionName();
 }
