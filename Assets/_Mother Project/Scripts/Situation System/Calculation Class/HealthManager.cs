@@ -62,7 +62,7 @@ public class HealthManager : MonoBehaviour
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
             playerStat.playerMortality = Mortality.Dead;
             OnCharacterDeath?.Invoke();
-            killer.playerUltimateBarCount = playerStat.playerUltimateBarCount + 1;//deadplayer give ulti points
+            killer.playerUltimateBarCount += playerStat.GetComponent<CharacterBaseClasses>().LootUltiPoints;//deadplayer give ulti points
             Debug.Log(deadPlayerTurn.name + "dead");
             TurnManager.instance.players.Remove(deadPlayerTurn);
             Debug.Log(deadPlayerTurn.name + "dead20");
