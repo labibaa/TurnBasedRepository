@@ -26,7 +26,7 @@ public class UltimateSystem : MonoBehaviour
     
     
     
-    public void useUltimate(CharacterBaseClasses player, TemporaryStats playerTemp)
+    public void useUltimate(CharacterBaseClasses player, TemporaryStats playerTemp, CharacterBaseClasses targetDefender, TemporaryStats currentStatTarget)
     {
         player.GetPlayerUltimate().setValues(player,playerTemp);
         player.GetPlayerUltimate().Execute();

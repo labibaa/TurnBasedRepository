@@ -7,7 +7,7 @@ public class Ultimate2Factory : UltimateActionsFactory
 {
     public override IUltimate CreateUltimate()
     {
-        return new Ultimate2Command();
+        return new Ultimate2Command(this);
     }
 
     public override bool IsUltimateEnabled()

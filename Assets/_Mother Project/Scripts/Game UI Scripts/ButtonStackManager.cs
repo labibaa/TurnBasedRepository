@@ -185,7 +185,14 @@ public class ButtonStackManager : MonoBehaviour
 
         // Add the ultimate action button
         GameObject ultimateButton = Instantiate(player.GetUltimateScripitable().ultimateButton, playerPanel.transform);
-        ultimateButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Ultimate());
+        if (player.GetPlayerUltimate().IsSingleTarget())
+        {
+           // TempManager.instance.ShowTargetList(scriptable.actionButton.name);
+        }
+        else
+        {
+            ultimateButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Ultimate());
+        }
         ActionActivator.instance.AddToActionButtons(ultimateButton);
 
 
