@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Ultimate2Command : IUltimate
 {
+    CharacterBaseClasses playerCharacter;
+    TemporaryStats playerTempStats;
+    UltimateActionsFactory ultimateScriptable;
+
+    public Ultimate2Command(UltimateActionsFactory ultimateScritableObject)
+    {
+        ultimateScriptable = ultimateScritableObject;
+    }
     public void Execute()
     {
         throw new System.NotImplementedException();
@@ -11,17 +19,23 @@ public class Ultimate2Command : IUltimate
 
     public string GetUltimateActionName()
     {
-        throw new System.NotImplementedException();
+        return ultimateScriptable.UltimateName;
     }
 
     public int GetultimateThreshold()
+    {
+        return ultimateScriptable.actionThreshold;
+    }
+
+    public bool IsSingleTarget()
     {
         throw new System.NotImplementedException();
     }
 
     public void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp)
     {
-        throw new System.NotImplementedException();
+        playerCharacter = playerCh;
+        playerTempStats = playerTemp;
     }
 
     

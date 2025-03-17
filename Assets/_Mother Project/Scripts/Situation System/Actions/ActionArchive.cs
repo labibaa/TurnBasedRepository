@@ -906,7 +906,7 @@ public class ActionArchive : MonoBehaviour
     public async void Ultimate()
     {
         GetPlayerStats();
-        UltimateSystem._instance.useUltimate(playerAttacker,currentStatPlayer);
+        UltimateSystem._instance.useUltimate(playerAttacker,currentStatPlayer,targetDefender,currentStatTarget);
     }
 
     public async void Move()

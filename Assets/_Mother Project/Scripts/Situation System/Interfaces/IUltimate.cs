@@ -9,4 +9,6 @@ public interface IUltimate
     void Execute();
     int GetultimateThreshold();
     string GetUltimateActionName();
+    bool IsSingleTarget();
+
 }

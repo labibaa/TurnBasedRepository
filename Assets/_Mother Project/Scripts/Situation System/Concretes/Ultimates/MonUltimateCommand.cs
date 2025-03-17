@@ -72,4 +72,9 @@ public class MonUltimateCommand : IUltimate
     {
         return ultimateScriptable.UltimateName;
     }
+
+    public bool IsSingleTarget()
+    {
+        throw new NotImplementedException();
+    }
 }
