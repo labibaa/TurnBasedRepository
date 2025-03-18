@@ -75,6 +75,6 @@ public class MonUltimateCommand : IUltimate
 
     public bool IsSingleTarget()
     {
-        throw new NotImplementedException();
+        return ultimateScriptable.isUltimateSingleTarget;
     }
 }

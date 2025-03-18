@@ -302,9 +302,18 @@ public class TurnManager : MonoBehaviour
         }
 
     }
+    public void UltimateTargetList(UltimateActionsFactory ultimateScriptable)
+    {
+        targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, ultimateScriptable.ultimateRange * players[currentPlayerIndex].GetComponent<TemporaryStats>().playerVisiblity, Color.red);
+        for (int i = 0; i < targetsInRange.Count; i++)
+        {
+            UI.instance.CreateTargetButton(targetsInRange[i].gameObject.GetComponent<CharacterBaseClasses>());
+            targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
+        }
+    }
     public void TargetList()
     {
-        /*        Clears previous targets
+        /*  Clears previous targets
 
         Rebuilds from players list
 
