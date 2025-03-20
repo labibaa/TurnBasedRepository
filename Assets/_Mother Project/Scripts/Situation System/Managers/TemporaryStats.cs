@@ -255,7 +255,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
                 //ActionArchive.instance.GetPlayerStats();
                 TempManager.instance.ChangeGameState(GameStates.MidTurn);
                 DictionaryManager.instance.GiveAction(TempManager.instance.actionName);
-
+                ActionArchive.instance.Ultimate(); // call this after selecting target
                 //DictionaryManager.instance.GiveAction(TempManager.instance.actionName).Invoke();
                 GridMovement.instance.ResetHighlightedPath();
                 TurnManager.instance.ResetTargetHIghlightVisual();

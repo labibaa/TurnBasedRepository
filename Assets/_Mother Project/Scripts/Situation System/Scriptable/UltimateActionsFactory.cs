@@ -10,6 +10,7 @@ public abstract class UltimateActionsFactory : ScriptableObject
     public GameObject ultimateButton;
     public int actionThreshold;
     public int ultimateRange;
+    public bool isUltimateSingleTarget;
     public GameObject particlePrefab;
     public VisualEffect PlayerActionVFX;
     public VisualEffect TargetHitVFX;
