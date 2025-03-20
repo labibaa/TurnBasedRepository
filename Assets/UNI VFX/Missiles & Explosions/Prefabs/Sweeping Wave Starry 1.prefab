@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2469956221825845949}
   - component: {fileID: 2469956221825845948}
   m_Layer: 0
-  m_Name: Sweeping Wave Starry
+  m_Name: Sweeping Wave Starry 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0, y: 109.92941, z: 30.619608, w: 0}
+        m_Name: CenterColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -69,9 +72,9 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0.04705874, g: 2.9960785, b: 1.7093395, a: 1}
-          key1: {r: 0, g: 13.76636, b: 11.0584135, a: 1}
-          key2: {r: 0.7932549, g: 1.683463, b: 1.6834633, a: 0}
+          key0: {r: 0.04705874, g: 2.9960785, b: 2.1389272, a: 1}
+          key1: {r: 0, g: 13.76636, b: 7.5760365, a: 1}
+          key2: {r: 0.7932549, g: 1.6834633, b: 0.981573, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
@@ -100,7 +103,13 @@ VisualEffect:
         m_Name: ColorOverLife
         m_Overridden: 1
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: d73bc63985f37e442b2e7a18b85af598, type: 3}
+        m_Name: DotsTexture
+        m_Overridden: 0
+      - m_Value: {fileID: 2800000, guid: 5cf321f1e0b8a094aada86486d9a68c0, type: 3}
+        m_Name: WaveTexture
+        m_Overridden: 0
     m_Bool:
       m_Array: []
 --- !u!73398921 &2469956221825845948
