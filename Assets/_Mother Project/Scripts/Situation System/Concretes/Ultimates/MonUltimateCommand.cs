@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MonUltimateCommand : IUltimate
 {
@@ -18,31 +19,46 @@ public class MonUltimateCommand : IUltimate
     }
     public async void Execute()
     {
-        
-        List<CharacterBaseClasses> targets= GridMovement.instance.InAdjacentMatrix(playerTempStats.currentPlayerGridPosition,playerTempStats.CharacterTeam,ultimateScriptable.ultimateRange,Color.clear);
-        GridMovement.instance.ResetHighlightedPath();
-        playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
-       
-       // CutsceneManager.instance.virtualCamera.LookAt = playerCharacter.gameObject.transform;
-       // CutsceneManager.instance.virtualCamera.Follow = playerCharacter.gameObject.transform;
-
-        //CutsceneManager.instance.virtualCamera.Priority = 15;
-        //await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, "Ult1");
-        foreach (CharacterBaseClasses target in targets)
+        if (!ultimateScriptable.isUltimateSingleTarget)
         {
-            TemporaryStats targetTempStats = target.GetComponent<TemporaryStats>();
+            List<CharacterBaseClasses> targets = GridMovement.instance.InAdjacentMatrix(playerTempStats.currentPlayerGridPosition, playerTempStats.CharacterTeam, ultimateScriptable.ultimateRange, Color.clear);
+            GridMovement.instance.ResetHighlightedPath();
+            playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
 
-            targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(targetTempStats.CurrentHealth/2, targetTempStats.CurrentHealth);
+            // CutsceneManager.instance.virtualCamera.LookAt = playerCharacter.gameObject.transform;
+            // CutsceneManager.instance.virtualCamera.Follow = playerCharacter.gameObject.transform;
 
-            playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
-            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
+            //CutsceneManager.instance.virtualCamera.Priority = 15;
+            //await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, "Ult1");
+            foreach (CharacterBaseClasses target in targets)
+            {
+                TemporaryStats targetTempStats = target.GetComponent<TemporaryStats>();
 
-            UI.instance.ShowFlyingText((targetTempStats.CurrentHealth / 2).ToString(), targetTempStats.FlyingTextParent, Color.red);
-            //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(targetTempStats.CurrentHealth / 2, targetTempStats.CurrentHealth);
+
+                playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
+                playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
+
+                UI.instance.ShowFlyingText((targetTempStats.CurrentHealth / 2).ToString(), targetTempStats.FlyingTextParent, Color.red);
+                //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
+            }
+            await HandleAnimation();
+            PlayerStatUI.instance.UpdateSummaryHUDUI();
+            Debug.Log("Ultimate executed");
         }
-        await HandleAnimation();
-        PlayerStatUI.instance.UpdateSummaryHUDUI();
-        Debug.Log("Ultimate executed");
+        else
+        {
+            GridMovement.instance.ResetHighlightedPath();
+            PlayerStatUI.instance.UpdateSummaryHUDUI();
+            UI.instance.SendNotification("ulti single target");
+         /*   GridMovement.instance.ResetHighlightedPath();
+            TurnManager.instance.ResetTargetHIghlightVisual();
+            TurnManager.instance.targetsInRange.Clear();
+            TurnManager.instance.nonCharacterTargetsInRange.Clear();
+            TempManager.instance.ChangeGameState(GameStates.Simulation);
+            TurnManager.instance.StartTurn();*/
+         TurnManager.instance.EndTurn();
+        }
     }
     async UniTask HandleAnimation()
     {

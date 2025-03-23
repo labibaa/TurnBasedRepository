@@ -304,6 +304,7 @@ public class TurnManager : MonoBehaviour
     }
     public void UltimateTargetList(UltimateActionsFactory ultimateScriptable)
     {
+        TempManager.instance.ChangeGameState(GameStates.TargetSelectionTurn);
         targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, ultimateScriptable.ultimateRange * players[currentPlayerIndex].GetComponent<TemporaryStats>().playerVisiblity, Color.red);
         for (int i = 0; i < targetsInRange.Count; i++)
         {
