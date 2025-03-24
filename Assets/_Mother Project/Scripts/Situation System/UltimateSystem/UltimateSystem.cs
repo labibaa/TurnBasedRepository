@@ -8,6 +8,7 @@ public class UltimateSystem : MonoBehaviour
     public static UltimateSystem _instance;
     [SerializeField]
     CharacterBaseClasses player;
+    public bool IsUltimate;
     // Start is called before the first frame update
 
     private void Awake()

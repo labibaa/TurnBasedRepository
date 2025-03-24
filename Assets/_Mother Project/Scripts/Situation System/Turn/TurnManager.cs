@@ -108,7 +108,6 @@ public class TurnManager : MonoBehaviour
         _gridHover.RestoreColor();
         if (GridSystem.instance.IsGridOn)
         {
-
             /// Turning of Simulation for Turn Base
             /*
             else
@@ -116,9 +115,6 @@ public class TurnManager : MonoBehaviour
                 TempManager.instance.Simulate();
                 TempManager.instance.ChangeGameState(GameStates.Simulation);
             }*/
-
-
-
             ResetTargetHIghlightVisual();
             GridMovement.instance.ResetHighlightedPath();
             targetsInRange.Clear();
@@ -304,6 +300,7 @@ public class TurnManager : MonoBehaviour
     }
     public void UltimateTargetList(UltimateActionsFactory ultimateScriptable)
     {
+        UltimateSystem._instance.IsUltimate = true;
         TempManager.instance.ChangeGameState(GameStates.TargetSelectionTurn);
         targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, ultimateScriptable.ultimateRange * players[currentPlayerIndex].GetComponent<TemporaryStats>().playerVisiblity, Color.red);
         for (int i = 0; i < targetsInRange.Count; i++)

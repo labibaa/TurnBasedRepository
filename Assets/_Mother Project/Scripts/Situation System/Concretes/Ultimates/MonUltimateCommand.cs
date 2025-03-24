@@ -48,16 +48,20 @@ public class MonUltimateCommand : IUltimate
         }
         else
         {
+            UltimateSystem._instance.IsUltimate = false;
             GridMovement.instance.ResetHighlightedPath();
+            await HandleAnimation();
             PlayerStatUI.instance.UpdateSummaryHUDUI();
+            Debug.Log("Ultimate ingle executed");
             UI.instance.SendNotification("ulti single target");
-         /*   GridMovement.instance.ResetHighlightedPath();
+            GridMovement.instance.ResetHighlightedPath();
             TurnManager.instance.ResetTargetHIghlightVisual();
             TurnManager.instance.targetsInRange.Clear();
             TurnManager.instance.nonCharacterTargetsInRange.Clear();
             TempManager.instance.ChangeGameState(GameStates.Simulation);
-            TurnManager.instance.StartTurn();*/
-         TurnManager.instance.EndTurn();
+            playerCharacter.GetComponent<PlayerTurn>().isMoveOn = true;
+            TurnManager.instance.StartTurn();
+            //TurnManager.instance.EndTurn();
         }
     }
     async UniTask HandleAnimation()
