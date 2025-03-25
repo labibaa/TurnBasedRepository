@@ -252,18 +252,23 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
             if(TempManager.instance.currentState == GameStates.TargetSelectionTurn && TurnManager.instance.targetsInRange.Contains(_characterBaseClasses))
             {
                 TempManager.instance.defender = gameObject;
-                //ActionArchive.instance.GetPlayerStats();
-                TempManager.instance.ChangeGameState(GameStates.MidTurn);
-                DictionaryManager.instance.GiveAction(TempManager.instance.actionName);
-                if(UltimateSystem._instance.IsUltimate)
+                if (UltimateSystem._instance.IsUltimate)
                 {
                     ActionArchive.instance.Ultimate(); // call this after selecting target                
                 }
-                //DictionaryManager.instance.GiveAction(TempManager.instance.actionName).Invoke();
-                GridMovement.instance.ResetHighlightedPath();
-                TurnManager.instance.ResetTargetHIghlightVisual();
-                TurnManager.instance.targetsInRange.Clear();
-                TurnManager.instance.nonCharacterTargetsInRange.Clear();
+                else
+                {
+                    //ActionArchive.instance.GetPlayerStats();
+                    TempManager.instance.ChangeGameState(GameStates.MidTurn);
+                    DictionaryManager.instance.GiveAction(TempManager.instance.actionName);
+
+                    //DictionaryManager.instance.GiveAction(TempManager.instance.actionName).Invoke();
+                    GridMovement.instance.ResetHighlightedPath();
+                    TurnManager.instance.ResetTargetHIghlightVisual();
+                    TurnManager.instance.targetsInRange.Clear();
+                    TurnManager.instance.nonCharacterTargetsInRange.Clear();
+                }
+              
             }
 
             //UI.instance.ShowPanel(playerStatPanel);
