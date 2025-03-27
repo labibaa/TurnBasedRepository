@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IUltimate 
 {
     // Interface for all the ultimate systems playable in grid system
-    void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp);
+    void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp, CharacterBaseClasses targetCh, TemporaryStats targetTemp);
     void Execute();
     int GetultimateThreshold();
     string GetUltimateActionName();

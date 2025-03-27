@@ -32,7 +32,7 @@ public class Ultimate2Command : IUltimate
         throw new System.NotImplementedException();
     }
 
-    public void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp)
+    public void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp, CharacterBaseClasses targetCh, TemporaryStats targetTemp)
     {
         playerCharacter = playerCh;
         playerTempStats = playerTemp;

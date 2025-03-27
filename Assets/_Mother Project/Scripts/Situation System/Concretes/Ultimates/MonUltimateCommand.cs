@@ -9,7 +9,9 @@ public class MonUltimateCommand : IUltimate
 {
     
     CharacterBaseClasses playerCharacter;
+    CharacterBaseClasses targetCharacter;
     TemporaryStats playerTempStats;
+    TemporaryStats targetTempStats;
     UltimateActionsFactory ultimateScriptable;
      
 
@@ -50,6 +52,8 @@ public class MonUltimateCommand : IUltimate
         {
             UltimateSystem._instance.IsUltimate = false;
             GridMovement.instance.ResetHighlightedPath();
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
             await HandleAnimation();
             PlayerStatUI.instance.UpdateSummaryHUDUI();
             Debug.Log("Ultimate ingle executed");
@@ -78,10 +82,12 @@ public class MonUltimateCommand : IUltimate
         await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, GetUltimateActionName());
     }
 
-    public void setValues(CharacterBaseClasses playerCh,TemporaryStats playerTemp)
+    public void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp, CharacterBaseClasses targetCh, TemporaryStats targetTemp)
     {
-        playerCharacter= playerCh;
-        playerTempStats= playerTemp;
+        playerCharacter = playerCh;
+        playerTempStats = playerTemp;
+        targetCharacter = targetCh;
+        targetTempStats = targetTemp;
     }
     public int GetultimateThreshold()
     {
