@@ -19,6 +19,13 @@ public class MonUltimateCommand : IUltimate
     {
         ultimateScriptable = ultimateScritableObject;
     }
+    public void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp, CharacterBaseClasses targetCh, TemporaryStats targetTemp)
+    {
+        playerCharacter = playerCh;
+        playerTempStats = playerTemp;
+        targetCharacter = targetCh;
+        targetTempStats = targetTemp;
+    }
     public async void Execute()
     {
         if (!ultimateScriptable.isUltimateSingleTarget)
@@ -50,14 +57,14 @@ public class MonUltimateCommand : IUltimate
         }
         else
         {
-            UltimateSystem._instance.IsUltimate = false;
             GridMovement.instance.ResetHighlightedPath();
             playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
             playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
-            await HandleAnimation();
             PlayerStatUI.instance.UpdateSummaryHUDUI();
-            Debug.Log("Ultimate ingle executed");
+            Debug.Log("Ultimate Single executed");
             UI.instance.SendNotification("ulti single target");
+            await HandleAnimation();
+            UltimateSystem._instance.IsUltimate = false;
             GridMovement.instance.ResetHighlightedPath();
             TurnManager.instance.ResetTargetHIghlightVisual();
             TurnManager.instance.targetsInRange.Clear();
@@ -70,7 +77,7 @@ public class MonUltimateCommand : IUltimate
     }
     async UniTask HandleAnimation()
     {
-       // TempManager.instance.CharacterRotation(target, player, 2f);
+        TempManager.instance.CharacterRotation(targetCharacter, playerCharacter, 2f);
 
         playerCharacter.GetComponent<SpawnVFX>().SetOwnVFXPosition(playerCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.CharacterBodyLocation]);
         playerCharacter.GetComponent<SpawnVFX>().SetVFXPrefab(ultimateScriptable.PlayerActionVFX);
@@ -82,13 +89,6 @@ public class MonUltimateCommand : IUltimate
         await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, GetUltimateActionName());
     }
 
-    public void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp, CharacterBaseClasses targetCh, TemporaryStats targetTemp)
-    {
-        playerCharacter = playerCh;
-        playerTempStats = playerTemp;
-        targetCharacter = targetCh;
-        targetTempStats = targetTemp;
-    }
     public int GetultimateThreshold()
     {
        
