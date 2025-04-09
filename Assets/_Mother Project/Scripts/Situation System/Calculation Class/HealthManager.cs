@@ -65,9 +65,9 @@ public class HealthManager : MonoBehaviour
             killer.playerUltimateBarCount += playerStat.GetComponent<CharacterBaseClasses>().LootUltiPoints;//deadplayer give ulti points
             Debug.Log(deadPlayerTurn.name + "dead");
             TurnManager.instance.players.Remove(deadPlayerTurn);
-            Debug.Log(deadPlayerTurn.name + "dead20");
+            //Debug.Log(deadPlayerTurn.name + "dead20");
             TurnManager.instance.target.Remove(deadPlayerTurn);
-            Debug.Log(deadPlayerTurn.name + "dead329");
+           // Debug.Log(deadPlayerTurn.name + "dead329");
 
             if (!RemoveAdjacentDuplicates(TurnManager.instance.players) && CheckIfElementIsDuplicate(TurnManager.instance.players,playerTurn ))
             {

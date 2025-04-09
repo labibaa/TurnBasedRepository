@@ -81,14 +81,13 @@ public class CutsceneManager : MonoBehaviour
 
         
         //CameraShakeOnDamage.Instance.ShakeCameraOnDamage();
-        await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-        Debug.Log("ng");
+        // await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+        //Debug.Log("ng");
         
         Debug.Log($"pppop '{animationName}' has finished playing.");
         await UniTask.WaitWhile(() => charAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
-        Debug.Log($"stuck");
 
-        //  CameraShakeOnDamage.Instance.StopCameraShake();
+       // CameraShakeOnDamage.Instance.StopCameraShake();
 
         //await UniTask.WaitWhile(() => !particleFinishedPlaying);
         //particleFinishedPlaying = false;

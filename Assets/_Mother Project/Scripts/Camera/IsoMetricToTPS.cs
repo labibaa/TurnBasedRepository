@@ -28,10 +28,6 @@ public class IsoMetricToTPS : MonoBehaviour
             isoCamera.Priority = 5;
             tpsCamera.Priority = 5;
         }
-        else
-        {
-            Debug.LogWarning("Please assign both the isometric and TPS cameras.");
-        }
 
     }
     void Start()

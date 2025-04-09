@@ -948,7 +948,7 @@ public class ActionArchive : MonoBehaviour
 
     public async void Dash()
     {
-        Debug.Log("Ap lagbe");
+        Debug.Log("Dash");
         TurnManager.instance.ResetTargetHIghlightVisual();
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
