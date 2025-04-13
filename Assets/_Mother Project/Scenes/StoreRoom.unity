@@ -67068,7 +67068,7 @@ MonoBehaviour:
   shakeDuration: 0.3
   shakeAmplitude: 1.2
   shakeFrequency: 2
---- !u!114 &765330270
+--- !u!114 &765330277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67077,13 +67077,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 765330256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
   m_ChannelMask: 1
   m_Gain: 1
   m_Use2DDistance: 0
-  m_UseLocalSpace: 1
+  m_UseCameraSpace: 1
   m_ReactionSettings:
     m_SecondaryNoise: {fileID: 0}
     m_AmplitudeGain: 1
@@ -88449,7 +88450,7 @@ MonoBehaviour:
   cam2: {fileID: 791412422}
   cam3: {fileID: 1769477933}
   cam4: {fileID: 1135908480}
---- !u!114 &1097386893
+--- !u!114 &1097386898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88458,9 +88459,68 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097386883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d8e0e8bb9af9d458be49e4d05e95b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 4
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.3
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0.3, y: 0.3, z: 0.3}
 --- !u!1001 &1105014116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108079,7 +108139,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1912132891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1443021229
+--- !u!114 &1443021234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108088,13 +108148,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1443021224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
   m_ChannelMask: 1
   m_Gain: 1
   m_Use2DDistance: 0
-  m_UseLocalSpace: 1
+  m_UseCameraSpace: 1
   m_ReactionSettings:
     m_SecondaryNoise: {fileID: 0}
     m_AmplitudeGain: 1
@@ -113929,7 +113990,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8944336655422409498, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1097386893}
+      addedObject: {fileID: 1097386898}
   m_SourcePrefab: {fileID: 100100000, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
 --- !u!1 &1637712065
 GameObject:
@@ -130251,12 +130312,12 @@ PrefabInstance:
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.830505
+      value: 15.224304
       objectReference: {fileID: 0}
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.529999
+      value: 12.180023
       objectReference: {fileID: 0}
     - target: {fileID: 5711889641533172970, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -130276,7 +130337,7 @@ PrefabInstance:
     - target: {fileID: 6878960195950656178, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_CameraDistance
-      value: 20
+      value: 19.3
       objectReference: {fileID: 0}
     - target: {fileID: 8983546823599016214, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -130299,11 +130360,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1379623221603054671, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 765330270}
+      addedObject: {fileID: 765330277}
     - targetCorrespondingSourceObject: {fileID: 5315822825133747682, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1443021229}
+      addedObject: {fileID: 1443021234}
   m_SourcePrefab: {fileID: 100100000, guid: 31c9dd2abad151c47975107e9bafd8dc, type: 3}
 --- !u!4 &1912132892 stripped
 Transform:
@@ -164640,7 +164701,7 @@ Transform:
   m_GameObject: {fileID: 3954000482663074368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.3114565e-24, w: 1}
-  m_LocalPosition: {x: -585.8486, y: -334.06128, z: 131.43927}
+  m_LocalPosition: {x: -585.8486, y: -334.06128, z: 131.93927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -241927,11 +241988,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 278052916022459049, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7823975018350207427}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb61c518da76c348aa16edf69b4a415, type: 3}
 --- !u!4 &5180619933478143749
 Transform:
@@ -248751,7 +248808,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 20
+  m_CameraDistance: 19.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -264588,59 +264645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7823975018350207427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3571700953067278483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_ImpulseShape: 2
-    m_CustomImpulseShape:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
-    m_ImpulseType: 0
-    m_DissipationRate: 0.25
-    m_RawSignal: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 0
-    m_DissipationMode: 2
-    m_DissipationDistance: 100
-    m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &7825923938118417387
 GameObject:
   m_ObjectHideFlags: 0
@@ -268499,15 +268503,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3954000482663074368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
   m_ChannelMask: 1
   m_Gain: 1
   m_Use2DDistance: 0
-  m_UseLocalSpace: 1
+  m_UseCameraSpace: 1
   m_ReactionSettings:
-    m_SecondaryNoise: {fileID: 0}
+    m_SecondaryNoise: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_Duration: 1
@@ -269407,15 +269412,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3472081573622837239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
   m_ChannelMask: 1
   m_Gain: 1
   m_Use2DDistance: 0
-  m_UseLocalSpace: 1
+  m_UseCameraSpace: 1
   m_ReactionSettings:
-    m_SecondaryNoise: {fileID: 0}
+    m_SecondaryNoise: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_Duration: 1
