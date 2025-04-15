@@ -1,18 +1,23 @@
 using Cinemachine;
+using System;
 using UnityEngine;
 
 public class Cinemachine_CameraShake : MonoBehaviour
 {
+
     public CinemachineImpulseSource impulseSource;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-       
+        SpawnVFX.OnRumbleShake += RumbleImpulse;
+        SpawnVFX.OnExplotionShake += ExplotionImpulse;
     }
 
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        SpawnVFX.OnRumbleShake -= RumbleImpulse;
+        SpawnVFX.OnExplotionShake -= ExplotionImpulse;
+    }
     void Update()
     {
         CinemachineBrain brain = Camera.main.GetComponent<CinemachineBrain>();
@@ -39,8 +44,9 @@ public class Cinemachine_CameraShake : MonoBehaviour
     {
         var definition = new CinemachineImpulseDefinition
         {
+            m_ImpulseDuration = 0.5f,
             m_ImpulseType = CinemachineImpulseDefinition.ImpulseTypes.Uniform,
-            m_ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble,
+            m_ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Rumble
         };
 
         impulseSource.m_ImpulseDefinition = definition;
@@ -50,9 +56,9 @@ public class Cinemachine_CameraShake : MonoBehaviour
     {
         var definition = new CinemachineImpulseDefinition
         {
-            //call event
+            m_ImpulseDuration = 0.5f,
             m_ImpulseType = CinemachineImpulseDefinition.ImpulseTypes.Uniform,
-            m_ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion,
+            m_ImpulseShape = CinemachineImpulseDefinition.ImpulseShapes.Explosion
         };
 
         impulseSource.m_ImpulseDefinition = definition;

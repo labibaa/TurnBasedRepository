@@ -11,6 +11,8 @@ public class SpawnVFX : MonoBehaviour
 
     public static event Action hitAnimation;
     public static event Action targetLessVfx;
+    public static event Action OnRumbleShake;
+    public static event Action OnExplotionShake;
 
     public List<VisualEffect> effectPrefabList;
     public List<VisualEffect> hitEffectPrefabList;
@@ -275,5 +277,13 @@ public class SpawnVFX : MonoBehaviour
         {
             TrailVisual.SetActive(true);
         }
+    }
+    public void RumbleShakeOn()
+    {
+        OnRumbleShake?.Invoke();
+    }
+    public void ExplotionShakeOn()
+    {
+        OnExplotionShake?.Invoke();
     }
 }
