@@ -43,9 +43,10 @@ public class CharacterStats_UI : MonoBehaviour
     public void LevelUpCharacter()
     {
         GameObject crntPlayer = TempManager.instance.attacker.gameObject;
-        if (crntPlayer.GetComponent<TemporaryStats>().CurrentExp >= crntPlayer.GetComponent<CharacterBaseClasses>().MaxExperiencePoint)
+        //upgrade cost 	"Upgrade Cost=10×(Current Stat Level)^2"
+        if (crntPlayer.GetComponent<TemporaryStats>().CurrentExp >= (10 * crntPlayer.GetComponent<CharacterBaseClasses>().Level * crntPlayer.GetComponent<CharacterBaseClasses>().Level))
         {
-            crntPlayer.GetComponent<TemporaryStats>().CurrentExp -= crntPlayer.GetComponent<CharacterBaseClasses>().MaxExperiencePoint;
+            crntPlayer.GetComponent<TemporaryStats>().CurrentExp -= (10 * crntPlayer.GetComponent<CharacterBaseClasses>().Level * crntPlayer.GetComponent<CharacterBaseClasses>().Level);
             crntPlayer.GetComponent<CharacterBaseClasses>().LevelUp();
             crntPlayer.GetComponent<TemporaryStats>().SetCharacterStat();
             CharacterStatsUI();

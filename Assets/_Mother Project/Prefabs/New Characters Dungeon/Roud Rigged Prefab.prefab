@@ -5720,13 +5720,13 @@ GameObject:
   - component: {fileID: 8683327368853074611}
   - component: {fileID: 383281948691709975}
   - component: {fileID: 2550685254932437964}
+  - component: {fileID: 1481072757295937722}
+  - component: {fileID: 5623877946105048720}
   - component: {fileID: 2507758324263264990}
   - component: {fileID: 5260231794510243685}
   - component: {fileID: 3692312786286662913}
   - component: {fileID: 6030752268258891936}
   - component: {fileID: 812849285928622506}
-  - component: {fileID: 3464118078817627507}
-  - component: {fileID: 5623877946105048720}
   - component: {fileID: 3255496025928121792}
   - component: {fileID: 1134796336735284744}
   - component: {fileID: 4370830693784268595}
@@ -5754,7 +5754,7 @@ Transform:
   m_GameObject: {fileID: 278052916022459049}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -583.13055, y: -334.56128, z: 150.18507}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5816,6 +5816,91 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1481072757295937722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278052916022459049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f6445f99c09cd45b4fa823676da768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Roud
+  avatarHead: {fileID: 21300000, guid: 8bf4e430c1ca5ae48a3305551cfd975d, type: 3}
+  characterClass: Caster
+  description: 
+  level: 1
+  strength: 8
+  dexterity: 2
+  intelligence: 6
+  arcana: 3
+  endurance: 5
+  healthPoints: 15
+  resolvePoints: 20
+  skill: 6
+  mind: 6
+  damageMultiplier: 1
+  MaxExp: 0
+  lootUltiPoints: 0
+  EquipedWeapon: 2
+  characterAvailableActions: []
+  playerUltimateFactory: {fileID: 11400000, guid: 87f2bd73960ac844499d9459dccc1861,
+    type: 2}
+  warpSurge: {fileID: 0}
+  groundBlast: {fileID: 0}
+  dash: {fileID: 0}
+  move: {fileID: 11400000, guid: 8465ec936a5ef5240a593153957a09c8, type: 2}
+--- !u!114 &5623877946105048720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278052916022459049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 25
+  PlayerHealth: 25
+  Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
+    type: 3}
+  CurrentAP: 6
+  PlayerAP: 6
+  CurrentDex: 4
+  CurrentEndurance: 5
+  CurrentStrength: 0
+  CurrentArcana: 0
+  CurrentIntelligence: 0
+  CurrentExp: 0
+  CurrentResolve: 25
+  CurrentDamageMultiplier: 0
+  IsBlockActive: 0
+  IsDodgeActive: 0
+  IsThirdRatePerformanceActive: 0
+  IsCounterActive: 0
+  AutoMove: 0
+  playerUltimateBarCount: 0
+  PlayerUltimateBar: {fileID: 0}
+  isMainCharacter: 0
+  isLinkOn: 0
+  currentScene: 
+  playerMortality: 0
+  currentPlayerGridPosition: {x: 0, y: 0, z: 0}
+  _spawnPosition: {x: 0, y: 0, z: 0}
+  gridCoordinateSpawn: {x: 6, y: 3}
+  lastPosition: {fileID: 0}
+  playerStatPanel: {fileID: 0}
+  PlayerActionListPanel: {fileID: 0}
+  FlyingTextParent: {fileID: 4781269479950798199}
+  CharacterTeam: 0
+  SelectionParticle: {fileID: 8968852117301080361}
+  EnemyTargetSelectionParticle: {fileID: 2443386096126767375}
+  playerVisiblity: 1
 --- !u!195 &2507758324263264990
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5900,7 +5985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 315122514
+  GlobalObjectIdHash: 1297478232
   InScenePlacedSourceGlobalObjectIdHash: 3565951234
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -5956,91 +6041,6 @@ MonoBehaviour:
   _cinemachineVirtualCamera: {fileID: 0}
   _playerSpawnPosition: {fileID: 6653459271620124225, guid: e9a36f32412a03a48a15a97b1e2b717b,
     type: 3}
---- !u!114 &3464118078817627507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278052916022459049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da7b275d72575e14b8aec7fdbed5222e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: Roud
-  avatarHead: {fileID: 21300000, guid: 8bf4e430c1ca5ae48a3305551cfd975d, type: 3}
-  characterClass: Hunter
-  description: 
-  level: 1
-  strength: 8
-  dexterity: 2
-  intelligence: 6
-  arcana: 3
-  endurance: 5
-  healthPoints: 15
-  resolvePoints: 20
-  skill: 6
-  mind: 6
-  damageMultiplier: 1
-  MaxExp: 0
-  lootUltiPoints: 0
-  EquipedWeapon: 2
-  characterAvailableActions: []
-  playerUltimateFactory: {fileID: 11400000, guid: 87f2bd73960ac844499d9459dccc1861,
-    type: 2}
-  warpSurge: {fileID: 0}
-  groundBlast: {fileID: 0}
-  dash: {fileID: 0}
-  move: {fileID: 11400000, guid: 8465ec936a5ef5240a593153957a09c8, type: 2}
---- !u!114 &5623877946105048720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278052916022459049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 25
-  PlayerHealth: 25
-  Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
-    type: 3}
-  CurrentAP: 6
-  PlayerAP: 6
-  CurrentDex: 4
-  CurrentEndurance: 5
-  CurrentStrength: 0
-  CurrentArcana: 0
-  CurrentIntelligence: 0
-  CurrentExp: 0
-  CurrentResolve: 25
-  CurrentDamageMultiplier: 0
-  IsBlockActive: 0
-  IsDodgeActive: 0
-  IsThirdRatePerformanceActive: 0
-  IsCounterActive: 0
-  AutoMove: 0
-  playerUltimateBarCount: 0
-  PlayerUltimateBar: {fileID: 0}
-  isMainCharacter: 0
-  isLinkOn: 0
-  currentScene: 
-  playerMortality: 0
-  currentPlayerGridPosition: {x: 0, y: 0, z: 0}
-  _spawnPosition: {x: 0, y: 0, z: 0}
-  gridCoordinateSpawn: {x: 6, y: 3}
-  lastPosition: {fileID: 0}
-  playerStatPanel: {fileID: 0}
-  PlayerActionListPanel: {fileID: 0}
-  FlyingTextParent: {fileID: 4781269479950798199}
-  CharacterTeam: 0
-  SelectionParticle: {fileID: 8968852117301080361}
-  EnemyTargetSelectionParticle: {fileID: 2443386096126767375}
-  playerVisiblity: 1
 --- !u!114 &3255496025928121792
 MonoBehaviour:
   m_ObjectHideFlags: 0
