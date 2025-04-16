@@ -26,7 +26,8 @@ public class Inventory_UI : MonoBehaviour
         {
             Button ItemButton = Instantiate(inventoryItem_buttonPrefab,inventoryItem_panel);
             TextMeshProUGUI SizeComponent = ItemButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();
-            ItemButton.GetComponent<Image>().sprite = item.itemClass.itemIcon;
+            Image imgComponent = ItemButton.transform.Find("ItemImg").GetComponent<Image>();
+            imgComponent.sprite = item.itemClass.itemIcon;
             if (SizeComponent != null)
             {
                 SizeComponent.text = item.StackSize.ToString();
@@ -50,7 +51,8 @@ public class Inventory_UI : MonoBehaviour
         {
             Button storeButton = Instantiate(inventoryItem_buttonPrefab, StoreItem_panel);
             TextMeshProUGUI SizeComponent = storeButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();
-            storeButton.GetComponent<Image>().sprite = item.itemClass.itemIcon;
+            Image imgComponent = storeButton.transform.Find("ItemImg").GetComponent<Image>();
+            imgComponent.sprite = item.itemClass.itemIcon;
             if (SizeComponent != null)
             {
                 SizeComponent.text = item.StackSize.ToString();
