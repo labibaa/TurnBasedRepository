@@ -32,12 +32,9 @@ public class Cinemachine_CameraShake : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.V))
         {
-            RumbleImpulse();
+            SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
         } 
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            ExplotionImpulse();
-        }
+
     }
 
     private void RumbleImpulse()
