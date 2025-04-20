@@ -13,6 +13,7 @@ public class SpawnVFX : MonoBehaviour
     public static event Action targetLessVfx;
     public static event Action OnRumbleShake;
     public static event Action OnExplotionShake;
+    public static event Action OnStopVFX;
 
     public List<VisualEffect> effectPrefabList;
     public List<VisualEffect> hitEffectPrefabList;
@@ -285,5 +286,9 @@ public class SpawnVFX : MonoBehaviour
     public void ExplotionShakeOn()
     {
         OnExplotionShake?.Invoke();
+    }
+    public void StopVFXEvent()
+    {
+        OnStopVFX?.Invoke();
     }
 }
