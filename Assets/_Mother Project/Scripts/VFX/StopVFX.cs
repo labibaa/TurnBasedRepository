@@ -18,6 +18,7 @@ public class StopVFX : MonoBehaviour
     //subscribe to an event called when the vfx needs to deactivate
     public void StopVFXEffect()
     {
-        ToStopVFX.Stop();
+        ToStopVFX.SendEvent("stop");
+        Debug.Log("Stop vfx");
     }
 }
