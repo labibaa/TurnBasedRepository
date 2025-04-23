@@ -76,7 +76,11 @@ public class PlayerCompanions : MonoBehaviour
 
     public void FollowPlayer()
     {
-        if ((linkUp || this.GetComponent<TemporaryStats>().isLinkOn) && !GridSystem.instance.IsGridOn)
+        if (this.GetComponent<TemporaryStats>().isLinkOn)
+        {
+            linkUp = true;
+        }
+        if ((linkUp && this.GetComponent<TemporaryStats>().isLinkOn) && !GridSystem.instance.IsGridOn)
         {
             timer -= Time.deltaTime;
             if (timer < 0f)

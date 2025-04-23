@@ -37,8 +37,8 @@ public class SwitchMC : MonoBehaviour
     }
     private void Start()
     {
-        // SetMainPlayer(0);
         CharacterSwitch();
+        OnSceneLoadMainPlayer();
     }
     private void Update()
     {
@@ -127,6 +127,12 @@ public class SwitchMC : MonoBehaviour
             OnPrevScene?.Invoke();
            // LoadSceneManager.instance.LoadScene(LoadSceneManager.instance.prevScene);
         }
+    }
+
+    void OnSceneLoadMainPlayer()
+    {
+       int index =  characters.IndexOf(mainCharacter);
+       currentMainPlayerIndex = index;
     }
 
     public void RemoveUnlinkedCharacter()
