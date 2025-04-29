@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - DR_ENABLE_LIGHTMAP_DIR
+  - DR_LIGHT_ATTENUATION
   - DR_OUTLINE_ON
   - DR_RIM_ON
   - DR_SPECULAR_ON
@@ -134,7 +135,7 @@ Material:
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
-    - _LightContribution: 0.141
+    - _LightContribution: 0.865
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
     - _Metallic: 0
@@ -144,7 +145,7 @@ Material:
     - _OutlineScale: 1
     - _OutlineWidth: 1
     - _OverrideBakedGi: 0
-    - _OverrideLightAttenuation: 0
+    - _OverrideLightAttenuation: 1
     - _OverrideLightmapDir: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
@@ -175,7 +176,7 @@ Material:
     - _LightAttenuation: {r: 0, g: 0.033492804, b: 0, a: 0}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
-    - _ShadowColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!28 &3688016082538599440
