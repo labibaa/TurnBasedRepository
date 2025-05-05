@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
-using TrailsFX.Demos;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
