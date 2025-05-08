@@ -17,15 +17,7 @@ public class UI : MonoBehaviour
     public static UI instance;
 
    [SerializeField] ActionNotification actionNotification;
-    public Image playerStatSummary;
-    public Image playerStatDetailsPanel;
-    public Image timeLinePanel;
-    public Image targetListpanel;
-    public Image ksdActionParent;
-    public Image actionPanel;
-    public Image killPanel;
-    public Image survivePanel;
-    public Image dealPanel;
+
     public GameObject flyingTextPrefab;
 
     public PlayableDirector openingTimeline;
@@ -96,10 +88,10 @@ public class UI : MonoBehaviour
 
     public void ClearTargetList()
     {
-        foreach (Transform targetButtons in targetListpanel.transform)
+        /*foreach (Transform targetButtons in targetListpanel.transform)
         {
             Destroy(targetButtons.gameObject);
-        }
+        }*/
     }
     
     // player stat Summary
@@ -124,17 +116,7 @@ public class UI : MonoBehaviour
 
     public void HideAllPanel()
     {
-        // AudioController.instance.CloseSound();
-        HidePanel(playerStatSummary);
-        HidePanel(killPanel);
-        HidePanel(survivePanel);
-        HidePanel(dealPanel);
-        
-        //HidePanel(playerStatDetailsPanel);
-        HidePanel(timeLinePanel);
-        HidePanel(targetListpanel);
-        HidePanel(ksdActionParent);
-        HidePanel(actionPanel);
+     
     }
     public void HidePanel(Image imageToHide)
     {
@@ -148,7 +130,7 @@ public class UI : MonoBehaviour
     public void ShowMovesList(Image whichPanel)
     {
         TempManager.instance.ChangeGameState(GameStates.MidTurn);
-        actionPanel = whichPanel;
+        //actionPanel = whichPanel;
         HideAllPanel();
         ShowPanel(whichPanel);
     }

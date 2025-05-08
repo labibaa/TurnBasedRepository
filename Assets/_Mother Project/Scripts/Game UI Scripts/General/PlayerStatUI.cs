@@ -9,12 +9,7 @@ using UnityEngine.UI;
 public class PlayerStatUI : MonoBehaviour
 {
     #region summary HUD
-    [SerializeField] private Image playerStatSummaryPanel;
-    [SerializeField] private Image playerAvatarSummary;
-    [SerializeField] private TMP_Text playerNameTextSummary;
-    [SerializeField] private TMP_Text playerAPTextSummary;
-    [SerializeField] private TMP_Text playerHPTextSummary;
-    [SerializeField] private TMP_Text playerRPTextSummary;
+   
     public HoverDisplayStats hoverDisplayStats;
 
     #endregion
@@ -30,21 +25,11 @@ public class PlayerStatUI : MonoBehaviour
 
     #endregion
 
-
     [SerializeField] private Image playerStatDetailsPanel;
     [SerializeField] private Image playerAvatarDetails;
-    //[SerializeField] private TMP_Text playerNameTextDetails;
-    //[SerializeField] private TMP_Text playerClassTextDetails;
-    [SerializeField] private TMP_Text playerAPTextDetails;
-    [SerializeField] private TMP_Text playerHPTextDetails;
-    //[SerializeField] private TMP_Text playerRPTextDetails;
-    //[SerializeField] private TMP_Text playerArcanaTextDetails;
-    //[SerializeField] private TMP_Text playerCharismaTextDetails;
-    //[SerializeField] private TMP_Text playerMindTextDetails;
-    //[SerializeField] private TMP_Text playerEnduranceTextDetails;
-    //[SerializeField] private TMP_Text playerSkillTextDetails;
-    //[SerializeField] private TMP_Text playerStrengthTextDetails;
-    //[SerializeField] private TMP_Text playerDexterityTextDetails;
+/*    [SerializeField] private TMP_Text playerAPTextDetails;
+    [SerializeField] private TMP_Text playerHPTextDetails;*/
+ 
     Vector3 positionOffset = new Vector3(0, 2, 0);
     public static PlayerStatUI instance;
 
@@ -60,11 +45,11 @@ public class PlayerStatUI : MonoBehaviour
 
     public void GetPlayerStatSummary(CharacterBaseClasses currentPlayer)
     {
-        playerAvatarSummary.sprite = currentPlayer.avatarHead;
+        /*playerAvatarSummary.sprite = currentPlayer.avatarHead;
         playerNameTextSummary.text = currentPlayer.characterName;
         playerAPTextSummary.text = "AP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentAP.ToString();
         playerHPTextSummary.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();
-        playerRPTextSummary.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();
+        playerRPTextSummary.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();*/
     }
 
     #endregion
@@ -157,19 +142,10 @@ public class PlayerStatUI : MonoBehaviour
         playerAvatarDetails.sprite = currentPlayer.avatarHead;
         //playerNameTextDetails.text = currentPlayer.characterName;
         //playerClassTextDetails.text = currentPlayer.;
-
+/*
         playerAPTextDetails.text = "AP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentAP.ToString();
-        playerHPTextDetails.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();
-        
-        //playerRPTextDetails.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();
-
-        //playerArcanaTextDetails.text = "Arcana: " + currentPlayer.Arcana.ToString();
-        //playerCharismaTextDetails.text = "Charisma: " + currentPlayer.Charisma.ToString();
-        //playerMindTextDetails.text = "Mind: " + currentPlayer.Mind.ToString();
-        //playerEnduranceTextDetails.text = "Endurance: " + currentPlayer.Endurance.ToString();
-        //playerSkillTextDetails.text = "Skill: " + currentPlayer.Skill.ToString();
-        //playerStrengthTextDetails.text = "Strength: " + currentPlayer.Strength.ToString();
-        //playerDexterityTextDetails.text = "Dexterity: " + currentPlayer.Dexterity.ToString();
+        playerHPTextDetails.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();*/
+     
 
     }
 

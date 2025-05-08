@@ -12,8 +12,6 @@ public class ActionNotification : MonoBehaviour
     public RectTransform notification;
     public TextMeshProUGUI ActionNotificationText;
 
-    public RectTransform notification1;
-    public Text ActionNotificationText1;
     public float slideDuration = 1f;
     public float waitDuration = 1f;
 
@@ -34,15 +32,6 @@ public class ActionNotification : MonoBehaviour
             .SetEase(Ease.OutQuint)
             .OnComplete(() => WaitAndSlideOut());
 
-    }
-
-    public void TextEdit(string text)
-    {
-      
-       
-        ActionNotificationText1.text = text;
-       
-        Debug.Log(text);
     }
 
     private void WaitAndSlideOut()

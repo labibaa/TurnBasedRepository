@@ -42,7 +42,7 @@ public class ActionArchive : MonoBehaviour
 
         // Move Later
 
-        UI.instance.ClearTargetList();
+        //UI.instance.ClearTargetList();
         playerAttacker = TempManager.instance.attacker.GetComponent<CharacterBaseClasses>();
         currentStatPlayer = playerAttacker.GetComponent<TemporaryStats>();
         if (TempManager.instance.defender)
@@ -916,7 +916,7 @@ public class ActionArchive : MonoBehaviour
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
         TurnManager.instance.nonCharacterTargetsInRange.Clear();
-        UI.instance.ClearTargetList();
+        //UI.instance.ClearTargetList();
         GetPlayerStats();
         if (currentStatPlayer.gameObject.GetComponent<PlayerTurn>().isMoveOn == true)
         {
@@ -953,7 +953,7 @@ public class ActionArchive : MonoBehaviour
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
         TurnManager.instance.nonCharacterTargetsInRange.Clear();
-        UI.instance.ClearTargetList();
+       // UI.instance.ClearTargetList();
         GetPlayerStats();
         if (currentStatPlayer.gameObject.GetComponent<PlayerTurn>().isMoveOn == true)
         {
@@ -1001,7 +1001,7 @@ public class ActionArchive : MonoBehaviour
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
         TurnManager.instance.nonCharacterTargetsInRange.Clear();
-        UI.instance.ClearTargetList();
+        //UI.instance.ClearTargetList();
         GetPlayerStats();
         if (currentStatPlayer.gameObject.GetComponent<PlayerTurn>().isMoveOn == true)
         {
@@ -1036,7 +1036,7 @@ public class ActionArchive : MonoBehaviour
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
         TurnManager.instance.nonCharacterTargetsInRange.Clear();
-        UI.instance.ClearTargetList();
+       // UI.instance.ClearTargetList();
         GetPlayerStats();
         if (currentStatPlayer.gameObject.GetComponent<PlayerTurn>().isMoveOn == true)
         {

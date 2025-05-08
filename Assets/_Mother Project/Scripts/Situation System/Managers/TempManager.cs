@@ -224,7 +224,7 @@ public class TempManager : MonoBehaviour
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
         TurnManager.instance.nonCharacterTargetsInRange.Clear();
-        UI.instance.ClearTargetList();
+       // UI.instance.ClearTargetList();
         actionName = action;
         
         TempManager.instance.ChangeGameState(GameStates.TargetSelectionTurn);
@@ -271,7 +271,7 @@ public class TempManager : MonoBehaviour
         {
             UI.instance.ResetPanels();
             //ShowPanel(ksdActionParent);
-            UI.instance.ShowPanel(UI.instance.actionPanel);
+           // UI.instance.ShowPanel(UI.instance.actionPanel);
             //UI.instance._circleSelector.Open();
             SituationUIPanel.SetActive(true);
             UlimateUIPanel.SetActive(true);
@@ -288,7 +288,7 @@ public class TempManager : MonoBehaviour
         else if (currentState == GameStates.TargetSelectionTurn)
         {
             UI.instance.ResetPanels();
-            UI.instance.ShowPanel(UI.instance.targetListpanel);
+           // UI.instance.ShowPanel(UI.instance.targetListpanel);
             //UI.instance._circleSelector.Close();
             SituationUIPanel.SetActive(true);
             UlimateUIPanel.SetActive(true);
@@ -303,7 +303,7 @@ public class TempManager : MonoBehaviour
         else if (currentState == GameStates.Simulation)
         {
             UI.instance.HideAllPanel();
-            UI.instance.ShowPanel(UI.instance.timeLinePanel);
+           // UI.instance.ShowPanel(UI.instance.timeLinePanel);
             SituationUIPanel.SetActive(false);
             UlimateUIPanel.SetActive(false);
             TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().SelectionParticle.SetActive(false);

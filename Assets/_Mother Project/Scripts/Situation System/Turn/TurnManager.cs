@@ -154,7 +154,7 @@ public class TurnManager : MonoBehaviour
             //ActionUI.SetActive(false);
             // Start the next player's turn
             Debug.Log("not performing turns");
-            UI.instance.actionPanel = null; //because kill, survive, deal movelists overwrite fix
+            //UI.instance.actionPanel = null; //because kill, survive, deal movelists overwrite fix
 
             ResetTurn();
         }
@@ -167,7 +167,7 @@ public class TurnManager : MonoBehaviour
         // Turn On Action UI
         //ActionUI.SetActive(true);
         UI.instance.ResetPanels();
-        UI.instance.ClearTargetList();
+       // UI.instance.ClearTargetList();
 
         //playerTxt.text = players[currentPlayerIndex].gameObject.name + "'s turn";
 
