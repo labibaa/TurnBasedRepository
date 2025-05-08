@@ -40,9 +40,9 @@ public class Block : ICommand
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
         TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
 
-        player.GetComponent<PlayParticle>().actionSound = block.actionSound;   
+       /* player.GetComponent<PlayParticle>().actionSound = block.actionSound;   
         player.GetComponent<PlayParticle>().particlePrefab = block.ParticleSystem;
-        player.GetComponent<PlayParticle>().particlePrefabHit = block.HitParticleSystem;
+        player.GetComponent<PlayParticle>().particlePrefabHit = block.HitParticleSystem;*/
         //CutsceneManager.instance.virtualCamera.LookAt = player.gameObject.transform;
         //CutsceneManager.instance.virtualCamera.Follow = player.gameObject.transform;
 

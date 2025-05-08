@@ -22,8 +22,6 @@ public class TempManager : MonoBehaviour
     public GameStates currentState;
     public PlayerType PlayerType;
 
-    PlayerArray PlayerArrayList;
-
     public int ApCost = 6;
 
     public static TempManager instance;
@@ -321,13 +319,6 @@ public class TempManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-    }
-
-
-    public void Simulate()
-    {
-        GetComponent<TimelineManager>().enabled = true;
-        //GetComponent<CountDownHandler>().enabled = true;
     }
 
 

@@ -78,7 +78,7 @@ public class WitchsBolt : ICommand
         // Create a rotation based on the direction and apply it to the player
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
         player.transform.rotation = targetRotation;
-        player.GetComponent<PlayParticle>().target = target.gameObject;
+      //  player.GetComponent<PlayParticle>().target = target.gameObject;
         await CutsceneManager.instance.PlayAnimationForCharacter(player.gameObject, GetActionName());
        
         //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
