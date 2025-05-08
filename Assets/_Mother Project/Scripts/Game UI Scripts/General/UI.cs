@@ -15,9 +15,7 @@ public class UI : MonoBehaviour
 {
 
     public static UI instance;
-    public UnityEngine.UI.Button killButton;
-    //[SerializeField] private GameObject killPanel;
-     public UnityEngine.UI.Button targetBTN;
+
    [SerializeField] ActionNotification actionNotification;
     public Image playerStatSummary;
     public Image playerStatDetailsPanel;
@@ -76,20 +74,6 @@ public class UI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        TempManager.GameStateChanged += OnGameStateChange;
-    }
-    private void OnDisable()
-    {
-        TempManager.GameStateChanged -= OnGameStateChange;
-    }
-
-    private void OnGameStateChange(GameStates states)
-    {
-        killButton.interactable = states == GameStates.StartTurn;
-       // Debug.Log(states);
-    }
 
     public void KillMove()
     {
@@ -102,10 +86,10 @@ public class UI : MonoBehaviour
 
     public void CreateTargetButton(CharacterBaseClasses target)
     {
-        Transform targetBtn = Instantiate(targetBTN.transform, targetListpanel.transform);
+      /*  Transform targetBtn = Instantiate(targetBTN.transform, targetListpanel.transform);
         targetBtn.GetComponent<TargetButton>().avatarHead.sprite = target.avatarHead;
         targetBtn.GetComponent<TargetButton>().avatarNameTxt.text = target.characterName;
-        targetBtn.GetComponent<TargetButton>().target = target;
+        targetBtn.GetComponent<TargetButton>().target = target;*/
 
 
     }

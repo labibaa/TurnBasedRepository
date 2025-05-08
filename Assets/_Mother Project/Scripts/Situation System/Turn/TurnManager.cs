@@ -277,7 +277,7 @@ public class TurnManager : MonoBehaviour
             for (int i = 0; i < targetsInRange.Count; i++)
             {
 
-                UI.instance.CreateTargetButton(targetsInRange[i].gameObject.GetComponent<CharacterBaseClasses>());
+               // UI.instance.CreateTargetButton(targetsInRange[i].gameObject.GetComponent<CharacterBaseClasses>());
                 targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
 
 
@@ -305,7 +305,7 @@ public class TurnManager : MonoBehaviour
         targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, ultimateScriptable.ultimateRange * players[currentPlayerIndex].GetComponent<TemporaryStats>().playerVisiblity, Color.red);
         for (int i = 0; i < targetsInRange.Count; i++)
         {
-            UI.instance.CreateTargetButton(targetsInRange[i].gameObject.GetComponent<CharacterBaseClasses>());
+           // UI.instance.CreateTargetButton(targetsInRange[i].gameObject.GetComponent<CharacterBaseClasses>());
             targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
         }
     }
@@ -484,7 +484,7 @@ public class TurnManager : MonoBehaviour
 
         }
 
-        RemoveCue.instance.RemoveAllCues();
+       // RemoveCue.instance.RemoveAllCues();
 
 
 
