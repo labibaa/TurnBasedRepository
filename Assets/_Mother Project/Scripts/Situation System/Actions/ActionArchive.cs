@@ -453,7 +453,15 @@ public class ActionArchive : MonoBehaviour
         ICommand BoneShieldAction = new BoneShield(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, boneShieldScriptable);
         ActionTemplate(boneShieldScriptable, BoneShieldAction);
     }
+    public async void Imbuement()
+    {
 
+        GetPlayerStats();
+
+        ImprovedActionStat imbuementScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Imbuement");
+        ICommand ImbuementAction = new Imbuement(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, imbuementScriptable);
+        ActionTemplate(imbuementScriptable, ImbuementAction);
+    }
     public async void TwoHandedArise()
     {
 

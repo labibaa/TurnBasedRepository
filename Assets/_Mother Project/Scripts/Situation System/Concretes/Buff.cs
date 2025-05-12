@@ -33,11 +33,6 @@ public class Buff : ICommand
 
         float actionAccuracy = buffAttack.ActionAccuracy;
 
-        //if (targetTempStats.IsBlockActive)
-        //{
-        //    greaterStrike.BasePower = greaterStrike.BasePower - 30;
-        //}
-
         if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))
         {
             targetTempStats.CurrentDamageMultiplier = targetTempStats.CurrentDamageMultiplier * 2;
@@ -110,18 +105,6 @@ public class Buff : ICommand
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
         TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
-
-        /*   player.GetComponent<PlayParticle>().target = target.gameObject;
-           player.GetComponent<PlayParticle>().actionSound = rangedAttack.actionSound;
-           //player.GetComponent<PlayParticle>().InstantiateParticleEffect(rangedAttack.ParticleSystem);
-           player.GetComponent<PlayParticle>().particlePrefab = rangedAttack.ParticleSystem;
-           player.GetComponent<PlayParticle>().particlePrefabHit = rangedAttack.HitParticleSystem;
-           target.GetComponent<PlayParticle>().particlePrefabHurt = rangedAttack.HurtParticleSystem;
-           Debug.Log("RangedD");*/
-
-        //CutsceneManager.instance.virtualCamera.LookAt = player.gameObject.transform;
-        //CutsceneManager.instance.virtualCamera.Follow = player.gameObject.transform;
-        //CutsceneManager.instance.virtualCamera.Priority = 15;
 
         player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
         player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);

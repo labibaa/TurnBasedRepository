@@ -140,6 +140,10 @@ public class ButtonStackManager : MonoBehaviour
             {
                 button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.BoneShield());
             }
+            else if (scriptable.actionButton.name == "Imbuement")
+            {
+                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Imbuement());
+            }
             else
             {
                 button.GetComponent<Button>().onClick.AddListener(() => TempManager.instance.ShowTargetList(scriptable.actionButton.name));
