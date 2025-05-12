@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    Renderer renderer;
+/*    Renderer renderer;
     [SerializeField] AnimationCurve DisplacementCurve;
     [SerializeField] float DisplacementMagnitude;
     [SerializeField] float LerpSpeed;
@@ -31,10 +31,10 @@ public class Shield : MonoBehaviour
                 HitShield(hit.point);
             }
         }
-      /*  if (Input.GetKeyDown(KeyCode.F))
+      *//*  if (Input.GetKeyDown(KeyCode.F))
         {
             OpenCloseShield();
-        }*/
+        }*//*
     }
 
     public void HitShield(Vector3 hitPos)
@@ -80,5 +80,5 @@ public class Shield : MonoBehaviour
             lerp += Time.deltaTime * DisolveSpeed;
             yield return null;
         }
-    }
+    }*/
 }

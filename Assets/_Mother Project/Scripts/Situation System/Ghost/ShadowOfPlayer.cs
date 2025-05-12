@@ -77,20 +77,18 @@ public class ShadowOfPlayer : MonoBehaviour
                 initialPositionOfGhost = IsSpawned.transform.position;
 
 
-        }
+            }
 
             // for (int i = 0; i <= ActionTurnListForGhost.Count; i++)
             while (true)
             {
-
-               
                 await CompleteAction(i);
 
-                i = (i + 1) % ActionTurnListForGhost.Count;
-            if (i == 0)
-            {
-                IsSpawned.transform.position = initialPositionOfGhost;
-            }
+                    i = (i + 1) % ActionTurnListForGhost.Count;
+                if (i == 0)
+                {
+                    IsSpawned.transform.position = initialPositionOfGhost;
+                }
                 if (TempManager.instance.currentState == GameStates.Simulation|| TempManager.instance.currentState == GameStates.StartTurn)
                 {
                     Destroy(IsSpawned);

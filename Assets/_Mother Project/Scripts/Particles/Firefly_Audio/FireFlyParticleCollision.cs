@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireFlyParticleCollision : MonoBehaviour
 {
-    ParticleSystem particleSystem;
+  /*  ParticleSystem particleSystem;
     List<ParticleCollisionEvent> particleCollisionEvents = new List<ParticleCollisionEvent>();
 
     public GameObject instantiateOnParticleCollision;
@@ -22,5 +22,5 @@ public class FireFlyParticleCollision : MonoBehaviour
         {
             Instantiate(instantiateOnParticleCollision, particleCollisionEvents[i].intersection, Quaternion.identity);
         }
-    }
+    }*/
 }

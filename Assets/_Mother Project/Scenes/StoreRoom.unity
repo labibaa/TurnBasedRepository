@@ -1462,6 +1462,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 148bd225f31885347bd651c2223272d8, type: 2}
   - {fileID: 11400000, guid: d1bd3119e2cedd34ca47b5bd79bcf2f7, type: 2}
   - {fileID: 11400000, guid: 16b2d87ca1b9d9842ba85fc40f51248f, type: 2}
+  - {fileID: 11400000, guid: 750079166cb652e4094dec45a205eb1c, type: 2}
   SwordAvailableActions:
   - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
   - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
@@ -102574,6 +102575,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 12.530029
       objectReference: {fileID: 0}
+    - target: {fileID: 5844099540906305183, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844099540906305183, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: SpawnedGhost
+      value: 
+      objectReference: {fileID: 1995084623331209667, guid: 4f8bf7ae24fb84043ab529333c12e352,
+        type: 3}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
@@ -104467,12 +104479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerWaves:
   - CharactersOfTheWave:
+    - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
     - {fileID: 1852069705}
     - {fileID: 1027883258}
     - {fileID: 1813470059}
     - {fileID: 2075121800}
-    - {fileID: 7823975018350207408}
   WaveTriggers:
   - {fileID: 78612787}
   WaveTimelines:

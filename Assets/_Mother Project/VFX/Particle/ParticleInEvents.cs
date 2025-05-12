@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleInEvents : MonoBehaviour
 {
-    [SerializeField] ParticleSystem particleSystem; 
+/*    [SerializeField] ParticleSystem particleSystem; 
     [SerializeField] ParticleSystem particleSystemBoom; 
     [SerializeField] GameObject monChara;
     [SerializeField] GameObject DevourGameObject;
@@ -19,7 +19,7 @@ public class ParticleInEvents : MonoBehaviour
 
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.M))
+        *//*if (Input.GetKeyDown(KeyCode.M))
         {
           // monChara.GetComponent<Animator>().Play("WitchesBolt");
           //  monChara.GetComponent<Animator>().Play("Dodge"); //go
@@ -32,7 +32,7 @@ public class ParticleInEvents : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P)) 
         {
             particleSystemBoom.Play();
-        }*/
+        }*//*
 
 
 
@@ -41,7 +41,7 @@ public class ParticleInEvents : MonoBehaviour
 
     void PlayParticle()
     {
-        /*if (Input.GetMouseButtonDown(0))
+        *//*if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -49,13 +49,13 @@ public class ParticleInEvents : MonoBehaviour
             {
                 HitShield(hit.point);
             }
-        }*/
+        }*//*
        // particleSystem.Play();
         shield.OpenCloseShield();
     }
     void StopParticle()
     {
-        /*if (Input.GetMouseButtonDown(0))
+        *//*if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -63,7 +63,7 @@ public class ParticleInEvents : MonoBehaviour
             {
                 HitShield(hit.point);
             }
-        }*/
+        }*//*
         //particleSystem.Stop();
         shield.OpenCloseShield();
     }
@@ -83,7 +83,7 @@ public class ParticleInEvents : MonoBehaviour
 
     }
 
-
+*/
 
 
 }

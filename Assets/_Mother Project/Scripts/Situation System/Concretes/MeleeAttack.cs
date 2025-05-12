@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UIElements;
 
 public class MeleeAttack : ICommand
 {
@@ -42,6 +43,15 @@ public class MeleeAttack : ICommand
         int attackOrder = checkOrder();
 
         float actionAccuracy = meleeAttack.ActionAccuracy;
+
+        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsBlockActive)
+        {
+            ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "VenomCloud");
+            ICommand venomCloud = new VenomCloud(player, target, playerTempStats, targetTempStats, venomScriptable);
+            venomCloud.Execute();
+            playerTempStats.IsBlockActive = false;
+        }
+
         if (targetTempStats.IsDodgeActive)
         {
             actionAccuracy = actionAccuracy - 50;

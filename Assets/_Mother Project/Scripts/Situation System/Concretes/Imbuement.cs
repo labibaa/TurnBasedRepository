@@ -31,7 +31,7 @@ public class Imbuement : ICommand
 
             playerTempStats.IsBlockActive = true;
 
-            await HandleAnimation();
+          //  await HandleAnimation();
 
         
     }
