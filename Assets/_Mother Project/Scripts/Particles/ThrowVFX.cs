@@ -67,7 +67,7 @@ public class ThrowVFX : MonoBehaviour
                     }
                     else
                     {
-                        targetAnimator.GetComponent<Animator>().Play("Damage1"); //change the hard coded animation
+                        targetAnimator.GetComponent<Animator>().Play("Damage1"); //change the hard coded animation 
                     }
                    
                 }
