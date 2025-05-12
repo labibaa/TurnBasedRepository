@@ -4,16 +4,10 @@ using System.Collections.Generic;
 
 public class NumpadHotkeys : MonoBehaviour
 {
-    public static NumpadHotkeys instance;
-    public List<GameObject> actionButtons;
-    [SerializeField] TemporaryStats temp;
-
-
     
-    private void Awake()
-    {
-        instance = this;
-    }
+    public List<GameObject> actionButtons;
+    
+
 
 
     void Update()
