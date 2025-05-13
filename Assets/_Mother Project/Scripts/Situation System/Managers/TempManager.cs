@@ -280,8 +280,8 @@ public class TempManager : MonoBehaviour
             //ShowPanel(ksdActionParent);
             //UI.instance.ShowPanel(UI.instance.actionPanel);
             //UI.instance._circleSelector.Open();
-            SituationUIPanel.SetActive(false);
-            UlimateUIPanel.SetActive(false);
+            SituationUIPanel.SetActive(true);
+            UlimateUIPanel.SetActive(true);
         }
         else if (currentState == GameStates.TargetSelectionTurn)
         {

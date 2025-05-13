@@ -47,7 +47,7 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        ResetPanels();
+       
         //_circleSelector = SelectorActionOptions.GetComponent<CircleSelector>();
     }
 
