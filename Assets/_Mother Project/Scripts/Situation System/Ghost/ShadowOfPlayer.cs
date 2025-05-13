@@ -186,10 +186,10 @@ public class ShadowOfPlayer : MonoBehaviour
         {
             
             List<GameObject>pathToDestination = ActionTurnListForGhost[index].Command.GetPaths();
-            IsSpawned.GetComponent<Animator>().Play("Move");
+            IsSpawned.GetComponent<Animator>().Play("Dash");
           
             await IsSpawned.GetComponent<LerpAndLoop>().MoveToDestination(IsSpawned.transform.position,pathToDestination[pathToDestination.Count-1].transform.position );
-            IsSpawned.GetComponent<Animator>().Play("BreathingIdle");
+            IsSpawned.GetComponent<Animator>().Play("Sub_Idle1", layer: 1, normalizedTime: 0f);
            
         }
        
