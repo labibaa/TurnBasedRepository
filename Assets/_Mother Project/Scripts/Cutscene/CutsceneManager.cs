@@ -79,25 +79,24 @@ public class CutsceneManager : MonoBehaviour
          charAnimator = character.GetComponent<Animator>();
          charAnimator.Play(animationName);
 
-        
-        //CameraShakeOnDamage.Instance.ShakeCameraOnDamage();
-        // await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-        //Debug.Log("ng");
-        
-        Debug.Log($"pppop '{animationName}' has finished playing.");
-        await UniTask.WaitWhile(() => charAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
+       
 
-       // CameraShakeOnDamage.Instance.StopCameraShake();
+        // Wait until the animation starts playing
+        await UniTask.WaitUntil(() =>
+            charAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
+            charAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0f
+        );
+        Debug.Log($"Animation '{animationName}' is playing.");
+        // Wait until animation finishes playing
+        await UniTask.WaitUntil(() =>
+            !charAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName)
+        );
+
+        Debug.Log($"Animation '{animationName}' has finished playing.");
 
         //await UniTask.WaitWhile(() => !particleFinishedPlaying);
         //particleFinishedPlaying = false;
 
-        //virtualCamera.Priority = 9;
-        // Animation has finished playing
-
-        
-
-      
     }
 
     async UniTask WaitForAnimationToFinish()
@@ -111,19 +110,6 @@ public class CutsceneManager : MonoBehaviour
 
     public async UniTask PlayAnimationForGhost(GameObject character, string animationName, GameObject enemy)
     {
-
-        //Vector3 directionToTarget = enemy.transform.position - character.transform.position;
-        //directionToTarget.y = 0; // Zeroing out the y-component to prevent tilting up or down
-
-        //Quaternion targetRotation = Quaternion.LookRotation(-directionToTarget);
-        //Vector3 eulerRotation = targetRotation.eulerAngles;
-        //eulerRotation.x = 0; // Locking rotation around x-axis
-        //eulerRotation.z = 0; // Locking rotation around z-axis
-        //targetRotation = Quaternion.Euler(eulerRotation);
-
-        //enemy.transform.rotation = targetRotation;
-
-        // Rotate the player
 
 
         Quaternion playerRotation = Quaternion.LookRotation(enemy.transform.position - character.transform.position, Vector3.up);
@@ -163,69 +149,4 @@ public class CutsceneManager : MonoBehaviour
     }
 
 
-
-
-
-
-    public void PlayCameraAnimation(GameObject target)
-    {
-        if (timelineDirector != null)
-        {
-            // Play the Timeline
-            timelineDirector.Play();
-
-            // Update the virtual camera's follow target and settings
-            if (virtualCamera != null)
-            {
-                //to move camera while game is paused
-                CinemachineImpulseManager.Instance.IgnoreTimeScale = true;
-                Camera.main.GetComponent<CinemachineBrain>().m_UpdateMethod = CinemachineBrain.UpdateMethod.LateUpdate;
-                Camera.main.GetComponent<CinemachineBrain>().m_IgnoreTimeScale = true;
-                //to move camera while game is paused
-
-
-                CinemachineVirtualCamera virtualCameraComponent = virtualCamera.GetComponent<CinemachineVirtualCamera>();
-                virtualCameraComponent.Priority = 15;
-                virtualCameraComponent.Follow = target.transform;
-                virtualCameraComponent.LookAt = target.transform;
-
-                // Get the Cinemachine transposer component
-                CinemachineTransposer transposer = virtualCameraComponent.GetCinemachineComponent<CinemachineTransposer>();
-
-                // Set the follow offset
-                transposer.m_FollowOffset = followOffset;
-
-                // Set the camera damping
-                transposer.m_XDamping = cameraDamping;
-                transposer.m_YDamping = cameraDamping;
-                transposer.m_ZDamping = cameraDamping;
-                transposer.m_YawDamping = cameraDamping;
-            }
-        }
-    }
-
-    public void PlayCinemachine(GameObject target)
-    {
-
-        //to move camera while game is paused
-        CinemachineImpulseManager.Instance.IgnoreTimeScale = true;
-        Camera.main.GetComponent<CinemachineBrain>().m_UpdateMethod = CinemachineBrain.UpdateMethod.LateUpdate;
-        Camera.main.GetComponent<CinemachineBrain>().m_IgnoreTimeScale = true;
-        //to move camera while game is paused
-
-
-        CinemachineVirtualCamera virtualCameraComponent = virtualCamera.GetComponent<CinemachineVirtualCamera>();
-        virtualCameraComponent.Priority = 15;
-        //  virtualCameraComponent.m_Lens.FieldOfView = 20f;
-        virtualCameraComponent.Follow = target.transform;
-        virtualCameraComponent.LookAt = target.transform;
-
-
-    }
-
-    public void PlayCameraPriorityReset()
-    {
-        CinemachineVirtualCamera virtualCameraComponent = virtualCamera.GetComponent<CinemachineVirtualCamera>();
-        virtualCameraComponent.Priority = 9;
-    }
 }
