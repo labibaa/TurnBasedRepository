@@ -182,14 +182,14 @@ public class ShadowOfPlayer : MonoBehaviour
             return;
         }
         
-        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Move"))
+        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Dash") || ActionTurnListForGhost[index].Command.GetActionName().Equals("Move"))
         {
             
             List<GameObject>pathToDestination = ActionTurnListForGhost[index].Command.GetPaths();
             IsSpawned.GetComponent<Animator>().Play("Dash");
           
             await IsSpawned.GetComponent<LerpAndLoop>().MoveToDestination(IsSpawned.transform.position,pathToDestination[pathToDestination.Count-1].transform.position );
-            IsSpawned.GetComponent<Animator>().Play("Sub_Idle1", layer: 1, normalizedTime: 0f);
+            IsSpawned.GetComponent<Animator>().Play("Sub_Idle1");
            
         }
        
