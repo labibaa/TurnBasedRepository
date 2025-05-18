@@ -66811,8 +66811,6 @@ GameObject:
   - component: {fileID: 1179453546690753743}
   - component: {fileID: 7719195398983565219}
   - component: {fileID: 6815268562896375927}
-  - component: {fileID: 5125747506112113875}
-  - component: {fileID: 8454010983574444039}
   - component: {fileID: 1604103465452376885}
   - component: {fileID: 4143317231479244422}
   - component: {fileID: 6848982060927222410}
@@ -66824,7 +66822,6 @@ GameObject:
   - component: {fileID: 6139071604217200185}
   - component: {fileID: 8350164667182800766}
   - component: {fileID: 6084242823365919326}
-  - component: {fileID: 2337604774638457245}
   m_Layer: 8
   m_Name: SpearEnemyPrefab
   m_TagString: Ally
@@ -67005,37 +67002,6 @@ MonoBehaviour:
   gridGenerator: {fileID: 0}
   clashParticle: {fileID: 2457991722314602123, guid: 90710e1559ae4304e859e841a3307d06,
     type: 3}
---- !u!114 &5125747506112113875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885287169927894697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54509b975f871a440bed10c8ba9c8132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
---- !u!114 &8454010983574444039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885287169927894697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d98be979eea79a4ab36454d955d5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1989013832966216}
-  particlePrefab: {fileID: 0}
-  particlePrefabHit: {fileID: 0}
-  particlePrefabHurt: {fileID: 0}
-  target: {fileID: 0}
-  actionSound: {fileID: 0}
 --- !u!54 &1604103465452376885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67107,7 +67073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: KanaBhulo
-  avatarHead: {fileID: 21300000, guid: 8c9882765ff99c64e81bcfead53b15ec, type: 3}
+  avatarHead: {fileID: 21300000, guid: 4fdd74e3a41c58d45867a80d128bacaf, type: 3}
   characterClass: Performer
   description: 
   level: 5
@@ -67281,20 +67247,6 @@ MonoBehaviour:
   minHealthToAttack: 3
   maxHealthToDefense: 10
   target: {fileID: 0}
---- !u!114 &2337604774638457245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885287169927894697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5dcbd49f11c3343b26647387ffe7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionButtons: []
-  temp: {fileID: 1179453546690753743}
 --- !u!1 &6943593032990544037
 GameObject:
   m_ObjectHideFlags: 0
