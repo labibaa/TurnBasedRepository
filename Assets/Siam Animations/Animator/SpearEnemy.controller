@@ -66,7 +66,7 @@ AnimatorStateMachine:
     m_Position: {x: 190, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3013460117651934430}
-    m_Position: {x: 220, y: 150, z: 0}
+    m_Position: {x: 250, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1153255233746405922}
     m_Position: {x: 384.5, y: 294.5, z: 0}
@@ -88,6 +88,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -544926645813220479}
     m_Position: {x: 430, y: -110, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -2314319202855875526}
+    m_Position: {x: 170, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -97,7 +100,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 880, y: 40, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -3013460117651934430}
+  m_DefaultState: {fileID: -2314319202855875526}
 --- !u!1102 &-3982628078054946698
 AnimatorState:
   serializedVersion: 6
@@ -195,6 +198,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: c68a6e4ebf909284dbe99abb7ea0eaef, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-2314319202855875526
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Assassination reaction
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 67a6ef8a8c8f95340b4234edb431cec2, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
