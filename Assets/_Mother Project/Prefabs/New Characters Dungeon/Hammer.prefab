@@ -15152,8 +15152,6 @@ GameObject:
   - component: {fileID: 8384446533757932818}
   - component: {fileID: 3211455276192749915}
   - component: {fileID: 3295471958069122025}
-  - component: {fileID: 342857415301418434}
-  - component: {fileID: 6637329388781973592}
   - component: {fileID: 3409909057656979021}
   - component: {fileID: 764490620832639952}
   - component: {fileID: 7802324027761955342}
@@ -15164,7 +15162,6 @@ GameObject:
   - component: {fileID: 7812143596215609198}
   - component: {fileID: 5522260804530285347}
   - component: {fileID: 3871633964034974237}
-  - component: {fileID: 1214552961266229532}
   m_Layer: 8
   m_Name: Hammer
   m_TagString: Ally
@@ -15385,37 +15382,6 @@ MonoBehaviour:
   gridGenerator: {fileID: 0}
   clashParticle: {fileID: 2457991722314602123, guid: 90710e1559ae4304e859e841a3307d06,
     type: 3}
---- !u!114 &342857415301418434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311456976241067581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54509b975f871a440bed10c8ba9c8132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
---- !u!114 &6637329388781973592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311456976241067581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d98be979eea79a4ab36454d955d5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6224959348252025876}
-  particlePrefab: {fileID: 0}
-  particlePrefabHit: {fileID: 0}
-  particlePrefabHurt: {fileID: 0}
-  target: {fileID: 0}
-  actionSound: {fileID: 0}
 --- !u!54 &3409909057656979021
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15621,20 +15587,6 @@ MonoBehaviour:
   minHealthToAttack: 3
   maxHealthToDefense: 10
   target: {fileID: 0}
---- !u!114 &1214552961266229532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311456976241067581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5dcbd49f11c3343b26647387ffe7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionButtons: []
-  temp: {fileID: 8384446533757932818}
 --- !u!1 &1412182121698234415
 GameObject:
   m_ObjectHideFlags: 0

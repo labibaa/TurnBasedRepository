@@ -27402,8 +27402,6 @@ GameObject:
   - component: {fileID: 8835962698016897830}
   - component: {fileID: 8235307129235803732}
   - component: {fileID: 1253580047809030760}
-  - component: {fileID: 6402788907222845175}
-  - component: {fileID: 5723822308726048383}
   - component: {fileID: 5728462990056657499}
   - component: {fileID: 2937671013610876449}
   - component: {fileID: 4811327392924616844}
@@ -27415,7 +27413,6 @@ GameObject:
   - component: {fileID: 2237778128761334228}
   - component: {fileID: 4435768965759098230}
   - component: {fileID: 855501872799115597}
-  - component: {fileID: 4892687689277223847}
   m_Layer: 8
   m_Name: MagePrefab
   m_TagString: Ally
@@ -27596,37 +27593,6 @@ MonoBehaviour:
   gridGenerator: {fileID: 0}
   clashParticle: {fileID: 2457991722314602123, guid: 90710e1559ae4304e859e841a3307d06,
     type: 3}
---- !u!114 &6402788907222845175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3080342246157646114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54509b975f871a440bed10c8ba9c8132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
---- !u!114 &5723822308726048383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3080342246157646114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d98be979eea79a4ab36454d955d5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7251865138641185460}
-  particlePrefab: {fileID: 0}
-  particlePrefabHit: {fileID: 0}
-  particlePrefabHurt: {fileID: 0}
-  target: {fileID: 0}
-  actionSound: {fileID: 0}
 --- !u!54 &5728462990056657499
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27872,20 +27838,6 @@ MonoBehaviour:
   minHealthToAttack: 3
   maxHealthToDefense: 10
   target: {fileID: 0}
---- !u!114 &4892687689277223847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3080342246157646114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5dcbd49f11c3343b26647387ffe7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionButtons: []
-  temp: {fileID: 8835962698016897830}
 --- !u!1 &3183845838036448250
 GameObject:
   m_ObjectHideFlags: 0
