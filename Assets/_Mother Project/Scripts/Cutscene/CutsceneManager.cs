@@ -54,24 +54,6 @@ public class CutsceneManager : MonoBehaviour
         particleFinishedPlaying = true;
     }
 
-
-    public async UniTask WaitUntilAnimationFinished(string animationName,Animator animator)
-    {
-        // Ensure the animator is not null and has the specified animation.
-        if (animator != null && animator.HasState(0, Animator.StringToHash(animationName)))
-        {
-            // Wait until the animation is no longer playing.
-            while (animator.GetCurrentAnimatorStateInfo(0).IsName(animationName))
-            {
-                await UniTask.Yield();
-            }
-            
-        }
-        else
-        {
-            Debug.LogWarning("Animator or animation not found.");
-        }
-    }
     // Play the specified animation on the animator of the given character
     public async UniTask PlayAnimationForCharacter(GameObject character, string animationName)
     {
@@ -99,15 +81,6 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    async UniTask WaitForAnimationToFinish()
-    {
-        while (charAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            await UniTask.Yield(); // Use UniTask.Yield to yield control to the main thread
-        }
-    }
-
-
     public async UniTask PlayAnimationForGhost(GameObject character, string animationName, GameObject enemy)
     {
 
@@ -125,23 +98,18 @@ public class CutsceneManager : MonoBehaviour
         
         ghostAnimator = character.GetComponent<Animator>();
         ghostAnimator.Play(animationName);
-        
 
+        // Wait until the animation starts playing
+        await UniTask.WaitUntil(() =>
+            ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
+            ghostAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0f
+        );
+        Debug.Log($"Animation '{animationName}' is playing.");
+        // Wait until animation finishes playing
+        await UniTask.WaitUntil(() =>
+            !ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName)
+        );
 
-        //await WaitForAnimationToFinish();
-        // CameraShakeOnDamage.Instance.ShakeCameraOnDamage();
-        // await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-
-        // character.GetComponent<ArrowSpawner>().OnFinishParticle += IsParticleFinishedPlaying;
-        // await UniTask.WaitWhile(() => !particleFinishedPlaying);
-        // CameraShakeOnDamage.Instance.StopCameraShake();
-        // character.GetComponent<ArrowSpawner>().OnFinishParticle -= IsParticleFinishedPlaying;
-        // particleFinishedPlaying = false;
-        await UniTask.WaitWhile(() => ghostAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
-
-
-
-        // Animation has finished playing
         Debug.Log($"Animation '{animationName}' has finished playing.");
 
 
