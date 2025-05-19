@@ -73,7 +73,7 @@ public class GridMovement : MonoBehaviour
     #endregion
 
     #region
-    [SerializeField] Direction storePreviousDirection = Direction.none;
+   // [SerializeField] Direction storePreviousDirection = Direction.none;
     bool oppositeDirection;
 
     #endregion

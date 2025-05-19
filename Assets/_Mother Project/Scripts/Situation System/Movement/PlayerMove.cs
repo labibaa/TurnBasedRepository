@@ -10,8 +10,6 @@ public class PlayerMove : MonoBehaviour
     public float speed;
 
 
-    [SerializeField]
-    float rotationSpeed = 12f;
     GridPlayerAnimation gridAnim;
     [SerializeField]
     GameObject gridGenerator;

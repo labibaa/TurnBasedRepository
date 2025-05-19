@@ -14,7 +14,7 @@ public class PushBack : ICommand
     TemporaryStats targetTempStats;
     ImprovedActionStat pushBack;
     string ActionType;
-    int counter = 0;
+    //int counter = 0;
 
 
 

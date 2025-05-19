@@ -63,11 +63,9 @@ public class HealthManager : MonoBehaviour
             playerStat.playerMortality = Mortality.Dead;
             OnCharacterDeath?.Invoke();
             killer.playerUltimateBarCount += playerStat.GetComponent<CharacterBaseClasses>().LootUltiPoints;//deadplayer give ulti points
-            Debug.Log(deadPlayerTurn.name + "dead");
+            Debug.Log(deadPlayerTurn.name + " dead");
             TurnManager.instance.players.Remove(deadPlayerTurn);
-            //Debug.Log(deadPlayerTurn.name + "dead20");
             TurnManager.instance.target.Remove(deadPlayerTurn);
-           // Debug.Log(deadPlayerTurn.name + "dead329");
 
             if (!RemoveAdjacentDuplicates(TurnManager.instance.players) && CheckIfElementIsDuplicate(TurnManager.instance.players,playerTurn ))
             {
@@ -86,8 +84,7 @@ public class HealthManager : MonoBehaviour
             }
            
             
-            Debug.Log("Current" +
-            TurnManager.instance.currentPlayerIndex);
+            Debug.Log("Current" + TurnManager.instance.currentPlayerIndex);
             if ( TeamManager.instance.IsAnyTeamEmpty())//TurnManager.instance.players.Count<2)
             {
                 //UI.instance.SendNotification($"{TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam} has Won");

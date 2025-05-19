@@ -7,7 +7,7 @@ public class HoverEffectController : MonoBehaviour
     public HoverEffectCharacter[] characters;
     
 
-    private float timeToCameraGoBackDefault = 3f;
+   // private float timeToCameraGoBackDefault = 3f;
 
     public bool isReady = false; // To track if the script is ready to handle mouse events
 
