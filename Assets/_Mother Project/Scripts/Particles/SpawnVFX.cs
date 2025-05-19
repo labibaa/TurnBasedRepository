@@ -193,16 +193,6 @@ public class SpawnVFX : MonoBehaviour
     public void PlayHitEffect()
     {
 
-        //Hiteffect.transform.position = Vector3.MoveTowards(Hiteffect.transform.position, target.position, speed * Time.deltaTime);
-        //if (Hiteffect.transform.position == target.position)
-        //{
-        //    Hiteffect.SendEvent("hit");
-        //    startLerp = false;
-        //    // targetAnimator.Play("Damage1");
-        //    AnimationPlay("Damage1", targetAnimator);
-        //    hitTrigger?.Invoke();
-        //}
-
         if (isShieldUp)
         {
             Debug.Log("in");
@@ -214,7 +204,7 @@ public class SpawnVFX : MonoBehaviour
     {
 
         //AnimationPlay(animationList, targetAnimator, 12);
-        Debug.Log(target);
+        Debug.Log("target : " ,target);
         TriggerNextTurn();
         AnimationPlay(targetAnimationName, target.GetComponent<Animator>());
     }
@@ -253,7 +243,7 @@ public class SpawnVFX : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Destroy(desEffect.gameObject);
       //  Destroy(hiteffect.gameObject);
-        Debug.Log("destroyt");
+        Debug.Log("destroyvfx");
     }
     public void PlayVFXSound()
     {

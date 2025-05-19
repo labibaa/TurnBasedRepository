@@ -44,7 +44,7 @@ public class MeleeAttack : ICommand
 
         float actionAccuracy = meleeAttack.ActionAccuracy;
 
-        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsBlockActive)
+        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsBlockActive) // imbuement
         {
             ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "VenomCloud");
             ICommand venomCloud = new VenomCloud(player, target, playerTempStats, targetTempStats, venomScriptable);

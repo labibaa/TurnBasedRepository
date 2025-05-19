@@ -104,15 +104,13 @@ public class CutsceneManager : MonoBehaviour
             ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
             ghostAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0f
         );
-        Debug.Log($"Animation '{animationName}' is playing.");
+        Debug.Log($"Ghost Animation '{animationName}' is playing.");
         // Wait until animation finishes playing
         await UniTask.WaitUntil(() =>
             !ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName)
         );
 
-        Debug.Log($"Animation '{animationName}' has finished playing.");
-
-
+        Debug.Log($"Ghost Animation '{animationName}' has finished playing.");
 
     }
 

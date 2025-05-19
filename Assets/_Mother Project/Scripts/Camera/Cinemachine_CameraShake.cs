@@ -20,7 +20,7 @@ public class Cinemachine_CameraShake : MonoBehaviour
     }
     void Update()
     {
-        CinemachineBrain brain = Camera.main.GetComponent<CinemachineBrain>();
+ /*       CinemachineBrain brain = Camera.main.GetComponent<CinemachineBrain>();
         if (brain != null)
         {
             CinemachineVirtualCameraBase activeCam = (CinemachineVirtualCameraBase)brain.ActiveVirtualCamera;
@@ -28,7 +28,7 @@ public class Cinemachine_CameraShake : MonoBehaviour
         else
         {
             Debug.LogWarning("No CinemachineBrain found on the main camera. Did you forget to attach it, you chaotic artisan?");
-        }
+        }*/
 
         if(Input.GetKeyDown(KeyCode.V))
         {

@@ -1,19 +1,15 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 
 public class HandleTurnNew : MonoBehaviour
 {
     public static event Action OnTurnEnd;
-    public static event Action IsPlayer;
+    public static event Action OnNewAction;
     public delegate void UndoMechanics(bool isMove);
 
     public static event UndoMechanics IsPlayerUndo;
@@ -153,7 +149,8 @@ public class HandleTurnNew : MonoBehaviour
         allTurnsOfPlayer.Add(turn);
         if (turn.Command.GetActionType() != "MeleeMove")
         {
-            IsPlayer?.Invoke();
+            Debug.Log("MeleeMove");
+            OnNewAction?.Invoke();
             //TextFadeInOut.instance.AddTextToQueue(turn);
         }
         

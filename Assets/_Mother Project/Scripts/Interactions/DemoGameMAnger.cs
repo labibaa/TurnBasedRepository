@@ -19,7 +19,7 @@ public class DemoGameMAnger : MonoBehaviour
 
     private void Start()
     {
-        InitializeGame();
+       // InitializeGame();
     }
 
     private void InitializeGame()

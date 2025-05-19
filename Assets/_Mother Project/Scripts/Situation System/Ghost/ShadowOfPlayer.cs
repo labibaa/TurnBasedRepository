@@ -23,13 +23,13 @@ public class ShadowOfPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        HandleTurnNew.IsPlayer += UpdateList;
+        HandleTurnNew.OnNewAction += UpdateList;
         HandleTurnNew.IsPlayerUndo += UndoGhost;
     }
 
     private void OnDisable()
     {
-        HandleTurnNew.IsPlayer -= UpdateList;
+        HandleTurnNew.OnNewAction -= UpdateList;
         HandleTurnNew.IsPlayerUndo -= UndoGhost;
    
     }
@@ -52,11 +52,11 @@ public class ShadowOfPlayer : MonoBehaviour
         if (TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
         {
             ActionTurnListForGhost = HandleTurnNew.instance.GetAllTurns();
-            if (ActionTurnListForGhost.Count<2)
+         /* if (ActionTurnListForGhost.Count<2)
             {
                 
                // ActionGhostRepeat();
-            }
+            }*/
             TempManager.instance.ChangeGameState(GameStates.GhostPlay);
             Debug.Log("ding dong");
             ActionGhostSingular();
@@ -130,8 +130,6 @@ public class ShadowOfPlayer : MonoBehaviour
             if (TempManager.instance.currentState == GameStates.Simulation )
             {
                 Destroy(IsSpawned);
-
-
             }
             j++;
           
