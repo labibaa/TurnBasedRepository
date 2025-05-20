@@ -6157,18 +6157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00974c49c138ed84aba7d1c1bd49a392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefabList: []
-  hitEffectPrefabList: []
-  hitEffectTransformList: []
-  effectTransformList: []
-  targetHitTransformList: []
-  particles: []
   TrailVisual: {fileID: 0}
   speed: 5
   charAnimator: {fileID: 383281948691709975}
   targetAnimator: {fileID: 0}
-  animationList: []
-  animationIndex: 0
+  actionMoveCamTimelinePrefab: {fileID: 3450893264134481531}
   isShieldUp: 0
 --- !u!114 &4405852814654937212
 MonoBehaviour:
@@ -85123,6 +85116,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7171255453533491913, guid: 846178416d4c01244af323218a4ae08b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058172298750660734, guid: 846178416d4c01244af323218a4ae08b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].key
+      value: 
+      objectReference: {fileID: 7870198501559459242, guid: 76c01c84c59652442af3f920dc799125,
+        type: 2}
+    - target: {fileID: 8058172298750660734, guid: 846178416d4c01244af323218a4ae08b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].value
+      value: 
+      objectReference: {fileID: 4742414023091612192}
     - target: {fileID: 8058172298750660734, guid: 846178416d4c01244af323218a4ae08b,
         type: 3}
       propertyPath: m_ExposedReferences.m_References.Array.data[1].second
@@ -85132,8 +85141,58 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 664123747637488980, guid: 846178416d4c01244af323218a4ae08b, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7171255453533491913, guid: 846178416d4c01244af323218a4ae08b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3600791701929829099}
   m_SourcePrefab: {fileID: 100100000, guid: 846178416d4c01244af323218a4ae08b, type: 3}
+--- !u!1 &3450893264134481531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 986591344103300754, guid: 846178416d4c01244af323218a4ae08b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2473912958443763945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4742414023091612192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7171255453533491913, guid: 846178416d4c01244af323218a4ae08b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2473912958443763945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3600791701929829099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742414023091612192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4825724269285245945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6966347471756475152, guid: 846178416d4c01244af323218a4ae08b,

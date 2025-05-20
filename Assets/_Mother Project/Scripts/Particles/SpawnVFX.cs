@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.VFX;
 
 public class SpawnVFX : MonoBehaviour
@@ -15,24 +16,14 @@ public class SpawnVFX : MonoBehaviour
     public static event Action OnExplotionShake;
     public static event Action OnStopVFX;
 
-    public List<VisualEffect> effectPrefabList;
-    public List<VisualEffect> hitEffectPrefabList;
-   
-    public List<Transform> hitEffectTransformList;
-    public List<Transform> effectTransformList;
-    public List<Transform> targetHitTransformList;
-
-    public List<ParticleSystem> particles;
+ 
     public GameObject TrailVisual;
 
     public float speed = 5f;
     public Animator charAnimator;
     public Animator targetAnimator;
 
-    public List<String> animationList;
-    public int animationIndex;
-   
-    bool startLerp;
+    [SerializeField] GameObject actionMoveCamTimelinePrefab;
     public bool isShieldUp;
 
     VisualEffect effect;
@@ -45,23 +36,6 @@ public class SpawnVFX : MonoBehaviour
 
     AudioClip vfxAudioClip;
 
-    void Awake()
-    {
-        //if(instance == null)
-        //{
-        //    instance = this;
-        //}
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-           // AnimationPlay(animationList, charAnimator,animationIndex);
-        }
-     
-    }
     private void OnEnable()
     {
         GridSystem.OnGridGenerationSpawn += CharacterTrailVisualOn;
@@ -281,4 +255,13 @@ public class SpawnVFX : MonoBehaviour
     {
         OnStopVFX?.Invoke();
     }
+    public void ActionCameraActivate()
+    {
+        actionMoveCamTimelinePrefab.SetActive(true);
+    } 
+    public void ActionCameraDeactivate()
+    {
+        actionMoveCamTimelinePrefab.SetActive(false);
+    }
+
 }
