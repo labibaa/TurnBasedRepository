@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject clashParticle;
 
 
-    // Start is called before the first frame update
+/*    // Start is called before the first frame update
     void Start()
     {
 
@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviour
             RemoveCue.instance.RemoveAllCues();// have to check if game object name is the same
 
         }
-    }
+    }*/
 
 
 

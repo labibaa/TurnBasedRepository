@@ -635,14 +635,14 @@ public class ActionArchive : MonoBehaviour
 
 
 
-    public async void RangedAttack()
+/*    public async void RangedAttack()
     {
         GetPlayerStats();
         ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "RangedAttack");
         
         ICommand rangedAction = new RangedAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
         ActionTemplate(rangedScriptable, rangedAction);
-    }
+    }*/
 
 
     public async void VenomCloud()
@@ -710,7 +710,7 @@ public class ActionArchive : MonoBehaviour
 
 
     //same type of actions needs code refactoring
-    public async void Threaten()
+/*    public async void Threaten()
     {
         GetPlayerStats();
         ActionStat threatenScriptable = DAOScriptableObject.instance.GetActionData(StringData.directory, "Threaten");
@@ -723,7 +723,7 @@ public class ActionArchive : MonoBehaviour
         ActionStat seduceScriptable = DAOScriptableObject.instance.GetActionData(StringData.directory, "Seduce");
         ICommand seduceAction = new Seduce(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, seduceScriptable);
         ActionTemplate(seduceScriptable, seduceAction);
-    }
+    }*/
 
     public async void Counter()
     {
@@ -732,7 +732,7 @@ public class ActionArchive : MonoBehaviour
         ICommand counterAction = new Counter(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, counterScriptable);
         ActionTemplate(counterScriptable, counterAction);
     }
-
+/*
     public async void FearTacticts()
     {
         GetPlayerStats();
@@ -762,7 +762,7 @@ public class ActionArchive : MonoBehaviour
         ICommand thirdRateperformanceAction = new ThirdRatePerformance(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, thirdRatePerformanceScriptable);
         ActionTemplate(thirdRatePerformanceScriptable, thirdRateperformanceAction);
     }
-
+*/
     public async void Block()
     {
         Debug.Log("block done");

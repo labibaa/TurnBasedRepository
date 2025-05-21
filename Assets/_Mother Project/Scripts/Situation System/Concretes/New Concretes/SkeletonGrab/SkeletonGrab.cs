@@ -40,6 +40,7 @@ public class SkeletonGrab : ICommand
     }
     public async UniTask HandleAnimation()
     {
+        await TempManager.instance.CharacterRotation(target, player, 2f);
 
         player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
         player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[skeletonGrab.CharacterBodyLocation]);

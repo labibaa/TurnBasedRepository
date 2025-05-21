@@ -178,7 +178,7 @@ public class SpawnVFX : MonoBehaviour
     {
 
         //AnimationPlay(animationList, targetAnimator, 12);
-        Debug.Log("target : " ,target);
+        Debug.Log("target : "+ target);
         TriggerNextTurn();
         AnimationPlay(targetAnimationName, target.GetComponent<Animator>());
     }
@@ -257,11 +257,17 @@ public class SpawnVFX : MonoBehaviour
     }
     public void ActionCameraActivate()
     {
-        actionMoveCamTimelinePrefab.SetActive(true);
+        if (actionMoveCamTimelinePrefab)
+        {
+            actionMoveCamTimelinePrefab.SetActive(true);
+        }
     } 
     public void ActionCameraDeactivate()
     {
-        actionMoveCamTimelinePrefab.SetActive(false);
+        if (actionMoveCamTimelinePrefab)
+        {
+            actionMoveCamTimelinePrefab.SetActive(false);
+        }
     }
 
 }

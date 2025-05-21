@@ -62,7 +62,7 @@ public class CutsceneManager : MonoBehaviour
          charAnimator.Play(animationName);
 
        
-
+        character.GetComponent<SpawnVFX>().ActionCameraActivate();
         // Wait until the animation starts playing
         await UniTask.WaitUntil(() =>
             charAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
@@ -73,7 +73,7 @@ public class CutsceneManager : MonoBehaviour
         await UniTask.WaitUntil(() =>
             !charAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName)
         );
-
+        character.GetComponent<SpawnVFX>().ActionCameraDeactivate();
         Debug.Log($"Animation '{animationName}' has finished playing.");
 
         //await UniTask.WaitWhile(() => !particleFinishedPlaying);
@@ -92,25 +92,18 @@ public class CutsceneManager : MonoBehaviour
         playerRotation = Quaternion.Euler(playerEulerRotation);
 
         character.transform.rotation = playerRotation;
-
-
-
-        
         ghostAnimator = character.GetComponent<Animator>();
         ghostAnimator.Play(animationName);
 
-        // Wait until the animation starts playing
-        await UniTask.WaitUntil(() =>
-            ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
-            ghostAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0f
-        );
-        Debug.Log($"Ghost Animation '{animationName}' is playing.");
-        // Wait until animation finishes playing
-        await UniTask.WaitUntil(() =>
-            !ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName)
-        );
-
-        Debug.Log($"Ghost Animation '{animationName}' has finished playing.");
+        if (ghostAnimator)
+        {
+            // Wait until the animation starts playing
+            await UniTask.WaitUntil(() =>
+                ghostAnimator.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
+                ghostAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0f
+            );
+            Debug.Log($"Ghost Animation '{animationName}' is playing.");
+        }
 
     }
 

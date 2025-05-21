@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class UiInput : MonoBehaviour
 {
-    StarterInput starterInput;
+/*    StarterInput starterInput;
 
     public static event Action ButtonE; //change the var name
 
@@ -69,5 +69,5 @@ public class UiInput : MonoBehaviour
     private void SlideRight(InputAction.CallbackContext obj)
     {
         ButtonE?.Invoke();
-    }
+    }*/
 }

@@ -14,9 +14,9 @@ public class PushDetector : MonoBehaviour
         
 
 
-            if (other.tag == StringData.PlayerTag || other.tag == StringData.Ally)
-            {
-            Debug.Log("Colliderd");
+        if (other.tag == StringData.PlayerTag || other.tag == StringData.Ally)
+        {
+            
             if (other.GetComponent<ObjectToBePushed>().IsShoot)
             {
 
@@ -35,7 +35,7 @@ public class PushDetector : MonoBehaviour
                 other.GetComponent<ObjectToBePushed>().positionTraversed.Clear();
             }
 
-            }
+        }
         
     }
 

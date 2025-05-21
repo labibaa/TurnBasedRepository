@@ -144,7 +144,7 @@ public class TurnManager : MonoBehaviour
         
         TurnTimer.Instance.StartTimer();
 
-        TeamManager.instance.PrintDictionary();
+        //TeamManager.instance.PrintDictionary();
 
         roundNumber.text = "Round: " + round.ToString();
         if (currentPlayerIndex >= players.Count)

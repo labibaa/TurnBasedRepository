@@ -64,7 +64,7 @@ public class PlayableCharacterUI : MonoBehaviour
         {
             DescaleItem();
         }
-       SwapItemsInLayout(currentItem,PrevItem);
+       //SwapItemsInLayout(currentItem,PrevItem);
     }
 
     public void ScaleItem(RectTransform item)
