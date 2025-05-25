@@ -47,39 +47,22 @@ public class HandleTurnNew : MonoBehaviour
 
     public async UniTask PerformTurns()
     {
-        
-
         PlayerTurn currentPlayer = TurnManager.instance.players[TurnManager.instance.currentPlayerIndex];
         int totalActionthisTurn = turnsToBePerformed.Count;
         for (int i = 0; i < turnsToBePerformed.Count; i++)
         {
-            
-            //await PerformTurn(turnsToBePerformed[i]);
             await PerformTurn(turnsToBePerformed[i]);
-
-
         }
        
         if(TurnManager.instance.players.Count>TurnManager.instance.currentPlayerIndex )
         {
-            
-                TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].myTurn = false;
-            
-            
+            TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].myTurn = false;
         }
        
        // currentPlayer.GetComponent<ShadowOfPlayer>().j = 0;
-      
-
-
         PlayerStatUI.instance.UpdateSummaryHUDUI();
 
-
-
         TurnManager.instance.currentPlayerIndex++;// =(TurnManager.instance.currentPlayerIndex + 1) % TurnManager.instance.players.Count; 
-
-        
-
 
         allTurnsOfPlayer.Clear();
         TemporaryStats currentPlayerTemporaryStates = TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].GetComponent<TemporaryStats>();
@@ -102,10 +85,7 @@ public class HandleTurnNew : MonoBehaviour
         {
             SituationEndCondition = false;
             TurnManager.instance.currentPlayerIndex = 0;
-        }
-        
-        
-        
+        }   
     }
 
     //public void ProceedToNextTurn()
@@ -129,19 +109,11 @@ public class HandleTurnNew : MonoBehaviour
         {
             await turn.Command.Execute();
         }
-        
-        
-
-
-
         turn.IsPerformed = true;
         OnActionExecution?.Invoke(turn);
 
         //turnsToBePerformed.Remove(turn);
         performedTurns.Add(turn);
-
-
-
     }
 
     public void AddTurn(Turn turn)

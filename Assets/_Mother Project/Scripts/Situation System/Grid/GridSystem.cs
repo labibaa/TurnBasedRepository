@@ -7,7 +7,7 @@ using System;
 using StarterAssets;
 using Unity.AI.Navigation;
 using UnityEditor;
-using UnityEditor.ShaderGraph.Internal;
+
 
 public class GridSystem : MonoBehaviour
 {

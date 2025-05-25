@@ -18,7 +18,7 @@ public class LoadSceneManager : MonoBehaviour
     bool isPrevScene;
     public List<GameObject> leftOutcharacters = new List<GameObject>();
     public bool ToAddUnlinkedCharacter;
-    public bool IsnewGame;
+    public bool IsnewGame = true;
     GameObject gameObjectMC;
     private void Awake()
     {
@@ -52,7 +52,7 @@ public class LoadSceneManager : MonoBehaviour
     private void Start()
     {
          persistableDataList = FindAllIPersitableDataObjects();
-        //OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        // OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     public async void LoadScene(string sceneName) //new scene load async
@@ -91,6 +91,7 @@ public class LoadSceneManager : MonoBehaviour
             GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
             ShowSavedData.Instance.DefaultCharacterData(Ch_obj);
             Debug.Log("default");
+           // LoadGame();
         }
         IsnewGame = true;
     }
@@ -116,6 +117,7 @@ public class LoadSceneManager : MonoBehaviour
             GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
             ShowSavedData.Instance.LoadTemporaryStatsNextScene(Ch_obj); //load from json
             // player_GO.LoadData(playerDataSave);
+            Debug.Log("Data Loaded");
         }
         if (!IsnewGame)
         {

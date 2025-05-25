@@ -115,7 +115,7 @@ public class HealthManager : MonoBehaviour
                 if(TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam != TeamName.TeamA)
                 {
                     UI.instance.inGameCanvas.SetActive(false);
-                    UI.instance.winMenu.SetActive(true);
+                  //  UI.instance.winMenu.SetActive(true);
                 }
 
             }

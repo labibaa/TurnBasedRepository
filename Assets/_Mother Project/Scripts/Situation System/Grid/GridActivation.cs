@@ -152,12 +152,12 @@ public class GridActivation : MonoBehaviour
             //player.GetComponent<PlayerMove>().enabled = true;
 
 
-
             //might need to refactor this part, putting them on  a funciton
             //player.GetComponent<GridInput>().enabled = true;
             Pc.GetComponent<GridPlayerAnimation>().enabled = false;
         }
- 
+
+        Debug.Log("Grid Finish");
         gameManager.GetComponent<GridMovement>().enabled = false;
         gameManager.GetComponent<TurnManager>().enabled = false;
 

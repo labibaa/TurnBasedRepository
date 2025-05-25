@@ -6,12 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.PlayerLoop;
-using static Unity.Burst.Intrinsics.Arm;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.ParticleSystem;
-using static UnityEngine.Rendering.DebugUI;
+
 //using static UnityEditorInternal.ReorderableList;
 
 public class TurnManager : MonoBehaviour
@@ -120,10 +115,9 @@ public class TurnManager : MonoBehaviour
             targetsInRange.Clear();
             nonCharacterTargetsInRange.Clear();
             TempManager.instance.ChangeGameState(GameStates.Simulation);
-            await HandleTurnNew.instance.PerformTurns();
             TextFadeInOut.instance.ClearText();
             inputHandlerForSaving.SaveTurnToJson();
-   
+            await HandleTurnNew.instance.PerformTurns();
         }
 
     }
