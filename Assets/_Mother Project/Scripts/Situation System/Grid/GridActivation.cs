@@ -148,7 +148,6 @@ public class GridActivation : MonoBehaviour
             //playableCharacter.GetComponent<CharacterController>().enabled = true;
             Pc.GetComponent<ThirdPersonController>().enabled = true;
             Pc.GetComponent<ThirdPersonController>().DisableAnim();
-
             //player.GetComponent<PlayerMove>().enabled = true;
 
 

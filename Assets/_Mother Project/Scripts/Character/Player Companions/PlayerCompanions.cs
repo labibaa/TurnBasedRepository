@@ -80,7 +80,7 @@ public class PlayerCompanions : MonoBehaviour
         {
             linkUp = true;
         }
-        if ((linkUp && this.GetComponent<TemporaryStats>().isLinkOn) && !GridSystem.instance.IsGridOn)
+        if (( linkUp && this.GetComponent<TemporaryStats>().isLinkOn && !GridSystem.instance.IsGridOn ))
         {
             timer -= Time.deltaTime;
             if (timer < 0f)
