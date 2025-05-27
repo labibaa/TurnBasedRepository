@@ -37,7 +37,7 @@ public class SwitchMC : MonoBehaviour
     }
     private void Start()
     {
-        CharacterSwitch();
+        //CharacterSwitch();
         OnSceneLoadMainPlayer();
     }
     private void Update()
@@ -91,7 +91,7 @@ public class SwitchMC : MonoBehaviour
         // Reactivate the GameObject
         character.SetActive(true);
     }
-    void SwitchToNextCharacter()
+    public void SwitchToNextCharacter()
     {
         if (!GridSystem.instance.IsGridOn)
         {
