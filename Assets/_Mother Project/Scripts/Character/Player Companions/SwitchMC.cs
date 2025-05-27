@@ -37,7 +37,7 @@ public class SwitchMC : MonoBehaviour
     }
     private void Start()
     {
-        //CharacterSwitch();
+       // CharacterSwitch();
         OnSceneLoadMainPlayer();
     }
     private void Update()
