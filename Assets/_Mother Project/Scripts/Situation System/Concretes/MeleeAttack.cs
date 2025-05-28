@@ -1,5 +1,3 @@
-
-
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System.Collections;
@@ -30,13 +28,6 @@ public class MeleeAttack : ICommand
         ActionType = actionType;
 
     }
-
-
-
-
-
-
-
     public async UniTask Execute()
     {
        
