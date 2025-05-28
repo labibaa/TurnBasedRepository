@@ -187,7 +187,7 @@ public class ShadowOfPlayer : MonoBehaviour
             IsSpawned.GetComponent<Animator>().Play("Dash");
           
             await IsSpawned.GetComponent<LerpAndLoop>().MoveToDestination(IsSpawned.transform.position,pathToDestination[pathToDestination.Count-1].transform.position );
-            IsSpawned.GetComponent<Animator>().Play("Sub_Idle1");
+            IsSpawned.GetComponent<Animator>().Play("Idle");
            
         }
        
