@@ -195,17 +195,6 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
             _characterBaseClasses.LevelUp();
         }*/
     }
-    public IEnumerator ReStartCharacter()
-    {
-        // Deactivate the GameObject
-        this.gameObject.SetActive(false);
-
-        // Wait for a short delay to ensure full reset
-        yield return new WaitForSeconds(0.1f);
-
-        // Reactivate the GameObject
-        this.gameObject.SetActive(true);
-    }
     public void AssignSpawnPosition()
     {
         SetCharacterStat();
