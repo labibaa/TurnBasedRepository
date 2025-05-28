@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using StarterAssets;
 using System;
 using System.Collections;
@@ -35,9 +36,10 @@ public class SwitchMC : MonoBehaviour
             Instance = this;
         }
     }
-    private void Start()
+    private async void Start()
     {
-       // CharacterSwitch();
+        await UniTask.Delay(50);
+        CharacterSwitch();
         OnSceneLoadMainPlayer();
     }
     private void Update()
