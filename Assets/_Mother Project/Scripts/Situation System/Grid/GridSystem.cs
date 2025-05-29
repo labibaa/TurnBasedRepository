@@ -87,12 +87,14 @@ public class GridSystem : MonoBehaviour
     {
         InputManager.OnInteractionPressed += GenerateGridOnButton;
         GridInput.GridEscape += OnExitGrid;
+        SwitchMC.OnCharacterChange += SetMainPlayer;
     }
 
     private void OnDisable()
     {
         InputManager.OnInteractionPressed -= GenerateGridOnButton;
         GridInput.GridEscape -= OnExitGrid;
+        SwitchMC.OnCharacterChange -= SetMainPlayer;
     }
 
 
@@ -124,18 +126,13 @@ public class GridSystem : MonoBehaviour
         /* if (Input.GetKeyDown(KeyCode.F))
          {
              GenerateGridOnButton();
-         }*/
-        foreach (var pc in SwitchMC.Instance.characters) //Needed to refactor using Event when switching mc rather than calling in update
-        {
-            if (pc.GetComponent<TemporaryStats>().isMainCharacter)
-            {
-                player = pc;
-                break;
-            }
-        }
+         }*/     
     }
 
-
+    void SetMainPlayer()
+    {
+        player = SwitchMC.Instance.mainCharacter;
+    }
     public void GenerateGridOnButton()
     {
         if (IsGridOn)

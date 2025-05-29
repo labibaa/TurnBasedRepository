@@ -70,6 +70,7 @@ public class SwitchMC : MonoBehaviour
                 character.GetComponent<NavMeshAgent>().enabled = false;
                 character.GetComponent<PlayerCompanions>().enabled = false;
                 character.GetComponent<IsoMetricToTPS>().enabled = true;
+                OnCharacterChange?.Invoke();
             }
             else
             {
@@ -108,7 +109,6 @@ public class SwitchMC : MonoBehaviour
             characters[currentMainPlayerIndex].GetComponent<TemporaryStats>().isMainCharacter = true;
 
             SetMainPlayer(currentMainPlayerIndex);
-            OnCharacterChange?.Invoke();
             mainCharacter = characters[currentMainPlayerIndex];
             Debug.Log($"Character {currentMainPlayerIndex} is now the main player.");
         }
