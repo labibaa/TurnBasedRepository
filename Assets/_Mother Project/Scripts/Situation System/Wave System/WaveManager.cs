@@ -144,18 +144,10 @@ public class WaveManager : MonoBehaviour
             HashSet<GameObject> currentPlayers = new HashSet<GameObject>();
             foreach (PlayerTurn players in PlayerWaves[currentWaveCount - 1].CharactersOfTheWave)
             {
-                StartCoroutine( players.GetComponent<TemporaryStats>().ReStartCharacter());
+                StartCoroutine(players.GetComponent<TemporaryStats>().ReStartCharacter());
                 TurnManager.instance.players.Add(players);
                 currentPlayers.Add(players.gameObject);
-
-                if (players.gameObject != GridActivation.instance.playableCharacter[0])//playable character
-                {
-                       // Debug.Log(PcGo+ "=="+ players.gameObject);
-                        //playableC.Add(players.gameObject);
-                  GridActivation.instance.players.Add(players.gameObject);
-
-                }
-                
+                GridActivation.instance.players.Add(players.gameObject);          
             }
             GridActivation.instance.HandleCharacterSpawn();
 

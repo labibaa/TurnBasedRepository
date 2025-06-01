@@ -210,6 +210,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     {
         SetCharacterStat();
 
+       // Animator animator = GetComponent<Animator>();
        // animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
 
         if ( gridCoordinateSpawn.x< GridSystem.instance._gridArray.GetLength(0) && gridCoordinateSpawn.x < GridSystem.instance._gridArray.GetLength(1))
