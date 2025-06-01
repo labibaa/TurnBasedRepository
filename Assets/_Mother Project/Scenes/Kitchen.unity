@@ -3364,6 +3364,7 @@ MonoBehaviour:
   DaggerAvailableActions:
   - {fileID: 11400000, guid: 148bd225f31885347bd651c2223272d8, type: 2}
   - {fileID: 11400000, guid: d1bd3119e2cedd34ca47b5bd79bcf2f7, type: 2}
+  - {fileID: 11400000, guid: 2144a51b4a279d3468769890b804c7b6, type: 2}
   SwordAvailableActions:
   - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
   - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
@@ -236912,6 +236913,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 217869352807926850, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
+      propertyPath: groundBlast
+      value: 
+      objectReference: {fileID: 11400000, guid: d22bc929716562e4aae9e7c0b7637a2e,
+        type: 2}
+    - target: {fileID: 217869352807926850, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
       propertyPath: healthPoints
       value: 20
       objectReference: {fileID: 0}
@@ -236990,15 +236997,21 @@ PrefabInstance:
       propertyPath: impulseSource
       value: 
       objectReference: {fileID: 1802930869}
+    - target: {fileID: 3777465525314206391, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1440419022873279924, guid: 319619e3595bdfc4a91a1839ea6c733a,
+        type: 3}
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.539612
+      value: 15.830505
       objectReference: {fileID: 0}
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.630005
+      value: 12.530029
       objectReference: {fileID: 0}
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -237013,7 +237026,22 @@ PrefabInstance:
     - target: {fileID: 6878960195950656178, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_CameraDistance
-      value: 14.99999
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473178141672118181, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8057755087560376567, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855775127553514120, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8983546823599016214, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -257883,7 +257911,7 @@ Transform:
   m_GameObject: {fileID: 3954000482663074368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.3114565e-24, w: 1}
-  m_LocalPosition: {x: -568.51855, y: -334.06128, z: 124.459274}
+  m_LocalPosition: {x: -568.51855, y: -334.06128, z: 121.459274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -258449,7 +258477,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 17
+  m_CameraDistance: 20
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

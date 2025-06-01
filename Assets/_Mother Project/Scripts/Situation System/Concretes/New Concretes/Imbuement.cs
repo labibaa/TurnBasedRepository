@@ -40,7 +40,7 @@ public class Imbuement : ICommand
     async UniTask HandleAnimation()
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
-        TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
+        await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
 
         player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
         player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -560,6 +561,25 @@ public class ActionArchive : MonoBehaviour
             ICommand meleeAction = new PushBack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
             ActionTemplate(meleeScriptable, meleeAction);
         }
+    }
+
+    public async void DaggerSweep()
+    {
+        GetPlayerStats();
+        ImprovedActionStat ds_Scriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep");
+        List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(currentStatPlayer.currentPlayerGridPosition, currentStatPlayer.CharacterTeam, ds_Scriptable.ActionRange, Color.red);
+        for (int i = 0; i < targetsInRange.Count; i++)
+        {
+            targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
+        }
+        ICommand daggerSweep = new DaggerSweep( ds_Scriptable , currentStatPlayer);
+        ActionTemplate(ds_Scriptable, daggerSweep);
+        await UniTask.Delay(100);
+        GridMovement.instance.ResetHighlightedPath();
+        TurnManager.instance.ResetTargetHIghlightVisual();
+        TurnManager.instance.targetsInRange.Clear();
+        TurnManager.instance.nonCharacterTargetsInRange.Clear();
+
     }
 
     public async void Heal()

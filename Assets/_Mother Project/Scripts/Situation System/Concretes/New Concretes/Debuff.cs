@@ -49,66 +49,10 @@ public class Debuff : ICommand
         }
     }
 
-    /*    private void OnEnable()
-        {
-            HandleTurnNew.OnTurnEnd += DamageCurrentTarget;
-        }
-        private void OnDisable()
-        {
-            HandleTurnNew.OnTurnEnd -= DamageCurrentTarget;
-        }
-
-
-        void DamageCurrentTarget()
-        {
-            ExecuteDamageCurrentTarget();
-        }
-
-        async UniTask ExecuteDamageCurrentTarget()
-        {
-            if (buffAttack.PriorityValue > 0)
-            {
-                if (target != null)
-                {
-                    target.DamageMultiplier = target.DamageMultiplier * 2;
-                    CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, buffAttack.TargetHurtAnimation);
-
-                    buffAttack.PriorityValue--;
-                }
-                else
-                {
-                    if (HasEffect)
-                    {
-                        ResetEffectState();
-                    }
-
-                }
-
-
-            }
-        }
-
-        private void ResetEffectState()
-        {
-            //target.playerVisiblity = 1;
-            HasEffect = false;
-            EffectOwner = null;
-            GridPosition = Vector2.zero;
-            buffAttack.PriorityValue = 0;
-            Smoke = null;
-            Destroy(SmokeObject);
-            foreach (PlayerTurn pturn in TurnManager.instance.players)
-            {
-                pturn.GetComponent<TemporaryStats>().playerVisiblity = 1;
-            }
-
-
-        }*/
-
     async UniTask HandleAnimation()
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
-        TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
+        await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
 
         /*   player.GetComponent<PlayParticle>().target = target.gameObject;
            player.GetComponent<PlayParticle>().actionSound = rangedAttack.actionSound;

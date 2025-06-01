@@ -47,10 +47,10 @@ public class Move :ICommand
 
     }
 
-    public void HandleAnimation()
+    public async void HandleAnimation()
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, Agent.GetComponent<CharacterBaseClasses>());
-        TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<CharacterBaseClasses>(), 2f);
+        await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<CharacterBaseClasses>(), 2f);
     }
 
     public string GetActionName()

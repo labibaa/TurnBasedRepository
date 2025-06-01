@@ -143,6 +143,10 @@ public class ButtonStackManager : MonoBehaviour
             else if (scriptable.actionButton.name == "Imbuement")
             {
                 button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Imbuement());
+            } 
+            else if (scriptable.actionButton.name == "DaggerSweep")
+            {
+                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.DaggerSweep());
             }
             else
             {

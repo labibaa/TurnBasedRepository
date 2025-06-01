@@ -128,16 +128,18 @@ public class TempManager : MonoBehaviour
         playerRotation = Quaternion.Euler(playerEulerRotation);
 
         float elapsedTime = 0;
+        Quaternion initialTargetRot = target.transform.rotation;
+        Quaternion initialPlayerRot = player.transform.rotation;
+
         while (elapsedTime < speed)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / speed;
 
-            target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetRotation, t);
-            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, playerRotation, t);
-            //TempManager.instance.RotateCharactersOnGrid();
-            //await UniTask.Yield();
+            target.transform.rotation = Quaternion.Lerp(initialTargetRot, targetRotation, t);
+            player.transform.rotation = Quaternion.Lerp(initialPlayerRot, playerRotation, t);
 
+           // await UniTask.Yield();
         }
 
     }

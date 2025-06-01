@@ -69,7 +69,8 @@ public class DictionaryManager : MonoBehaviour
         {"SpearAttackPlace4High",ActionArchive.instance.SpearAttackPlace4High },
         {"Buff",ActionArchive.instance.Buff },
         {"Debuff",ActionArchive.instance.Debuff },
-        {"Imbuement",ActionArchive.instance.Imbuement }
+        {"Imbuement",ActionArchive.instance.Imbuement },
+        {"DaggerSweep",ActionArchive.instance.DaggerSweep }
 
 
     };

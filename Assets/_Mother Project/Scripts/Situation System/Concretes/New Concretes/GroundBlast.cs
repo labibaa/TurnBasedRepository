@@ -45,7 +45,7 @@ public class GroundBlast : ICommand
         foreach (CharacterBaseClasses target in targetsInRange)
         {
             ICommand pushBack = new PushBack(Agent.GetComponent<CharacterBaseClasses>(), target.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<TemporaryStats>(), target.GetComponent<TemporaryStats>(), pushBackScriptable, "SingleMelee");
-            pushBack.Execute();
+            await pushBack.Execute();
         }
         //Agent.Stop();
 

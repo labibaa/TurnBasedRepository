@@ -97,7 +97,7 @@ public class MeleeAttack : ICommand
 
     async UniTask HandleAnimation()
     {
-        TempManager.instance.CharacterRotation(target, player, 2f);
+        await TempManager.instance.CharacterRotation(target, player, 2f);
       /*  player.GetComponent<PlayParticle>().target = target.gameObject;
         player.GetComponent<PlayParticle>().actionSound = meleeAttack.actionSound;
         // player.GetComponent<PlayParticle>().InstantiateParticleEffect(meleeAttack.ParticleSystem);
