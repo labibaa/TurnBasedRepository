@@ -42,10 +42,10 @@ public class Heal : ICommand
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(rangedAttack.FirstPercentage, rangedAttack.SecondPercentage, rangedAttack.LastPercentage);
             UI.instance.SendNotification(diceValue.ToString());
             int healPoint = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, rangedAttack) ) *-1;
-
+            await HandleAnimation();
             targetTempStats.CurrentHealth = HealthManager.instance.HealthCap(targetTempStats.PlayerHealth, HealthManager.instance.HealthCalculation(healPoint, targetTempStats.CurrentHealth));
 
-            await HandleAnimation();
+            
             UI.instance.ShowFlyingText((healPoint*-1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.green);
             await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
             

@@ -23,7 +23,7 @@ public class DaggerSweep : ICommand
         ImprovedActionStat pushBackScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "PushBack");
         foreach (CharacterBaseClasses target in targetsInRange)
         {
-            target.GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
+            // target.GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
             TurnManager.instance.ResetTargetHIghlightVisual();
             ICommand pushBack = new PushBack(playerTempStats.GetComponent<CharacterBaseClasses>(), target.GetComponent<CharacterBaseClasses>(), playerTempStats, target.GetComponent<TemporaryStats>(), pushBackScriptable, "SingleMelee");
             await pushBack.Execute();

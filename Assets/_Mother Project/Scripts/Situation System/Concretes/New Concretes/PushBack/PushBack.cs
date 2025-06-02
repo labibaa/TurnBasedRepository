@@ -187,12 +187,9 @@ public class PushBack : ICommand
 
                 int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, pushBack) * playerTempStats.CurrentDamageMultiplier);
                 Debug.Log("Dice: " + diceValue + " Damage: " + damage);
-                
-               
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
 
                 await HandleAnimation();
-
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
                 await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
 

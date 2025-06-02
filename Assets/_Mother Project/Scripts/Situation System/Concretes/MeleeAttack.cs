@@ -67,9 +67,9 @@ public class MeleeAttack : ICommand
             if (targetTempStats.IsCounterActive)
             {
                 //damages attacker is counter on
+                await HandleAnimation();
                 playerTempStats.CurrentHealth = Mathf.Max(HealthManager.instance.HealthCalculation(damage / 2, playerTempStats.CurrentHealth), 1);
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HandleAnimation();
                 UI.instance.ShowFlyingText((damage * -1).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
                 await HealthManager.instance.PlayerMortality(playerTempStats,attackOrder, playerTempStats);
                 await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
@@ -81,10 +81,8 @@ public class MeleeAttack : ICommand
             }
             else
             {
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                
                 await HandleAnimation();
-
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
                 await HealthManager.instance.PlayerMortality(targetTempStats,attackOrder, playerTempStats);
 

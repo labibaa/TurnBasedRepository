@@ -574,7 +574,12 @@ public class ActionArchive : MonoBehaviour
         }
         ICommand daggerSweep = new DaggerSweep( ds_Scriptable , currentStatPlayer);
         ActionTemplate(ds_Scriptable, daggerSweep);
-        await UniTask.Delay(100);
+        await UniTask.Delay(1500);
+        for (int i = 0; i < targetsInRange.Count; i++)
+        {
+            targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
+        }
+        TempManager.instance.ChangeGameState(GameStates.MidTurn);
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.ResetTargetHIghlightVisual();
         TurnManager.instance.targetsInRange.Clear();
