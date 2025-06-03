@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65997b2d10b74c04e9ac0a65ce4ccdd5, type: 3}
+  m_Name: TemplatePushBack
+  m_EditorClassIdentifier: 
+  RangeMappings:
+  - MinRangeValue: 1
+    MaxRangeValue: 2
+    MappedValue: 2
+  - MinRangeValue: 3
+    MaxRangeValue: 4
+    MappedValue: 2
+  - MinRangeValue: 5
+    MaxRangeValue: 14
+    MappedValue: 2
+  - MinRangeValue: 15
+    MaxRangeValue: 17
+    MappedValue: 3
+  - MinRangeValue: 18
+    MaxRangeValue: 20
+    MappedValue: 3
+  ActionRange: 2
+  ActionAccuracy: 100
+  ActionName: Push Back
+  Description: 
+  PriorityValue: 20
+  FirstPercentage: 10
+  SecondPercentage: 10
+  LastPercentage: 80
+  APCost: 0
+  ParticleSystem: {fileID: 4409106883997510905, guid: 08957b094a5ce8a4d8e45d1366108b0b,
+    type: 3}
+  HurtParticleSystem: {fileID: 0}
+  HitParticleSystem: {fileID: 9069149806075869406, guid: 0fbef3bc8ebdf404ba5f5ba8abb836f9,
+    type: 3}
+  actionSound: {fileID: 8300000, guid: d37d119dab48f7645b5ee6886170d019, type: 3}
+  actionIcon: {fileID: 195040, guid: e5b43409db007fe4084d0dd95f9719e6, type: 3}
+  actionButton: {fileID: 8538063801286393506, guid: 689aa8c8f6f7ef645aec637ad330fda0,
+    type: 3}
+  SoundReferences: []
+  PlayerActionVFX: {fileID: 4148365099969122083, guid: 2df528b21790d6c4ba3edef106606887,
+    type: 3}
+  TargetHitVFX: {fileID: 4985311179108529846, guid: fdb845899c97a5144a75f92d2927669d,
+    type: 3}
+  particle: {fileID: 5699596300779192415, guid: 543053c2ca0fc39488f421a9a0ce00f4,
+    type: 3}
+  CharacterBodyLocation: RightHand
+  TargetCharacterBodyLocation: MidBody
+  TargetHurtAnimation: Fall on back
+  actionStance: 1
+  actionType: 0
