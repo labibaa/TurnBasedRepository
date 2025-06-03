@@ -123,7 +123,7 @@ public class TeamManager : MonoBehaviour
     public void TeamMemberList(TeamName teamToCheck) //checks team list of all players
     {
 
-        foreach (var kvp in teamPlayerLists)
+        /*foreach (var kvp in teamPlayerLists)
         {
             // Print the key (TeamName)
             Debug.Log($"Team Name:   {kvp.Key}");
@@ -140,7 +140,7 @@ public class TeamManager : MonoBehaviour
                 Debug.Log("Player Stats:" + stats); // Assuming TemporaryStats has a meaningful ToString() implementation
             }
             
-        }
+        }*/
     }
     // Example method to check if a team has no players
     public bool IsTeamEmpty(TeamName teamToCheck)

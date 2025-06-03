@@ -427,6 +427,7 @@ MonoBehaviour:
   DaggerAvailableActions:
   - {fileID: 11400000, guid: 148bd225f31885347bd651c2223272d8, type: 2}
   - {fileID: 11400000, guid: d1bd3119e2cedd34ca47b5bd79bcf2f7, type: 2}
+  - {fileID: 11400000, guid: 2144a51b4a279d3468769890b804c7b6, type: 2}
   SwordAvailableActions:
   - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
   - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
@@ -757,7 +758,7 @@ Transform:
   m_GameObject: {fileID: 78612787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.93, y: 0, z: 8.59}
+  m_LocalPosition: {x: 3.72, y: 0, z: 8.59}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26018,7 +26019,7 @@ PrefabInstance:
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 139.93927
+      value: 133.73781
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
@@ -28439,7 +28440,7 @@ PrefabInstance:
     - target: {fileID: 638795718913286639, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 139812479
+      value: 2629096672
       objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -28514,17 +28515,22 @@ PrefabInstance:
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.886047
+      value: 15.830505
       objectReference: {fileID: 0}
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.830017
+      value: 12.529999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.9999695
       objectReference: {fileID: 0}
     - target: {fileID: 6878960195950656178, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_CameraDistance
-      value: 16.6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8983546823599016214, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -32787,7 +32793,7 @@ Transform:
   m_GameObject: {fileID: 3954000482663074368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.3114565e-24, w: 1}
-  m_LocalPosition: {x: -578.53253, y: -334.06128, z: 139.93927}
+  m_LocalPosition: {x: -578.53253, y: -334.06128, z: 131.43927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43414,10 +43420,15 @@ PrefabInstance:
       propertyPath: tpsCamera
       value: 
       objectReference: {fileID: 8686788673576922632}
+    - target: {fileID: 5623877946105048720, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: isMainCharacter
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6030752268258891936, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2426704379
+      value: 2486682604
       objectReference: {fileID: 0}
     - target: {fileID: 8267437949885259870, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
@@ -43547,7 +43558,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 11.5
+  m_CameraDistance: 20
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
