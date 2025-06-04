@@ -563,29 +563,6 @@ public class ActionArchive : MonoBehaviour
         }
     }
 
-    public async void DaggerSweep()
-    {
-        GetPlayerStats();
-        ImprovedActionStat ds_Scriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep");
-        List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(currentStatPlayer.currentPlayerGridPosition, currentStatPlayer.CharacterTeam, ds_Scriptable.ActionRange, Color.red);
-        for (int i = 0; i < targetsInRange.Count; i++)
-        {
-            targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
-        }
-        ICommand daggerSweep = new DaggerSweep( ds_Scriptable , currentStatPlayer);
-        ActionTemplate(ds_Scriptable, daggerSweep);
-        await UniTask.Delay(1500);
-        for (int i = 0; i < targetsInRange.Count; i++)
-        {
-            targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
-        }
-        TempManager.instance.ChangeGameState(GameStates.MidTurn);
-        GridMovement.instance.ResetHighlightedPath();
-        TurnManager.instance.ResetTargetHIghlightVisual();
-        TurnManager.instance.targetsInRange.Clear();
-        TurnManager.instance.nonCharacterTargetsInRange.Clear();
-
-    }
 
     public async void Heal()
     {
@@ -942,6 +919,53 @@ public class ActionArchive : MonoBehaviour
         UltimateSystem._instance.useUltimate(playerAttacker,currentStatPlayer,targetDefender,currentStatTarget);
     }
 
+    public async void DaggerSweep()
+    {
+       /* if (currentStatPlayer.gameObject.GetComponent<PlayerTurn>(). == true) 
+        {
+
+        }*/
+        GetPlayerStats();
+        ImprovedActionStat ds_Scriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep");
+        List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(currentStatPlayer.currentPlayerGridPosition, currentStatPlayer.CharacterTeam, ds_Scriptable.ActionRange, Color.red);
+        if (targetsInRange.Count <= 0)
+        {
+
+            TempManager.instance.SituationUIPanel.SetActive(false);
+            TempManager.instance.UlimateUIPanel.SetActive(false);
+            UI.instance.SendNotification("No target in your range");
+
+
+            await UniTask.Delay(1500);
+            TempManager.instance.ChangeGameState(GameStates.MidTurn);
+            GridMovement.instance.ResetHighlightedPath();
+            TempManager.instance.SituationUIPanel.SetActive(true);
+            TempManager.instance.UlimateUIPanel.SetActive(true);
+
+        }
+        else
+        {
+            for (int i = 0; i < targetsInRange.Count; i++)          //visual cue
+            {
+                targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
+            }
+            Transform ct = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, playerAttacker);
+
+            ICommand daggerSweep = new DaggerSweep(ds_Scriptable, currentStatPlayer, playerAttacker, ct.GetComponent<CharacterBaseClasses>());
+            ActionTemplate(ds_Scriptable, daggerSweep);         //visual cue
+            await UniTask.Delay(1500);
+            for (int i = 0; i < targetsInRange.Count; i++)
+            {
+                targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
+            }
+            GridMovement.instance.ResetHighlightedPath();
+            TurnManager.instance.ResetTargetHIghlightVisual();
+            TurnManager.instance.targetsInRange.Clear();
+            TurnManager.instance.nonCharacterTargetsInRange.Clear();
+            TempManager.instance.ChangeGameState(GameStates.MidTurn);
+        }
+
+    }
     public async void Move()
     {
         Debug.Log("ASE");

@@ -186,7 +186,7 @@ public class PushBack : ICommand
                 int diceValue = DiceNumberGenerator.instance.GetDiceValue(pushBack.FirstPercentage, pushBack.SecondPercentage, pushBack.LastPercentage);
 
                 int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, pushBack) * playerTempStats.CurrentDamageMultiplier);
-                Debug.Log("Dice: " + diceValue + " Damage: " + damage);
+                Debug.Log("Dice: " + diceValue + " Damage: " + damage + " target: " + targetTempStats);
 
                 await HandleAnimation();
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);

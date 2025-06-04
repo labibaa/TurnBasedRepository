@@ -1,18 +1,23 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class DaggerSweep : ICommand
 {
     TemporaryStats playerTempStats;
+    CharacterBaseClasses playerBaseClass;
     ImprovedActionStat daggerSweepScriptable;
+    CharacterBaseClasses closestTarget;
 
-    public DaggerSweep( ImprovedActionStat daggerSweep, TemporaryStats PlayerTempStats)
+    public DaggerSweep( ImprovedActionStat daggerSweep, TemporaryStats PlayerTempStats, CharacterBaseClasses PlayerBaseClass, CharacterBaseClasses ClosestTarget)
     {
         daggerSweepScriptable = daggerSweep;
         playerTempStats = PlayerTempStats;
+        playerBaseClass = PlayerBaseClass;
+        closestTarget = ClosestTarget;
     }
 
 
@@ -20,12 +25,11 @@ public class DaggerSweep : ICommand
     {
         List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(playerTempStats.currentPlayerGridPosition, playerTempStats.CharacterTeam,daggerSweepScriptable.ActionRange, Color.clear);
         GridMovement.instance.ResetHighlightedPath();
-        ImprovedActionStat pushBackScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "PushBack");
+
         foreach (CharacterBaseClasses target in targetsInRange)
         {
-            // target.GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
             TurnManager.instance.ResetTargetHIghlightVisual();
-            ICommand pushBack = new PushBack(playerTempStats.GetComponent<CharacterBaseClasses>(), target.GetComponent<CharacterBaseClasses>(), playerTempStats, target.GetComponent<TemporaryStats>(), pushBackScriptable, "SingleMelee");
+            ICommand pushBack = new PushBack(playerTempStats.GetComponent<CharacterBaseClasses>(), target.GetComponent<CharacterBaseClasses>(), playerTempStats, target.GetComponent<TemporaryStats>(), daggerSweepScriptable, "SingleMelee");
             await pushBack.Execute();
         }
 
@@ -43,7 +47,7 @@ public class DaggerSweep : ICommand
 
     public CharacterBaseClasses GetTarget()
     {
-        return playerTempStats.GetComponent<CharacterBaseClasses>();
+        return closestTarget;
     }
     public int GetAPValue()
     {

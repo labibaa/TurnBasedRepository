@@ -31,7 +31,7 @@ public class Imbuement : ICommand
 
             playerTempStats.IsBlockActive = true;
 
-          //  await HandleAnimation();
+            await HandleAnimation();
 
         
     }
@@ -41,7 +41,7 @@ public class Imbuement : ICommand
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
         await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
-
+/*
         player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
         player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);
         player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.gameObject.GetComponent<VFXSpawnPosition>().MidBody);
@@ -49,7 +49,7 @@ public class Imbuement : ICommand
         player.GetComponent<SpawnVFX>().SetTargetHitVFXPrefab(imbuement.TargetHitVFX);
         player.GetComponent<SpawnVFX>().SetParticle(imbuement.particle);
         player.GetComponent<SpawnVFX>().SetVFXSound(imbuement.actionSound);
-        player.GetComponent<SpawnVFX>().SetTargetAnimation(imbuement.TargetHurtAnimation);
+        player.GetComponent<SpawnVFX>().SetTargetAnimation(imbuement.TargetHurtAnimation);*/
 
         await CutsceneManager.instance.PlayAnimationForCharacter(player.gameObject, GetActionName());
 
@@ -69,7 +69,7 @@ public class Imbuement : ICommand
 
     public CharacterBaseClasses GetTarget()
     {
-        return target;
+        return player;
     }
 
     public int GetAPValue()
