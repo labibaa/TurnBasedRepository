@@ -59,6 +59,7 @@ public class HealthManager : MonoBehaviour
         
         if (playerStat.CurrentHealth < 1)
         {
+            await UniTask.Delay(500);
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
             playerStat.playerMortality = Mortality.Dead;
             OnCharacterDeath?.Invoke();
@@ -75,8 +76,9 @@ public class HealthManager : MonoBehaviour
             //Destroy(gameObject);
             Vector2 deadPlayerGridPosition=GridSystem.instance.WorldToGrid(playerStat.transform.position);
             GridSystem.instance._gridArray[(int)deadPlayerGridPosition.x, (int)deadPlayerGridPosition.y].GetComponent<GridStat>().ClearGrid();
-            TeamManager.instance.RemovePlayerFromTeamList(playerStat);
             TeamManager.instance.PrintDictionary();
+            TeamManager.instance.RemovePlayerFromTeamList(playerStat);
+           
             playerStat.gameObject.SetActive(false);
             if (attackOrder<0)
             {

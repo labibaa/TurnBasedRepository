@@ -8,7 +8,7 @@ public class PushDetector : MonoBehaviour
 
     public CharacterBaseClasses currentPlayer;
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
 
         
@@ -38,7 +38,7 @@ public class PushDetector : MonoBehaviour
         }
         
     }
-
+*/
     
 
 
