@@ -70,7 +70,9 @@ public class DictionaryManager : MonoBehaviour
         {"Buff",ActionArchive.instance.Buff },
         {"Debuff",ActionArchive.instance.Debuff },
         {"Imbuement",ActionArchive.instance.Imbuement },
-        {"DaggerSweep",ActionArchive.instance.DaggerSweep }
+        {"DaggerSweep",ActionArchive.instance.DaggerSweep },
+        {"Assassinate",ActionArchive.instance.Assassinate },
+        {"Puncture",ActionArchive.instance.Puncture }
 
 
     };
