@@ -93876,22 +93876,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16642268}
     m_Modifications:
-    - target: {fileID: 1179453546690753743, guid: 08a4023a9da9f684e9d3544fe13fcb65,
-        type: 3}
-      propertyPath: gridCoordinateSpawn.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1179453546690753743, guid: 08a4023a9da9f684e9d3544fe13fcb65,
-        type: 3}
-      propertyPath: gridCoordinateSpawn.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2848021832452628932, guid: 08a4023a9da9f684e9d3544fe13fcb65,
-        type: 3}
-      propertyPath: avatarHead
-      value: 
-      objectReference: {fileID: 21300000, guid: 4fdd74e3a41c58d45867a80d128bacaf,
-        type: 3}
     - target: {fileID: 6084242823365919326, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
       propertyPath: target
@@ -93906,16 +93890,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpearEnemyPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 6885287169927894697, guid: 08a4023a9da9f684e9d3544fe13fcb65,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719195398983565219, guid: 08a4023a9da9f684e9d3544fe13fcb65,
-        type: 3}
-      propertyPath: m_BaseOffset
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8643482613033457315, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
@@ -216287,6 +216261,11 @@ PrefabInstance:
       propertyPath: impulseSource
       value: 
       objectReference: {fileID: 1802930869}
+    - target: {fileID: 2442389385970390876, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3627932265162525853, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: impulseSource
@@ -216297,30 +216276,20 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 1802930870}
-    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.830505
-      objectReference: {fileID: 0}
-    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 12.530029
-      objectReference: {fileID: 0}
-    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.9999695
-      objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
       value: 
       objectReference: {fileID: 7823975018350207407}
-    - target: {fileID: 6878960195950656178, guid: 31c9dd2abad151c47975107e9bafd8dc,
+    - target: {fileID: 7473178141672118181, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
-      propertyPath: m_CameraDistance
-      value: 20
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855775127553514120, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8983546823599016214, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -235041,7 +235010,7 @@ Transform:
   m_GameObject: {fileID: 3954000482663074368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.3114565e-24, w: 1}
-  m_LocalPosition: {x: -566.8486, y: -334.06128, z: 124.12927}
+  m_LocalPosition: {x: -566.8486, y: -334.06128, z: 127.62927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -235613,7 +235582,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 20
+  m_CameraDistance: 16.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
