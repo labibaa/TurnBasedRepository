@@ -88,7 +88,7 @@ public class Imbuement : ICommand
     }
     public string GetActionType()
     {
-        return "Ranged";
+        return "Melee";
     }
     int checkOrder()
     {
