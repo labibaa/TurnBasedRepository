@@ -548,17 +548,17 @@ public class ActionArchive : MonoBehaviour
     {
 
         GetPlayerStats();
-        ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Puncture");
-        bool isMoveAdded = MeleeMoveTemplate(meleeScriptable);
+        ImprovedActionStat punctureScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Puncture");
+        bool isMoveAdded = MeleeMoveTemplate(punctureScriptable);
         if (isMoveAdded)
         {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "Melee");
-            ActionTemplate(meleeScriptable, meleeAction);
+            ICommand punctureAction = new Puncture(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, punctureScriptable, "Melee");
+            ActionTemplate(punctureScriptable, punctureAction);
         }
         else
         {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
-            ActionTemplate(meleeScriptable, meleeAction);
+            ICommand punctureAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, punctureScriptable, "SingleMelee");
+            ActionTemplate(punctureScriptable, punctureAction);
         }
     }
     public async void DaggerRising()

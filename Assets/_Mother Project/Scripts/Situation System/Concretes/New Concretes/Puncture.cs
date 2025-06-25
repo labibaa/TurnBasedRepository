@@ -12,74 +12,28 @@ public class Puncture : ICommand
     TemporaryStats playerTempStats;
     TemporaryStats targetTempStats;
     ImprovedActionStat puncture;
-    int TurnCount;
+    string ActionType;
 
-    public Puncture(CharacterBaseClasses playerAttacker, CharacterBaseClasses targetDefender, TemporaryStats currentStatPlayer, TemporaryStats currentStatTarget, ImprovedActionStat PuntureScriptable)
+    public Puncture(CharacterBaseClasses playerAttacker, CharacterBaseClasses targetDefender, TemporaryStats currentStatPlayer, TemporaryStats currentStatTarget, ImprovedActionStat PuntureScriptable, string actionType)
     {
         player = playerAttacker;
         target = targetDefender;
         playerTempStats = currentStatPlayer;
         targetTempStats = currentStatTarget;
         puncture = PuntureScriptable;
-
-    }
-
-    private void OnEnable()
-    {
-        HandleTurnNew.OnTurnEnd += DamageCurrentTarget;
-    }
-    private void OnDisable()
-    {
-        HandleTurnNew.OnTurnEnd -= DamageCurrentTarget;
-    }
-
-    private void ResetEffectState()
-    {
-        TurnCount = 0;
-    }
-    void DamageCurrentTarget()
-    {
-        ExecuteDOT();
-    }
-
-    async UniTask ExecuteDOT()
-    {
-        if (TurnCount > 0)
-        {
-            int attackOrder = checkOrder();
-            float actionAccuracy = puncture.ActionAccuracy;
-            if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))
-            {
-                int diceValue = DiceNumberGenerator.instance.GetDiceValue(puncture.FirstPercentage, puncture.SecondPercentage, puncture.LastPercentage);
-                UI.instance.SendNotification(diceValue.ToString());
-                int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, puncture) * playerTempStats.CurrentDamageMultiplier);
-                Debug.Log("Dice: " + diceValue + " Damage: " + damage);
-                if (targetTempStats.IsBlockActive)
-                {
-                    damage = damage / 2;
-                    targetTempStats.IsBlockActive = false;
-                }
-                else
-                {
-
-                    targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                    CutsceneManager.instance.PlayAnimationForCharacter(targetTempStats.gameObject, puncture.TargetHurtAnimation);
-                    UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                    await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
-
-                }
-            }
-            TurnCount--;
-        }
-        else
-        {
-            ResetEffectState();
-        }
+        ActionType = actionType;
     }
 
     public async UniTask Execute()
     {
-        TurnCount = puncture.PriorityValue;
+        int attackOrder = checkOrder();//need to add death check later
+        GameObject effectObj = new GameObject("punctureDOT");
+        var handler = effectObj.AddComponent<PunctureDOTHandler>();
+
+        GameObject vfxObj = OrbSpawner.instance.SpawnDotVFX(puncture.PlayerActionVFX, target.transform);
+
+        handler.SetPunctureIAS(puncture);
+        handler.Initialize(playerTempStats, targetTempStats, puncture.PriorityValue, vfxObj);
         await HandleAnimation();
 
     }
@@ -88,15 +42,15 @@ public class Puncture : ICommand
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
         await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
-        /*
+        
                 player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
                 player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);
                 player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.gameObject.GetComponent<VFXSpawnPosition>().MidBody);
-                player.GetComponent<SpawnVFX>().SetVFXPrefab(imbuement.PlayerActionVFX);
-                player.GetComponent<SpawnVFX>().SetTargetHitVFXPrefab(imbuement.TargetHitVFX);
-                player.GetComponent<SpawnVFX>().SetParticle(imbuement.particle);
-                player.GetComponent<SpawnVFX>().SetVFXSound(imbuement.actionSound);
-                player.GetComponent<SpawnVFX>().SetTargetAnimation(imbuement.TargetHurtAnimation);*/
+                player.GetComponent<SpawnVFX>().SetVFXPrefab(puncture.PlayerActionVFX);
+                player.GetComponent<SpawnVFX>().SetTargetHitVFXPrefab(puncture.TargetHitVFX);
+                player.GetComponent<SpawnVFX>().SetParticle(puncture.particle);
+                player.GetComponent<SpawnVFX>().SetVFXSound(puncture.actionSound);
+                player.GetComponent<SpawnVFX>().SetTargetAnimation(puncture.TargetHurtAnimation);
 
         await CutsceneManager.instance.PlayAnimationForCharacter(player.gameObject, GetActionName());
 
@@ -135,7 +89,7 @@ public class Puncture : ICommand
     }
     public string GetActionType()
     {
-        return "Melee";
+        return ActionType;
     }
     int checkOrder()
     {

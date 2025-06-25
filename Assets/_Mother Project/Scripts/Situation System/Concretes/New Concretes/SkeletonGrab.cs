@@ -11,8 +11,6 @@ public class SkeletonGrab : ICommand
     TemporaryStats playerTempStats;
     TemporaryStats targetTempStats;
     ImprovedActionStat skeletonGrab;
-    int gridSizeX;
-    int gridSizeY;
 
     public SkeletonGrab(CharacterBaseClasses playerAttacker, CharacterBaseClasses targetDefender, TemporaryStats currentStatPlayer, TemporaryStats currentStatTarget, ImprovedActionStat skeletonGrabScriptable)
     {
@@ -22,19 +20,25 @@ public class SkeletonGrab : ICommand
         playerTempStats = currentStatPlayer;
         targetTempStats = currentStatTarget;
         skeletonGrab = skeletonGrabScriptable;
-        gridSizeX = GridSystem.instance._gridArray.GetLength(0);
-        gridSizeY = GridSystem.instance._gridArray.GetLength(1);
     }
     public async UniTask Execute()
     {
         Debug.Log("SkeletonGrabExecuted");
-        EffectorSkeletonjGrab.Instance.grabbedTarget = targetTempStats;
-        EffectorSkeletonjGrab.Instance.HasEffect = true;
-        EffectorSkeletonjGrab.Instance.EffectOwner = playerTempStats;
-        EffectorSkeletonjGrab.Instance.SkeletonGrab_IAS = skeletonGrab;
-        EffectorSkeletonjGrab.Instance.TurnCount = skeletonGrab.PriorityValue;
-        EffectorSkeletonjGrab.Instance.SkeletonObject = OrbSpawner.instance.SpawnSmoke(target.transform); 
-        
+        /*  EffectorSkeletonjGrab.Instance.grabbedTarget = targetTempStats;
+          EffectorSkeletonjGrab.Instance.HasEffect = true;
+          EffectorSkeletonjGrab.Instance.EffectOwner = playerTempStats;
+          EffectorSkeletonjGrab.Instance.SkeletonGrab_IAS = skeletonGrab;
+          EffectorSkeletonjGrab.Instance.TurnCount = skeletonGrab.PriorityValue;
+          EffectorSkeletonjGrab.Instance.SkeletonObject = OrbSpawner.instance.SpawnSmoke(target.transform); */
+        GameObject effectObj = new GameObject("SkeletonGrabDOT");
+        var handler = effectObj.AddComponent<SkeletonGrabDOTHandler>();
+
+        GameObject vfxObj = OrbSpawner.instance.SpawnDotVFX(skeletonGrab.PlayerActionVFX , target.transform);
+
+        handler.SetSkeletonGrabIAS(skeletonGrab);
+        handler.Initialize(playerTempStats, targetTempStats, skeletonGrab.PriorityValue, vfxObj);
+
+
         await HandleAnimation();
 
     }

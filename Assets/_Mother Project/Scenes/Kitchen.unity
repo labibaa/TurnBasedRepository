@@ -128554,6 +128554,11 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[15].m_Value.z
       value: 148.73297
       objectReference: {fileID: 0}
+    - target: {fileID: 5212526231081945862, guid: 7bc12c9a16b130546aeedc8d8de2e5a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5448111171150542590, guid: 7bc12c9a16b130546aeedc8d8de2e5a0,
         type: 3}
       propertyPath: m_Enabled
@@ -199747,7 +199752,7 @@ Transform:
   m_GameObject: {fileID: 1805934341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.012, y: 0, z: 136.452}
+  m_LocalPosition: {x: 85.49, y: 0, z: 136.452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -216316,6 +216321,21 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 1802930870}
+    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.729126
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.430023
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.9999695
+      objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
@@ -224182,7 +224202,6 @@ GameObject:
   - component: {fileID: 2046126998}
   - component: {fileID: 2046126999}
   - component: {fileID: 2046127000}
-  - component: {fileID: 2046127001}
   - component: {fileID: 2046127003}
   m_Layer: 0
   m_Name: GameManager
@@ -224576,24 +224595,6 @@ MonoBehaviour:
   - {fileID: 1800869734}
   - {fileID: 3571700953067278483}
   mainCharacter: {fileID: 0}
---- !u!114 &2046127001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046126972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa455dbf488eeca44940f5c3a665029f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HasEffect: 0
-  EffectOwner: {fileID: 0}
-  TurnCount: 0
-  SkeletonGrab_IAS: {fileID: 0}
-  SkeletonObject: {fileID: 0}
-  grabbedTarget: {fileID: 0}
 --- !u!114 &2046127002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236553,6 +236554,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1327883102}
   - {fileID: 1151487400}
   - {fileID: 746329221}
   - {fileID: 852763216}
@@ -236561,6 +236563,5 @@ SceneRoots:
   - {fileID: 1438501499}
   - {fileID: 2081699761}
   - {fileID: 1733330556}
-  - {fileID: 1327883102}
   - {fileID: 642329680}
   - {fileID: 149037783}
