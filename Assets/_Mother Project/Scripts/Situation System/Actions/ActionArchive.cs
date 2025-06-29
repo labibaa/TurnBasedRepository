@@ -535,12 +535,12 @@ public class ActionArchive : MonoBehaviour
         bool isMoveAdded = MeleeMoveTemplate(meleeScriptable);
         if (isMoveAdded)
         {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "Melee");
+            ICommand meleeAction = new Assassinate(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "Melee");
             ActionTemplate(meleeScriptable, meleeAction);
         }
         else
         {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
+            ICommand meleeAction = new Assassinate(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
             ActionTemplate(meleeScriptable, meleeAction);
         }
     }
@@ -569,12 +569,12 @@ public class ActionArchive : MonoBehaviour
         bool isMoveAdded = MeleeMoveTemplate(meleeScriptable);
         if (isMoveAdded)
         {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "Melee");
+            ICommand meleeAction = new PushBack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "Melee");
             ActionTemplate(meleeScriptable, meleeAction);
         }
         else
         {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
+            ICommand meleeAction = new PushBack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
             ActionTemplate(meleeScriptable, meleeAction);
         }
     }
