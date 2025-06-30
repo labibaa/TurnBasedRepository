@@ -15,7 +15,20 @@ public class Inventory_UI : MonoBehaviour
     [SerializeField] Transform StoreItemDetails_Panel;
     [SerializeField] GameObject storeitemDetailPanel_Prefab;
 
+    [SerializeField] private TextMeshProUGUI currencyText;
+    [SerializeField] private Image mainCharacterSprite;
+    [SerializeField] private Image secondaryCharacterSprite;
+
     public StoreObjects store;
+
+    private void Update()
+    {
+        ShowCurrency();
+        ShowMainCharacterSprite();
+        ShowSecondaryCharacterSprite();
+
+    }
+
     public void RefreshInventoryUI()
     {
         foreach (Transform child in inventoryItem_panel)
@@ -40,6 +53,8 @@ public class Inventory_UI : MonoBehaviour
             
         }
     }
+
+
 
     public void RefreshStoreUI()
     {
@@ -111,5 +126,45 @@ public class Inventory_UI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //InventoryHolder.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+
+    public void ShowCurrency()
+    {
+        if (currencyText != null)
+        {
+            currencyText.text = CurrencySystem.instance.GetCurrency().ToString();
+        }
+    }
+
+    public void ShowMainCharacterSprite()
+    {
+        var currentMC = InventoryManager.Instance.GetCurrentMC();
+        if (currentMC != null && mainCharacterSprite != null)
+        {
+            var avatar = currentMC.GetComponent<TemporaryStats>().avatarHead;
+            if (avatar != null)
+                mainCharacterSprite.sprite = avatar;
+
+        }
+    }
+
+    public void ShowSecondaryCharacterSprite()
+    {
+        
+
+        foreach (var character in SwitchMC.Instance.characters)
+        {
+            
+            var tempStats = character.GetComponent<TemporaryStats>();
+            if (tempStats.isMainCharacter == false)
+            {
+                var avatar = character.GetComponent<TemporaryStats>().avatarHead;
+               
+                    secondaryCharacterSprite.sprite = avatar;
+                    break; // Only one secondary character, exit after setting
+                
+            }
+        }
     }
 }
