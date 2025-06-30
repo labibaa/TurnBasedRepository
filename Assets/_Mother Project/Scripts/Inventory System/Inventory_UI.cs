@@ -26,7 +26,17 @@ public class Inventory_UI : MonoBehaviour
         ShowCurrency();
         ShowMainCharacterSprite();
         ShowSecondaryCharacterSprite();
+        
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            RefreshStoreUI();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            RefreshInventoryUI();
+        }
 
+        
     }
 
     public void RefreshInventoryUI()
@@ -50,7 +60,7 @@ public class Inventory_UI : MonoBehaviour
                 /// CurrencySystem.instance.ItemToAdd(item.itemClass);
                 ItemDetails(item);
             });
-            
+
         }
     }
 
