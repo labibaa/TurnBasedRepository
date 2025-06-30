@@ -10,6 +10,7 @@ using UnityEngine.TextCore.Text;
 
 public class TemporaryStats : MonoBehaviour, IPersistableData
 {
+    public Sprite avatarHead;
     public int CurrentHealth;
     public int PlayerHealth;
     public GameObject Pathmark;
