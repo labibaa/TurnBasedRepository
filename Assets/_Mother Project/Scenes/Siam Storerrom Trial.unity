@@ -7786,6 +7786,649 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 150753110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &152935860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152935861}
+  - component: {fileID: 152935866}
+  - component: {fileID: 152935865}
+  - component: {fileID: 152935864}
+  - component: {fileID: 152935863}
+  - component: {fileID: 152935862}
+  m_Layer: 0
+  m_Name: Destructive Elements Decay VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &152935861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152935860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.54229075, y: -0.094766036, z: 0.24151134, w: -0.79913235}
+  m_LocalPosition: {x: -0.2819608, y: -1.670438, z: 1.1600672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 543450652652248026}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &152935862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152935860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c780b64d7b0c941a7428ec7f33a80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &152935863
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152935860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdfea1f838247c40921a07afedde962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: SkinnedMeshTransform
+  Target: {fileID: 312627987}
+--- !u!114 &152935864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152935860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 152935863}
+  m_VisualEffect: {fileID: 152935866}
+--- !u!73398921 &152935865
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152935860}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!2083052967 &152935866
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152935860}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 6fcbcc3513c214940a314d841d747602, type: 3}
+  m_InitialEventName: create
+  m_InitialEventNameOverriden: 1
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 1.8
+        m_Name: VFXHeight
+        m_Overridden: 1
+      - m_Value: 448
+        m_Name: SwarmSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.1
+        m_Name: SwarmLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.35
+        m_Name: EyeGlowSize
+        m_Overridden: 0
+      - m_Value: 1.5
+        m_Name: SwarmDraughtMultiplier
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: SwarmGravityY
+        m_Overridden: 0
+      - m_Value: 32
+        m_Name: FervorSpawnRate
+        m_Overridden: 0
+      - m_Value: 128
+        m_Name: CreateSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: CreateSpikesLifetimeMax
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: CreateColumnSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.25
+        m_Name: CreateColumnWidth
+        m_Overridden: 0
+      - m_Value: 0.8
+        m_Name: CreateColumnLifetimeMax
+        m_Overridden: 0
+      - m_Value: 8
+        m_Name: CreateWavesSpawnCount
+        m_Overridden: 0
+      - m_Value: 1.2
+        m_Name: FervorLifetimeMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: EndSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.65
+        m_Name: EndGlowAlphaMax
+        m_Overridden: 0
+      - m_Value: 1.25
+        m_Name: EndGlowLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: EndCircleAlpha
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: SwarmAlphaMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: DotsSpawnRate
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: StreaksSpawnRate
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: StreaksSpawnRadius
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateGlowSpawnCount
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateStreaksSpawnCount
+        m_Overridden: 0
+      - m_Value: 20
+        m_Name: CreateHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 512
+        m_Name: EndDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: StripsTurbulenceIntensity
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: StripsSpwarnRate
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: SmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 0.28
+        m_Name: SwarmSizeMax
+        m_Overridden: 1
+      - m_Value: 80
+        m_Name: CreateSwarmSpawnCount
+        m_Overridden: 0
+      - m_Value: 256
+        m_Name: CreateDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndStripsSpawnCount
+        m_Overridden: 0
+      - m_Value: 384
+        m_Name: EndDotsSpwanCount
+        m_Overridden: 0
+      - m_Value: 768
+        m_Name: EmbersSpawnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: SparksSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.35
+        m_Name: EmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SmokeSpawnRadius
+        m_Overridden: 1
+      - m_Value: 24
+        m_Name: SmokeStripsSpwarnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateCoreSpwawnCount
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: CreateCoreSpawnRadius
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: CreateEmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 256
+        m_Name: CreateEmbersSpawnCount
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateEndSparksSpawnCount
+        m_Overridden: 1
+      - m_Value: 32
+        m_Name: EndSmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 2.5
+        m_Name: EndSmokeDuration
+        m_Overridden: 1
+      - m_Value: 0.75
+        m_Name: EndSmokeSpawnRadius
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.04, y: 0.08}
+        m_Name: EyeBeamWidthMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: FervorAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: FervorSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.3}
+        m_Name: CreateSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 4, y: 9}
+        m_Name: CreateSpikesGravityMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.8}
+        m_Name: CreateColumnAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: CreateColumnSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.5}
+        m_Name: CreateWavesLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 1.5}
+        m_Name: CreateWavesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateWavesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.25}
+        m_Name: EndSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 0.6}
+        m_Name: EndSpikesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: DotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.5}
+        m_Name: StreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: StreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.6}
+        m_Name: CreateGlowSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.75}
+        m_Name: CreateGlowLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.35, y: 0.65}
+        m_Name: CreateStreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateStreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1.25}
+        m_Name: CreateStreaksLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.8, y: 1.4}
+        m_Name: CreateHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndDotsLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: StripsAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.25, y: 0.5}
+        m_Name: StripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SmokeAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 0.8}
+        m_Name: SmokeLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmLifetimeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: SmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateSwarmLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 1.1}
+        m_Name: CreateSwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: CreateDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndStripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.01, y: 0.04}
+        m_Name: EmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 0.7}
+        m_Name: EmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: EmbersGravityYMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: SparksAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.05, y: 0.1}
+        m_Name: SparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SmokeStripsAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.2, y: 0.4}
+        m_Name: CreateCoreSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.02, y: 0.08}
+        m_Name: CreateEmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: CreateEmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: CreateEndSparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: EndSmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.45, y: 0.65}
+        m_Name: EndSmokeAlphaMinMax
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 355.9654, y: 279.1848, z: 356.8355}
+        m_Name: SkinnedMeshTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 77.60797, y: 0.91470337, z: 150.0273}
+        m_Name: SkinnedMeshTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: SkinnedMeshTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXCenterOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: LeftEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 6.3102135e-17, y: 1.4188018, z: -0.0022168104}
+        m_Name: LeftEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: LeftEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: RightEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 0.040001586, y: 1.5107601, z: 0.07351604}
+        m_Name: RightEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: RightEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.088, y: -0.041, z: 0.12}
+        m_Name: LeftEyeOffset
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_angles
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_position
+        m_Overridden: 0
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: HeadTransform_scale
+        m_Overridden: 0
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXCenterTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXCenterTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXCenterTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0, y: 0, z: 0}
+        m_Name: VFXRotation_angles
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: VFXRotation_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXRotation_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 90}
+        m_Name: VFXRotationOffset
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.12, y: 0.19, z: 0.16}
+        m_Name: RightEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.12, y: -0.19, z: 0.16}
+        m_Name: LeftEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.8, y: 0, z: 0}
+        m_Name: StripsVelocityOffset
+        m_Overridden: 0
+    m_Vector4f:
+      m_Array:
+      - m_Value: {x: 0, y: 20.865906, z: 10.888422, w: 1}
+        m_Name: SecondaryColor
+        m_Overridden: 1
+      - m_Value: {x: 0.08235294, y: 0.34901962, z: 0.18584536, w: 1}
+        m_Name: SmokeColor
+        m_Overridden: 1
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.20392162, g: 2.9960785, b: 1.6063828, a: 1}
+          key1: {r: 0.10980387, g: 1.4980392, b: 0.38190475, a: 1}
+          key2: {r: 0.054901935, g: 0.7490196, b: 0.11377768, a: 0}
+          key3: {r: 0.7490196, g: 0.101960786, b: 0.05490196, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 6197
+          ctime1: 32768
+          ctime2: 65535
+          ctime3: 58982
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: 1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 6.0084367, g: 3.8156726, b: 0.46142435, a: 1}
+          key2: {r: 11.984314, g: 8.083635, b: 1.8823531, a: 0}
+          key3: {r: 1.5529412, g: 1.2707176, b: 0.97566986, a: 0}
+          key4: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 9830
+          ctime2: 18013
+          ctime3: 43882
+          ctime4: 65535
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife 1
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 11.984314, g: 7.9686275, b: 1.882353, a: 1}
+          key2: {r: 1.5529412, g: 1.3254902, b: 0.972549, a: 0}
+          key3: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 18013
+          ctime2: 44265
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2
+        m_Name: SecondaryGradient
+        m_Overridden: 0
+    m_NamedObject:
+      m_Array:
+      - m_Value: {fileID: 0}
+        m_Name: SkinnedMesh
+        m_Overridden: 1
+    m_Bool:
+      m_Array: []
 --- !u!1 &166174961
 GameObject:
   m_ObjectHideFlags: 0
@@ -14465,6 +15108,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 296006635}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &312627987 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+    type: 3}
+  m_PrefabInstance: {fileID: 5177698785416928905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &322775161
 Mesh:
   m_ObjectHideFlags: 0
@@ -15236,6 +15885,649 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 364105264}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &387546492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 387546493}
+  - component: {fileID: 387546498}
+  - component: {fileID: 387546497}
+  - component: {fileID: 387546496}
+  - component: {fileID: 387546495}
+  - component: {fileID: 387546494}
+  m_Layer: 0
+  m_Name: Destructive Elements Decay VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &387546493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387546492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.54229075, y: -0.094766036, z: 0.24151134, w: -0.79913235}
+  m_LocalPosition: {x: -0.2819608, y: -1.670438, z: 1.1600672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1612178136}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &387546494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387546492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c780b64d7b0c941a7428ec7f33a80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &387546495
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387546492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdfea1f838247c40921a07afedde962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: SkinnedMeshTransform
+  Target: {fileID: 312627987}
+--- !u!114 &387546496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387546492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 387546495}
+  m_VisualEffect: {fileID: 387546498}
+--- !u!73398921 &387546497
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387546492}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!2083052967 &387546498
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387546492}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 6fcbcc3513c214940a314d841d747602, type: 3}
+  m_InitialEventName: create
+  m_InitialEventNameOverriden: 1
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 1.8
+        m_Name: VFXHeight
+        m_Overridden: 1
+      - m_Value: 448
+        m_Name: SwarmSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.1
+        m_Name: SwarmLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.35
+        m_Name: EyeGlowSize
+        m_Overridden: 0
+      - m_Value: 1.5
+        m_Name: SwarmDraughtMultiplier
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: SwarmGravityY
+        m_Overridden: 0
+      - m_Value: 32
+        m_Name: FervorSpawnRate
+        m_Overridden: 0
+      - m_Value: 128
+        m_Name: CreateSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: CreateSpikesLifetimeMax
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: CreateColumnSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.25
+        m_Name: CreateColumnWidth
+        m_Overridden: 0
+      - m_Value: 0.8
+        m_Name: CreateColumnLifetimeMax
+        m_Overridden: 0
+      - m_Value: 8
+        m_Name: CreateWavesSpawnCount
+        m_Overridden: 0
+      - m_Value: 1.2
+        m_Name: FervorLifetimeMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: EndSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.65
+        m_Name: EndGlowAlphaMax
+        m_Overridden: 0
+      - m_Value: 1.25
+        m_Name: EndGlowLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: EndCircleAlpha
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: SwarmAlphaMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: DotsSpawnRate
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: StreaksSpawnRate
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: StreaksSpawnRadius
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateGlowSpawnCount
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateStreaksSpawnCount
+        m_Overridden: 0
+      - m_Value: 20
+        m_Name: CreateHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 512
+        m_Name: EndDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: StripsTurbulenceIntensity
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: StripsSpwarnRate
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: SmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 0.28
+        m_Name: SwarmSizeMax
+        m_Overridden: 1
+      - m_Value: 80
+        m_Name: CreateSwarmSpawnCount
+        m_Overridden: 0
+      - m_Value: 256
+        m_Name: CreateDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndStripsSpawnCount
+        m_Overridden: 0
+      - m_Value: 384
+        m_Name: EndDotsSpwanCount
+        m_Overridden: 0
+      - m_Value: 768
+        m_Name: EmbersSpawnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: SparksSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.35
+        m_Name: EmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SmokeSpawnRadius
+        m_Overridden: 1
+      - m_Value: 24
+        m_Name: SmokeStripsSpwarnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateCoreSpwawnCount
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: CreateCoreSpawnRadius
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: CreateEmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 256
+        m_Name: CreateEmbersSpawnCount
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateEndSparksSpawnCount
+        m_Overridden: 1
+      - m_Value: 32
+        m_Name: EndSmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 2.5
+        m_Name: EndSmokeDuration
+        m_Overridden: 1
+      - m_Value: 0.75
+        m_Name: EndSmokeSpawnRadius
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.04, y: 0.08}
+        m_Name: EyeBeamWidthMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: FervorAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: FervorSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.3}
+        m_Name: CreateSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 4, y: 9}
+        m_Name: CreateSpikesGravityMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.8}
+        m_Name: CreateColumnAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: CreateColumnSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.5}
+        m_Name: CreateWavesLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 1.5}
+        m_Name: CreateWavesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateWavesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.25}
+        m_Name: EndSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 0.6}
+        m_Name: EndSpikesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: DotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.5}
+        m_Name: StreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: StreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.6}
+        m_Name: CreateGlowSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.75}
+        m_Name: CreateGlowLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.35, y: 0.65}
+        m_Name: CreateStreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateStreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1.25}
+        m_Name: CreateStreaksLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.8, y: 1.4}
+        m_Name: CreateHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndDotsLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: StripsAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.25, y: 0.5}
+        m_Name: StripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SmokeAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 0.8}
+        m_Name: SmokeLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmLifetimeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: SmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateSwarmLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 1.1}
+        m_Name: CreateSwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: CreateDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndStripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.01, y: 0.04}
+        m_Name: EmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 0.7}
+        m_Name: EmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: EmbersGravityYMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: SparksAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.05, y: 0.1}
+        m_Name: SparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SmokeStripsAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.2, y: 0.4}
+        m_Name: CreateCoreSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.02, y: 0.08}
+        m_Name: CreateEmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: CreateEmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: CreateEndSparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: EndSmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.45, y: 0.65}
+        m_Name: EndSmokeAlphaMinMax
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 355.9654, y: 279.1848, z: 356.8355}
+        m_Name: SkinnedMeshTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 77.60797, y: 0.91470337, z: 150.0273}
+        m_Name: SkinnedMeshTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: SkinnedMeshTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXCenterOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: LeftEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 6.3102135e-17, y: 1.4188018, z: -0.0022168104}
+        m_Name: LeftEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: LeftEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: RightEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 0.040001586, y: 1.5107601, z: 0.07351604}
+        m_Name: RightEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: RightEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.088, y: -0.041, z: 0.12}
+        m_Name: LeftEyeOffset
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_angles
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_position
+        m_Overridden: 0
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: HeadTransform_scale
+        m_Overridden: 0
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXCenterTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXCenterTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXCenterTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0, y: 0, z: 0}
+        m_Name: VFXRotation_angles
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: VFXRotation_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXRotation_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 90}
+        m_Name: VFXRotationOffset
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.12, y: 0.19, z: 0.16}
+        m_Name: RightEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.12, y: -0.19, z: 0.16}
+        m_Name: LeftEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.8, y: 0, z: 0}
+        m_Name: StripsVelocityOffset
+        m_Overridden: 0
+    m_Vector4f:
+      m_Array:
+      - m_Value: {x: 0, y: 20.865906, z: 10.888422, w: 1}
+        m_Name: SecondaryColor
+        m_Overridden: 1
+      - m_Value: {x: 0.08235294, y: 0.34901962, z: 0.18584536, w: 1}
+        m_Name: SmokeColor
+        m_Overridden: 1
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.20392162, g: 2.9960785, b: 1.6063828, a: 1}
+          key1: {r: 0.10980387, g: 1.4980392, b: 0.38190475, a: 1}
+          key2: {r: 0.054901935, g: 0.7490196, b: 0.11377768, a: 0}
+          key3: {r: 0.7490196, g: 0.101960786, b: 0.05490196, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 6197
+          ctime1: 32768
+          ctime2: 65535
+          ctime3: 58982
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: 1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 6.0084367, g: 3.8156726, b: 0.46142435, a: 1}
+          key2: {r: 11.984314, g: 8.083635, b: 1.8823531, a: 0}
+          key3: {r: 1.5529412, g: 1.2707176, b: 0.97566986, a: 0}
+          key4: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 9830
+          ctime2: 18013
+          ctime3: 43882
+          ctime4: 65535
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife 1
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 11.984314, g: 7.9686275, b: 1.882353, a: 1}
+          key2: {r: 1.5529412, g: 1.3254902, b: 0.972549, a: 0}
+          key3: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 18013
+          ctime2: 44265
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2
+        m_Name: SecondaryGradient
+        m_Overridden: 0
+    m_NamedObject:
+      m_Array:
+      - m_Value: {fileID: 0}
+        m_Name: SkinnedMesh
+        m_Overridden: 1
+    m_Bool:
+      m_Array: []
 --- !u!1001 &388476551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86924,6 +88216,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1355807931}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1368704259 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5280525723942926780, guid: efb61c518da76c348aa16edf69b4a415,
+    type: 3}
+  m_PrefabInstance: {fileID: 5177698785416928905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1377466494 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3184914134173059360, guid: 60b828e5434b8f34ea727552e8001c6b,
@@ -87479,6 +88777,649 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1393308659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1405967152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1405967153}
+  - component: {fileID: 1405967158}
+  - component: {fileID: 1405967157}
+  - component: {fileID: 1405967156}
+  - component: {fileID: 1405967155}
+  - component: {fileID: 1405967154}
+  m_Layer: 0
+  m_Name: Destructive Elements Decay VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1405967153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405967152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.54229075, y: -0.094766036, z: 0.24151134, w: -0.79913235}
+  m_LocalPosition: {x: -0.2819608, y: -1.670438, z: 1.1600672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2101103267}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405967154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405967152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c780b64d7b0c941a7428ec7f33a80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1405967155
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405967152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdfea1f838247c40921a07afedde962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: SkinnedMeshTransform
+  Target: {fileID: 312627987}
+--- !u!114 &1405967156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405967152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 1405967155}
+  m_VisualEffect: {fileID: 1405967158}
+--- !u!73398921 &1405967157
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405967152}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!2083052967 &1405967158
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405967152}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 6fcbcc3513c214940a314d841d747602, type: 3}
+  m_InitialEventName: create
+  m_InitialEventNameOverriden: 1
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 1.8
+        m_Name: VFXHeight
+        m_Overridden: 1
+      - m_Value: 448
+        m_Name: SwarmSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.1
+        m_Name: SwarmLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.35
+        m_Name: EyeGlowSize
+        m_Overridden: 0
+      - m_Value: 1.5
+        m_Name: SwarmDraughtMultiplier
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: SwarmGravityY
+        m_Overridden: 0
+      - m_Value: 32
+        m_Name: FervorSpawnRate
+        m_Overridden: 0
+      - m_Value: 128
+        m_Name: CreateSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: CreateSpikesLifetimeMax
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: CreateColumnSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.25
+        m_Name: CreateColumnWidth
+        m_Overridden: 0
+      - m_Value: 0.8
+        m_Name: CreateColumnLifetimeMax
+        m_Overridden: 0
+      - m_Value: 8
+        m_Name: CreateWavesSpawnCount
+        m_Overridden: 0
+      - m_Value: 1.2
+        m_Name: FervorLifetimeMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: EndSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.65
+        m_Name: EndGlowAlphaMax
+        m_Overridden: 0
+      - m_Value: 1.25
+        m_Name: EndGlowLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: EndCircleAlpha
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: SwarmAlphaMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: DotsSpawnRate
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: StreaksSpawnRate
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: StreaksSpawnRadius
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateGlowSpawnCount
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateStreaksSpawnCount
+        m_Overridden: 0
+      - m_Value: 20
+        m_Name: CreateHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 512
+        m_Name: EndDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: StripsTurbulenceIntensity
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: StripsSpwarnRate
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: SmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 0.28
+        m_Name: SwarmSizeMax
+        m_Overridden: 1
+      - m_Value: 80
+        m_Name: CreateSwarmSpawnCount
+        m_Overridden: 0
+      - m_Value: 256
+        m_Name: CreateDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndStripsSpawnCount
+        m_Overridden: 0
+      - m_Value: 384
+        m_Name: EndDotsSpwanCount
+        m_Overridden: 0
+      - m_Value: 768
+        m_Name: EmbersSpawnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: SparksSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.35
+        m_Name: EmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SmokeSpawnRadius
+        m_Overridden: 1
+      - m_Value: 24
+        m_Name: SmokeStripsSpwarnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateCoreSpwawnCount
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: CreateCoreSpawnRadius
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: CreateEmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 256
+        m_Name: CreateEmbersSpawnCount
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateEndSparksSpawnCount
+        m_Overridden: 1
+      - m_Value: 32
+        m_Name: EndSmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 2.5
+        m_Name: EndSmokeDuration
+        m_Overridden: 1
+      - m_Value: 0.75
+        m_Name: EndSmokeSpawnRadius
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.04, y: 0.08}
+        m_Name: EyeBeamWidthMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: FervorAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: FervorSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.3}
+        m_Name: CreateSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 4, y: 9}
+        m_Name: CreateSpikesGravityMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.8}
+        m_Name: CreateColumnAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: CreateColumnSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.5}
+        m_Name: CreateWavesLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 1.5}
+        m_Name: CreateWavesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateWavesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.25}
+        m_Name: EndSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 0.6}
+        m_Name: EndSpikesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: DotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.5}
+        m_Name: StreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: StreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.6}
+        m_Name: CreateGlowSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.75}
+        m_Name: CreateGlowLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.35, y: 0.65}
+        m_Name: CreateStreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateStreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1.25}
+        m_Name: CreateStreaksLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.8, y: 1.4}
+        m_Name: CreateHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndDotsLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: StripsAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.25, y: 0.5}
+        m_Name: StripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SmokeAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 0.8}
+        m_Name: SmokeLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmLifetimeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: SmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateSwarmLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 1.1}
+        m_Name: CreateSwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: CreateDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndStripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.01, y: 0.04}
+        m_Name: EmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 0.7}
+        m_Name: EmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: EmbersGravityYMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: SparksAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.05, y: 0.1}
+        m_Name: SparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SmokeStripsAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.2, y: 0.4}
+        m_Name: CreateCoreSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.02, y: 0.08}
+        m_Name: CreateEmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: CreateEmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: CreateEndSparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: EndSmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.45, y: 0.65}
+        m_Name: EndSmokeAlphaMinMax
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 355.9654, y: 279.1848, z: 356.8355}
+        m_Name: SkinnedMeshTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 77.60797, y: 0.91470337, z: 150.0273}
+        m_Name: SkinnedMeshTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: SkinnedMeshTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXCenterOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: LeftEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 6.3102135e-17, y: 1.4188018, z: -0.0022168104}
+        m_Name: LeftEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: LeftEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: RightEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 0.040001586, y: 1.5107601, z: 0.07351604}
+        m_Name: RightEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: RightEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.088, y: -0.041, z: 0.12}
+        m_Name: LeftEyeOffset
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_angles
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_position
+        m_Overridden: 0
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: HeadTransform_scale
+        m_Overridden: 0
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXCenterTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXCenterTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXCenterTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0, y: 0, z: 0}
+        m_Name: VFXRotation_angles
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: VFXRotation_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXRotation_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 90}
+        m_Name: VFXRotationOffset
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.12, y: 0.19, z: 0.16}
+        m_Name: RightEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.12, y: -0.19, z: 0.16}
+        m_Name: LeftEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.8, y: 0, z: 0}
+        m_Name: StripsVelocityOffset
+        m_Overridden: 0
+    m_Vector4f:
+      m_Array:
+      - m_Value: {x: 0, y: 20.865906, z: 10.888422, w: 1}
+        m_Name: SecondaryColor
+        m_Overridden: 1
+      - m_Value: {x: 0.08235294, y: 0.34901962, z: 0.18584536, w: 1}
+        m_Name: SmokeColor
+        m_Overridden: 1
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.20392162, g: 2.9960785, b: 1.6063828, a: 1}
+          key1: {r: 0.10980387, g: 1.4980392, b: 0.38190475, a: 1}
+          key2: {r: 0.054901935, g: 0.7490196, b: 0.11377768, a: 0}
+          key3: {r: 0.7490196, g: 0.101960786, b: 0.05490196, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 6197
+          ctime1: 32768
+          ctime2: 65535
+          ctime3: 58982
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: 1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 6.0084367, g: 3.8156726, b: 0.46142435, a: 1}
+          key2: {r: 11.984314, g: 8.083635, b: 1.8823531, a: 0}
+          key3: {r: 1.5529412, g: 1.2707176, b: 0.97566986, a: 0}
+          key4: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 9830
+          ctime2: 18013
+          ctime3: 43882
+          ctime4: 65535
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife 1
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 11.984314, g: 7.9686275, b: 1.882353, a: 1}
+          key2: {r: 1.5529412, g: 1.3254902, b: 0.972549, a: 0}
+          key3: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 18013
+          ctime2: 44265
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2
+        m_Name: SecondaryGradient
+        m_Overridden: 0
+    m_NamedObject:
+      m_Array:
+      - m_Value: {fileID: 0}
+        m_Name: SkinnedMesh
+        m_Overridden: 1
+    m_Bool:
+      m_Array: []
 --- !u!1001 &1410586418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89764,6 +91705,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1610172639}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1612178135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612178136}
+  - component: {fileID: 1612178138}
+  - component: {fileID: 1612178137}
+  m_Layer: 0
+  m_Name: Ghost Bone spear (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612178136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612178135}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 387546493}
+  m_Father: {fileID: 2069112483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1612178137
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612178135}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: eeff809ec8d584842bc3466d30c991f5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1612178138
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612178135}
+  m_Mesh: {fileID: 8787088511725160739, guid: 45a103be110092c41b7419a7d462f9d6, type: 3}
 --- !u!1001 &1624553842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95938,6 +97963,649 @@ Transform:
   m_Children: []
   m_Father: {fileID: 878258078287391132}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1729984660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729984661}
+  - component: {fileID: 1729984666}
+  - component: {fileID: 1729984665}
+  - component: {fileID: 1729984664}
+  - component: {fileID: 1729984663}
+  - component: {fileID: 1729984662}
+  m_Layer: 0
+  m_Name: Destructive Elements Decay VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1729984661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729984660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.4287212, y: -0.11649938, z: -0.35650164, w: 0.82190794}
+  m_LocalPosition: {x: -0.64624107, y: -2.670933, z: 0.58713204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2183199677156255749}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729984662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729984660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c780b64d7b0c941a7428ec7f33a80f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1729984663
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729984660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdfea1f838247c40921a07afedde962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: SkinnedMeshTransform
+  Target: {fileID: 312627987}
+--- !u!114 &1729984664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729984660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 1729984663}
+  m_VisualEffect: {fileID: 1729984666}
+--- !u!73398921 &1729984665
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729984660}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!2083052967 &1729984666
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729984660}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 6fcbcc3513c214940a314d841d747602, type: 3}
+  m_InitialEventName: create
+  m_InitialEventNameOverriden: 1
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 1.8
+        m_Name: VFXHeight
+        m_Overridden: 1
+      - m_Value: 448
+        m_Name: SwarmSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.1
+        m_Name: SwarmLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.35
+        m_Name: EyeGlowSize
+        m_Overridden: 0
+      - m_Value: 1.5
+        m_Name: SwarmDraughtMultiplier
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: SwarmGravityY
+        m_Overridden: 0
+      - m_Value: 32
+        m_Name: FervorSpawnRate
+        m_Overridden: 0
+      - m_Value: 128
+        m_Name: CreateSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: CreateSpikesLifetimeMax
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: CreateColumnSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.25
+        m_Name: CreateColumnWidth
+        m_Overridden: 0
+      - m_Value: 0.8
+        m_Name: CreateColumnLifetimeMax
+        m_Overridden: 0
+      - m_Value: 8
+        m_Name: CreateWavesSpawnCount
+        m_Overridden: 0
+      - m_Value: 1.2
+        m_Name: FervorLifetimeMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: EndSpikesSpawnCount
+        m_Overridden: 0
+      - m_Value: 0.65
+        m_Name: EndGlowAlphaMax
+        m_Overridden: 0
+      - m_Value: 1.25
+        m_Name: EndGlowLifetimeMax
+        m_Overridden: 0
+      - m_Value: 0.5
+        m_Name: EndCircleAlpha
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: SwarmAlphaMax
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: DotsSpawnRate
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: StreaksSpawnRate
+        m_Overridden: 0
+      - m_Value: 0.2
+        m_Name: StreaksSpawnRadius
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateGlowSpawnCount
+        m_Overridden: 0
+      - m_Value: 64
+        m_Name: CreateStreaksSpawnCount
+        m_Overridden: 0
+      - m_Value: 20
+        m_Name: CreateHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 512
+        m_Name: EndDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndHemispheresSpawnCount
+        m_Overridden: 0
+      - m_Value: 1
+        m_Name: StripsTurbulenceIntensity
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: StripsSpwarnRate
+        m_Overridden: 0
+      - m_Value: 48
+        m_Name: SmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 0.28
+        m_Name: SwarmSizeMax
+        m_Overridden: 1
+      - m_Value: 80
+        m_Name: CreateSwarmSpawnCount
+        m_Overridden: 0
+      - m_Value: 256
+        m_Name: CreateDotsSpawnCount
+        m_Overridden: 0
+      - m_Value: 16
+        m_Name: EndStripsSpawnCount
+        m_Overridden: 0
+      - m_Value: 384
+        m_Name: EndDotsSpwanCount
+        m_Overridden: 0
+      - m_Value: 768
+        m_Name: EmbersSpawnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: SparksSpawnRate
+        m_Overridden: 1
+      - m_Value: 1.35
+        m_Name: EmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SmokeSpawnRadius
+        m_Overridden: 1
+      - m_Value: 24
+        m_Name: SmokeStripsSpwarnRate
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateCoreSpwawnCount
+        m_Overridden: 1
+      - m_Value: 0.5
+        m_Name: CreateCoreSpawnRadius
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: CreateEmbersLifetimeMax
+        m_Overridden: 1
+      - m_Value: 256
+        m_Name: CreateEmbersSpawnCount
+        m_Overridden: 1
+      - m_Value: 128
+        m_Name: CreateEndSparksSpawnCount
+        m_Overridden: 1
+      - m_Value: 32
+        m_Name: EndSmokeSpawnRate
+        m_Overridden: 1
+      - m_Value: 2.5
+        m_Name: EndSmokeDuration
+        m_Overridden: 1
+      - m_Value: 0.75
+        m_Name: EndSmokeSpawnRadius
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array:
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.04, y: 0.08}
+        m_Name: EyeBeamWidthMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: FervorAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: FervorSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.3}
+        m_Name: CreateSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 4, y: 9}
+        m_Name: CreateSpikesGravityMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.8}
+        m_Name: CreateColumnAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.8}
+        m_Name: CreateColumnSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.5}
+        m_Name: CreateWavesLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 1.5}
+        m_Name: CreateWavesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateWavesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.25}
+        m_Name: EndSpikesSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.3, y: 0.6}
+        m_Name: EndSpikesAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: DotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.15, y: 0.5}
+        m_Name: StreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: StreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.6}
+        m_Name: CreateGlowSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 0.75}
+        m_Name: CreateGlowLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.35, y: 0.65}
+        m_Name: CreateStreaksSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: CreateStreaksAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1.25}
+        m_Name: CreateStreaksLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.8, y: 1.4}
+        m_Name: CreateHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndHemispheresSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: EndDotsLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: StripsAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.25, y: 0.5}
+        m_Name: StripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.2, y: 0.6}
+        m_Name: SmokeAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmAlphaMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 0.8}
+        m_Name: SmokeLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SwarmLifetimeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: SmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.65, y: 1}
+        m_Name: CreateSwarmLifetimeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.6, y: 1.1}
+        m_Name: CreateSwarmSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: CreateDotsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.1, y: 0.2}
+        m_Name: EndStripsSizeMinMax
+        m_Overridden: 0
+      - m_Value: {x: 0.01, y: 0.04}
+        m_Name: EmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 0.7}
+        m_Name: EmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: EmbersGravityYMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.1, y: 1}
+        m_Name: SparksAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.05, y: 0.1}
+        m_Name: SparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: SmokeStripsAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.2, y: 0.4}
+        m_Name: CreateCoreSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.02, y: 0.08}
+        m_Name: CreateEmbersSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 1}
+        m_Name: CreateEmbersAlphaMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.06, y: 0.14}
+        m_Name: CreateEndSparksSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.4, y: 0.8}
+        m_Name: EndSmokeSizeMinMax
+        m_Overridden: 1
+      - m_Value: {x: 0.45, y: 0.65}
+        m_Name: EndSmokeAlphaMinMax
+        m_Overridden: 1
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 355.9654, y: 279.1848, z: 356.8355}
+        m_Name: SkinnedMeshTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 77.60797, y: 0.91470337, z: 150.0273}
+        m_Name: SkinnedMeshTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: SkinnedMeshTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXCenterOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: LeftEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 6.3102135e-17, y: 1.4188018, z: -0.0022168104}
+        m_Name: LeftEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: LeftEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.000000603709, y: 0, z: 270}
+        m_Name: RightEyeTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: 0.040001586, y: 1.5107601, z: 0.07351604}
+        m_Name: RightEyeTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: RightEyeTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0.088, y: -0.041, z: 0.12}
+        m_Name: LeftEyeOffset
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_angles
+        m_Overridden: 0
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: HeadTransform_position
+        m_Overridden: 0
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: HeadTransform_scale
+        m_Overridden: 0
+      - m_Value: {x: 356.61206, y: 0, z: 270}
+        m_Name: VFXCenterTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -1.7617678e-17, y: 1.0314258, z: 0.042659335}
+        m_Name: VFXCenterTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXCenterTransform_scale
+        m_Overridden: 1
+      - m_Value: {x: -0, y: 0, z: 0}
+        m_Name: VFXRotation_angles
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: VFXRotation_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: VFXRotation_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 90}
+        m_Name: VFXRotationOffset
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0.1, z: 0}
+        m_Name: VFXOffset
+        m_Overridden: 1
+      - m_Value: {x: -0.12, y: 0.19, z: 0.16}
+        m_Name: RightEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.12, y: -0.19, z: 0.16}
+        m_Name: LeftEyeBeamEndOffset
+        m_Overridden: 0
+      - m_Value: {x: -0.8, y: 0, z: 0}
+        m_Name: StripsVelocityOffset
+        m_Overridden: 0
+    m_Vector4f:
+      m_Array:
+      - m_Value: {x: 0, y: 20.865906, z: 10.888422, w: 1}
+        m_Name: SecondaryColor
+        m_Overridden: 1
+      - m_Value: {x: 0.08235294, y: 0.34901962, z: 0.18584536, w: 1}
+        m_Name: SmokeColor
+        m_Overridden: 1
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.20392162, g: 2.9960785, b: 1.6063828, a: 1}
+          key1: {r: 0.10980387, g: 1.4980392, b: 0.38190475, a: 1}
+          key2: {r: 0.054901935, g: 0.7490196, b: 0.11377768, a: 0}
+          key3: {r: 0.7490196, g: 0.101960786, b: 0.05490196, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 6197
+          ctime1: 32768
+          ctime2: 65535
+          ctime3: 58982
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: 1
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 6.0084367, g: 3.8156726, b: 0.46142435, a: 1}
+          key2: {r: 11.984314, g: 8.083635, b: 1.8823531, a: 0}
+          key3: {r: 1.5529412, g: 1.2707176, b: 0.97566986, a: 0}
+          key4: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 9830
+          ctime2: 18013
+          ctime3: 43882
+          ctime4: 65535
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 2
+        m_Name: ColorOverLife 1
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 5.2164755, g: 3.2500553, b: 0.2731139, a: 1}
+          key1: {r: 11.984314, g: 7.9686275, b: 1.882353, a: 1}
+          key2: {r: 1.5529412, g: 1.3254902, b: 0.972549, a: 0}
+          key3: {r: 0.7490196, g: 0.6431373, b: 0.47058824, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 18013
+          ctime2: 44265
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2
+        m_Name: SecondaryGradient
+        m_Overridden: 0
+    m_NamedObject:
+      m_Array:
+      - m_Value: {fileID: 1368704259}
+        m_Name: SkinnedMesh
+        m_Overridden: 1
+    m_Bool:
+      m_Array: []
 --- !u!1 &1733330555
 GameObject:
   m_ObjectHideFlags: 0
@@ -104505,12 +107173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa455dbf488eeca44940f5c3a665029f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HasEffect: 0
-  EffectOwner: {fileID: 0}
-  TurnCount: 0
-  SkeletonGrab_IAS: {fileID: 0}
-  SkeletonObject: {fileID: 0}
-  grabbedTarget: {fileID: 0}
 --- !u!114 &2046127002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105013,6 +107675,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2060720254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2069112482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069112483}
+  m_Layer: 8
+  m_Name: Bone Spears
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069112483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069112482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000037748944, y: -0, z: 1.7763566e-15, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 543450652652248026}
+  - {fileID: 2101103267}
+  - {fileID: 1612178136}
+  m_Father: {fileID: 7823975018350207407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2075121782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105320,6 +108016,90 @@ Transform:
   - {fileID: 485461714}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2101103266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2101103267}
+  - component: {fileID: 2101103269}
+  - component: {fileID: 2101103268}
+  m_Layer: 0
+  m_Name: Ghost Bone spear (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2101103267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101103266}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1405967153}
+  m_Father: {fileID: 2069112483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2101103268
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101103266}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: eeff809ec8d584842bc3466d30c991f5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2101103269
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101103266}
+  m_Mesh: {fileID: 8787088511725160739, guid: 45a103be110092c41b7419a7d462f9d6, type: 3}
 --- !u!4 &14590562344582259
 Transform:
   m_ObjectHideFlags: 0
@@ -107179,6 +109959,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4753661904963412759}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &543450652652248026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149003239776}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 152935861}
+  m_Father: {fileID: 2069112483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &546860862863697016
 Transform:
   m_ObjectHideFlags: 0
@@ -107980,6 +110776,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!1 &779645352724779793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2183199677156255749}
+  m_Layer: 0
+  m_Name: Destructive Elements Decay Skinned Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!33 &780462116696470817
 MeshFilter:
@@ -113205,6 +116017,24 @@ GameObject:
   - component: {fileID: 1711813855297395754}
   m_Layer: 0
   m_Name: WallTorch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &919132149003239776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543450652652248026}
+  - component: {fileID: 3469287836635993215}
+  - component: {fileID: 1711813856064790709}
+  m_Layer: 0
+  m_Name: Ghost Bone spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122914,6 +125744,48 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!23 &1711813856064790709
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149003239776}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: eeff809ec8d584842bc3466d30c991f5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!4 &1712668632971416126
 Transform:
   m_ObjectHideFlags: 0
@@ -124458,6 +127330,22 @@ Transform:
   m_Children:
   - {fileID: 8095517831213743021}
   m_Father: {fileID: 1438501499}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2183199677156255749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779645352724779793}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1729984661}
+  m_Father: {fileID: 312627987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2186394623538058726
 GameObject:
@@ -163091,6 +165979,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!33 &3469287836635993215
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149003239776}
+  m_Mesh: {fileID: 8787088511725160739, guid: 45a103be110092c41b7419a7d462f9d6, type: 3}
 --- !u!33 &3469287837948913888
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -183847,16 +186743,521 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16642268}
     m_Modifications:
+    - target: {fileID: 148232635798980396, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.50245684
+      objectReference: {fileID: 0}
+    - target: {fileID: 148232635798980396, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49486703
+      objectReference: {fileID: 0}
+    - target: {fileID: 148232635798980396, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.51131475
+      objectReference: {fileID: 0}
+    - target: {fileID: 148232635798980396, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.49112228
+      objectReference: {fileID: 0}
+    - target: {fileID: 154267215059509407, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8567397
+      objectReference: {fileID: 0}
+    - target: {fileID: 154267215059509407, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5037996
+      objectReference: {fileID: 0}
+    - target: {fileID: 154267215059509407, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.012095653
+      objectReference: {fileID: 0}
+    - target: {fileID: 154267215059509407, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10971238
+      objectReference: {fileID: 0}
     - target: {fileID: 278052916022459049, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_Name
       value: Roud Rigged Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 361305572733061070, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9717337
+      objectReference: {fileID: 0}
+    - target: {fileID: 361305572733061070, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.01432816
+      objectReference: {fileID: 0}
+    - target: {fileID: 361305572733061070, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.05591085
+      objectReference: {fileID: 0}
+    - target: {fileID: 361305572733061070, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.22891583
+      objectReference: {fileID: 0}
+    - target: {fileID: 383281948691709975, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3d607b02096bfe340ba861b2fe76f190, type: 2}
+    - target: {fileID: 506978839952130765, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98974437
+      objectReference: {fileID: 0}
+    - target: {fileID: 506978839952130765, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.09764482
+      objectReference: {fileID: 0}
+    - target: {fileID: 506978839952130765, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.02271619
+      objectReference: {fileID: 0}
+    - target: {fileID: 506978839952130765, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10176231
+      objectReference: {fileID: 0}
+    - target: {fileID: 524982612899817844, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0490803
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378900007002337478, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9925798
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378900007002337478, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11255295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378900007002337478, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04487383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378900007002337478, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.010172841
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554421855884910709, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9343947
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554421855884910709, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.3327183
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554421855884910709, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00097337336
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554421855884910709, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.12729542
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668931714319880479, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668931714319880479, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670949925271300974, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7121763
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670949925271300974, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6583893
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670949925271300974, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0007555855
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670949925271300974, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.24357346
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722115605700475687, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.66283154
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722115605700475687, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.58987474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722115605700475687, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.33194682
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722115605700475687, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.3201772
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432995871104062177, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9339709
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432995871104062177, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.34929514
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432995871104062177, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.02189682
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432995871104062177, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.072192125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436751727721044072, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9981332
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436751727721044072, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.024959575
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436751727721044072, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.05124252
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436751727721044072, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.021942193
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545346258472843084, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9956072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545346258472843084, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08149519
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545346258472843084, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.043048825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545346258472843084, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.01648187
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579039629467386668, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9235136
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579039629467386668, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.30870637
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579039629467386668, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.21590097
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579039629467386668, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.072178766
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631550004606995469, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.94296056
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631550004606995469, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.18750598
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631550004606995469, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.031009937
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631550004606995469, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.27332258
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.13962033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.056581322
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.036550023
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.08310197
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.09699759
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0502175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811375582628009405, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.99053717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000020488924
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.38287318
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000000004656605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.80037725
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5580062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.21690567
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933319748326983586, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.03126331
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.012187069
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9129144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.094252646
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9643637
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.04118792
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.26077384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.017412832
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219199398288704533, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9637768
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219199398288704533, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.10410497
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219199398288704533, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.24518487
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219199398288704533, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.013441419
       objectReference: {fileID: 0}
     - target: {fileID: 3255496025928121792, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: mainPlayer
       value: 
       objectReference: {fileID: 1800869811}
+    - target: {fileID: 3291489050177312245, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9952575
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291489050177312245, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.03751794
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291489050177312245, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.062240448
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291489050177312245, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0646616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688108076806750881, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9507001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688108076806750881, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.28618783
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688108076806750881, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04926117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688108076806750881, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.10880805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798731020904845660, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33417982
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798731020904845660, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5334654
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798731020904845660, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.47011083
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798731020904845660, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.61865526
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891246287190308307, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7028746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891246287190308307, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6711272
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891246287190308307, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0051808855
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891246287190308307, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.23564558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017233310400301589, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9957962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017233310400301589, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.077138126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017233310400301589, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04895986
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017233310400301589, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0065344856
+      objectReference: {fileID: 0}
     - target: {fileID: 4125902640138331067, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: isoCamera
@@ -183867,15 +187268,595 @@ PrefabInstance:
       propertyPath: tpsCamera
       value: 
       objectReference: {fileID: 8686788673576922632}
+    - target: {fileID: 4139939081900884864, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.81664765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139939081900884864, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.23850073
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139939081900884864, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.24882863
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139939081900884864, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.46291277
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237572446974647457, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9921301
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237572446974647457, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11342909
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237572446974647457, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.052267153
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237572446974647457, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.008941708
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262201856171335815, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92582685
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262201856171335815, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.30120257
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262201856171335815, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.21710166
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262201856171335815, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.070630856
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360588588765515728, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.987814
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360588588765515728, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.14534777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360588588765515728, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04785996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360588588765515728, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.028407263
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744737085252457471, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8861991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744737085252457471, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08919875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744737085252457471, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.3830758
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744737085252457471, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.24484211
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000000018626386
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4073272
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000004656613
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99818724
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.04306513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04013748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815588461574340750, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.012518346
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944199521420456675, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9945533
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944199521420456675, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08291798
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944199521420456675, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0319033
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944199521420456675, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.054502737
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000000018626315
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.38288468
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000000004656613
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.89584
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.43369266
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.09045304
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026007318109289582, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.034636956
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179927521223520229, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9976941
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179927521223520229, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.043818448
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179927521223520229, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.035324696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179927521223520229, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.037929747
+      objectReference: {fileID: 0}
     - target: {fileID: 5584881045413275799, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 1802930871}
+    - target: {fileID: 5785202861059856933, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.75061417
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785202861059856933, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.63161033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785202861059856933, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.020503992
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785202861059856933, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.1929416
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901847864477866504, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9512754
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901847864477866504, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.2964303
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901847864477866504, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.01915007
+      objectReference: {fileID: 0}
+    - target: {fileID: 5901847864477866504, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0826894
+      objectReference: {fileID: 0}
     - target: {fileID: 6030752268258891936, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: GlobalObjectIdHash
       value: 978076453
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056830996309605545, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98928016
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056830996309605545, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.13701838
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056830996309605545, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.048543878
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056830996309605545, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.013935441
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176119335586983437, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.72346157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176119335586983437, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6504697
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176119335586983437, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.03638001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176119335586983437, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.22840564
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292623710540537314, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9008571
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292623710540537314, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.08070926
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292623710540537314, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.03876959
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292623710540537314, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.42478168
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423591169559835003, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7553072
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423591169559835003, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.61797774
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423591169559835003, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.04332566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423591169559835003, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.21386307
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434350068486908322, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9736311
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434350068486908322, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.16389285
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434350068486908322, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0068715787
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434350068486908322, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.15853874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494188930912804344, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.6995968
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494188930912804344, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.68231964
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494188930912804344, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.015007674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494188930912804344, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.21161063
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812732712006664559, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.994771
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812732712006664559, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.04250615
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812732712006664559, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.06325547
+      objectReference: {fileID: 0}
+    - target: {fileID: 6812732712006664559, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.067989945
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921236367418444714, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.93238634
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921236367418444714, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.102640465
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921236367418444714, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.34419435
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921236367418444714, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.040632628
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947050516067593788, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7281523
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947050516067593788, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.647319
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947050516067593788, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.03190046
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947050516067593788, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.22305803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973350691747157036, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98680234
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973350691747157036, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1512544
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973350691747157036, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.053528555
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973350691747157036, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.021864971
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341909922878970779, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7005679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341909922878970779, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.67264897
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341909922878970779, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00609014
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341909922878970779, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.2381406
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463095543255969715, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9936499
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463095543255969715, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.054142553
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463095543255969715, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.09278898
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463095543255969715, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.033448357
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313300292986283647, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9884325
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313300292986283647, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.14302368
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313300292986283647, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.044204682
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313300292986283647, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.024318218
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.13962033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.056581322
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.024805961
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.10155151
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.018092394
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.050766792
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452319372484052599, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9933694
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000012107161
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.40767273
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000000018626413
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9758831
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.20537971
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.061981723
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606322730116793541, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.04036849
       objectReference: {fileID: 0}
     - target: {fileID: 8683327368853074611, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
@@ -183927,9 +187908,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8750956554874498755, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9456736
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750956554874498755, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.31146374
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750956554874498755, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.07549258
+      objectReference: {fileID: 0}
+    - target: {fileID: 8750956554874498755, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.054705314
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904026086607798479, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9893266
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904026086607798479, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.019820003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904026086607798479, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.12939589
+      objectReference: {fileID: 0}
+    - target: {fileID: 8904026086607798479, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.064006485
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8683327368853074611, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2069112483}
+    - targetCorrespondingSourceObject: {fileID: 2972268912955383165, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2183199677156255749}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb61c518da76c348aa16edf69b4a415, type: 3}
 --- !u!4 &5180619933478143749
