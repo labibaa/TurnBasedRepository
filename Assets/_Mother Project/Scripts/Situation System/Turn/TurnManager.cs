@@ -460,7 +460,7 @@ public class TurnManager : MonoBehaviour
             TemporaryStats playerTempStat = players[i].GetComponent<TemporaryStats>();
             playerTempStat.IsBlockActive = false;
             playerTempStat.IsDodgeActive = false;
-            playerTempStat.IsThirdRatePerformanceActive = false;
+            playerTempStat.IsImbuementActive = false;
             playerTempStat.IsCounterActive = false;
             playerTempStat.CurrentDamageMultiplier = players[i].GetComponent<CharacterBaseClasses>().DamageMultiplier;
             if (playerTempStat.CompareTag("Player"))

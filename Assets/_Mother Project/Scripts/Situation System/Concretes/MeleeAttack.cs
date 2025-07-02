@@ -35,12 +35,12 @@ public class MeleeAttack : ICommand
 
         float actionAccuracy = meleeAttack.ActionAccuracy;
 
-        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsBlockActive) // imbuement
+        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsImbuementActive) // imbuement
         {
-            ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "VenomCloud");
-            ICommand venomCloud = new VenomCloud(player, target, playerTempStats, targetTempStats, venomScriptable);
-            venomCloud.Execute();
-            playerTempStats.IsBlockActive = false;
+            ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Stab");
+            ICommand puncture = new Puncture(player, target, playerTempStats, targetTempStats, venomScriptable, "melee");
+            puncture.Execute();
+            playerTempStats.IsImbuementActive = false;
         }
 
         if (targetTempStats.IsDodgeActive)

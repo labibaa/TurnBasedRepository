@@ -29,7 +29,7 @@ public class Imbuement : ICommand
     public async UniTask Execute()
     {
 
-            playerTempStats.IsBlockActive = true;
+            playerTempStats.IsImbuementActive = true;
 
             await HandleAnimation();
 
