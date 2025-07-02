@@ -557,7 +557,7 @@ public class ActionArchive : MonoBehaviour
         }
         else
         {
-            ICommand punctureAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, punctureScriptable, "SingleMelee");
+            ICommand punctureAction = new Puncture(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, punctureScriptable, "SingleMelee");
             ActionTemplate(punctureScriptable, punctureAction);
         }
     }
