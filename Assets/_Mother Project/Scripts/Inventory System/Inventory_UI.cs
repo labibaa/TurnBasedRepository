@@ -16,6 +16,7 @@ public class Inventory_UI : MonoBehaviour
     [SerializeField] GameObject storeitemDetailPanel_Prefab;
 
     [SerializeField] private TextMeshProUGUI currencyText;
+    [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private Image mainCharacterSprite;
     [SerializeField] private Image secondaryCharacterSprite;
 
@@ -26,14 +27,15 @@ public class Inventory_UI : MonoBehaviour
         ShowCurrency();
         ShowMainCharacterSprite();
         ShowSecondaryCharacterSprite();
-        
+        RefreshInventoryUI();
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             RefreshStoreUI();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            RefreshInventoryUI();
+            
         }
 
         
@@ -45,23 +47,26 @@ public class Inventory_UI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (var item in InventoryManager.Instance.GetCurrentInventory())
-        {
-            Button ItemButton = Instantiate(inventoryItem_buttonPrefab,inventoryItem_panel);
-            TextMeshProUGUI SizeComponent = ItemButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();
-            Image imgComponent = ItemButton.transform.Find("ItemImg").GetComponent<Image>();
-            imgComponent.sprite = item.itemClass.itemIcon;
-            if (SizeComponent != null)
-            {
-                SizeComponent.text = item.StackSize.ToString();
-            }
-            ItemButton.onClick.AddListener(() =>
-            {
-                /// CurrencySystem.instance.ItemToAdd(item.itemClass);
-                ItemDetails(item);
-            });
 
+        var inventory = InventoryManager.Instance.GetCurrentInventory();
+        if (inventory == null || inventory.Count == 0) return;
+
+        InventoryItem latestItem = inventory[inventory.Count - 1];
+
+        Button ItemButton = Instantiate(inventoryItem_buttonPrefab, inventoryItem_panel);
+        TextMeshProUGUI SizeComponent = ItemButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();
+        Image imgComponent = ItemButton.transform.Find("ItemImg").GetComponent<Image>();
+        imgComponent.sprite = latestItem.itemClass.itemIcon;
+
+        if (SizeComponent != null)
+        {
+            SizeComponent.text = latestItem.StackSize.ToString();
         }
+
+        ItemButton.onClick.AddListener(() =>
+        {
+            ItemDetails(latestItem);
+        });
     }
 
 
@@ -155,6 +160,13 @@ public class Inventory_UI : MonoBehaviour
             var avatar = currentMC.GetComponent<TemporaryStats>().avatarHead;
             if (avatar != null)
                 mainCharacterSprite.sprite = avatar;
+
+        }
+        if (currentMC != null && playerName != null)
+        {
+            var name = currentMC.GetComponent<CharacterBaseClasses>().characterName;
+            if (name != null)
+                playerName.text = name;
 
         }
     }
