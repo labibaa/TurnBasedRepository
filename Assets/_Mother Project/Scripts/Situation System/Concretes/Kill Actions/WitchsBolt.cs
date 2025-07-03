@@ -36,7 +36,7 @@ public class WitchsBolt : ICommand
             witchsBolt.BasePower = witchsBolt.BasePower - 30;
         }
         Debug.Log("AA" + ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy));
-        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive)
+        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))// && !playerTempStats.IsThirdRatePerformanceActive)
         {
             float damage = ActionResolver.instance.CalculateKillDamage(player, target, witchsBolt);
             if (targetTempStats.IsCounterActive)

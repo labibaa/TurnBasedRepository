@@ -38,11 +38,11 @@ public class ThirdRatePerformance : ICommand
             thirdRatePerformance.BasePower = thirdRatePerformance.BasePower - 30;
         }
         
-        if (ActionResolver.instance.ActionAccuracyCalculation(thirdRatePerformance.ActionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive) 
+     /*   if (ActionResolver.instance.ActionAccuracyCalculation(thirdRatePerformance.ActionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive) 
         {
             targetTempStats.IsThirdRatePerformanceActive = true;
             
-        }
+        }*/
         
     }
 

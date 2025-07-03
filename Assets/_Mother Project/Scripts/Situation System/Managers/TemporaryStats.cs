@@ -26,7 +26,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     public float CurrentDamageMultiplier;
     public bool IsBlockActive;
     public bool IsDodgeActive; 
-    public bool IsThirdRatePerformanceActive;
+    public bool IsImbuementActive;
     public bool IsCounterActive;
     public bool AutoMove;
     public int playerUltimateBarCount=0;
