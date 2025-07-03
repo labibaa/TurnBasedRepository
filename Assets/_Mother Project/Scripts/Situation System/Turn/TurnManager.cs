@@ -239,7 +239,7 @@ public class TurnManager : MonoBehaviour
 
 
 
-            if (actionName == "Heal" || actionName == "Buff")
+            if (actionName == "Heal" || actionName == "Buff" || actionName == "SoulTransfer")
             {
                 targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, 10, Color.white);
                 GridMovement.instance.ResetHighlightedPath();
@@ -461,6 +461,7 @@ public class TurnManager : MonoBehaviour
             playerTempStat.IsBlockActive = false;
             playerTempStat.IsDodgeActive = false;
             playerTempStat.IsImbuementActive = false;
+            playerTempStat.GetComponent<SpawnVFX>().StopVFXEvent();
             playerTempStat.IsCounterActive = false;
             playerTempStat.CurrentDamageMultiplier = players[i].GetComponent<CharacterBaseClasses>().DamageMultiplier;
             if (playerTempStat.CompareTag("Player"))

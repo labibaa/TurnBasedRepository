@@ -41,6 +41,7 @@ public class MeleeAttack : ICommand
             ICommand puncture = new Puncture(player, target, playerTempStats, targetTempStats, venomScriptable, "melee");
             puncture.Execute();
             playerTempStats.IsImbuementActive = false;
+            player.GetComponent<SpawnVFX>().StopVFXEvent();
         }
 
         if (targetTempStats.IsDodgeActive)
