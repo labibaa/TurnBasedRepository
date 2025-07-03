@@ -85,7 +85,7 @@ public class OrbSpawner : MonoBehaviour
 
     public GameObject SpawnDotVFX(VisualEffect visualEffect,Transform transform)
     {
-        VisualEffect vs =  Instantiate(visualEffect, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        VisualEffect vs =  Instantiate(visualEffect, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity, transform.GetComponent<VFXSpawnPosition>().MidBody.transform);
         return vs.gameObject;
     }
     void ResetReadyCounter()
