@@ -73,7 +73,9 @@ public class DictionaryManager : MonoBehaviour
         {"DaggerSweep",ActionArchive.instance.DaggerSweep },
         {"Assassinate",ActionArchive.instance.Assassinate },
         {"Puncture",ActionArchive.instance.Puncture },
-        {"DaggerRising",ActionArchive.instance.DaggerRising }
+        {"DaggerRising",ActionArchive.instance.DaggerRising },
+        {"SpoonSmack",ActionArchive.instance.SpoonSmack },
+        {"GrenadeThrow",ActionArchive.instance.GrenadeThrow }
 
 
     };

@@ -29702,7 +29702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &275595086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128073,8 +128073,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 767602767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.8}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -190848,6 +190848,7 @@ MonoBehaviour:
   storeitemDetailPanel_Prefab: {fileID: 8676070835940585284, guid: 3e9a5aa00ee6a7f4e8191a061b4580ae,
     type: 3}
   currencyText: {fileID: 581754415}
+  playerName: {fileID: 1869576441}
   mainCharacterSprite: {fileID: 1002125372}
   secondaryCharacterSprite: {fileID: 934471094}
   store: {fileID: 11400000, guid: 1d1d84c620eebe04c814a4f5b5b89c31, type: 2}
@@ -271255,11 +271256,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3669928101531173904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -942, y: 0}
-  m_SizeDelta: {x: 700, y: 300}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 326, y: 0}
+  m_SizeDelta: {x: 525, y: 272.4}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &4463414787851802352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274142,14 +274143,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670395093602000423}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.08627451, g: 0.11764707, b: 0.13725491, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
