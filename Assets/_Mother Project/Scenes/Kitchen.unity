@@ -2677,6 +2677,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b76d8f037c9b637409674e17f9491ba2, type: 2}
   - {fileID: 11400000, guid: 0c8939b31a42433478676ae0e135a74a, type: 2}
   - {fileID: 11400000, guid: b116fcc89192689439f671c9f464a6c9, type: 2}
+  - {fileID: 11400000, guid: d83873c1568bad348bb7e5f4f53be3a8, type: 2}
   HammerAvailableActions:
   - {fileID: 11400000, guid: e25148f7edcbcdb4fa1301090e90a889, type: 2}
   - {fileID: 11400000, guid: d20201032b403c044a986611703ee8b6, type: 2}
@@ -2695,6 +2696,7 @@ MonoBehaviour:
   StaffAvailableActions:
   - {fileID: 11400000, guid: 3ad2ae3865db4044aa4e44889310e87c, type: 2}
   - {fileID: 11400000, guid: 5017aabf6c79af14fb87202f816e59d6, type: 2}
+  SpoonAvailableActions: []
 --- !u!1 &41777289
 GameObject:
   m_ObjectHideFlags: 0
@@ -217067,12 +217069,12 @@ PrefabInstance:
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.2716675
+      value: 8.036316
       objectReference: {fileID: 0}
     - target: {fileID: 5707931196379341609, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.630005
+      value: 8.029999
       objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -217082,7 +217084,7 @@ PrefabInstance:
     - target: {fileID: 6878960195950656178, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_CameraDistance
-      value: 18.19999
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8983546823599016214, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -235849,7 +235851,7 @@ Transform:
   m_GameObject: {fileID: 3954000482663074368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -2.3114565e-24, w: 1}
-  m_LocalPosition: {x: -566.8486, y: -334.06128, z: 128.62927}
+  m_LocalPosition: {x: -566.8486, y: -334.06128, z: 129.12927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -236201,8 +236203,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
+      propertyPath: warpSurge
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e3e22082a9bbd04d9075f4902f48cdd,
+        type: 2}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
       propertyPath: healthPoints
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3255496025928121792, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
@@ -236421,7 +236429,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 15.5
+  m_CameraDistance: 15
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

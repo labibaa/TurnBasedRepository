@@ -121,7 +121,7 @@ public class HandleTurnNew : MonoBehaviour
         allTurnsOfPlayer.Add(turn);
         if (turn.Command.GetActionType() != "MeleeMove")
         {
-            Debug.Log("MeleeMove");
+            Debug.Log(turn.Command.GetActionType());
             OnNewAction?.Invoke();
             //TextFadeInOut.instance.AddTextToQueue(turn);
         }

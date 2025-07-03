@@ -51,7 +51,7 @@ public class DictionaryManager : MonoBehaviour
         {"Stab",ActionArchive.instance.Stab },
         {"SmokeCloud",ActionArchive.instance.SmokeCloud },
         {"BoneShield",ActionArchive.instance.BoneShield },
-        {"TwoHandedArise",ActionArchive.instance.TwoHandedArise },
+        {"SoulTransfer",ActionArchive.instance.SoulTransfer },
         {"SkeletonGrabRoud",ActionArchive.instance.SkeletonGrabRoud },
         {"SoulSteal",ActionArchive.instance.SoulSteal },
         {"SpinningAttack",ActionArchive.instance.SpinningAttack },

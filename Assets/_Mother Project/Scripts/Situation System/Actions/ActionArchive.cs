@@ -480,23 +480,6 @@ public class ActionArchive : MonoBehaviour
         ICommand ImbuementAction = new Imbuement(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, imbuementScriptable);
         ActionTemplate(imbuementScriptable, ImbuementAction);
     }
-    public async void TwoHandedArise()
-    {
-
-        GetPlayerStats();
-        ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "TwoHandedArise");
-        bool isMoveAdded = MeleeMoveTemplate(meleeScriptable);
-        if (isMoveAdded)
-        {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "Melee");
-            ActionTemplate(meleeScriptable, meleeAction);
-        }
-        else
-        {
-            ICommand meleeAction = new MeleeAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, meleeScriptable, "SingleMelee");
-            ActionTemplate(meleeScriptable, meleeAction);
-        }
-    }
 
     public async void SkeletonGrabRoud()
     {
@@ -516,16 +499,20 @@ public class ActionArchive : MonoBehaviour
 
     public async void SoulSteal()
     {
-
-     
         GetPlayerStats();
         ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulSteal");
-        ICommand rangedAction = new RangedAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
+        ICommand rangedAction = new SoulSteal(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
         ActionTemplate(rangedScriptable, rangedAction);
 
     }
-    
 
+    public async void SoulTransfer()
+    {
+        GetPlayerStats();
+        ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulTransfer");
+        ICommand rangedAction = new SoulTransfer(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
+        ActionTemplate(rangedScriptable, rangedAction);
+    }
 
     public async void Stab()
     {
@@ -1150,8 +1137,8 @@ public class ActionArchive : MonoBehaviour
             {
                 gridIp.enabled = true;
             }
-            GridMovement.instance.InAdjacentMatrix(currentStatPlayer.gameObject.GetComponent<TemporaryStats>().currentPlayerGridPosition, TeamName.NullTeam, currentStatPlayer.CurrentDex, Color.green);
-            GridMovement.instance.setMoveParam(moveScriptable, currentStatPlayer.CurrentDex, currentStatPlayer.gameObject.GetComponent<TemporaryStats>().currentPlayerGridPosition, playerAttacker.gameObject.GetComponent<NavMeshAgent>());
+            GridMovement.instance.InAdjacentMatrix(currentStatPlayer.gameObject.GetComponent<TemporaryStats>().currentPlayerGridPosition, TeamName.NullTeam, moveScriptable.ActionRange, Color.green);
+            GridMovement.instance.setMoveParam(moveScriptable, moveScriptable.ActionRange, currentStatPlayer.gameObject.GetComponent<TemporaryStats>().currentPlayerGridPosition, playerAttacker.gameObject.GetComponent<NavMeshAgent>());
 
             TempManager.instance.ChangeGameState(GameStates.MovementGridSelectionTurn);
         }

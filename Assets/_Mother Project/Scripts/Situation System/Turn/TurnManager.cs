@@ -239,13 +239,20 @@ public class TurnManager : MonoBehaviour
 
 
 
-            if (actionName == "Heal" || actionName == "Buff" || actionName == "SoulTransfer")
+            if (actionName == "Heal" || actionName == "Buff" )
             {
                 targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, 10, Color.white);
                 GridMovement.instance.ResetHighlightedPath();
                 GridMovement.instance.ResetPathSelection();
                 targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, targetsInRange[0].GetComponent<TemporaryStats>().CharacterTeam, temporaryImprovedScriptable.ActionRange, Color.red);
                 targetsInRange.Add(players[currentPlayerIndex].GetComponent<CharacterBaseClasses>());
+            }
+            if ( actionName == "SoulTransfer")
+            {
+                targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, 10, Color.white);
+                GridMovement.instance.ResetHighlightedPath();
+                GridMovement.instance.ResetPathSelection();
+                targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, targetsInRange[0].GetComponent<TemporaryStats>().CharacterTeam, temporaryImprovedScriptable.ActionRange, Color.red);
             }
         }
         else
