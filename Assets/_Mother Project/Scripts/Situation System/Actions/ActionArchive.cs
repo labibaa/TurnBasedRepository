@@ -505,6 +505,23 @@ public class ActionArchive : MonoBehaviour
         ActionTemplate(rangedScriptable, rangedAction);
 
     }
+    public async void BoneSpear()
+    {
+
+        GetPlayerStats();
+        ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneSpear");
+        ICommand rangedAction = new RangedAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
+        ActionTemplate(rangedScriptable, rangedAction);
+
+    }
+    public async void MagicSiphon()
+    {
+        GetPlayerStats();
+        ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "MagicSiphon");
+        ICommand rangedAction = new RangedAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
+        ActionTemplate(rangedScriptable, rangedAction);
+
+    }
 
     public async void SoulTransfer()
     {
@@ -982,7 +999,49 @@ public class ActionArchive : MonoBehaviour
         GetPlayerStats();
         UltimateSystem._instance.useUltimate(playerAttacker,currentStatPlayer,targetDefender,currentStatTarget);
     }
+    public async void Impale()
+    {
+        GetPlayerStats();
+        ImprovedActionStat impale_Scriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Impale");
+        List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(currentStatPlayer.currentPlayerGridPosition, currentStatPlayer.CharacterTeam, impale_Scriptable.ActionRange, Color.red);
+        if (targetsInRange.Count <= 0)
+        {
 
+            TempManager.instance.SituationUIPanel.SetActive(false);
+            TempManager.instance.UlimateUIPanel.SetActive(false);
+            UI.instance.SendNotification("No target in your range");
+
+
+            await UniTask.Delay(1500);
+            TempManager.instance.ChangeGameState(GameStates.MidTurn);
+            GridMovement.instance.ResetHighlightedPath();
+            TempManager.instance.SituationUIPanel.SetActive(true);
+            TempManager.instance.UlimateUIPanel.SetActive(true);
+
+        }
+        else
+        {
+            for (int i = 0; i < targetsInRange.Count; i++)          //visual cue
+            {
+                targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(true);
+            }
+            Transform ct = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, playerAttacker);
+
+            ICommand impale = new Impale(impale_Scriptable, currentStatPlayer, playerAttacker, ct.GetComponent<CharacterBaseClasses>());
+            ActionTemplate(impale_Scriptable, impale);         //visual cue
+            await UniTask.Delay(1500);
+            for (int i = 0; i < targetsInRange.Count; i++)
+            {
+                targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
+            }
+            GridMovement.instance.ResetHighlightedPath();
+            TurnManager.instance.ResetTargetHIghlightVisual();
+            TurnManager.instance.targetsInRange.Clear();
+            TurnManager.instance.nonCharacterTargetsInRange.Clear();
+            TempManager.instance.ChangeGameState(GameStates.MidTurn);
+        }
+
+    }
     public async void DaggerSweep()
     {
        /* if (currentStatPlayer.gameObject.GetComponent<PlayerTurn>(). == true) 

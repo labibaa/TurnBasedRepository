@@ -180,7 +180,7 @@ public class ShadowOfPlayer : MonoBehaviour
             return;
         }
         
-        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Dash") || ActionTurnListForGhost[index].Command.GetActionName().Equals("Move"))
+        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Dash") || ActionTurnListForGhost[index].Command.GetActionName().Equals("Move") || ActionTurnListForGhost[index].Command.GetActionName().Equals("WarpSurge"))
         {
             
             List<GameObject>pathToDestination = ActionTurnListForGhost[index].Command.GetPaths();

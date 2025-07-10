@@ -148,6 +148,10 @@ public class ButtonStackManager : MonoBehaviour
             {
                 button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.DaggerSweep());
             }
+            else if (scriptable.actionButton.name == "Impale")
+            {
+                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Impale());
+            }
             else
             {
                 button.GetComponent<Button>().onClick.AddListener(() => TempManager.instance.ShowTargetList(scriptable.actionButton.name));
