@@ -673,7 +673,10 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5435544582875991914}
-    m_Position: {x: 582.74097, y: 625.92773, z: 0}
+    m_Position: {x: 580, y: 620, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5895765440450170695}
+    m_Position: {x: 880, y: 640, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -683,7 +686,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 790, y: 10, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -5435544582875991914}
+  m_DefaultState: {fileID: 5895765440450170695}
 --- !u!1102 &4757638610870206954
 AnimatorState:
   serializedVersion: 6
@@ -807,6 +810,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 338a673f74f6e194c81935e980957a52, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &5895765440450170695
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Soul Transfer
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a502e1872aa6b204db026265371d0fb6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
