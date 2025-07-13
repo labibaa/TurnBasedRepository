@@ -16,11 +16,11 @@ public class PunctureDOTHandler : BaseDOThandler
     {
         if (Target != null)
         {
-            Target.playerVisiblity = 0;
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(punctureIAS.FirstPercentage, punctureIAS.SecondPercentage, punctureIAS.LastPercentage);
             UI.instance.SendNotification(diceValue.ToString());
             int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, punctureIAS) * EffectOwner.CurrentDamageMultiplier);
             Debug.Log("Dice: " + diceValue + " Damage: " + damage);
+            UI.instance.ShowFlyingText((damage * -1).ToString(), Target.FlyingTextParent, Color.red);
             Target.CurrentHealth = HealthManager.instance.HealthCalculation(damage, Target.CurrentHealth);
 
             if (punctureIAS != null)
@@ -30,8 +30,8 @@ public class PunctureDOTHandler : BaseDOThandler
                     punctureIAS.TargetHurtAnimation
                 );
             }
-            UI.instance.ShowFlyingText((damage * -1).ToString(), Target.FlyingTextParent, Color.red);
-           // await HealthManager.instance.PlayerMortality(Target, attackOrder, playerTempStats);
+           
+            await HealthManager.instance.PlayerMortality(Target, AttackOrder, EffectOwner);
         }
     }
 }

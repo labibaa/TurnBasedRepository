@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65997b2d10b74c04e9ac0a65ce4ccdd5, type: 3}
-  m_Name: TwoHandedArise
+  m_Name: MagicSiphon
   m_EditorClassIdentifier: 
   RangeMappings:
   - MinRangeValue: 1
     MaxRangeValue: 2
-    MappedValue: 1
+    MappedValue: 2
   - MinRangeValue: 3
     MaxRangeValue: 4
     MappedValue: 2
@@ -28,28 +28,28 @@ MonoBehaviour:
   - MinRangeValue: 18
     MaxRangeValue: 20
     MappedValue: 5
-  ActionRange: 2
+  ActionRange: 4
   ActionAccuracy: 100
-  ActionName: TwoHandedArise
+  ActionName: MagicSiphon
   Description: 
-  PriorityValue: 20
+  PriorityValue: 2
   FirstPercentage: 20
   SecondPercentage: 50
   LastPercentage: 30
-  APCost: 3
+  APCost: 0
   ParticleSystem: {fileID: 0}
   HurtParticleSystem: {fileID: 0}
   HitParticleSystem: {fileID: 0}
-  actionSound: {fileID: 8300000, guid: b4030d657aa74ee43bad6571b18f5006, type: 3}
+  actionSound: {fileID: 8300000, guid: d143daeec119dca4d87b8930c8c03341, type: 3}
   actionIcon: {fileID: 195040, guid: 94452706f9cab234a83db094573c38b9, type: 3}
-  actionButton: {fileID: 8538063801286393506, guid: 405f172a982bfd24281ad605413f6df3,
+  actionButton: {fileID: 8538063801286393506, guid: 6b67d4cfdb909c149811b8c3128ab660,
     type: 3}
   SoundReferences: []
   PlayerActionVFX: {fileID: 0}
   TargetHitVFX: {fileID: 0}
-  particle: {fileID: 19840850, guid: 9acec412cf3cb0b4ea6bd5b99ee797bc, type: 3}
+  particle: {fileID: 0}
   CharacterBodyLocation: MidBody
   TargetCharacterBodyLocation: MidBody
-  TargetHurtAnimation: Damage1
+  TargetHurtAnimation: SkeletonGrab
   actionStance: 1
   actionType: 1

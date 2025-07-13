@@ -23,6 +23,7 @@ public class SkeletonGrab : ICommand
     }
     public async UniTask Execute()
     {
+        int attackOrder = checkOrder();
         Debug.Log("SkeletonGrabExecuted");
         /*  EffectorSkeletonjGrab.Instance.grabbedTarget = targetTempStats;
           EffectorSkeletonjGrab.Instance.HasEffect = true;
@@ -36,7 +37,7 @@ public class SkeletonGrab : ICommand
         GameObject vfxObj = OrbSpawner.instance.SpawnDotVFX(skeletonGrab.PlayerActionVFX , target.transform);
 
         handler.SetSkeletonGrabIAS(skeletonGrab);
-        handler.Initialize(playerTempStats, targetTempStats, skeletonGrab.PriorityValue, vfxObj);
+        handler.Initialize(playerTempStats, targetTempStats, skeletonGrab.PriorityValue, attackOrder, vfxObj);
 
 
         await HandleAnimation();

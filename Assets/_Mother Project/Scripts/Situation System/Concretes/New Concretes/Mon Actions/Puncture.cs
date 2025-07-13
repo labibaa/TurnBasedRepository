@@ -33,7 +33,7 @@ public class Puncture : ICommand
         GameObject vfxObj = OrbSpawner.instance.SpawnDotVFX(puncture.PlayerActionVFX, target.transform);
 
         handler.SetPunctureIAS(puncture);
-        handler.Initialize(playerTempStats, targetTempStats, puncture.PriorityValue, vfxObj);
+        handler.Initialize(playerTempStats, targetTempStats, puncture.PriorityValue, attackOrder, vfxObj);
         await HandleAnimation();
 
     }

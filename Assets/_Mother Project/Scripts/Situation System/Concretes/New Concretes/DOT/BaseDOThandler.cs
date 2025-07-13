@@ -11,6 +11,7 @@ public abstract class BaseDOThandler : MonoBehaviour
     public TemporaryStats Target { get; protected set; }
     public int TurnCount { get; protected set; }
     public GameObject EffectVisualObject { get; protected set; }
+    public int AttackOrder { get; protected set; }
 
     protected virtual void OnEnable()
     {
@@ -22,12 +23,13 @@ public abstract class BaseDOThandler : MonoBehaviour
         HandleTurnNew.OnTurnEnd -= ApplyEffect;
     }
 
-    public virtual void Initialize(TemporaryStats owner, TemporaryStats target, int turnDuration, GameObject vfxObj)
+    public virtual void Initialize(TemporaryStats owner, TemporaryStats target, int turnDuration,int attackOrder, GameObject vfxObj)
     {
         HasEffect = true;
         EffectOwner = owner;
         Target = target;
         TurnCount = turnDuration;
+        AttackOrder = attackOrder;
         EffectVisualObject = vfxObj;
     }
 
