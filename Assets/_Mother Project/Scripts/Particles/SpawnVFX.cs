@@ -15,6 +15,7 @@ public class SpawnVFX : MonoBehaviour
     public static event Action OnRumbleShake;
     public static event Action OnExplotionShake;
     public static event Action OnStopVFX;
+    public static event Action OnStartVFX;
 
  
     public GameObject TrailVisual;
@@ -254,6 +255,10 @@ public class SpawnVFX : MonoBehaviour
     public void StopVFXEvent()
     {
         OnStopVFX?.Invoke();
+    }
+    public void StartVFXEvent()
+    {
+        OnStartVFX?.Invoke();
     }
     public void ActionCameraActivate()
     {

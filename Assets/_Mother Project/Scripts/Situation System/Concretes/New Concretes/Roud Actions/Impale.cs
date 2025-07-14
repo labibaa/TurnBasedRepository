@@ -24,6 +24,7 @@ public class Impale : ICommand
     {
         List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(playerTempStats.currentPlayerGridPosition, playerTempStats.CharacterTeam, actionScriptable.ActionRange, Color.clear);
         GridMovement.instance.ResetHighlightedPath();
+
         int diceValue = DiceNumberGenerator.instance.GetDiceValue(actionScriptable.FirstPercentage, actionScriptable.SecondPercentage, actionScriptable.LastPercentage);
         UI.instance.SendNotification(diceValue.ToString());
         int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, actionScriptable) * playerTempStats.CurrentDamageMultiplier);
