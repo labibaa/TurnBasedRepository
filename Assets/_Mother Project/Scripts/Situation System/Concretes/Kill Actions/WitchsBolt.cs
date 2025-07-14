@@ -42,13 +42,13 @@ public class WitchsBolt : ICommand
             if (targetTempStats.IsCounterActive)
             {
                 playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(playerTempStats,0, playerTempStats);
+                await HealthManager.instance.PlayerMortality(playerTempStats, playerTempStats);
             }
             else
             {
               
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(targetTempStats,0, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
                 await HandleAnimation();
                
 

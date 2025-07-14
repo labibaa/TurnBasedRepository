@@ -54,13 +54,17 @@ public class HealthManager : MonoBehaviour
 
 
 
-    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder, TemporaryStats killer) //add attacker
+    public async UniTask PlayerMortality(TemporaryStats  playerStat, TemporaryStats killer) //add attacker
     {
         
         if (playerStat.CurrentHealth < 1)
         {
             await UniTask.Delay(500);
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
+
+            int deadPlayerIndex = TurnManager.instance.players.IndexOf(deadPlayerTurn);
+            bool shouldDecrementIndex = TurnManager.instance.currentPlayerIndex > deadPlayerIndex;
+
             playerStat.playerMortality = Mortality.Dead;
             OnCharacterDeath?.Invoke();
             killer.playerUltimateBarCount += playerStat.GetComponent<CharacterBaseClasses>().LootUltiPoints;//deadplayer give ulti points
@@ -80,7 +84,7 @@ public class HealthManager : MonoBehaviour
             TeamManager.instance.RemovePlayerFromTeamList(playerStat);
            
             playerStat.gameObject.SetActive(false);
-            if (attackOrder<0)
+            if (shouldDecrementIndex)
             {
                 TurnManager.instance.currentPlayerIndex--;
             }

@@ -149,7 +149,7 @@ public class GridActivation : MonoBehaviour
             Pc.GetComponent<ThirdPersonController>().enabled = true;
             Pc.GetComponent<ThirdPersonController>().DisableAnim();
             //player.GetComponent<PlayerMove>().enabled = true;
-
+            Pc.GetComponent<TemporaryStats>().SelectionParticle.SetActive(false);
 
             //might need to refactor this part, putting them on  a funciton
             //player.GetComponent<GridInput>().enabled = true;

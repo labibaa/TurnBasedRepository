@@ -37,7 +37,7 @@ public class Impale : ICommand
             CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, actionScriptable.TargetHurtAnimation);
             targetTempStat.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStat.CurrentHealth);
             UI.instance.ShowFlyingText((damage * -1).ToString(), targetTempStat.FlyingTextParent, Color.red);
-            await HealthManager.instance.PlayerMortality(targetTempStat, attackOrder, playerTempStats);
+            await HealthManager.instance.PlayerMortality(targetTempStat, playerTempStats);
         }
 
     }

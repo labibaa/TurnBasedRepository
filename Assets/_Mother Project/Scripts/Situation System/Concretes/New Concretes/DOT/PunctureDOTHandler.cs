@@ -14,7 +14,7 @@ public class PunctureDOTHandler : BaseDOThandler
 
     protected override async UniTask OnEffectTick()
     {
-        if (Target != null)
+        if (Target != null && Target.playerMortality != Mortality.Dead)
         {
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(punctureIAS.FirstPercentage, punctureIAS.SecondPercentage, punctureIAS.LastPercentage);
             UI.instance.SendNotification(diceValue.ToString());
@@ -31,7 +31,7 @@ public class PunctureDOTHandler : BaseDOThandler
                 );
             }
            
-            await HealthManager.instance.PlayerMortality(Target, AttackOrder, EffectOwner);
+            await HealthManager.instance.PlayerMortality(Target, EffectOwner);
         }
     }
 }

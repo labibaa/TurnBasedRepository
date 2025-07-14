@@ -57,7 +57,7 @@ public class DictionaryManager : MonoBehaviour
         {"MagicSiphon",ActionArchive.instance.MagicSiphon },
         {"Impale",ActionArchive.instance.Impale },
         {"BoneSpear",ActionArchive.instance.BoneSpear },
-        {"SpinningAttack",ActionArchive.instance.BoneShield },
+        {"SpinningAttack",ActionArchive.instance.SpinningAttack },
         {"SideAttack",ActionArchive.instance.SideAttack },
         {"HammerGroundAttack",ActionArchive.instance.HammerGroundAttack },
         {"TwoHitCombo",ActionArchive.instance.TwoHitCombo },

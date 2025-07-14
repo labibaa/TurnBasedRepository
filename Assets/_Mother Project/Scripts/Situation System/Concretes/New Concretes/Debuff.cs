@@ -42,7 +42,7 @@ public class Debuff : ICommand
             await HandleAnimation();
             targetTempStats.CurrentDamageMultiplier = targetTempStats.CurrentDamageMultiplier * 0.5f;
             UI.instance.SendNotification(target.name + "'s Attack debuffed by " + targetTempStats.CurrentDamageMultiplier.ToString());         
-            await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+            await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
 
 

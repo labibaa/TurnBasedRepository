@@ -38,7 +38,7 @@ public class Assassinate : ICommand
             {
                 await HandleAnimation();
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(targetTempStats.CurrentHealth, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
             }
             else
             {
@@ -49,7 +49,7 @@ public class Assassinate : ICommand
                 await HandleAnimation();
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
             }
         }
     }

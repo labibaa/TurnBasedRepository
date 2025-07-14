@@ -40,7 +40,7 @@ public class SoulSteal : ICommand
             playerTempStats.CurrentHealth = HealthManager.instance.HealthCap(playerTempStats.PlayerHealth, HealthManager.instance.HealthCalculation(( damage * -1), playerTempStats.CurrentHealth));
             UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
             UI.instance.ShowFlyingText((damage).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.green);
-            await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+            await HealthManager.instance.PlayerMortality(targetTempStats, targetTempStats);
 
         }
     }

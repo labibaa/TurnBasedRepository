@@ -47,7 +47,7 @@ public class Heal : ICommand
 
             
             UI.instance.ShowFlyingText((healPoint*-1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.green);
-            await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+            await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
             
 
 

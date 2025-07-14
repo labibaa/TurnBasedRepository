@@ -38,7 +38,7 @@ public class MagicSiphon : ICommand
             UI.instance.SendNotification(player.name + "'s Attack Buffed by " + playerTempStats.CurrentDamageMultiplier.ToString());
 
 
-            await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+            await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
         }
     }
