@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using DG.Tweening;
 
 public class PlayableCharacterUI : MonoBehaviour
@@ -64,7 +63,7 @@ public class PlayableCharacterUI : MonoBehaviour
         {
             DescaleItem();
         }
-       SwapItemsInLayout(currentItem,PrevItem);
+       //SwapItemsInLayout(currentItem,PrevItem);
     }
 
     public void ScaleItem(RectTransform item)

@@ -452,6 +452,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: isMainCharacter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 638795718913286639, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2543445788
+      objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,6 +547,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5844099540906305183, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6593358433829942534, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_Enabled
@@ -546,7 +561,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mainPlayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 340986261}
     - target: {fileID: 6878960195950656178, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_CameraDistance
@@ -570,6 +585,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31c9dd2abad151c47975107e9bafd8dc, type: 3}
+--- !u!4 &179130281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 629863055727247883, guid: 31c9dd2abad151c47975107e9bafd8dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 179130280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &328317493
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +753,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roud Rigged Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2550685254932437964, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255496025928121792, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: mainPlayer
+      value: 
+      objectReference: {fileID: 179130281}
+    - target: {fileID: 5623877946105048720, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: isMainCharacter
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6030752268258891936, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -787,6 +823,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8954948600820150591, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 812849285928622506, guid: efb61c518da76c348aa16edf69b4a415, type: 3}
     - {fileID: 3692312786286662913, guid: efb61c518da76c348aa16edf69b4a415, type: 3}
@@ -795,6 +836,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb61c518da76c348aa16edf69b4a415, type: 3}
+--- !u!4 &340986261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8683327368853074611, guid: efb61c518da76c348aa16edf69b4a415,
+    type: 3}
+  m_PrefabInstance: {fileID: 340986260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &343072341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,7 +1484,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1586,7 +1633,7 @@ MonoBehaviour:
   prevScene: 
   leftOutcharacters: []
   ToAddUnlinkedCharacter: 0
-  IsnewGame: 0
+  IsnewGame: 1
 --- !u!114 &1300978615
 MonoBehaviour:
   m_ObjectHideFlags: 0

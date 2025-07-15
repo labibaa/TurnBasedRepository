@@ -51,9 +51,12 @@ public class DictionaryManager : MonoBehaviour
         {"Stab",ActionArchive.instance.Stab },
         {"SmokeCloud",ActionArchive.instance.SmokeCloud },
         {"BoneShield",ActionArchive.instance.BoneShield },
-        {"TwoHandedArise",ActionArchive.instance.TwoHandedArise },
+        {"SoulTransfer",ActionArchive.instance.SoulTransfer },
         {"SkeletonGrabRoud",ActionArchive.instance.SkeletonGrabRoud },
         {"SoulSteal",ActionArchive.instance.SoulSteal },
+        {"MagicSiphon",ActionArchive.instance.MagicSiphon },
+        {"Impale",ActionArchive.instance.Impale },
+        {"BoneSpear",ActionArchive.instance.BoneSpear },
         {"SpinningAttack",ActionArchive.instance.SpinningAttack },
         {"SideAttack",ActionArchive.instance.SideAttack },
         {"HammerGroundAttack",ActionArchive.instance.HammerGroundAttack },
@@ -69,7 +72,13 @@ public class DictionaryManager : MonoBehaviour
         {"SpearAttackPlace4High",ActionArchive.instance.SpearAttackPlace4High },
         {"Buff",ActionArchive.instance.Buff },
         {"Debuff",ActionArchive.instance.Debuff },
-        {"Imbuement",ActionArchive.instance.Imbuement }
+        {"Imbuement",ActionArchive.instance.Imbuement },
+        {"DaggerSweep",ActionArchive.instance.DaggerSweep },
+        {"Assassinate",ActionArchive.instance.Assassinate },
+        {"Puncture",ActionArchive.instance.Puncture },
+        {"DaggerRising",ActionArchive.instance.DaggerRising },
+        {"SpoonSmack",ActionArchive.instance.SpoonSmack },
+        {"GrenadeThrow",ActionArchive.instance.GrenadeThrow }
 
 
     };

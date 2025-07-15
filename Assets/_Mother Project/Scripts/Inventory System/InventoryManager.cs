@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -147,6 +148,8 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    
 
     public List<InventoryItem> GetCurrentInventory()
     {

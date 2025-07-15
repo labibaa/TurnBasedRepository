@@ -9,12 +9,12 @@ public class EndVfx : MonoBehaviour
 
     private void OnEnable()
     {
-        EffectorSkeletonjGrab.OnFinishSkeletonGrab += EndVfxKey;
+       BaseDOThandler.OnAnyEffectFinished += EndVfxKey;
     }
 
     private void OnDisable()
     {
-        EffectorSkeletonjGrab.OnFinishSkeletonGrab -= EndVfxKey;
+       BaseDOThandler.OnAnyEffectFinished -= EndVfxKey;
        // EndVfxKey();
     }
 

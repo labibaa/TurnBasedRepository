@@ -9,7 +9,7 @@ public class ShowSavedData : MonoBehaviour
 {
     public static ShowSavedData Instance;
 
-    bool onSaveData = false;
+   // bool onSaveData = false;
 
     [SerializeField] GameObject savedDataText;
     [SerializeField] Transform savedDataPanel;

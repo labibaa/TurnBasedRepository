@@ -32,7 +32,7 @@ public class GridActivation : MonoBehaviour
     GameObject gridAudio;
 
     public TeamName myTeam;
-    int count =0;
+   // int count =0;
 
     //Enable and disable Grid system and corresponding UI with necessary components with it
     private void OnEnable()
@@ -56,11 +56,6 @@ public class GridActivation : MonoBehaviour
 //Failsafe2
 
     // Start is called before the first frame update
-    void Start()
-    {
-        count = 0;
-      //GridSystem.instance.GenerateGridOnButton();
-    }
 
     // Update is called once per frame
     void Update()
@@ -153,16 +148,15 @@ public class GridActivation : MonoBehaviour
             //playableCharacter.GetComponent<CharacterController>().enabled = true;
             Pc.GetComponent<ThirdPersonController>().enabled = true;
             Pc.GetComponent<ThirdPersonController>().DisableAnim();
-
             //player.GetComponent<PlayerMove>().enabled = true;
-
-
+            Pc.GetComponent<TemporaryStats>().SelectionParticle.SetActive(false);
 
             //might need to refactor this part, putting them on  a funciton
             //player.GetComponent<GridInput>().enabled = true;
             Pc.GetComponent<GridPlayerAnimation>().enabled = false;
         }
- 
+
+        Debug.Log("Grid Finish");
         gameManager.GetComponent<GridMovement>().enabled = false;
         gameManager.GetComponent<TurnManager>().enabled = false;
 

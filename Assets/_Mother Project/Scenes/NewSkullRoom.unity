@@ -3032,6 +3032,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 5694500526413457173, guid: 7d10e1ea40b86d740932f8dde2370d04,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694500526413457173, guid: 7d10e1ea40b86d740932f8dde2370d04,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.33962262
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694500526413457173, guid: 7d10e1ea40b86d740932f8dde2370d04,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.33962262
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694500526413457173, guid: 7d10e1ea40b86d740932f8dde2370d04,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.33962262
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754524374214379592, guid: 7d10e1ea40b86d740932f8dde2370d04,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3444,6 +3469,7 @@ MonoBehaviour:
   StaffAvailableActions:
   - {fileID: 11400000, guid: 3ad2ae3865db4044aa4e44889310e87c, type: 2}
   - {fileID: 11400000, guid: 5017aabf6c79af14fb87202f816e59d6, type: 2}
+  SpoonAvailableActions: []
 --- !u!43 &36435927
 Mesh:
   m_ObjectHideFlags: 0
@@ -130232,7 +130258,6 @@ MonoBehaviour:
   neighborListGameobjects: []
   agent: {fileID: 1800869785}
   player: {fileID: 1800869734}
-  storePreviousDirection: 4
   isInGrid: 0
 --- !u!114 &2046126987
 MonoBehaviour:
@@ -130455,12 +130480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa455dbf488eeca44940f5c3a665029f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HasEffect: 0
-  EffectOwner: {fileID: 0}
-  TurnCount: 0
-  SkeletonGrab_IAS: {fileID: 0}
-  SkeletonObject: {fileID: 0}
-  grabbedTarget: {fileID: 0}
 --- !u!1 &2052499067
 GameObject:
   m_ObjectHideFlags: 0
@@ -170052,18 +170071,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00974c49c138ed84aba7d1c1bd49a392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefabList: []
-  hitEffectPrefabList: []
-  hitEffectTransformList: []
-  effectTransformList: []
-  targetHitTransformList: []
-  particles: []
   TrailVisual: {fileID: 0}
   speed: 5
   charAnimator: {fileID: 1170907623436053000}
   targetAnimator: {fileID: 0}
-  animationList: []
-  animationIndex: 0
+  actionMoveCamTimelinePrefab: {fileID: 0}
   isShieldUp: 0
 --- !u!114 &7748507785431418647
 MonoBehaviour:

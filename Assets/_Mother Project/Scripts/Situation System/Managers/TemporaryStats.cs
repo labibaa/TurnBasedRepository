@@ -6,9 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 public class TemporaryStats : MonoBehaviour, IPersistableData
 {
+    public Sprite avatarHead;
     public int CurrentHealth;
     public int PlayerHealth;
     public GameObject Pathmark;
@@ -24,7 +26,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     public float CurrentDamageMultiplier;
     public bool IsBlockActive;
     public bool IsDodgeActive; 
-    public bool IsThirdRatePerformanceActive;
+    public bool IsImbuementActive;
     public bool IsCounterActive;
     public bool AutoMove;
     public int playerUltimateBarCount=0;
@@ -159,6 +161,10 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
         {
             _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetStaffAvailableActions());
         }
+        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Spoon)
+        {
+            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetSpoonAvailableActions());
+        }
     }
     public void SetCharacterStat()
     {
@@ -194,17 +200,26 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
             _characterBaseClasses.LevelUp();
         }*/
     }
+    public IEnumerator ReStartCharacter()
+    {
+        // Deactivate the GameObject
+        this.gameObject.SetActive(false);
+
+        // Wait for a short delay to ensure full reset
+        yield return new WaitForSeconds(0.1f);
+
+        // Reactivate the GameObject
+        this.gameObject.SetActive(true);
+    }
     public void AssignSpawnPosition()
     {
-
         SetCharacterStat();
 
+       // Animator animator = GetComponent<Animator>();
        // animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
 
         if ( gridCoordinateSpawn.x< GridSystem.instance._gridArray.GetLength(0) && gridCoordinateSpawn.x < GridSystem.instance._gridArray.GetLength(1))
         {
-           
-
             transform.position = GridSystem.instance._gridArray[(int)gridCoordinateSpawn.x, (int)gridCoordinateSpawn.y].transform.position;
         }
 

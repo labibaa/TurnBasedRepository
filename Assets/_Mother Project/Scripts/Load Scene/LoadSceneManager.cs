@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
 using UnityEngine.TextCore.Text;
+using Cysharp.Threading.Tasks;
 public class LoadSceneManager : MonoBehaviour
 {
     public static LoadSceneManager instance;
@@ -18,7 +19,7 @@ public class LoadSceneManager : MonoBehaviour
     bool isPrevScene;
     public List<GameObject> leftOutcharacters = new List<GameObject>();
     public bool ToAddUnlinkedCharacter;
-    public bool IsnewGame;
+    public bool IsnewGame = true;
     GameObject gameObjectMC;
     private void Awake()
     {
@@ -52,32 +53,39 @@ public class LoadSceneManager : MonoBehaviour
     private void Start()
     {
          persistableDataList = FindAllIPersitableDataObjects();
-        //OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        // OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
-
-    public async void LoadScene(string sceneName) //new scene load async
+    public async void LoadScene(string sceneName) // new scene load async
     {
-        if (!isPrevScene) // check if scene is already visited
+        if (!isPrevScene)
         {
             SaveGame();
         }
-     
-        var scene = SceneManager.LoadSceneAsync(sceneName);
+
+        await LoadMyScene(sceneName); // Properly wait for scene load
     }
 
-   /* public void SavePlayerState()
+    private async UniTask LoadMyScene(string sceneName)
     {
-        TemporaryStats playerState = new TemporaryStats(gameObject.GetComponent<TemporaryStats>().CurrentHealth, gameObject.GetComponent<TemporaryStats>().CurrentAP, gameObject.GetComponent<TemporaryStats>().CurrentDex);
-        string json = JsonUtility.ToJson(playerState);
-        File.WriteAllText(Application.persistentDataPath + "/playerState.json", json);
-    }*/
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) // load save game data after new scene is loaded
-    {
+        Debug.Log("Start");
+        await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single).ToUniTask();
+        Debug.Log("Finish");
         persistableDataList = FindAllIPersitableDataObjects();
-       
-        LoadGame();
+
+        LoadGame(); // Now called AFTER scene is fully loaded
 
         isPrevScene = false;
+    }
+
+    /* public void SavePlayerState()
+     {
+         TemporaryStats playerState = new TemporaryStats(gameObject.GetComponent<TemporaryStats>().CurrentHealth, gameObject.GetComponent<TemporaryStats>().CurrentAP, gameObject.GetComponent<TemporaryStats>().CurrentDex);
+         string json = JsonUtility.ToJson(playerState);
+         File.WriteAllText(Application.persistentDataPath + "/playerState.json", json);
+     }*/
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) // load save game data after new scene is loaded
+    {
+       
     }
 
     public void OnSceneUnloaded(Scene scene)
@@ -91,6 +99,7 @@ public class LoadSceneManager : MonoBehaviour
             GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
             ShowSavedData.Instance.DefaultCharacterData(Ch_obj);
             Debug.Log("default");
+           // LoadGame();
         }
         IsnewGame = true;
     }
@@ -116,6 +125,8 @@ public class LoadSceneManager : MonoBehaviour
             GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
             ShowSavedData.Instance.LoadTemporaryStatsNextScene(Ch_obj); //load from json
             // player_GO.LoadData(playerDataSave);
+            Debug.Log("Data Loaded");
+           //SwitchMC.Instance.CharacterSwitch();
         }
         if (!IsnewGame)
         {
@@ -123,7 +134,7 @@ public class LoadSceneManager : MonoBehaviour
         }
         else
         {
-          //  SwitchMC.Instance.SwitchToNextCharacter();
+            SwitchMC.Instance.SwitchToNextCharacter();
         }
         IsnewGame = false;
 

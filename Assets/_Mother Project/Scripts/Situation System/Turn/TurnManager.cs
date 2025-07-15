@@ -6,12 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.PlayerLoop;
-using static Unity.Burst.Intrinsics.Arm;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.ParticleSystem;
-using static UnityEngine.Rendering.DebugUI;
+
 //using static UnityEditorInternal.ReorderableList;
 
 public class TurnManager : MonoBehaviour
@@ -120,10 +115,9 @@ public class TurnManager : MonoBehaviour
             targetsInRange.Clear();
             nonCharacterTargetsInRange.Clear();
             TempManager.instance.ChangeGameState(GameStates.Simulation);
-            await HandleTurnNew.instance.PerformTurns();
             TextFadeInOut.instance.ClearText();
             inputHandlerForSaving.SaveTurnToJson();
-   
+            await HandleTurnNew.instance.PerformTurns();
         }
 
     }
@@ -144,7 +138,7 @@ public class TurnManager : MonoBehaviour
         
         TurnTimer.Instance.StartTimer();
 
-        TeamManager.instance.PrintDictionary();
+        //TeamManager.instance.PrintDictionary();
 
         roundNumber.text = "Round: " + round.ToString();
         if (currentPlayerIndex >= players.Count)
@@ -245,13 +239,20 @@ public class TurnManager : MonoBehaviour
 
 
 
-            if (actionName == "Heal" || actionName == "Buff")
+            if (actionName == "Heal" || actionName == "Buff" )
             {
                 targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, 10, Color.white);
                 GridMovement.instance.ResetHighlightedPath();
                 GridMovement.instance.ResetPathSelection();
                 targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, targetsInRange[0].GetComponent<TemporaryStats>().CharacterTeam, temporaryImprovedScriptable.ActionRange, Color.red);
                 targetsInRange.Add(players[currentPlayerIndex].GetComponent<CharacterBaseClasses>());
+            }
+            if ( actionName == "SoulTransfer")
+            {
+                targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam, 10, Color.white);
+                GridMovement.instance.ResetHighlightedPath();
+                GridMovement.instance.ResetPathSelection();
+                targetsInRange = GridMovement.instance.InAdjacentMatrix(players[currentPlayerIndex].GetComponent<TemporaryStats>().currentPlayerGridPosition, targetsInRange[0].GetComponent<TemporaryStats>().CharacterTeam, temporaryImprovedScriptable.ActionRange, Color.red);
             }
         }
         else
@@ -466,7 +467,8 @@ public class TurnManager : MonoBehaviour
             TemporaryStats playerTempStat = players[i].GetComponent<TemporaryStats>();
             playerTempStat.IsBlockActive = false;
             playerTempStat.IsDodgeActive = false;
-            playerTempStat.IsThirdRatePerformanceActive = false;
+            playerTempStat.IsImbuementActive = false;
+            playerTempStat.GetComponent<SpawnVFX>().StopVFXEvent();
             playerTempStat.IsCounterActive = false;
             playerTempStat.CurrentDamageMultiplier = players[i].GetComponent<CharacterBaseClasses>().DamageMultiplier;
             if (playerTempStat.CompareTag("Player"))

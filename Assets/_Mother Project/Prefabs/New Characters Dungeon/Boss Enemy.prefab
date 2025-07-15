@@ -25944,15 +25944,13 @@ GameObject:
   - component: {fileID: 6979364116162742739}
   - component: {fileID: 9085197622889910755}
   - component: {fileID: 9151562695721274474}
+  - component: {fileID: 7835468150436624435}
   - component: {fileID: 3762149454090028306}
   - component: {fileID: 1333618703070672003}
   - component: {fileID: 2035785983157307871}
-  - component: {fileID: 5866633116462984510}
-  - component: {fileID: 1012583640380250651}
   - component: {fileID: 4389265775404957449}
   - component: {fileID: 4825948191189860425}
   - component: {fileID: 7654818380552841339}
-  - component: {fileID: 1421939450364176787}
   - component: {fileID: 5088622016930757147}
   - component: {fileID: 5576991824588669450}
   - component: {fileID: 2170802917383991165}
@@ -25966,7 +25964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8529738019043942148
 Transform:
   m_ObjectHideFlags: 0
@@ -26051,6 +26049,43 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   isMoveOn: 1
   myTurn: 0
+--- !u!114 &7835468150436624435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431003122518487151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe8e32059a97f943b7873ab4d95bff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: AXE Boss
+  avatarHead: {fileID: 21300000, guid: 238cdfccaf141b34781132f52ff489cc, type: 3}
+  characterClass: Talker
+  description: 
+  level: 5
+  strength: 5
+  dexterity: 5
+  intelligence: 0
+  arcana: 5
+  endurance: 10
+  healthPoints: 25
+  resolvePoints: 25
+  skill: 5
+  mind: 5
+  damageMultiplier: 1
+  MaxExp: 0
+  lootUltiPoints: 0
+  EquipedWeapon: 5
+  characterAvailableActions: []
+  playerUltimateFactory: {fileID: 11400000, guid: ebbdabb8db8918f47bcbd6c952221055,
+    type: 2}
+  warpSurge: {fileID: 0}
+  groundBlast: {fileID: 0}
+  dash: {fileID: 0}
+  move: {fileID: 11400000, guid: 8465ec936a5ef5240a593153957a09c8, type: 2}
 --- !u!114 &3762149454090028306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26136,41 +26171,9 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   startMoving: 0
   speed: 2
-  rotationSpeed: 12
   gridGenerator: {fileID: 0}
   clashParticle: {fileID: 2457991722314602123, guid: 90710e1559ae4304e859e841a3307d06,
     type: 3}
---- !u!114 &5866633116462984510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431003122518487151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54509b975f871a440bed10c8ba9c8132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
---- !u!114 &1012583640380250651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431003122518487151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d98be979eea79a4ab36454d955d5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6979364116162742739}
-  particlePrefab: {fileID: 0}
-  particlePrefabHit: {fileID: 0}
-  particlePrefabHurt: {fileID: 0}
-  target: {fileID: 0}
-  actionSound: {fileID: 0}
 --- !u!54 &4389265775404957449
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26229,46 +26232,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &1421939450364176787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431003122518487151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f37a06f8be00e3b4f89faa3b0398cb92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: KanaBhulo
-  avatarHead: {fileID: 21300000, guid: 8e64509eb56731c409cd11605778696a, type: 3}
-  characterClass: Performer
-  description: 
-  level: 5
-  strength: 5
-  dexterity: 5
-  intelligence: 0
-  arcana: 5
-  endurance: 10
-  healthPoints: 25
-  resolvePoints: 25
-  skill: 5
-  mind: 5
-  damageMultiplier: 1
-  MaxExp: 0
-  lootUltiPoints: 0
-  EquipedWeapon: 5
-  characterAvailableActions:
-  - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
-  - {fileID: 11400000, guid: 115dd138f5c68e747acbc0a771e6ea86, type: 2}
-  - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
-  playerUltimateFactory: {fileID: 11400000, guid: ebbdabb8db8918f47bcbd6c952221055,
-    type: 2}
-  warpSurge: {fileID: 0}
-  groundBlast: {fileID: 0}
-  dash: {fileID: 0}
-  move: {fileID: 11400000, guid: 8465ec936a5ef5240a593153957a09c8, type: 2}
 --- !u!114 &5088622016930757147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26384,18 +26347,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00974c49c138ed84aba7d1c1bd49a392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefabList: []
-  hitEffectPrefabList: []
-  hitEffectTransformList: []
-  effectTransformList: []
-  targetHitTransformList: []
-  particles: []
   TrailVisual: {fileID: 0}
   speed: 5
   charAnimator: {fileID: 6979364116162742739}
   targetAnimator: {fileID: 0}
-  animationList: []
-  animationIndex: 0
+  actionMoveCamTimelinePrefab: {fileID: 0}
   isShieldUp: 0
 --- !u!114 &8384950409657416487
 MonoBehaviour:
@@ -185598,32 +185554,32 @@ PrefabInstance:
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[3].m_Value.x
-      value: -0.000000098019314
+      value: 7.380874
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[3].m_Value.y
-      value: 88.45307
+      value: 1.0915314
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[3].m_Value.z
-      value: -1.1960156e-10
+      value: 355.63058
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[4].m_Value.x
-      value: 70.75726
+      value: 14.405314
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[4].m_Value.y
-      value: 3.2279663
+      value: 3.4011223
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[4].m_Value.z
-      value: 148.77486
+      value: 15.905318
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
@@ -185648,32 +185604,32 @@ PrefabInstance:
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[14].m_Value.x
-      value: -0.000000098019314
+      value: 7.380874
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[14].m_Value.y
-      value: 88.45307
+      value: 1.0915314
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[14].m_Value.z
-      value: -1.1960156e-10
+      value: 355.63058
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[15].m_Value.x
-      value: 70.78552
+      value: 14.428822
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[15].m_Value.y
-      value: 3.5202026
+      value: 3.686452
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[15].m_Value.z
-      value: 148.77562
+      value: 15.970352
       objectReference: {fileID: 0}
     - target: {fileID: 2450424280748928437, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
@@ -185718,7 +185674,7 @@ PrefabInstance:
     - target: {fileID: 3113951263298554144, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3387869765564205423, guid: 4af31fd6ad568974392921f73cc8ec89,
         type: 3}

@@ -1,5 +1,3 @@
-
-
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System.Collections;
@@ -30,13 +28,6 @@ public class MeleeAttack : ICommand
         ActionType = actionType;
 
     }
-
-
-
-
-
-
-
     public async UniTask Execute()
     {
        
@@ -44,12 +35,13 @@ public class MeleeAttack : ICommand
 
         float actionAccuracy = meleeAttack.ActionAccuracy;
 
-        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsBlockActive)
+        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsImbuementActive) // imbuement
         {
-            ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "VenomCloud");
-            ICommand venomCloud = new VenomCloud(player, target, playerTempStats, targetTempStats, venomScriptable);
-            venomCloud.Execute();
-            playerTempStats.IsBlockActive = false;
+            ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Stab");
+            ICommand puncture = new Puncture(player, target, playerTempStats, targetTempStats, venomScriptable, "melee");
+            puncture.Execute();
+            playerTempStats.IsImbuementActive = false;
+            player.GetComponent<SpawnVFX>().StopVFXEvent();
         }
 
         if (targetTempStats.IsDodgeActive)
@@ -76,12 +68,12 @@ public class MeleeAttack : ICommand
             if (targetTempStats.IsCounterActive)
             {
                 //damages attacker is counter on
+                await HandleAnimation();
                 playerTempStats.CurrentHealth = Mathf.Max(HealthManager.instance.HealthCalculation(damage / 2, playerTempStats.CurrentHealth), 1);
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HandleAnimation();
                 UI.instance.ShowFlyingText((damage * -1).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(playerTempStats,attackOrder, playerTempStats);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder, playerTempStats);
+                await HealthManager.instance.PlayerMortality(playerTempStats, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
                 //ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch");
                 //ICommand meleeAction = new MeleeAttack(target, player, targetTempStats, playerTempStats, meleeScriptable, "SingleMelee");
@@ -90,12 +82,10 @@ public class MeleeAttack : ICommand
             }
             else
             {
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                
                 await HandleAnimation();
-
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats,attackOrder, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
             }
 
@@ -106,7 +96,7 @@ public class MeleeAttack : ICommand
 
     async UniTask HandleAnimation()
     {
-        TempManager.instance.CharacterRotation(target, player, 2f);
+        await TempManager.instance.CharacterRotation(target, player, 2f);
       /*  player.GetComponent<PlayParticle>().target = target.gameObject;
         player.GetComponent<PlayParticle>().actionSound = meleeAttack.actionSound;
         // player.GetComponent<PlayParticle>().InstantiateParticleEffect(meleeAttack.ParticleSystem);

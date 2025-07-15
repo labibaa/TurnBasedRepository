@@ -54,20 +54,23 @@ public class HealthManager : MonoBehaviour
 
 
 
-    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder, TemporaryStats killer) //add attacker
+    public async UniTask PlayerMortality(TemporaryStats  playerStat, TemporaryStats killer) //add attacker
     {
         
         if (playerStat.CurrentHealth < 1)
         {
+            await UniTask.Delay(500);
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
+
+            int deadPlayerIndex = TurnManager.instance.players.IndexOf(deadPlayerTurn);
+            bool shouldDecrementIndex = TurnManager.instance.currentPlayerIndex > deadPlayerIndex;
+
             playerStat.playerMortality = Mortality.Dead;
             OnCharacterDeath?.Invoke();
             killer.playerUltimateBarCount += playerStat.GetComponent<CharacterBaseClasses>().LootUltiPoints;//deadplayer give ulti points
-            Debug.Log(deadPlayerTurn.name + "dead");
+            Debug.Log(deadPlayerTurn.name + " dead");
             TurnManager.instance.players.Remove(deadPlayerTurn);
-            //Debug.Log(deadPlayerTurn.name + "dead20");
             TurnManager.instance.target.Remove(deadPlayerTurn);
-           // Debug.Log(deadPlayerTurn.name + "dead329");
 
             if (!RemoveAdjacentDuplicates(TurnManager.instance.players) && CheckIfElementIsDuplicate(TurnManager.instance.players,playerTurn ))
             {
@@ -77,17 +80,17 @@ public class HealthManager : MonoBehaviour
             //Destroy(gameObject);
             Vector2 deadPlayerGridPosition=GridSystem.instance.WorldToGrid(playerStat.transform.position);
             GridSystem.instance._gridArray[(int)deadPlayerGridPosition.x, (int)deadPlayerGridPosition.y].GetComponent<GridStat>().ClearGrid();
-            TeamManager.instance.RemovePlayerFromTeamList(playerStat);
             TeamManager.instance.PrintDictionary();
+            TeamManager.instance.RemovePlayerFromTeamList(playerStat);
+           
             playerStat.gameObject.SetActive(false);
-            if (attackOrder<0)
+            if (shouldDecrementIndex)
             {
                 TurnManager.instance.currentPlayerIndex--;
             }
            
             
-            Debug.Log("Current" +
-            TurnManager.instance.currentPlayerIndex);
+            Debug.Log("Current" + TurnManager.instance.currentPlayerIndex);
             if ( TeamManager.instance.IsAnyTeamEmpty())//TurnManager.instance.players.Count<2)
             {
                 //UI.instance.SendNotification($"{TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam} has Won");
@@ -118,7 +121,7 @@ public class HealthManager : MonoBehaviour
                 if(TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam != TeamName.TeamA)
                 {
                     UI.instance.inGameCanvas.SetActive(false);
-                    UI.instance.winMenu.SetActive(true);
+                  //  UI.instance.winMenu.SetActive(true);
                 }
 
             }

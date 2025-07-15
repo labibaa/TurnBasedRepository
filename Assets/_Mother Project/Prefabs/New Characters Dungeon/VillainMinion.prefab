@@ -22285,8 +22285,6 @@ GameObject:
   - component: {fileID: 6719925476913469258}
   - component: {fileID: 2595480528751406264}
   - component: {fileID: 5439259950950518841}
-  - component: {fileID: 7103101787612768247}
-  - component: {fileID: 927589609121339311}
   - component: {fileID: 4982487242529974451}
   - component: {fileID: 6623828745637797339}
   - component: {fileID: 2541258747483145782}
@@ -22298,7 +22296,6 @@ GameObject:
   - component: {fileID: 4571901535689206959}
   - component: {fileID: 7679889445635648131}
   - component: {fileID: 8933773828350446642}
-  - component: {fileID: 6922381754137338465}
   m_Layer: 8
   m_Name: VillainMinion
   m_TagString: Ally
@@ -22477,37 +22474,6 @@ MonoBehaviour:
   gridGenerator: {fileID: 0}
   clashParticle: {fileID: 2457991722314602123, guid: 90710e1559ae4304e859e841a3307d06,
     type: 3}
---- !u!114 &7103101787612768247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6309810652555908849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54509b975f871a440bed10c8ba9c8132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
---- !u!114 &927589609121339311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6309810652555908849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d98be979eea79a4ab36454d955d5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1170907623191170863}
-  particlePrefab: {fileID: 0}
-  particlePrefabHit: {fileID: 0}
-  particlePrefabHurt: {fileID: 0}
-  target: {fileID: 0}
-  actionSound: {fileID: 0}
 --- !u!54 &4982487242529974451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22753,20 +22719,6 @@ MonoBehaviour:
   minHealthToAttack: 3
   maxHealthToDefense: 10
   target: {fileID: 0}
---- !u!114 &6922381754137338465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6309810652555908849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5dcbd49f11c3343b26647387ffe7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionButtons: []
-  temp: {fileID: 6719925476913469258}
 --- !u!1 &6386472375871397170
 GameObject:
   m_ObjectHideFlags: 0

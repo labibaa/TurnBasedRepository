@@ -34,10 +34,10 @@ public class ButtonHoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointe
 
         // Find the TextMeshPro component as a child of the button
         
-        if (hoverText != null)
-        {
-            hoverText.gameObject.SetActive(false); // Initially disable the TextMeshPro component
-        }
+        //if (hoverText != null)
+        //{
+        //    hoverText.gameObject.SetActive(false); // Initially disable the TextMeshPro component
+        //}
     }
 
     private void Update()

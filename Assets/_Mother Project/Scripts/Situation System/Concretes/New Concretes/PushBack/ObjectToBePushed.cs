@@ -11,7 +11,7 @@ public class ObjectToBePushed : MonoBehaviour
     Vector3 target;
     [SerializeField]
     AnimationCurve speedCurve;
-    private float forceMultiplier =6f;
+   // private float forceMultiplier =6f;
     private float speed= 5f;
     bool isShoot;
     public Queue<Vector2> positionTraversed = new Queue<Vector2>();

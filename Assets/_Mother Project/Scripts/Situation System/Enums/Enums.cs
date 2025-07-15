@@ -282,7 +282,8 @@ public enum CurrentWeapon
     Hammer,
     Axe,
     Spear,
-    Staff
+    Staff,
+    Spoon
 }
 
 public enum HexOrientation

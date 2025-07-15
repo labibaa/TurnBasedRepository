@@ -36,19 +36,19 @@ public class WitchsBolt : ICommand
             witchsBolt.BasePower = witchsBolt.BasePower - 30;
         }
         Debug.Log("AA" + ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy));
-        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive)
+        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))// && !playerTempStats.IsThirdRatePerformanceActive)
         {
             float damage = ActionResolver.instance.CalculateKillDamage(player, target, witchsBolt);
             if (targetTempStats.IsCounterActive)
             {
                 playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(playerTempStats,0, playerTempStats);
+                await HealthManager.instance.PlayerMortality(playerTempStats, playerTempStats);
             }
             else
             {
               
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(targetTempStats,0, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
                 await HandleAnimation();
                
 

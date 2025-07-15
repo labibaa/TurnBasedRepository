@@ -860,7 +860,7 @@ namespace Starter
         private readonly InputAction m_Grid_GridReset;
         private readonly InputAction m_Grid_ExitGrid;
         private readonly InputAction m_Grid_UndoMove;
-        public struct GridActions  //add grid actions to starter asset
+        public struct GridActions
         {
             private @StarterInput m_Wrapper;
             public GridActions(@StarterInput wrapper) { m_Wrapper = wrapper; }
@@ -877,7 +877,7 @@ namespace Starter
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
             public static implicit operator InputActionMap(GridActions set) { return set.Get(); }
-            public void AddCallbacks(IGridActions instance)  //add grid actions to starter asset
+            public void AddCallbacks(IGridActions instance)
             {
                 if (instance == null || m_Wrapper.m_GridActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_GridActionsCallbackInterfaces.Add(instance);
@@ -907,7 +907,7 @@ namespace Starter
                 @UndoMove.canceled += instance.OnUndoMove;
             }
 
-            private void UnregisterCallbacks(IGridActions instance)  //add grid actions to starter asset
+            private void UnregisterCallbacks(IGridActions instance)
             {
                 @Forward.started -= instance.OnForward;
                 @Forward.performed -= instance.OnForward;
@@ -935,13 +935,13 @@ namespace Starter
                 @UndoMove.canceled -= instance.OnUndoMove;
             }
 
-            public void RemoveCallbacks(IGridActions instance)  //add grid actions to starter asset
+            public void RemoveCallbacks(IGridActions instance)
             {
                 if (m_Wrapper.m_GridActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
-            public void SetCallbacks(IGridActions instance)   //add grid actions to starter asset
+            public void SetCallbacks(IGridActions instance)
             {
                 foreach (var item in m_Wrapper.m_GridActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
@@ -949,7 +949,7 @@ namespace Starter
                 AddCallbacks(instance);
             }
         }
-        public GridActions @Grid => new GridActions(this);   //add grid actions to starter asset
+        public GridActions @Grid => new GridActions(this);
 
         // UI
         private readonly InputActionMap m_UI;

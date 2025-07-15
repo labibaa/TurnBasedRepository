@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using StarterAssets;
 using System;
 using System.Collections;
@@ -35,8 +36,9 @@ public class SwitchMC : MonoBehaviour
             Instance = this;
         }
     }
-    private void Start()
+    private async void Start()
     {
+        await UniTask.Delay(50);
         CharacterSwitch();
         OnSceneLoadMainPlayer();
     }
@@ -68,6 +70,7 @@ public class SwitchMC : MonoBehaviour
                 character.GetComponent<NavMeshAgent>().enabled = false;
                 character.GetComponent<PlayerCompanions>().enabled = false;
                 character.GetComponent<IsoMetricToTPS>().enabled = true;
+                OnCharacterChange?.Invoke();
             }
             else
             {
@@ -91,7 +94,7 @@ public class SwitchMC : MonoBehaviour
         // Reactivate the GameObject
         character.SetActive(true);
     }
-    void SwitchToNextCharacter()
+    public void SwitchToNextCharacter()
     {
         if (!GridSystem.instance.IsGridOn)
         {
@@ -106,7 +109,6 @@ public class SwitchMC : MonoBehaviour
             characters[currentMainPlayerIndex].GetComponent<TemporaryStats>().isMainCharacter = true;
 
             SetMainPlayer(currentMainPlayerIndex);
-            OnCharacterChange?.Invoke();
             mainCharacter = characters[currentMainPlayerIndex];
             Debug.Log($"Character {currentMainPlayerIndex} is now the main player.");
         }

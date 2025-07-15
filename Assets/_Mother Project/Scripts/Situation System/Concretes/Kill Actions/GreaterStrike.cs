@@ -46,7 +46,7 @@ public class GreaterStrike : ICommand
             greaterStrike.BasePower = greaterStrike.BasePower - 30;
         }
         
-        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive) {
+/*        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive) {
       
             float damage = ActionResolver.instance.CalculateKillDamage(player, target, greaterStrike);
             if (targetTempStats.IsCounterActive)
@@ -61,7 +61,22 @@ public class GreaterStrike : ICommand
             }
           
             
-        }
+        }*//*        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive) {
+      
+            float damage = ActionResolver.instance.CalculateKillDamage(player, target, greaterStrike);
+            if (targetTempStats.IsCounterActive)
+            {
+                playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
+                HealthManager.instance.PlayerMortality(playerTempStats, 0, playerTempStats);
+            }
+            else
+            {
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
+                HealthManager.instance.PlayerMortality(targetTempStats, 0, playerTempStats);
+            }
+          
+            
+        }*/
 
     }
 

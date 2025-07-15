@@ -23,13 +23,13 @@ public class ShadowOfPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        HandleTurnNew.IsPlayer += UpdateList;
+        HandleTurnNew.OnNewAction += UpdateList;
         HandleTurnNew.IsPlayerUndo += UndoGhost;
     }
 
     private void OnDisable()
     {
-        HandleTurnNew.IsPlayer -= UpdateList;
+        HandleTurnNew.OnNewAction -= UpdateList;
         HandleTurnNew.IsPlayerUndo -= UndoGhost;
    
     }
@@ -52,11 +52,11 @@ public class ShadowOfPlayer : MonoBehaviour
         if (TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
         {
             ActionTurnListForGhost = HandleTurnNew.instance.GetAllTurns();
-            if (ActionTurnListForGhost.Count<2)
+         /* if (ActionTurnListForGhost.Count<2)
             {
                 
                // ActionGhostRepeat();
-            }
+            }*/
             TempManager.instance.ChangeGameState(GameStates.GhostPlay);
             Debug.Log("ding dong");
             ActionGhostSingular();
@@ -130,8 +130,6 @@ public class ShadowOfPlayer : MonoBehaviour
             if (TempManager.instance.currentState == GameStates.Simulation )
             {
                 Destroy(IsSpawned);
-
-
             }
             j++;
           
@@ -182,14 +180,14 @@ public class ShadowOfPlayer : MonoBehaviour
             return;
         }
         
-        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Move"))
+        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Dash") || ActionTurnListForGhost[index].Command.GetActionName().Equals("Move") || ActionTurnListForGhost[index].Command.GetActionName().Equals("WarpSurge"))
         {
             
             List<GameObject>pathToDestination = ActionTurnListForGhost[index].Command.GetPaths();
             IsSpawned.GetComponent<Animator>().Play("Dash");
           
             await IsSpawned.GetComponent<LerpAndLoop>().MoveToDestination(IsSpawned.transform.position,pathToDestination[pathToDestination.Count-1].transform.position );
-            IsSpawned.GetComponent<Animator>().Play("Sub_Idle1", layer: 1, normalizedTime: 0f);
+            IsSpawned.GetComponent<Animator>().Play("Idle");
            
         }
        

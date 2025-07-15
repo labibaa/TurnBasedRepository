@@ -100,10 +100,10 @@ public class ButtonStackManager : MonoBehaviour
 
         // Add RectTransform component and set its size
         RectTransform panelRectTransform = playerPanel.AddComponent<RectTransform>();
-        playerPanel.AddComponent<UICircularLayoutGroup>();
-        
+        VerticalLayoutGroup layoutGroup = playerPanel.AddComponent<VerticalLayoutGroup>();
+        layoutGroup.spacing = 10f;
 
-        panelRectTransform.sizeDelta = new Vector2(400, 400); // Set panel size as needed
+        panelRectTransform.sizeDelta = new Vector2(300, 400); // Set panel size as needed
 
         //// Replace HorizontalLayoutGroup with GridLayoutGroup for button grid layout
         //GridLayoutGroup gridLayoutGroup = playerPanel.AddComponent<GridLayoutGroup>();
@@ -143,6 +143,14 @@ public class ButtonStackManager : MonoBehaviour
             else if (scriptable.actionButton.name == "Imbuement")
             {
                 button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Imbuement());
+            } 
+            else if (scriptable.actionButton.name == "DaggerSweep")
+            {
+                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.DaggerSweep());
+            }
+            else if (scriptable.actionButton.name == "Impale")
+            {
+                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Impale());
             }
             else
             {

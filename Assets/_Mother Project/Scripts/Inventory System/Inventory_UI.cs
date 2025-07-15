@@ -15,31 +15,61 @@ public class Inventory_UI : MonoBehaviour
     [SerializeField] Transform StoreItemDetails_Panel;
     [SerializeField] GameObject storeitemDetailPanel_Prefab;
 
+    [SerializeField] private TextMeshProUGUI currencyText;
+    [SerializeField] private TextMeshProUGUI playerName;
+    [SerializeField] private Image mainCharacterSprite;
+    [SerializeField] private Image secondaryCharacterSprite;
+
     public StoreObjects store;
+
+    private void Update()
+    {
+        ShowCurrency();
+        ShowMainCharacterSprite();
+        ShowSecondaryCharacterSprite();
+        RefreshInventoryUI();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            RefreshStoreUI();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            
+        }
+
+        
+    }
+
     public void RefreshInventoryUI()
     {
         foreach (Transform child in inventoryItem_panel)
         {
             Destroy(child.gameObject);
         }
-        foreach (var item in InventoryManager.Instance.GetCurrentInventory())
+
+        var inventory = InventoryManager.Instance.GetCurrentInventory();
+        if (inventory == null || inventory.Count == 0) return;
+
+        InventoryItem latestItem = inventory[inventory.Count - 1];
+
+        Button ItemButton = Instantiate(inventoryItem_buttonPrefab, inventoryItem_panel);
+        TextMeshProUGUI SizeComponent = ItemButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();
+        Image imgComponent = ItemButton.transform.Find("ItemImg").GetComponent<Image>();
+        imgComponent.sprite = latestItem.itemClass.itemIcon;
+
+        if (SizeComponent != null)
         {
-            Button ItemButton = Instantiate(inventoryItem_buttonPrefab,inventoryItem_panel);
-            TextMeshProUGUI SizeComponent = ItemButton.transform.Find("StackSize_Text").GetComponent<TextMeshProUGUI>();
-            Image imgComponent = ItemButton.transform.Find("ItemImg").GetComponent<Image>();
-            imgComponent.sprite = item.itemClass.itemIcon;
-            if (SizeComponent != null)
-            {
-                SizeComponent.text = item.StackSize.ToString();
-            }
-            ItemButton.onClick.AddListener(() =>
-            {
-                /// CurrencySystem.instance.ItemToAdd(item.itemClass);
-                ItemDetails(item);
-            });
-            
+            SizeComponent.text = latestItem.StackSize.ToString();
         }
+
+        ItemButton.onClick.AddListener(() =>
+        {
+            ItemDetails(latestItem);
+        });
     }
+
+
 
     public void RefreshStoreUI()
     {
@@ -111,5 +141,52 @@ public class Inventory_UI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //InventoryHolder.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+
+    public void ShowCurrency()
+    {
+        if (currencyText != null)
+        {
+            currencyText.text = CurrencySystem.instance.GetCurrency().ToString();
+        }
+    }
+
+    public void ShowMainCharacterSprite()
+    {
+        var currentMC = InventoryManager.Instance.GetCurrentMC();
+        if (currentMC != null && mainCharacterSprite != null)
+        {
+            var avatar = currentMC.GetComponent<TemporaryStats>().avatarHead;
+            if (avatar != null)
+                mainCharacterSprite.sprite = avatar;
+
+        }
+        if (currentMC != null && playerName != null)
+        {
+            var name = currentMC.GetComponent<CharacterBaseClasses>().characterName;
+            if (name != null)
+                playerName.text = name;
+
+        }
+    }
+
+    public void ShowSecondaryCharacterSprite()
+    {
+        
+
+        foreach (var character in SwitchMC.Instance.characters)
+        {
+            
+            var tempStats = character.GetComponent<TemporaryStats>();
+            if (tempStats.isMainCharacter == false)
+            {
+                var avatar = character.GetComponent<TemporaryStats>().avatarHead;
+               
+                    secondaryCharacterSprite.sprite = avatar;
+                    break; // Only one secondary character, exit after setting
+                
+            }
+        }
     }
 }
