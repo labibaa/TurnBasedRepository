@@ -14,7 +14,7 @@ public class PunctureDOTHandler : BaseDOThandler
 
     protected override async UniTask OnEffectTick()
     {
-        if (Target != null && Target.playerMortality != Mortality.Dead)
+        if (Target != null && Target.CurrentHealth > 0)
         {
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(punctureIAS.FirstPercentage, punctureIAS.SecondPercentage, punctureIAS.LastPercentage);
             UI.instance.SendNotification(diceValue.ToString());
@@ -23,15 +23,21 @@ public class PunctureDOTHandler : BaseDOThandler
             UI.instance.ShowFlyingText((damage * -1).ToString(), Target.FlyingTextParent, Color.red);
             Target.CurrentHealth = HealthManager.instance.HealthCalculation(damage, Target.CurrentHealth);
 
-            if (punctureIAS != null)
+           /* if (punctureIAS != null)
             {
                 await CutsceneManager.instance.PlayAnimationForCharacter(
                     Target.gameObject,
                     punctureIAS.TargetHurtAnimation
                 );
-            }
-           
+            }*/
+
             await HealthManager.instance.PlayerMortality(Target, EffectOwner);
+
+
+        }
+        else
+        {
+            ResetEffect();
         }
     }
 }

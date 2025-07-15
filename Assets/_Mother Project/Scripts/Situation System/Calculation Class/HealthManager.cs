@@ -57,7 +57,7 @@ public class HealthManager : MonoBehaviour
     public async UniTask PlayerMortality(TemporaryStats  playerStat, TemporaryStats killer) //add attacker
     {
         
-        if (playerStat.CurrentHealth < 1)
+        if (playerStat.CurrentHealth < 1 && playerStat.playerMortality == Mortality.Alive)
         {
             await UniTask.Delay(500);
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
