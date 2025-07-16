@@ -99,6 +99,10 @@ public class TurnManager : MonoBehaviour
         Saves turn data
 
         Clears UI text*/
+        if (currentPlayer.GetComponent<IsoMetricToTPS>())
+        {
+            currentPlayer.GetComponent<IsoMetricToTPS>().enabled = false;
+        }
         TurnTimer.Instance.StopTImer();
         _gridHover.RestoreColor();
         if (GridSystem.instance.IsGridOn)
