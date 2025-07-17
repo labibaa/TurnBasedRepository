@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5813565848321053008}
   - component: {fileID: 948628220786030294}
   - component: {fileID: 338959251751794227}
-  - component: {fileID: 3502224645997085305}
   m_Layer: 0
   m_Name: Ghost Bone spear
   m_TagString: Untagged
@@ -85,21 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3502224645997085305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057680891066412023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7711f08346cad14cb8cc3c03a47a226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThrowSpeed: 12
-  particlePrefab: {fileID: 0}
-  hurtAnimation: 
 --- !u!1 &2137919923041535410
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +99,7 @@ GameObject:
   - component: {fileID: 1395896677330105099}
   - component: {fileID: 2199048373685893113}
   m_Layer: 0
-  m_Name: Destructive Elements Decay VFX
+  m_Name: SpearPrefabVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,7 +448,7 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: VFXTransform_scale
         m_Overridden: 1
-      - m_Value: {x: 86.33638, y: 19.297626, z: 288.3958}
+      - m_Value: {x: 83.63764, y: 282.89166, z: 278.4898}
         m_Name: SkinnedMeshTransform_angles
         m_Overridden: 1
       - m_Value: {x: 0, y: 0, z: 0}
@@ -752,9 +736,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5204651130900960941}
-  - component: {fileID: 6678011676540920052}
   - component: {fileID: 6782270669628134039}
+  - component: {fileID: 6678011676540920052}
   - component: {fileID: 2221129955263500076}
+  - component: {fileID: 1212222401707055950}
+  - component: {fileID: 5117906585644308904}
   m_Layer: 8
   m_Name: Bone Spears
   m_TagString: Untagged
@@ -770,29 +756,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9134961065531976153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.016890777, y: 0.68519694, z: 0.017944455, w: 0.7279408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5813565848321053008}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 86.535, z: 2.824}
---- !u!114 &6678011676540920052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134961065531976153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7711f08346cad14cb8cc3c03a47a226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThrowSpeed: 12
-  particlePrefab: {fileID: 0}
-  hurtAnimation: 
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &6782270669628134039
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -831,6 +802,21 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!114 &6678011676540920052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134961065531976153}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7711f08346cad14cb8cc3c03a47a226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowSpeed: 15
+  particlePrefab: {fileID: 0}
+  hurtAnimation: Damage1
 --- !u!73398921 &2221129955263500076
 VFXRenderer:
   serializedVersion: 1
@@ -871,3 +857,31 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1212222401707055950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134961065531976153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1265b4c3a5e2abd45b437d366c0f73f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect:
+  - {fileID: 1913174398526112140}
+--- !u!114 &5117906585644308904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9134961065531976153}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6815ba35a7632b84baebeb9f0d1f143e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 0
+  duration: 0
