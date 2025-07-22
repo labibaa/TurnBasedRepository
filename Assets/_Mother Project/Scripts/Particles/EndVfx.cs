@@ -15,7 +15,8 @@ public class EndVfx : MonoBehaviour
     private void OnDisable()
     {
        BaseDOThandler.OnAnyEffectFinished -= EndVfxKey;
-       // EndVfxKey();
+        // EndVfxKey();
+        DestroyFunction();
     }
 
     public void EndVfxKey()
@@ -41,5 +42,12 @@ public class EndVfx : MonoBehaviour
         Destroy(desEffect.gameObject);
         //  Destroy(hiteffect.gameObject);
         
+    }
+    public void DestroyFunction()
+    {
+        foreach (VisualEffect vis in effect)
+        {
+            Destroy(vis.gameObject);
+        }
     }
 }
