@@ -12,7 +12,7 @@ public class Ultimate2Command : IUltimate
     {
         ultimateScriptable = ultimateScritableObject;
     }
-    public void Execute()
+    public void ExecuteUltimate()
     {
         throw new System.NotImplementedException();
     }
