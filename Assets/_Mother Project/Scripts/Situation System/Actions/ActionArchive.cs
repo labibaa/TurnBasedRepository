@@ -921,7 +921,7 @@ public class ActionArchive : MonoBehaviour
     public async void Ultimate()
     {
         GetPlayerStats();
-        UltimateSystem._instance.useUltimate(playerAttacker, currentStatPlayer, targetDefender, currentStatTarget);
+        await UltimateSystem._instance.useUltimate(playerAttacker, currentStatPlayer, targetDefender, currentStatTarget);
         currentStatPlayer.playerUltimateBarCount = 0;
         currentStatPlayer.PlayerUltimateBar.GetComponent<UltimateUI>().ResetUltimateBar(); 
     }

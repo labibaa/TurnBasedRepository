@@ -27,51 +27,25 @@ public class MonUltimateCommand : IUltimate, ICommand
         targetCharacter = targetCh;
         targetTempStats = targetTemp;
     }
-    public async void ExecuteUltimate()
+    public void ExecuteUltimate()
     {
-        if (!ultimateScriptable.isUltimateSingleTarget)
+        List<CharacterBaseClasses> targets = GridMovement.instance.InAdjacentMatrix(playerTempStats.currentPlayerGridPosition, playerTempStats.CharacterTeam, ultimateScriptable.ultimateRange, Color.clear);
+        GridMovement.instance.ResetHighlightedPath();
+        playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
+
+        foreach (CharacterBaseClasses target in targets)
         {
-            List<CharacterBaseClasses> targets = GridMovement.instance.InAdjacentMatrix(playerTempStats.currentPlayerGridPosition, playerTempStats.CharacterTeam, ultimateScriptable.ultimateRange, Color.clear);
-            GridMovement.instance.ResetHighlightedPath();
-            playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
+            TemporaryStats targetTempStats = target.GetComponent<TemporaryStats>();
 
-            foreach (CharacterBaseClasses target in targets)
-            {
-                TemporaryStats targetTempStats = target.GetComponent<TemporaryStats>();
+            targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(targetTempStats.CurrentHealth / 2, targetTempStats.CurrentHealth);
 
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(targetTempStats.CurrentHealth / 2, targetTempStats.CurrentHealth);
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
 
-                playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
-                playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
-
-                UI.instance.ShowFlyingText((targetTempStats.CurrentHealth / 2).ToString(), targetTempStats.FlyingTextParent, Color.red);
-                //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
-            }
-          
+            UI.instance.ShowFlyingText((targetTempStats.CurrentHealth / 2).ToString(), targetTempStats.FlyingTextParent, Color.red);
+            //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
         }
-        else
-        {
-            playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
-            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
-            // GridMovement.instance.ResetHighlightedPath();
-            /* playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
-             playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);*/
-            //   PlayerStatUI.instance.UpdateSummaryHUDUI();
-            Debug.Log("Ultimate Single executed");
-            UI.instance.SendNotification("ulti single target");
-           // await HandleAnimation();
-            UltimateSystem._instance.IsUltimate = false;
 
-
-/*            GridMovement.instance.ResetHighlightedPath();
-            TurnManager.instance.ResetTargetHIghlightVisual();
-            TurnManager.instance.targetsInRange.Clear();
-            TurnManager.instance.nonCharacterTargetsInRange.Clear();
-            TempManager.instance.ChangeGameState(GameStates.Simulation);
-            playerCharacter.GetComponent<PlayerTurn>().isMoveOn = true;
-            TurnManager.instance.StartTurn();*/
-            //TurnManager.instance.EndTurn();
-        }
     }
     async UniTask HandleAnimation()
     {
@@ -122,7 +96,7 @@ public class MonUltimateCommand : IUltimate, ICommand
 
     public string GetActionName()
     {
-        return ultimateScriptable.name ;
+        return ultimateScriptable.UltimateName ;
     }
 
     public CharacterBaseClasses GetTarget()
