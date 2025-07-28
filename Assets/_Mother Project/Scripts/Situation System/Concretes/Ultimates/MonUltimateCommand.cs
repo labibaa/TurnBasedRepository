@@ -51,10 +51,12 @@ public class MonUltimateCommand : IUltimate, ICommand
         }
         else
         {
-           // GridMovement.instance.ResetHighlightedPath();
-           /* playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
-            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);*/
-         //   PlayerStatUI.instance.UpdateSummaryHUDUI();
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
+            playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
+            // GridMovement.instance.ResetHighlightedPath();
+            /* playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
+             playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);*/
+            //   PlayerStatUI.instance.UpdateSummaryHUDUI();
             Debug.Log("Ultimate Single executed");
             UI.instance.SendNotification("ulti single target");
            // await HandleAnimation();
@@ -82,8 +84,6 @@ public class MonUltimateCommand : IUltimate, ICommand
         playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
         playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimation(ultimateScriptable.TargetHurtAnimation);
 
-        playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
-        playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
         await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, GetUltimateActionName());
     }
 
