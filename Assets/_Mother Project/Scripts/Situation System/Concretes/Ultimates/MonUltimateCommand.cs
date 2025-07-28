@@ -3,9 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class MonUltimateCommand : IUltimate
+public class MonUltimateCommand : IUltimate, ICommand
 {
     
     CharacterBaseClasses playerCharacter;
@@ -26,7 +27,7 @@ public class MonUltimateCommand : IUltimate
         targetCharacter = targetCh;
         targetTempStats = targetTemp;
     }
-    public async void Execute()
+    public async void ExecuteUltimate()
     {
         if (!ultimateScriptable.isUltimateSingleTarget)
         {
@@ -34,11 +35,6 @@ public class MonUltimateCommand : IUltimate
             GridMovement.instance.ResetHighlightedPath();
             playerCharacter.GetComponent<SpawnVFX>().SetVFXSound(ultimateScriptable.actionSound);
 
-            // CutsceneManager.instance.virtualCamera.LookAt = playerCharacter.gameObject.transform;
-            // CutsceneManager.instance.virtualCamera.Follow = playerCharacter.gameObject.transform;
-
-            //CutsceneManager.instance.virtualCamera.Priority = 15;
-            //await CutsceneManager.instance.PlayAnimationForCharacter(playerCharacter.gameObject, "Ult1");
             foreach (CharacterBaseClasses target in targets)
             {
                 TemporaryStats targetTempStats = target.GetComponent<TemporaryStats>();
@@ -51,27 +47,29 @@ public class MonUltimateCommand : IUltimate
                 UI.instance.ShowFlyingText((targetTempStats.CurrentHealth / 2).ToString(), targetTempStats.FlyingTextParent, Color.red);
                 //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");
             }
-            await HandleAnimation();
-            PlayerStatUI.instance.UpdateSummaryHUDUI();
-            Debug.Log("Ultimate executed");
+          
         }
         else
         {
-            GridMovement.instance.ResetHighlightedPath();
             playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
             playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);
-            PlayerStatUI.instance.UpdateSummaryHUDUI();
+            // GridMovement.instance.ResetHighlightedPath();
+            /* playerCharacter.GetComponent<SpawnVFX>().SetTargetAnimator(targetCharacter.gameObject);
+             playerCharacter.GetComponent<SpawnVFX>().SetTargetVFXPosition(targetCharacter.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[ultimateScriptable.TargetCharacterBodyLocation]);*/
+            //   PlayerStatUI.instance.UpdateSummaryHUDUI();
             Debug.Log("Ultimate Single executed");
             UI.instance.SendNotification("ulti single target");
-            await HandleAnimation();
+           // await HandleAnimation();
             UltimateSystem._instance.IsUltimate = false;
-            GridMovement.instance.ResetHighlightedPath();
+
+
+/*            GridMovement.instance.ResetHighlightedPath();
             TurnManager.instance.ResetTargetHIghlightVisual();
             TurnManager.instance.targetsInRange.Clear();
             TurnManager.instance.nonCharacterTargetsInRange.Clear();
             TempManager.instance.ChangeGameState(GameStates.Simulation);
             playerCharacter.GetComponent<PlayerTurn>().isMoveOn = true;
-            TurnManager.instance.StartTurn();
+            TurnManager.instance.StartTurn();*/
             //TurnManager.instance.EndTurn();
         }
     }
@@ -102,5 +100,48 @@ public class MonUltimateCommand : IUltimate
     public bool IsSingleTarget()
     {
         return ultimateScriptable.isUltimateSingleTarget;
+    }
+    // interface functions of ICommand
+    public async UniTask Execute()
+    {
+         ExecuteUltimate();
+         await HandleAnimation();
+        // PlayerStatUI.instance.UpdateSummaryHUDUI();
+        Debug.Log("Ultimate executed");
+    }
+
+    public int GetPVValue()
+    {
+        return 0;
+    }
+
+    public int GetAPValue()
+    {
+        return 0 ;
+    }
+
+    public string GetActionName()
+    {
+        return ultimateScriptable.name ;
+    }
+
+    public CharacterBaseClasses GetTarget()
+    {
+        return targetCharacter;
+    }
+
+    public NavMeshAgent GetAgent()
+    {
+        return null;
+    }
+
+    public List<GameObject> GetPaths()
+    {
+        return null;
+    }
+
+    public string GetActionType()
+    {
+        return "Ultimate";
     }
 }

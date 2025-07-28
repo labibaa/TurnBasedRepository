@@ -35,22 +35,22 @@ public class Puncture : ICommand
         handler.SetPunctureIAS(puncture);
         handler.Initialize(playerTempStats, targetTempStats, puncture.PriorityValue, attackOrder, vfxObj);
         await HandleAnimation();
+        await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
     }
 
     async UniTask HandleAnimation()
     {
-        Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
-        await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
-        
-                player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
-                player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);
-                player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.gameObject.GetComponent<VFXSpawnPosition>().MidBody);
-                player.GetComponent<SpawnVFX>().SetVFXPrefab(puncture.PlayerActionVFX);
-                player.GetComponent<SpawnVFX>().SetTargetHitVFXPrefab(puncture.TargetHitVFX);
-                player.GetComponent<SpawnVFX>().SetParticle(puncture.particle);
-                player.GetComponent<SpawnVFX>().SetVFXSound(puncture.actionSound);
-                player.GetComponent<SpawnVFX>().SetTargetAnimation(puncture.TargetHurtAnimation);
+        await TempManager.instance.CharacterRotation(target, player, 2f);
+
+        player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
+        player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);
+        player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.gameObject.GetComponent<VFXSpawnPosition>().MidBody);
+        player.GetComponent<SpawnVFX>().SetVFXPrefab(puncture.PlayerActionVFX);
+        player.GetComponent<SpawnVFX>().SetTargetHitVFXPrefab(puncture.TargetHitVFX);
+        player.GetComponent<SpawnVFX>().SetParticle(puncture.particle);
+        player.GetComponent<SpawnVFX>().SetVFXSound(puncture.actionSound);
+        player.GetComponent<SpawnVFX>().SetTargetAnimation(puncture.TargetHurtAnimation);
 
         await CutsceneManager.instance.PlayAnimationForCharacter(player.gameObject, GetActionName());
 
@@ -70,7 +70,7 @@ public class Puncture : ICommand
 
     public CharacterBaseClasses GetTarget()
     {
-        return player;
+        return target;
     }
 
     public int GetAPValue()

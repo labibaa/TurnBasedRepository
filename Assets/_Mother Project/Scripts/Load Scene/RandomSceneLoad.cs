@@ -10,10 +10,10 @@ public class RandomSceneLoad : MonoBehaviour
 
     private void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             LoadRandomScene();
-        }*/
+        }
     }
 
     public void LoadRandomScene()

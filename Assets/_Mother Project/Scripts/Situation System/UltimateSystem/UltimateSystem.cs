@@ -30,9 +30,14 @@ public class UltimateSystem : MonoBehaviour
     public void useUltimate(CharacterBaseClasses player, TemporaryStats playerTemp, CharacterBaseClasses targetDefender, TemporaryStats currentStatTarget)
     {
         player.GetPlayerUltimate().setValues(player,playerTemp,targetDefender,currentStatTarget);
-        player.GetPlayerUltimate().Execute();
-        playerTemp.playerUltimateBarCount=0;
-        ActionActivator.instance.UpdateAvailableAction(player, playerTemp);
-        player.GetComponent<TemporaryStats>().PlayerUltimateBar.GetComponent<UltimateUI>().ResetUltimateBar();
+        ICommand ultiCommand = player.GetPlayerUltimate() as ICommand;
+        Turn turn = new Turn(player, ultiCommand , 0);
+        HandleTurnNew.instance.AddTurn(turn);
+        ActionArchive.instance.isTurnAdded = true;
+        IsUltimate = false;
+        /*        player.GetPlayerUltimate().ExecuteUltimate();
+                playerTemp.playerUltimateBarCount=0;
+                ActionActivator.instance.UpdateAvailableAction(player, playerTemp);
+                player.GetComponent<TemporaryStats>().PlayerUltimateBar.GetComponent<UltimateUI>().ResetUltimateBar();*/
     }
 }

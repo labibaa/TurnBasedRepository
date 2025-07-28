@@ -918,6 +918,14 @@ public class ActionArchive : MonoBehaviour
 
     }
 
+    public async void Ultimate()
+    {
+        GetPlayerStats();
+        UltimateSystem._instance.useUltimate(playerAttacker, currentStatPlayer, targetDefender, currentStatTarget);
+        currentStatPlayer.playerUltimateBarCount = 0;
+        currentStatPlayer.PlayerUltimateBar.GetComponent<UltimateUI>().ResetUltimateBar(); 
+    }
+
     public void ActionTemplate(ImprovedActionStat actionScriptable, ICommand tobePerformedAction)
     {
 
@@ -931,13 +939,12 @@ public class ActionArchive : MonoBehaviour
             playerInfo.CurrentAP = ActionResolver.instance.APResolver(playerInfo.CurrentAP, actionScriptable.APCost);
             int previousPV =25;
            
-
             Turn turn = new Turn(playerAttacker, tobePerformedAction, previousPV + actionScriptable.PriorityValue);
-            int rpOfCurrentPlayer;//rp not in use ===Date 23.09.24===
-            rpOfCurrentPlayer = playerInfo.CurrentResolve;
+           // int rpOfCurrentPlayer;//rp not in use ===Date 23.09.24===
+           /* rpOfCurrentPlayer = playerInfo.CurrentResolve;
             if (rpOfCurrentPlayer == 0)
-            {
-                int randomChanceOfAction = Random.Range(0, 2);
+            {*/
+               /* int randomChanceOfAction = Random.Range(0, 2);
                 if (randomChanceOfAction == 0)
                 {
                     // notification of rp 0
@@ -946,19 +953,19 @@ public class ActionArchive : MonoBehaviour
                     isTurnAdded = false;
                 }
                 else
-                {
+                {*/
                     HandleTurnNew.instance.AddTurn(turn);
                     Debug.Log("else 1");
                     isTurnAdded = true;
                    
-                }
-            } //rp not in use ===Date 23.09.24===
-            else
+               // }
+            //} //rp not in use ===Date 23.09.24===
+         /*   else
             {
                 HandleTurnNew.instance.AddTurn(turn);
                 isTurnAdded  = true;
         
-            }
+            }*/
 
             //actionNotification.gameObject.SetActive(true);
             //actionNotification.AnimateNotification(turn.Player +" Selected "+ turn.Command.GetActionName() + " Target " + turn.target);
@@ -988,17 +995,6 @@ public class ActionArchive : MonoBehaviour
         
     }
 
-
-
-
-
-
-
-    public async void Ultimate()
-    {
-        GetPlayerStats();
-        UltimateSystem._instance.useUltimate(playerAttacker,currentStatPlayer,targetDefender,currentStatTarget);
-    }
     public async void Impale()
     {
         GetPlayerStats();
@@ -1006,18 +1002,7 @@ public class ActionArchive : MonoBehaviour
         List<CharacterBaseClasses> targetsInRange = GridMovement.instance.InAdjacentMatrix(currentStatPlayer.currentPlayerGridPosition, currentStatPlayer.CharacterTeam, impale_Scriptable.ActionRange, Color.red);
         if (targetsInRange.Count <= 0)
         {
-
-            TempManager.instance.SituationUIPanel.SetActive(false);
-            TempManager.instance.UlimateUIPanel.SetActive(false);
-            UI.instance.SendNotification("No target in your range");
-
-
-            await UniTask.Delay(1500);
-            TempManager.instance.ChangeGameState(GameStates.MidTurn);
-            GridMovement.instance.ResetHighlightedPath();
-            TempManager.instance.SituationUIPanel.SetActive(true);
-            TempManager.instance.UlimateUIPanel.SetActive(true);
-
+            NoTargetVisual_AOE();
         }
         else
         {
@@ -1034,11 +1019,7 @@ public class ActionArchive : MonoBehaviour
             {
                 targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
             }
-            GridMovement.instance.ResetHighlightedPath();
-            TurnManager.instance.ResetTargetHIghlightVisual();
-            TurnManager.instance.targetsInRange.Clear();
-            TurnManager.instance.nonCharacterTargetsInRange.Clear();
-            TempManager.instance.ChangeGameState(GameStates.MidTurn);
+            TargetReset_AoE();
         }
 
     }
@@ -1054,16 +1035,7 @@ public class ActionArchive : MonoBehaviour
         if (targetsInRange.Count <= 0)
         {
 
-            TempManager.instance.SituationUIPanel.SetActive(false);
-            TempManager.instance.UlimateUIPanel.SetActive(false);
-            UI.instance.SendNotification("No target in your range");
-
-
-            await UniTask.Delay(1500);
-            TempManager.instance.ChangeGameState(GameStates.MidTurn);
-            GridMovement.instance.ResetHighlightedPath();
-            TempManager.instance.SituationUIPanel.SetActive(true);
-            TempManager.instance.UlimateUIPanel.SetActive(true);
+           NoTargetVisual_AOE(); 
 
         }
         else
@@ -1081,11 +1053,7 @@ public class ActionArchive : MonoBehaviour
             {
                 targetsInRange[i].GetComponent<TemporaryStats>().EnemyTargetSelectionParticle.SetActive(false);
             }
-            GridMovement.instance.ResetHighlightedPath();
-            TurnManager.instance.ResetTargetHIghlightVisual();
-            TurnManager.instance.targetsInRange.Clear();
-            TurnManager.instance.nonCharacterTargetsInRange.Clear();
-            TempManager.instance.ChangeGameState(GameStates.MidTurn);
+            TargetReset_AoE();
         }
 
     }
@@ -1307,5 +1275,25 @@ public class ActionArchive : MonoBehaviour
         return availableActions;
     }
 
+    public async void NoTargetVisual_AOE()
+    {
+        TempManager.instance.SituationUIPanel.SetActive(false);
+        TempManager.instance.UlimateUIPanel.SetActive(false);
+        UI.instance.SendNotification("No target in your range");
 
+
+        await UniTask.Delay(1500);
+        TempManager.instance.ChangeGameState(GameStates.MidTurn);
+        GridMovement.instance.ResetHighlightedPath();
+        TempManager.instance.SituationUIPanel.SetActive(true);
+        TempManager.instance.UlimateUIPanel.SetActive(true);
+    }
+    public void TargetReset_AoE()
+    {
+        GridMovement.instance.ResetHighlightedPath();
+        TurnManager.instance.ResetTargetHIghlightVisual();
+        TurnManager.instance.targetsInRange.Clear();
+        TurnManager.instance.nonCharacterTargetsInRange.Clear();
+        TempManager.instance.ChangeGameState(GameStates.MidTurn);
+    }
 }
