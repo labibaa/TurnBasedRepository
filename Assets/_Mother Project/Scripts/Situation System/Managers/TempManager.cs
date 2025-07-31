@@ -76,7 +76,7 @@ public class TempManager : MonoBehaviour
             actionButton.SetActive(true);
             PressSpace.SetActive(false);
         }*/
-        if(GridSystem.instance.IsGridOn && currentState != GameStates.Simulation && !UltimateSystem._instance.IsUltimate)
+        if(GridSystem.instance.IsGridOn && currentState != GameStates.Simulation )//&& !UltimateSystem._instance.IsUltimate)
         {
             RotateCharactersOnGrid();
         }

@@ -18362,7 +18362,7 @@ Transform:
   m_GameObject: {fileID: 149037778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.749, y: 0.797, z: 139.615}
+  m_LocalPosition: {x: 75.749, y: 0.44, z: 139.79}
   m_LocalScale: {x: 1, y: 1, z: 3.1927}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94616,7 +94616,7 @@ PrefabInstance:
     - target: {fileID: 2848021832452628932, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
       propertyPath: healthPoints
-      value: 6
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6084242823365919326, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
@@ -139950,15 +139950,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFields:
-  - m_SceneAsset: {fileID: 102900000, guid: 49ab6bd7b9b04ed4abee9a95282dceea, type: 3}
-    m_SceneName: BlankScene
-  - m_SceneAsset: {fileID: 102900000, guid: 81493a40ae67a664aaf5aeea370fdb14, type: 3}
-    m_SceneName: characters_scene
-  - m_SceneAsset: {fileID: 102900000, guid: c9761e8f86b437744aa368ab8e1ca4a4, type: 3}
-    m_SceneName: Vfx
+  - m_SceneAsset: {fileID: 102900000, guid: 293e252b2db42ef4182d44e466b1738f, type: 3}
+    m_SceneName: Kitchen with Props
+  - m_SceneAsset: {fileID: 102900000, guid: f95a4536fe16b3e4082bded579b03188, type: 3}
+    m_SceneName: Kitchen
+  - m_SceneAsset: {fileID: 102900000, guid: 35c8c554f2c92c54baebb177c256aa6d, type: 3}
+    m_SceneName: New_StoreRoom
   FinalScene:
-    m_SceneAsset: {fileID: 0}
-    m_SceneName: NoshtoLongHallWay
+    m_SceneAsset: {fileID: 102900000, guid: ee548f05ff583b54a8b73869cd4f3321, type: 3}
+    m_SceneName: StoreRoom
 --- !u!114 &1327883104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217877,6 +217877,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 8.029999
       objectReference: {fileID: 0}
+    - target: {fileID: 5844099540906305183, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
@@ -236985,8 +236990,8 @@ GameObject:
   - component: {fileID: 8499598895802170146}
   - component: {fileID: 5637823397949707960}
   - component: {fileID: 790359226775346479}
-  - component: {fileID: 8499598895802170147}
   - component: {fileID: 8499598895802170148}
+  - component: {fileID: 8499598895802170147}
   m_Layer: 8
   m_Name: RoudPlayerFollowCameraIsometric
   m_TagString: GridCam
@@ -237145,6 +237150,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roud Rigged Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: playerUltimateFactory
+      value: 
+      objectReference: {fileID: 11400000, guid: 89c6e0177b6a1e14888d2778dc07fd16,
+        type: 2}
     - target: {fileID: 3255496025928121792, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: mainPlayer
@@ -237160,6 +237171,11 @@ PrefabInstance:
       propertyPath: tpsCamera
       value: 
       objectReference: {fileID: 8686788673576922632}
+    - target: {fileID: 5623877946105048720, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: playerUltimateBarCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6030752268258891936, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -237173,12 +237189,12 @@ PrefabInstance:
     - target: {fileID: 7170954966890360393, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_Bindings.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7786948194976626475, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_Bindings.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8683327368853074611, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
@@ -237229,6 +237245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954948600820150591, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
