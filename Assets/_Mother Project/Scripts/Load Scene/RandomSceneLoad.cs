@@ -10,10 +10,10 @@ public class RandomSceneLoad : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            LoadRandomScene();
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    LoadRandomScene();
+        //}
     }
 
     public void LoadRandomScene()
@@ -30,5 +30,22 @@ public class RandomSceneLoad : MonoBehaviour
             sceneFields.Remove(sceneFields[r]);
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (LoadSceneManager.instance.ToAddUnlinkedCharacter)
+            {
+                LoadRandomScene();
+            }
+            else
+            {
+                LoadRandomScene();
+            }
+
+        }
+
     }
 }
