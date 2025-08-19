@@ -123,7 +123,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 42ac57397b240dd4cbdee7f008f8ea67, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9528e19d7efc14447a1eb38adf72ffcc, type: 2}
 --- !u!1 &5679490
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ Transform:
   m_GameObject: {fileID: 78612787}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.6, y: 0, z: 1.2258301}
+  m_LocalPosition: {x: 4.838, y: 0, z: 0.319}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4873,7 +4873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &485461714
 Transform:
   m_ObjectHideFlags: 0
@@ -28652,7 +28652,7 @@ Transform:
   m_GameObject: {fileID: 1805934341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 85.85, y: 0, z: 138.76}
+  m_LocalPosition: {x: 68.22, y: 0, z: 133.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30040,18 +30040,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6116755639337909053}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1852069705 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1825534482383235812, guid: b952f558b62578e4e9d6156a9e116a96,
-    type: 3}
-  m_PrefabInstance: {fileID: 6116755639337909053}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1854262202
 GameObject:
   m_ObjectHideFlags: 0
@@ -35057,9 +35045,7 @@ MonoBehaviour:
   - CharactersOfTheWave:
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
-    - {fileID: 1852069705}
     - {fileID: 1813470059}
-    - {fileID: 2075121800}
   WaveTriggers:
   - {fileID: 78612787}
   WaveTimelines:
@@ -35595,18 +35581,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2075121782}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2075121800 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5253680188998004934, guid: 02108b175ba2b8745be26842a352dd6a,
-    type: 3}
-  m_PrefabInstance: {fileID: 2075121782}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2081431318
 GameObject:
   m_ObjectHideFlags: 0
@@ -47500,6 +47474,11 @@ PrefabInstance:
       propertyPath: tpsCamera
       value: 
       objectReference: {fileID: 8686788673576922632}
+    - target: {fileID: 5623877946105048720, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: gridCoordinateSpawn.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6030752268258891936, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: GlobalObjectIdHash
