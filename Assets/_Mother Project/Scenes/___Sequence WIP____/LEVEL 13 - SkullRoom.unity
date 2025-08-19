@@ -9954,6 +9954,7 @@ GameObject:
   - component: {fileID: 149037781}
   - component: {fileID: 149037780}
   - component: {fileID: 149037779}
+  - component: {fileID: 149037784}
   m_Layer: 0
   m_Name: NextRoomCollider
   m_TagString: Untagged
@@ -9968,14 +9969,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149037778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53b1383f472886146ad32878c14a91a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: 1c87504b19a11e243a723a25d9b855cc, type: 3}
-    m_SceneName: Library 2
+    m_SceneAsset: {fileID: 102900000, guid: 555658f451a2e9c4a9a6b60e9310fae6, type: 3}
+    m_SceneName: LEVEL 12 - Swearage Corridor
   LastPosition: 
 --- !u!65 &149037780
 BoxCollider:
@@ -10057,12 +10058,32 @@ Transform:
   m_GameObject: {fileID: 149037778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.749, y: 0.797, z: 139.615}
+  m_LocalPosition: {x: 103.258, y: 0.921, z: 155.716}
   m_LocalScale: {x: 1, y: 1, z: 3.1927}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149037784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149037778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdaa0927407958747bc2b01c703c6dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneFields:
+  - m_SceneAsset: {fileID: 102900000, guid: 555658f451a2e9c4a9a6b60e9310fae6, type: 3}
+    m_SceneName: LEVEL 12 - Swearage Corridor
+  - m_SceneAsset: {fileID: 102900000, guid: 9912fc1a45edb1141a8d6cb9a74a056f, type: 3}
+    m_SceneName: LEVEL 16 - Swearage Corridor to Pig Boss Room
+  FinalScene:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
 --- !u!1 &151442673
 GameObject:
   m_ObjectHideFlags: 0
