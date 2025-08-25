@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] protected List<ImprovedActionStat> StaffAvailableActions = new List<ImprovedActionStat>();
     [SerializeField] protected List<ImprovedActionStat> SpoonAvailableActions = new List<ImprovedActionStat>();
 
+    public List<ImprovedActionStat> DaggerActiveActions { get; private set; } = new List<ImprovedActionStat>() ;
+
     private void Awake()
     {
         if(instance == null)
@@ -25,14 +28,21 @@ public class WeaponManager : MonoBehaviour
             instance = this;
         }
     }
-
-    public List<ImprovedActionStat> GetDaggerAvailableActions()
-    {
-        return DaggerAvailableActions;
-    }
     public void SetDaggerAvailableActions(ImprovedActionStat action)
     {
         DaggerAvailableActions.Add(action);
+    }
+    public void SetDaggerActiveActions(ImprovedActionStat action)
+    {
+        DaggerActiveActions.Add(action);
+    }
+    public List<ImprovedActionStat> GetDaggerActiveActions()
+    {
+        return DaggerActiveActions;
+    }
+    public List<ImprovedActionStat> GetDaggerAvailableActions()
+    {
+        return DaggerAvailableActions;
     }
     public List<ImprovedActionStat> GetSwordAvailableActions()
     {
@@ -67,4 +77,21 @@ public class WeaponManager : MonoBehaviour
         return SpoonAvailableActions;
     }
 
+    public void LoadWeaponData()
+    {
+        //string fileName = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
+        string fileName = "Dagger" + ".json";
+        DaggerActiveActions = FileHandler.LoadJsonData<ImprovedActionStat>(fileName);
+    }
+    public void DefaultWeaponActions()
+    {
+        DaggerActiveActions.Clear();
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerThrow"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Stab"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Assassinate"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep"));
+        //string fileName =  SwitchMC.Instance.mainCharacter .GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
+        string fileName = "Dagger" + ".json";
+        FileHandler.SaveToJsonData<ImprovedActionStat>(DaggerActiveActions, fileName);
+    }
 }

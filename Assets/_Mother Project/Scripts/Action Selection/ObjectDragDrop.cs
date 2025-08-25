@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +12,10 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     public Transform originalParent { get; private set; }
     public int originalSiblingIndex { get; private set; }
     Transform mainPanel;
+    [SerializeField] TextMeshProUGUI actionName;
+    public ImprovedActionStat actionScriptable { get; private set; }
+    public bool isPrevAction;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -20,6 +25,11 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         originalSiblingIndex = transform.GetSiblingIndex();
         mainPanel = ActionSpawner.Instance.mainPanel;
 
+    }
+    public void ButtonSetup(string name, ImprovedActionStat scriptable)
+    {
+        actionName.text = name;
+        actionScriptable = scriptable;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

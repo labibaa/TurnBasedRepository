@@ -17,6 +17,10 @@ public class ActionSlot : MonoBehaviour, IDropHandler
                 Transform existingChild = transform.GetChild(0);
 
                 ObjectDragDrop existingScript = existingChild.GetComponent<ObjectDragDrop>();
+                if (existingScript.isPrevAction) 
+                {
+                    Destroy(existingChild.gameObject);
+                }
                 if (existingScript != null)
                 {
                     // Re-parent existing child back to its grid parent
