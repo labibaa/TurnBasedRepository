@@ -32,6 +32,12 @@ public class ActionSpawner : MonoBehaviour
             Loadout();
             FillDefaultSlot();
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
+            WeaponManager.instance.WeaponLevelUp();
+        }
     }
     public void ShowActionDetails(string details)
     {

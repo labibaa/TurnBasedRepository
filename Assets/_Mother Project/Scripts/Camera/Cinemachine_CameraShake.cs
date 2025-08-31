@@ -30,12 +30,6 @@ public class Cinemachine_CameraShake : MonoBehaviour
             Debug.LogWarning("No CinemachineBrain found on the main camera. Did you forget to attach it, you chaotic artisan?");
         }*/
 
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
-            WeaponManager.instance.WeaponLevelUp();
-        } 
-
     }
 
     private void RumbleImpulse()
