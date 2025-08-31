@@ -129,41 +129,13 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     }
     public void SetWeaponActions()
     {
-       if(_characterBaseClasses.EquipedWeapon == CurrentWeapon.Dagger)
+        if (WeaponManager.instance.weaponActions.TryGetValue(_characterBaseClasses.EquipedWeapon, out var actionGetter))
         {
-           _characterBaseClasses.SetAvailableActions ( WeaponManager.instance.GetDaggerAvailableActions());
+            _characterBaseClasses.SetAvailableActions(actionGetter());
         }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Sword)
+        else
         {
-            _characterBaseClasses.SetAvailableActions( WeaponManager.instance.GetSwordAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.BowAndArrow)
-        {
-           _characterBaseClasses.SetAvailableActions( WeaponManager.instance.GetBowAndArrowAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Talisman)
-        {
-            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetTalismanAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Hammer)
-        {
-            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetHammerAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Axe)
-        {
-            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetAxeAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Spear)
-        {
-            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetSpearAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Staff)
-        {
-            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetStaffAvailableActions());
-        }
-        if (_characterBaseClasses.EquipedWeapon == CurrentWeapon.Spoon)
-        {
-            _characterBaseClasses.SetAvailableActions(WeaponManager.instance.GetSpoonAvailableActions());
+            Debug.LogWarning($"No actions mapped for weapon: {_characterBaseClasses.EquipedWeapon}");
         }
     }
     public void SetCharacterStat()

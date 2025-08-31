@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.TextCore.Text;
 
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
+
+    public Dictionary<CurrentWeapon, Func<List<ImprovedActionStat>>> weaponActions;
 
     //list of weapons to assign to each character according to type
     [SerializeField] protected List<ImprovedActionStat> DaggerAvailableActions = new List<ImprovedActionStat>();
@@ -27,6 +31,19 @@ public class WeaponManager : MonoBehaviour
         {
             instance = this;
         }
+        weaponActions = new Dictionary<CurrentWeapon, Func<List<ImprovedActionStat>>>
+        {
+            { CurrentWeapon.Dagger,         GetDaggerAvailableActions },
+            { CurrentWeapon.Sword,          GetSwordAvailableActions },
+            { CurrentWeapon.BowAndArrow,    GetBowAndArrowAvailableActions },
+            { CurrentWeapon.Talisman,       GetTalismanAvailableActions },
+            { CurrentWeapon.Hammer,         GetHammerAvailableActions },
+            { CurrentWeapon.Axe,            GetAxeAvailableActions },
+            { CurrentWeapon.Spear,          GetSpearAvailableActions },
+            { CurrentWeapon.Staff,          GetStaffAvailableActions },
+            { CurrentWeapon.Spoon,          GetSpoonAvailableActions },
+        };
+
     }
     public void SetDaggerAvailableActions(ImprovedActionStat action)
     {
@@ -93,5 +110,22 @@ public class WeaponManager : MonoBehaviour
         //string fileName =  SwitchMC.Instance.mainCharacter .GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
         string fileName = "Dagger" + ".json";
         FileHandler.SaveToJsonData<ImprovedActionStat>(DaggerActiveActions, fileName);
+    }
+    public void WeaponLevelUp()
+    {
+        if (weaponActions.TryGetValue(SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon, out var actionGetter)) 
+        {
+            foreach (var item in actionGetter())
+            {
+                for (int i = 0; i < item.RangeMappings.Length; i++)
+                {
+                    item.RangeMappings[i].MappedValue = item.RangeMappings[i].MappedValue + 2;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No actions mapped for this weapon!");
+        }
     }
 }

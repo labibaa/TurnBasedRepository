@@ -33,6 +33,7 @@ public class Cinemachine_CameraShake : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.V))
         {
             SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
+            WeaponManager.instance.WeaponLevelUp();
         } 
 
     }

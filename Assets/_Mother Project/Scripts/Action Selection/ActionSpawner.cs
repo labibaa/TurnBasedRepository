@@ -28,7 +28,7 @@ public class ActionSpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P)) 
         {
-            WeaponManager.instance.DefaultWeaponActions();
+            WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
             Loadout();
             FillDefaultSlot();
         }
