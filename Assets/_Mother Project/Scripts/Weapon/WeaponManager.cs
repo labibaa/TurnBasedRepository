@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.TextCore.Text;
+using static ImprovedActionStat;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] protected List<ImprovedActionStat> SpoonAvailableActions = new List<ImprovedActionStat>();
 
     public List<ImprovedActionStat> DaggerActiveActions { get; private set; } = new List<ImprovedActionStat>() ;
+   // public List<RangeMappingSaveData> RangeMappingSaveDatas  = new List<RangeMappingSaveData>() ;
 
     private void Awake()
     {
@@ -121,6 +123,7 @@ public class WeaponManager : MonoBehaviour
                 {
                     item.RangeMappings[i].MappedValue = item.RangeMappings[i].MappedValue + 2;
                 }
+                SaveMappings(item);
             }
         }
         else
@@ -128,4 +131,54 @@ public class WeaponManager : MonoBehaviour
             Debug.LogWarning("No actions mapped for this weapon!");
         }
     }
+
+    public void LoadWeaponMapping() // call when continue game is pressed 
+    {
+        foreach(var character in SwitchMC.Instance.characters)
+        {
+            if (weaponActions.TryGetValue(character.GetComponent<CharacterBaseClasses>().EquipedWeapon, out var actionGetter))
+            {
+                foreach (var item in actionGetter())
+                {
+                    LoadMappings(item);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No actions mapped for this weapon!");
+            }
+        }
+    }
+    public void SaveMappings(ImprovedActionStat actionStat)
+    {
+       // RangeMappingSaveDatas.Clear();
+        RangeMappingSaveData saveData = new RangeMappingSaveData
+        {
+            mappings = new List<RangeMapping>(actionStat.RangeMappings) // copy array into list
+        };
+        //RangeMappingSaveDatas.Add(saveData);
+        string fileName = actionStat.name + ".json";
+        FileHandler.SaveToJsonData(new List<RangeMappingSaveData> { saveData }, fileName);
+    }
+
+    public void LoadMappings(ImprovedActionStat actionStat)
+    {
+        string fileName = actionStat.name + ".json";
+        List<RangeMappingSaveData> loadedList = FileHandler.LoadJsonData<RangeMappingSaveData>(fileName);
+
+        if (loadedList != null && loadedList.Count > 0)
+        {
+            actionStat.RangeMappings = loadedList[0].mappings.ToArray();
+            Debug.Log("Loaded RangeMappings for " + actionStat.name);
+        }
+    }
+
+
+}
+
+
+[Serializable]
+public class RangeMappingSaveData
+{
+    public List<RangeMapping> mappings;
 }

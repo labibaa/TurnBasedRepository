@@ -38,6 +38,10 @@ public class ActionSpawner : MonoBehaviour
             SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
             WeaponManager.instance.WeaponLevelUp();
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            WeaponManager.instance.LoadWeaponMapping();
+        }
     }
     public void ShowActionDetails(string details)
     {
