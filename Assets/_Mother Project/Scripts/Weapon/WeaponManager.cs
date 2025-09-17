@@ -23,6 +23,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] protected List<ImprovedActionStat> SpearAvailableActions = new List<ImprovedActionStat>();
     [SerializeField] protected List<ImprovedActionStat> StaffAvailableActions = new List<ImprovedActionStat>();
     [SerializeField] protected List<ImprovedActionStat> SpoonAvailableActions = new List<ImprovedActionStat>();
+    [SerializeField] protected List<ImprovedActionStat> ButcherAvailableActions = new List<ImprovedActionStat>();
 
     public List<ImprovedActionStat> DaggerActiveActions { get; private set; } = new List<ImprovedActionStat>() ;
    // public List<RangeMappingSaveData> RangeMappingSaveDatas  = new List<RangeMappingSaveData>() ;
@@ -44,6 +45,7 @@ public class WeaponManager : MonoBehaviour
             { CurrentWeapon.Spear,          GetSpearAvailableActions },
             { CurrentWeapon.Staff,          GetStaffAvailableActions },
             { CurrentWeapon.Spoon,          GetSpoonAvailableActions },
+            { CurrentWeapon.Butcher,        GetButcherAvailableActions },
         };
 
     }
@@ -94,6 +96,10 @@ public class WeaponManager : MonoBehaviour
     public List<ImprovedActionStat> GetSpoonAvailableActions()
     {
         return SpoonAvailableActions;
+    }
+    public List<ImprovedActionStat> GetButcherAvailableActions()
+    {
+        return ButcherAvailableActions;
     }
 
     public void LoadWeaponData()
