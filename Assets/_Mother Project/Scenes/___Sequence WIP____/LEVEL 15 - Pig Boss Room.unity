@@ -923,6 +923,7 @@ Transform:
   - {fileID: 2075121783}
   - {fileID: 1852069688}
   - {fileID: 941045262}
+  - {fileID: 5023820315718105165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &17568354
@@ -220214,17 +220215,17 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 16642268}
     m_Modifications:
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.32
+      value: -581.69025
       objectReference: {fileID: 0}
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26430225
+      value: -334.8274
       objectReference: {fileID: 0}
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
@@ -220239,17 +220240,17 @@ PrefabInstance:
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
@@ -220270,6 +220271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PigBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822004160292465200, guid: 41b6a157901c4ff44b590076738fac12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8398111468784655441, guid: 41b6a157901c4ff44b590076738fac12,
         type: 3}
@@ -230211,6 +230217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5023820315718105165 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1147206976376242783, guid: 41b6a157901c4ff44b590076738fac12,
+    type: 3}
+  m_PrefabInstance: {fileID: 4749271869142786618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5036486441037204052
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -247761,4 +247773,3 @@ SceneRoots:
   - {fileID: 951719645}
   - {fileID: 654918065}
   - {fileID: 642329680}
-  - {fileID: 4749271869142786618}

@@ -526,6 +526,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ad2ae3865db4044aa4e44889310e87c, type: 2}
   - {fileID: 11400000, guid: 5017aabf6c79af14fb87202f816e59d6, type: 2}
   SpoonAvailableActions: []
+  ButcherAvailableActions: []
 --- !u!1 &46577749
 GameObject:
   m_ObjectHideFlags: 0
@@ -28741,18 +28742,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813201526}
   m_Mesh: {fileID: -9105243191234745219, guid: 42005beaca23a3e498705077a63e38bc, type: 3}
---- !u!114 &1813470059 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5023820315464969450, guid: 08a4023a9da9f684e9d3544fe13fcb65,
-    type: 3}
-  m_PrefabInstance: {fileID: 941045261}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1818468652
 GameObject:
   m_ObjectHideFlags: 0
@@ -35045,7 +35034,7 @@ MonoBehaviour:
   - CharactersOfTheWave:
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
-    - {fileID: 1813470059}
+    - {fileID: 2075121798}
   WaveTriggers:
   - {fileID: 78612787}
   WaveTimelines:
@@ -35581,6 +35570,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2075121782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2075121798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5253680188998004934, guid: 02108b175ba2b8745be26842a352dd6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2075121782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2081431318
 GameObject:
   m_ObjectHideFlags: 0
