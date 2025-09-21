@@ -16,6 +16,7 @@ public class ActionSpawner : MonoBehaviour
     public Transform actionButtonContainer; // Parent UI panel (e.g. GridLayoutGroup)
     public GameObject actionButtonPrefab;
     bool isWarning;
+
     private void Awake()
     {
         if (Instance == null) 
@@ -26,17 +27,17 @@ public class ActionSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) 
-        {
-            WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
-            Loadout();
-            FillDefaultSlot();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
+        //    Loadout();
+        //    FillDefaultSlot();
+        //}
 
         if (Input.GetKeyDown(KeyCode.V))
         {
             SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
-            WeaponManager.instance.WeaponLevelUp();
+           // WeaponManager.instance.WeaponLevelUp();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -50,22 +51,41 @@ public class ActionSpawner : MonoBehaviour
     }
     public void FillDefaultSlot()
     {
+        foreach (Transform child in parentSlot_selected)
+        {
+            DestroyAllChildren(child);
+        }
         int i = 0;
-        List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetDaggerActiveActions();
+        List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetWeaponActiveActions();
         foreach (Transform child in parentSlot_selected)
         {
             GameObject existButton = Instantiate(actionButtonPrefab, child);
             ObjectDragDrop btn = existButton.GetComponent<ObjectDragDrop>();
             btn.isPrevAction = true;
-            btn.ButtonSetup(playerAvailableAction[i].ActionName, playerAvailableAction[i]);
-            existButton.GetComponent<Button>().onClick.AddListener(() => ShowActionDetails(playerAvailableAction[i].Description));
+            var action = playerAvailableAction[i];
+            btn.ButtonSetup(action.ActionName, action);
+
+            existButton.GetComponent<Button>().onClick.AddListener(
+                () => ShowActionDetails(action.Description)
+            );
             i++;
         }
     }
-
+    public List<ImprovedActionStat> CheckMCWeapon()
+    {
+        if(SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon == CurrentWeapon.Dagger)
+        {
+            return WeaponManager.instance.DaggerActiveActions;
+        }
+        else
+        {
+            return WeaponManager.instance.TalismanActiveActions;
+        }
+       
+    }
     public void CheckEmptySlots()
     {
-        WeaponManager.instance.DaggerActiveActions.Clear();
+        CheckMCWeapon().Clear();
         foreach (Transform child in parentSlot_selected)
         {
             if(child.childCount <= 0)
@@ -81,7 +101,7 @@ public class ActionSpawner : MonoBehaviour
             Transform existingChild = child.GetChild(0);
 
             ObjectDragDrop existingScript = existingChild.GetComponent<ObjectDragDrop>();
-            if (WeaponManager.instance.DaggerActiveActions.Contains(existingScript.actionScriptable))
+            if (CheckMCWeapon().Contains(existingScript.actionScriptable))
             {
                 isWarning = true;
                 Debug.Log("duplicate actions " + existingScript.actionScriptable);
@@ -91,28 +111,42 @@ public class ActionSpawner : MonoBehaviour
             {
                 isWarning = false;
             }
-            WeaponManager.instance.SetDaggerActiveActions(existingScript.actionScriptable);
+            //WeaponManager.instance.SetDaggerActiveActions(existingScript.actionScriptable);
+            WeaponManager.instance.SetWeaponActiveActions(existingScript.actionScriptable);
         }
+      
 
         if (!isWarning)
         {
-            //string fileName =  SwitchMC.Instance.mainCharacter .GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
-            string fileName = "Dagger" + ".json";
-            FileHandler.SaveToJsonData<ImprovedActionStat>(WeaponManager.instance.DaggerActiveActions, fileName);
+            string fileName =  SwitchMC.Instance.mainCharacter .GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
+           // string fileName = "Dagger" + ".json";
+            FileHandler.SaveToJsonData<ImprovedActionStat>(CheckMCWeapon(), fileName);
+            Cursor.lockState = CursorLockMode.Locked;
+            mainPanel.gameObject.SetActive(false);
+            Time.timeScale = 1f;
         }
 
     }
 
     public void Loadout()
     {
-        // List<ImprovedActionStat> playerAvailableAction = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().GetAvailableActions();
-        List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetDaggerAvailableActions();
+       DestroyAllChildren(actionButtonContainer);
+        List<ImprovedActionStat> playerAvailableAction = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().GetAvailableActions();
+        //List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetDaggerAvailableActions();
         foreach (ImprovedActionStat scriptable in playerAvailableAction)
         {
             GameObject newButton = Instantiate(actionButtonPrefab, actionButtonContainer);
             ObjectDragDrop btn = newButton.GetComponent<ObjectDragDrop>();
             btn.ButtonSetup(scriptable.ActionName, scriptable);
             newButton.GetComponent<Button>().onClick.AddListener(() => ShowActionDetails(scriptable.Description));
+        }
+    }
+
+    public static void DestroyAllChildren( Transform parent)
+    {
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            GameObject.Destroy(parent.GetChild(i).gameObject);
         }
     }
 }
