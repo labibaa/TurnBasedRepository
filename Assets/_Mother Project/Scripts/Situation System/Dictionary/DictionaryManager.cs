@@ -78,6 +78,9 @@ public class DictionaryManager : MonoBehaviour
         {"Puncture",ActionArchive.instance.Puncture },
         {"DaggerRising",ActionArchive.instance.DaggerRising },
         {"SpoonSmack",ActionArchive.instance.SpoonSmack },
+        {"ButcherSmack",ActionArchive.instance.ButcherSmack },
+        {"ButcherSmack1",ActionArchive.instance.ButcherSmack1 },
+        {"ButcherSmack2",ActionArchive.instance.ButcherSmack2 },
         {"GrenadeThrow",ActionArchive.instance.GrenadeThrow }
 
 

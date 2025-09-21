@@ -625,6 +625,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ad2ae3865db4044aa4e44889310e87c, type: 2}
   - {fileID: 11400000, guid: 5017aabf6c79af14fb87202f816e59d6, type: 2}
   SpoonAvailableActions: []
+  ButcherAvailableActions: []
 --- !u!33 &55309515
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1669,7 +1670,6 @@ GameObject:
   - component: {fileID: 149037782}
   - component: {fileID: 149037781}
   - component: {fileID: 149037780}
-  - component: {fileID: 149037779}
   - component: {fileID: 149037784}
   m_Layer: 0
   m_Name: NextRoomCollider
@@ -1678,22 +1678,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &149037779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149037778}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b1383f472886146ad32878c14a91a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: 0931617d84c4e15419f1e673c789aba4, type: 3}
-    m_SceneName: LEVEL 7 - Dining Room
-  LastPosition: 
 --- !u!65 &149037780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1793,12 +1777,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFields:
-  - m_SceneAsset: {fileID: 102900000, guid: f6db607ca61f8a34b9dc22a59e93c72b, type: 3}
-    m_SceneName: LEVEL 5 - Library
   - m_SceneAsset: {fileID: 102900000, guid: 8f3b2ff3a352bb14fa5692d786af096d, type: 3}
     m_SceneName: LEVEL 10 - Hall Way to Stairs
   - m_SceneAsset: {fileID: 102900000, guid: 2f209b0e21b660445a4c96f8fe2716b6, type: 3}
     m_SceneName: LEVEL 9 - Corridor
+  - m_SceneAsset: {fileID: 102900000, guid: 0931617d84c4e15419f1e673c789aba4, type: 3}
+    m_SceneName: LEVEL 7 - Dining Room
   FinalScene:
     m_SceneAsset: {fileID: 0}
     m_SceneName: 
