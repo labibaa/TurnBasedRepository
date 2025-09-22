@@ -6,6 +6,7 @@ using UnityEngine;
 public class InventoryInteractor : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject InventoryHolder;
+    [SerializeField] Inventory_UI inventoryUI;
     public void Interact()
     {
         ActivateInventory();
@@ -13,12 +14,14 @@ public class InventoryInteractor : MonoBehaviour, IInteractable
 
     public void ActivateInventory()
     {
+        inventoryUI.RefreshStoreUI();
         /*foreach (var player in SwitchMC.Instance.characters)
         {
             player.GetComponent<ThirdPersonController>().enabled = false;
         }*/
         Cursor.lockState = CursorLockMode.None;
         InventoryHolder.SetActive(true);
+
         Time.timeScale = 0f;
     }
 

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Inventory_UI : MonoBehaviour
 {
+    [SerializeField] GameObject InventoryHolder;
     [SerializeField] Transform inventoryItem_panel;
     [SerializeField] Button inventoryItem_buttonPrefab;
     [SerializeField] Transform details_Panel;
@@ -31,11 +32,14 @@ public class Inventory_UI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            RefreshStoreUI();
+            //RefreshStoreUI();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            
+            Cursor.lockState = CursorLockMode.Confined;
+            InventoryHolder.SetActive(false);
+
+            Time.timeScale = 1f;
         }
 
         

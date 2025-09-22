@@ -9699,6 +9699,8 @@ MonoBehaviour:
   StaffAvailableActions:
   - {fileID: 11400000, guid: 3ad2ae3865db4044aa4e44889310e87c, type: 2}
   - {fileID: 11400000, guid: 5017aabf6c79af14fb87202f816e59d6, type: 2}
+  SpoonAvailableActions: []
+  ButcherAvailableActions: []
 --- !u!1 &39617064
 GameObject:
   m_ObjectHideFlags: 0
@@ -29702,7 +29704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &275595086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128073,8 +128075,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 767602767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.8}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -235054,6 +235056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryHolder: {fileID: 275595085}
+  inventoryUI: {fileID: 1540509180}
 --- !u!65 &1895795709
 BoxCollider:
   m_ObjectHideFlags: 0
