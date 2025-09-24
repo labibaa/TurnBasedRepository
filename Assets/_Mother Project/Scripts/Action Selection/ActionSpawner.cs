@@ -41,7 +41,7 @@ public class ActionSpawner : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            WeaponManager.instance.LoadWeaponMapping();
+            WeaponManager.instance.DefaultWeaponActions();
         }
     }
     public void ShowActionDetails(string details)
@@ -56,7 +56,7 @@ public class ActionSpawner : MonoBehaviour
             DestroyAllChildren(child);
         }
         int i = 0;
-        List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetWeaponActiveActions();
+        List<ImprovedActionStat> playerAvailableAction = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().GetAvailableActions(); 
         foreach (Transform child in parentSlot_selected)
         {
             GameObject existButton = Instantiate(actionButtonPrefab, child);
@@ -131,7 +131,7 @@ public class ActionSpawner : MonoBehaviour
     public void Loadout()
     {
        DestroyAllChildren(actionButtonContainer);
-        List<ImprovedActionStat> playerAvailableAction = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().GetAvailableActions();
+        List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetWeaponActiveActions();
         //List<ImprovedActionStat> playerAvailableAction = WeaponManager.instance.GetDaggerAvailableActions();
         foreach (ImprovedActionStat scriptable in playerAvailableAction)
         {

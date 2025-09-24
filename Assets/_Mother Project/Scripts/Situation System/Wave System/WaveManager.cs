@@ -112,6 +112,7 @@ public class WaveManager : MonoBehaviour
         OnGridInit?.Invoke();
         currentWaveCount++;
 
+      //  WeaponManager.instance.LoadWeaponData();
         HandleWave();
         GridSystem.instance.IsGridOn = true;
         OnGridReady?.Invoke();

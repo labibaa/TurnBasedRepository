@@ -16,7 +16,7 @@ public class Weapon_Interactor : MonoBehaviour, IInteractable
         {
             player.GetComponent<ThirdPersonController>().enabled = false;
         }*/
-        WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
+       // WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
         Cursor.lockState = CursorLockMode.None;
         WeaponPanelHolder.SetActive(true);
         Time.timeScale = 0f;

@@ -803,7 +803,7 @@ public class ActionArchive : MonoBehaviour
     {
 
         GetPlayerStats();
-        ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Daggerthrow");
+        ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerThrow");
         ICommand rangedAction = new RangedAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
         ActionTemplate(rangedScriptable, rangedAction);
 

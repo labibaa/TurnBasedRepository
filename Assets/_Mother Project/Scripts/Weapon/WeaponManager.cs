@@ -25,8 +25,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] protected List<ImprovedActionStat> SpoonAvailableActions = new List<ImprovedActionStat>();
     [SerializeField] protected List<ImprovedActionStat> ButcherAvailableActions = new List<ImprovedActionStat>();
 
-    public List<ImprovedActionStat> DaggerActiveActions { get; private set; } = new List<ImprovedActionStat>() ;
-    public List<ImprovedActionStat> TalismanActiveActions { get; private set; } = new List<ImprovedActionStat>() ;
+    public List<ImprovedActionStat> DaggerActiveActions  = new List<ImprovedActionStat>() ;
+    public List<ImprovedActionStat> TalismanActiveActions  = new List<ImprovedActionStat>() ;
    // public List<RangeMappingSaveData> RangeMappingSaveDatas  = new List<RangeMappingSaveData>() ;
 
     private void Awake()
@@ -70,16 +70,17 @@ public class WeaponManager : MonoBehaviour
     {
         if (SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon == CurrentWeapon.Dagger)
         {
-            return DaggerActiveActions;
+            return DaggerAvailableActions;
         }
         else
         {
-            return TalismanActiveActions;
+            return TalismanAvailableActions;
         }
     }
+
     public List<ImprovedActionStat> GetDaggerAvailableActions()
     {
-        return DaggerAvailableActions;
+        return DaggerActiveActions;
     }
     public List<ImprovedActionStat> GetSwordAvailableActions()
     {
@@ -91,7 +92,7 @@ public class WeaponManager : MonoBehaviour
     }
     public List<ImprovedActionStat> GetTalismanAvailableActions()
     {
-        return TalismanAvailableActions;
+        return TalismanActiveActions;
     } 
     public List<ImprovedActionStat> GetHammerAvailableActions()
     {
@@ -120,33 +121,38 @@ public class WeaponManager : MonoBehaviour
 
     public void LoadWeaponData()
     {
-        //string fileName = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
-        string fileName = "Dagger" + ".json";
-        DaggerActiveActions = FileHandler.LoadJsonData<ImprovedActionStat>(fileName);
+        //string fileName = "Dagger" + ".json";
+   
+        DaggerActiveActions.Clear();
+        List<ImprovedActionStat> Dagger = FileHandler.LoadJsonData<ImprovedActionStat>("Dagger.json");
+        foreach (var item in Dagger)
+        {
+            DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, item.ActionName));
+        }
+        TalismanActiveActions.Clear();
+        List<ImprovedActionStat> Talisman = FileHandler.LoadJsonData<ImprovedActionStat>("Talisman.json");
+        foreach (var item in Talisman)
+        {
+            TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, item.ActionName));
+        }
+        
     }
     public void DefaultWeaponActions()
     {
-        if(SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon == CurrentWeapon.Dagger)
-        {
-            DaggerActiveActions.Clear();
-            DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerThrow"));
-            DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Stab"));
-            DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Assassinate"));
-            DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep"));
-            string fileName = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
-            //string fileName = "Dagger" + ".json";
-            FileHandler.SaveToJsonData<ImprovedActionStat>(DaggerActiveActions, fileName);
-        }
-        else
-        {
-            TalismanActiveActions.Clear();
-            TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneShield"));
-            TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneSpear"));
-            TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulTransfer"));
-            TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "MagicSiphon"));
-            string fileName = SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon + ".json";
-            FileHandler.SaveToJsonData<ImprovedActionStat>(TalismanActiveActions, fileName);
-        }
+        DaggerActiveActions.Clear();
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerThrow"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Stab"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Assassinate"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep"));
+        //string fileName = "Dagger" + ".json";
+        FileHandler.SaveToJsonData<ImprovedActionStat>(DaggerActiveActions, "Dagger.json");
+        TalismanActiveActions.Clear();
+        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneShield"));
+        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneSpear"));
+        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulTransfer"));
+        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "MagicSiphon"));
+
+        FileHandler.SaveToJsonData<ImprovedActionStat>(TalismanActiveActions, "Talisman.json");
 
     }
 

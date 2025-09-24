@@ -67,9 +67,9 @@ public class LoadSceneManager : MonoBehaviour
 
     private async UniTask LoadMyScene(string sceneName)
     {
-        Debug.Log("Start");
+        Debug.Log("Start" + SceneManager.GetActiveScene().name);
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single).ToUniTask();
-        Debug.Log("Finish");
+        Debug.Log("Finish" + SceneManager.GetActiveScene().name);
         persistableDataList = FindAllIPersitableDataObjects();
 
         LoadGame(); // Now called AFTER scene is fully loaded
@@ -135,6 +135,7 @@ public class LoadSceneManager : MonoBehaviour
         else
         {
             SwitchMC.Instance.SwitchToNextCharacter();
+            WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
         }
         IsnewGame = false;
 
