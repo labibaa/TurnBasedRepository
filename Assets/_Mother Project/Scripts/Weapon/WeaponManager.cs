@@ -50,6 +50,13 @@ public class WeaponManager : MonoBehaviour
         };
 
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            WeaponManager.instance.DefaultWeaponActions();
+        }
+    }
     public void SetDaggerAvailableActions(ImprovedActionStat action)
     {
         DaggerAvailableActions.Add(action);
