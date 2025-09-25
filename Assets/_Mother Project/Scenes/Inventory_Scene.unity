@@ -9701,6 +9701,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5017aabf6c79af14fb87202f816e59d6, type: 2}
   SpoonAvailableActions: []
   ButcherAvailableActions: []
+  DaggerActiveActions: []
+  TalismanActiveActions: []
 --- !u!1 &39617064
 GameObject:
   m_ObjectHideFlags: 0
@@ -20913,7 +20915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &149037779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20927,8 +20929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: 4552bf4ef47c49043869c882bd0d71c1, type: 3}
-    m_SceneName: NewLHallWay
+    m_SceneAsset: {fileID: 102900000, guid: 94efdf7dca40a754a813f546065ac6f5, type: 3}
+    m_SceneName: LEVEL 2 - Kitchen
   LastPosition: 
 --- !u!65 &149037780
 BoxCollider:
@@ -21010,8 +21012,8 @@ Transform:
   m_GameObject: {fileID: 149037778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.388, y: 0.699, z: 149.086}
-  m_LocalScale: {x: 1, y: 1, z: 3.1927}
+  m_LocalPosition: {x: 85.991, y: 0.32, z: 145.918}
+  m_LocalScale: {x: 1.73, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102785,7 +102787,7 @@ PrefabInstance:
     - target: {fileID: 6885287169927894697, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8643482613033457315, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
@@ -190799,6 +190801,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 0}
   stackPanel: {fileID: 8393466968036537052}
   parentPanel: {fileID: 7963487876255566123}
+  itemParentPanel: {fileID: 0}
   ultimateBar: {fileID: 8708651445363156946, guid: 6924f101f18b72142938259e64d211fb,
     type: 3}
   UltimateRectPanel: {fileID: 84196381}
@@ -190839,6 +190842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f0ce645de0cb34db58510aaa567770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InventoryHolder: {fileID: 275595085}
   inventoryItem_panel: {fileID: 1787901093}
   inventoryItem_buttonPrefab: {fileID: 5843784978987151162, guid: 49ff165da95a79f40b10e81400d7b3e1,
     type: 3}

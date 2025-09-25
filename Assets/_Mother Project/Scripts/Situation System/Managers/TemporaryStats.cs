@@ -45,7 +45,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
 
     public GameObject lastPosition;
   
-    public Image playerStatPanel;
+    public GameObject playerItemPanel;
     public GameObject PlayerActionListPanel;
     CharacterBaseClasses _characterBaseClasses;
 
@@ -90,7 +90,6 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
 
     private void Start()
     {
-
         SetWeaponActions();
         onEndFunction();
         //s
@@ -154,10 +153,11 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     void onEndFunction()
     {
        // currentPlayerGridPosition = transform.position;
-       
-        
-
         PlayerActionListPanel = ButtonStackManager.instance.PopulateActionPanel(_characterBaseClasses);
+        
+        playerItemPanel = ButtonStackManager.instance.PopulateItemPanel(_characterBaseClasses);
+        playerItemPanel.SetActive(false);
+        
         PlayerUltimateBar = ButtonStackManager.instance.PopulateUltimateBar(_characterBaseClasses);
         PlayerActionListPanel.SetActive(false);
         PlayerUltimateBar.SetActive(false);

@@ -34,7 +34,7 @@ public class Inventory_UI : MonoBehaviour
         {
             //RefreshStoreUI();
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.Confined;
             InventoryHolder.SetActive(false);

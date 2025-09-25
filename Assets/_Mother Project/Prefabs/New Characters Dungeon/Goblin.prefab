@@ -5003,13 +5003,13 @@ GameObject:
   - component: {fileID: 3932206974407674749}
   - component: {fileID: 6932863279495710384}
   - component: {fileID: 2057803974290149568}
-  - component: {fileID: 848168317216837593}
   - component: {fileID: 6041923636068669090}
   - component: {fileID: 3920525572836822447}
   - component: {fileID: 1101547851877835106}
   - component: {fileID: 3194999334548025767}
   - component: {fileID: 5587477714793993026}
   - component: {fileID: 2823571636101484346}
+  - component: {fileID: 848168317216837593}
   - component: {fileID: 8577974215698818233}
   - component: {fileID: 4537785029891846347}
   - component: {fileID: 7700484340880931259}
@@ -5106,55 +5106,6 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   isMoveOn: 1
   myTurn: 0
---- !u!114 &848168317216837593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3655071332193818201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avatarHead: {fileID: 0}
-  CurrentHealth: 1
-  PlayerHealth: 20
-  Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
-    type: 3}
-  CurrentAP: 6
-  PlayerAP: 7
-  CurrentDex: 3
-  CurrentEndurance: 10
-  CurrentStrength: 0
-  CurrentArcana: 0
-  CurrentIntelligence: 0
-  CurrentExp: 0
-  CurrentResolve: 20
-  CurrentDamageMultiplier: 0
-  IsBlockActive: 0
-  IsDodgeActive: 0
-  IsImbuementActive: 0
-  IsCounterActive: 0
-  AutoMove: 0
-  playerUltimateBarCount: 0
-  PlayerUltimateBar: {fileID: 0}
-  isMainCharacter: 0
-  isLinkOn: 0
-  currentScene: 
-  playerMortality: 0
-  currentPlayerGridPosition: {x: 0, y: 0, z: 0}
-  _spawnPosition: {x: 0, y: 0, z: 0}
-  gridCoordinateSpawn: {x: 2, y: 4}
-  lastPosition: {fileID: 0}
-  playerStatPanel: {fileID: 0}
-  PlayerActionListPanel: {fileID: 0}
-  FlyingTextParent: {fileID: 8287363566553825475}
-  CharacterTeam: 3
-  SelectionParticle: {fileID: 5579397163932972297}
-  EnemyTargetSelectionParticle: {fileID: 2241632698792260689}
-  playerVisiblity: 1
 --- !u!195 &6041923636068669090
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5283,16 +5234,63 @@ MonoBehaviour:
   MaxExp: 0
   lootUltiPoints: 0
   EquipedWeapon: 8
-  characterAvailableActions:
-  - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
-  - {fileID: 11400000, guid: 115dd138f5c68e747acbc0a771e6ea86, type: 2}
-  - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
+  characterAvailableActions: []
+  characterAvailableItems: []
   playerUltimateFactory: {fileID: 11400000, guid: ebbdabb8db8918f47bcbd6c952221055,
     type: 2}
   warpSurge: {fileID: 0}
   groundBlast: {fileID: 0}
   dash: {fileID: 0}
   move: {fileID: 11400000, guid: 8465ec936a5ef5240a593153957a09c8, type: 2}
+--- !u!114 &848168317216837593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655071332193818201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarHead: {fileID: 0}
+  CurrentHealth: 1
+  PlayerHealth: 20
+  Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
+    type: 3}
+  CurrentAP: 6
+  PlayerAP: 7
+  CurrentDex: 3
+  CurrentEndurance: 10
+  CurrentStrength: 0
+  CurrentArcana: 0
+  CurrentIntelligence: 0
+  CurrentExp: 0
+  CurrentResolve: 20
+  CurrentDamageMultiplier: 0
+  IsBlockActive: 0
+  IsDodgeActive: 0
+  IsImbuementActive: 0
+  IsCounterActive: 0
+  AutoMove: 0
+  playerUltimateBarCount: 0
+  PlayerUltimateBar: {fileID: 0}
+  isMainCharacter: 0
+  isLinkOn: 0
+  currentScene: 
+  playerMortality: 0
+  currentPlayerGridPosition: {x: 0, y: 0, z: 0}
+  _spawnPosition: {x: 0, y: 0, z: 0}
+  gridCoordinateSpawn: {x: 2, y: 4}
+  lastPosition: {fileID: 0}
+  playerStatPanel: {fileID: 0}
+  PlayerActionListPanel: {fileID: 0}
+  FlyingTextParent: {fileID: 8287363566553825475}
+  CharacterTeam: 3
+  SelectionParticle: {fileID: 5579397163932972297}
+  EnemyTargetSelectionParticle: {fileID: 2241632698792260689}
+  playerVisiblity: 1
 --- !u!114 &8577974215698818233
 MonoBehaviour:
   m_ObjectHideFlags: 0

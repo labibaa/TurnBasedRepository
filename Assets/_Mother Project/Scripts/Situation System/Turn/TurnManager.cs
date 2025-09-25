@@ -178,9 +178,11 @@ public class TurnManager : MonoBehaviour
         players[currentPlayerIndex].GetComponent<NavMeshAgent>().enabled = true;
         currentPlayer.SelectionParticle.SetActive(true);
         currentPlayer.PlayerActionListPanel.SetActive(true);
+
         currentPlayer.PlayerUltimateBar.SetActive(true);
         if(currentPlayer.CharacterTeam == TeamName.TeamA)
         {
+            currentPlayer.playerItemPanel.SetActive(true);
             currentPlayer.GetComponent<IsoMetricToTPS>().enabled = true;
         }
 

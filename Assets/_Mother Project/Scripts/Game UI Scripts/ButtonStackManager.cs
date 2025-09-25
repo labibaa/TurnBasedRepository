@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 
 public class ButtonStackManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class ButtonStackManager : MonoBehaviour
     GameObject actionPanel;
     [SerializeField]
     Transform parentPanel;
+    [SerializeField]
+    Transform itemParentPanel;
     [SerializeField]
     GameObject ultimateBar;
     [SerializeField]
@@ -90,6 +94,38 @@ public class ButtonStackManager : MonoBehaviour
         ultimateBarSpawned.GetComponent<UltimateUI>().maxProgress = player.GetPlayerUltimate().GetultimateThreshold();
         ultimateBarSpawned.GetComponent<UltimateUI>().ultimateBarProgress = 0;
         return ultimateBarSpawned;
+    }
+    public GameObject PopulateItemPanel(CharacterBaseClasses player)
+    {
+        // Create a new player panel
+        GameObject playerItems = new GameObject("PlayerItems");
+        playerItems.transform.SetParent(itemParentPanel, false);
+        playerItems.name = player.name;
+
+        // Add RectTransform component and set its size
+        RectTransform panelRectTransform = playerItems.AddComponent<RectTransform>();
+        VerticalLayoutGroup layoutGroup = playerItems.AddComponent<VerticalLayoutGroup>();
+        layoutGroup.spacing = 10f;
+
+        panelRectTransform.sizeDelta = new Vector2(300, 400); // Set panel size as needed
+        // Limit to 3 buttons per row
+
+        // Get the available actions from the player
+        List<InventoryItem> playerAvailableItems = player.GetAvailableItems();
+        if (playerAvailableItems.Count > 0)
+        {
+
+            foreach (InventoryItem item in playerAvailableItems)
+            {
+                // Instantiate each action button and set its function based on its name
+                GameObject button = Instantiate(item.itemClass.itemButton, playerItems.transform);
+                button.GetComponent<ButtonName>().SetButtonName(item.itemClass.itemName);
+                TextMeshProUGUI NameComponent = button.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+                NameComponent.text = item.itemClass.itemName;
+            }
+        }
+
+        return playerItems;
     }
     public GameObject PopulateActionPanel(CharacterBaseClasses player)
     {

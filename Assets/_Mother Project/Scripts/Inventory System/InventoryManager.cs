@@ -73,6 +73,13 @@ public class InventoryManager : MonoBehaviour
 
         CurrencySystem.instance.SetCurrency(playerStats.CurrentExp);
     }
+    public void GetInventoryItems(GameObject owner)
+    {
+        if (itemDictionaries.TryGetValue(owner, out var innerDict))
+        {
+            owner.GetComponent<CharacterBaseClasses>().SetAvailableItems( innerDict.Values.ToList()); // returns all InventoryItems for this GameObject
+        }
+    }
 
     public void AddItem(ItemClass item)
     {
@@ -95,6 +102,7 @@ public class InventoryManager : MonoBehaviour
             dictionary[item] = newInventoryItem;
             Debug.Log($"{item} added to inventory for {currentCharacter.name}");
         }
+        GetInventoryItems(currentCharacter);
     }
 
     public void RemoveItem(ItemClass item)
@@ -117,6 +125,7 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log($"{item} removed from {currentCharacter.name}'s inventory");
             }
         }
+        GetInventoryItems(currentCharacter);
     }
 
     public void UseItem(ItemClass item)

@@ -20,8 +20,9 @@ public class PlayerDataSave
     public bool IsMainCHaracter;
     public bool IsLinkOn;
     public string CurrentScene;
+    public List<InventoryItem> Items = new List<InventoryItem>();
 
-    public PlayerDataSave(string name,int playerHealth, int playerAP, int currentDex, int currentEndurance, int currentStrength, int currentArcana, int currentIntelligence,float currentDamageMultiplier, int exp ,TeamName teamName, bool isMain, bool isLinkOn, string currentScene)
+    public PlayerDataSave(string name,int playerHealth, int playerAP, int currentDex, int currentEndurance, int currentStrength, int currentArcana, int currentIntelligence,float currentDamageMultiplier, int exp ,TeamName teamName, bool isMain, bool isLinkOn, string currentScene, List<InventoryItem> items)
     {
         Name = name;
         CurrentPlayerHealth = playerHealth;
@@ -37,5 +38,6 @@ public class PlayerDataSave
         IsMainCHaracter = isMain;
         IsLinkOn = isLinkOn;
         CurrentScene = currentScene;
+        Items = items;
     }
 }

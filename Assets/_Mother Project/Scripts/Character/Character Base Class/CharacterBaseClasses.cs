@@ -23,6 +23,7 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     public CurrentWeapon EquipedWeapon;
     [SerializeField]
     protected List<ImprovedActionStat> characterAvailableActions = new List<ImprovedActionStat>();
+    [SerializeField] protected List<InventoryItem> characterAvailableItems = new List<InventoryItem>();
     [SerializeField]
     protected UltimateActionsFactory playerUltimateFactory;
     protected IUltimate playerUltimate;
@@ -89,6 +90,14 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     public List<ImprovedActionStat> GetAvailableActions()
     {
         return characterAvailableActions;
+    }
+    public List<InventoryItem> GetAvailableItems()
+    {
+        return characterAvailableItems;
+    }
+    public void SetAvailableItems(List<InventoryItem> items)
+    {
+       characterAvailableItems = items;
     }
 
     public void SetAvailableActions(List<ImprovedActionStat> weaponActions)
