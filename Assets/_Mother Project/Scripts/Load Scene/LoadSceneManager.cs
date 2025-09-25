@@ -135,7 +135,7 @@ public class LoadSceneManager : MonoBehaviour
         else
         {
             SwitchMC.Instance.SwitchToNextCharacter();
-            WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
+            //WeaponManager.instance.DefaultWeaponActions();  //in scene loading function
         }
         IsnewGame = false;
 

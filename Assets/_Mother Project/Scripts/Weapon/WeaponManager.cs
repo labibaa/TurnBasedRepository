@@ -80,7 +80,7 @@ public class WeaponManager : MonoBehaviour
 
     public List<ImprovedActionStat> GetDaggerAvailableActions()
     {
-        return DaggerActiveActions;
+        return DaggerAvailableActions;
     }
     public List<ImprovedActionStat> GetSwordAvailableActions()
     {
@@ -92,7 +92,7 @@ public class WeaponManager : MonoBehaviour
     }
     public List<ImprovedActionStat> GetTalismanAvailableActions()
     {
-        return TalismanActiveActions;
+        return TalismanAvailableActions;
     } 
     public List<ImprovedActionStat> GetHammerAvailableActions()
     {
