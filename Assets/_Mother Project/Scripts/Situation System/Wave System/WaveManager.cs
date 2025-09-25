@@ -109,10 +109,11 @@ public class WaveManager : MonoBehaviour
 
     void StartWave()
     {
+
+        WeaponManager.instance.LoadWeaponData();
         OnGridInit?.Invoke();
         currentWaveCount++;
 
-      //  WeaponManager.instance.LoadWeaponData();
         HandleWave();
         GridSystem.instance.IsGridOn = true;
         OnGridReady?.Invoke();
