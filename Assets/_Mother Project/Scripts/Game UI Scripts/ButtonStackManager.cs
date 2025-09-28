@@ -103,12 +103,22 @@ public class ButtonStackManager : MonoBehaviour
         playerItems.name = player.name;
 
         // Add RectTransform component and set its size
+       
+                                                              // Limit to 3 buttons per row
+
+        // Add RectTransform component and set its size
         RectTransform panelRectTransform = playerItems.AddComponent<RectTransform>();
         VerticalLayoutGroup layoutGroup = playerItems.AddComponent<VerticalLayoutGroup>();
         layoutGroup.spacing = 10f;
 
-        panelRectTransform.sizeDelta = new Vector2(300, 400); // Set panel size as needed
-        // Limit to 3 buttons per row
+        layoutGroup.childControlWidth = false;
+        layoutGroup.childControlHeight = false;
+        layoutGroup.childForceExpandWidth = false;
+        layoutGroup.childForceExpandHeight = false;
+
+        layoutGroup.childAlignment = TextAnchor.MiddleRight;
+
+        panelRectTransform.sizeDelta = new Vector2(400, 600); // Set panel size as needed
 
         // Get the available actions from the player
         List<InventoryItem> playerAvailableItems = player.GetAvailableItems();
