@@ -139,7 +139,14 @@ public class ButtonStackManager : MonoBehaviour
         VerticalLayoutGroup layoutGroup = playerPanel.AddComponent<VerticalLayoutGroup>();
         layoutGroup.spacing = 10f;
 
-        panelRectTransform.sizeDelta = new Vector2(300, 400); // Set panel size as needed
+        layoutGroup.childControlWidth = false;
+        layoutGroup.childControlHeight = false;
+        layoutGroup.childForceExpandWidth = false;
+        layoutGroup.childForceExpandHeight = false;
+
+        layoutGroup.childAlignment = TextAnchor.MiddleRight;
+
+        panelRectTransform.sizeDelta = new Vector2(400, 600); // Set panel size as needed
 
         //// Replace HorizontalLayoutGroup with GridLayoutGroup for button grid layout
         //GridLayoutGroup gridLayoutGroup = playerPanel.AddComponent<GridLayoutGroup>();
