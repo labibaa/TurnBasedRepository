@@ -58,7 +58,7 @@ public class ShadowOfPlayer : MonoBehaviour
                // ActionGhostRepeat();
             }*/
             TempManager.instance.ChangeGameState(GameStates.GhostPlay);
-            Debug.Log("ding dong");
+           // Debug.Log("ding dong");
             ActionGhostSingular();
             
         }
@@ -113,11 +113,11 @@ public class ShadowOfPlayer : MonoBehaviour
 
         // for (int i = 0; i <= ActionTurnListForGhost.Count; i++)
 
-        Debug.Log("j"+j+"ping dong"+ ActionTurnListForGhost.Count);
+       // Debug.Log("j"+j+"ping dong"+ ActionTurnListForGhost.Count);
 
 
         for (;j<ActionTurnListForGhost.Count;) {
-            Debug.Log("ing dong");
+           // Debug.Log("ing dong");
             if (ActionTurnListForGhost[j].Command.GetActionType()!="Melee")
             {
                 lastPositionGhosts.Push(IsSpawned.transform.position);
