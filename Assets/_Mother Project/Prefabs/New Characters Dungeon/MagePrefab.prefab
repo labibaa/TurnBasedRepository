@@ -27429,7 +27429,7 @@ Transform:
   m_GameObject: {fileID: 3080342246157646114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1718154, y: 0.00000047683716, z: -6.53}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27538,6 +27538,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
   - {fileID: 11400000, guid: 115dd138f5c68e747acbc0a771e6ea86, type: 2}
   - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
+  characterAvailableItems: []
   playerUltimateFactory: {fileID: 11400000, guid: ebbdabb8db8918f47bcbd6c952221055,
     type: 2}
   warpSurge: {fileID: 0}
@@ -27556,6 +27557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatarHead: {fileID: 0}
   CurrentHealth: 13
   PlayerHealth: 13
   Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
@@ -27572,7 +27574,7 @@ MonoBehaviour:
   CurrentDamageMultiplier: 0
   IsBlockActive: 0
   IsDodgeActive: 0
-  IsThirdRatePerformanceActive: 0
+  IsImbuementActive: 0
   IsCounterActive: 0
   AutoMove: 0
   playerUltimateBarCount: 0
@@ -27585,7 +27587,7 @@ MonoBehaviour:
   _spawnPosition: {x: 0, y: 0, z: 0}
   gridCoordinateSpawn: {x: 6, y: 5}
   lastPosition: {fileID: 0}
-  playerStatPanel: {fileID: 0}
+  playerItemPanel: {fileID: 0}
   PlayerActionListPanel: {fileID: 0}
   FlyingTextParent: {fileID: 2505666370343980323}
   CharacterTeam: 3

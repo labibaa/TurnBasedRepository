@@ -824,6 +824,15 @@ public class ActionArchive : MonoBehaviour
         ActionTemplate(rangedScriptable, rangedAction);
 
     }
+    public async void PigThrow()
+    {
+
+        GetPlayerStats();
+        ImprovedActionStat rangedScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "PigThrow");
+        ICommand rangedAction = new RangedAttack(playerAttacker, targetDefender, currentStatPlayer, currentStatTarget, rangedScriptable);
+        ActionTemplate(rangedScriptable, rangedAction);
+
+    }
     public async void CrystalCascade()
     {
         GetPlayerStats();

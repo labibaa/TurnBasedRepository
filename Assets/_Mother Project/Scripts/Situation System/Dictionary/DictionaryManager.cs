@@ -82,7 +82,8 @@ public class DictionaryManager : MonoBehaviour
         {"ButcherSmack1",ActionArchive.instance.ButcherSmack1 },
         {"ButcherSmack2",ActionArchive.instance.ButcherSmack2 },
         {"PigAttackOne",ActionArchive.instance.PigAttackOne },
-        {"GrenadeThrow",ActionArchive.instance.GrenadeThrow }
+        {"GrenadeThrow",ActionArchive.instance.GrenadeThrow },
+        {"PigThrow",ActionArchive.instance.PigThrow }
 
 
     };
