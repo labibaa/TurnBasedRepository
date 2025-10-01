@@ -5,14 +5,21 @@ using UnityEngine.UI;
 
 public class ActionNotification : MonoBehaviour
 {
-  
+    public static ActionNotification instance;
+    
     public RectTransform notification;
     public TextMeshProUGUI ActionNotificationText;
 
     public float slideDuration = 1f;
     public float waitDuration = 1f;
 
- 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     public void AnimateNotification(string actionName)
     {
         // Calculate the target position for the slide-in animation

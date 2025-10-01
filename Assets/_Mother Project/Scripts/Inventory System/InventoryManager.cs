@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.TextCore.Text;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        if (SwitchMC.Instance != null)
+        if (SwitchMC.Instance.mainCharacter != null)
         {
             SetCurrentMC();
         }
@@ -103,6 +104,7 @@ public class InventoryManager : MonoBehaviour
             Debug.Log($"{item} added to inventory for {currentCharacter.name}");
         }
         GetInventoryItems(currentCharacter);
+        //ShowSavedData.Instance.AddCharacterData(currentCharacter);
     }
 
     public void RemoveItem(ItemClass item)
@@ -126,6 +128,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
         GetInventoryItems(currentCharacter);
+       // ShowSavedData.Instance.AddCharacterData(currentCharacter);
     }
 
     public void UseItem(ItemClass item)
@@ -148,13 +151,7 @@ public class InventoryManager : MonoBehaviour
             }
 
             item.UseObject(playerStats);
-            inventoryItem.RemoveFromStack();
-
-            if (inventoryItem.StackSize == 0)
-            {
-                dictionary.Remove(item);
-                Debug.Log($"{item} used and removed from {currentCharacter.name}'s inventory");
-            }
+            RemoveItem(item);
         }
     }
 

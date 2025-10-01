@@ -14,7 +14,9 @@ public class InventoryInteractor : MonoBehaviour, IInteractable
 
     public void ActivateInventory()
     {
+        inventoryUI.ShowMainCharacterData();
         inventoryUI.RefreshStoreUI();
+        inventoryUI.RefreshInventoryUI();
         /*foreach (var player in SwitchMC.Instance.characters)
         {
             player.GetComponent<ThirdPersonController>().enabled = false;

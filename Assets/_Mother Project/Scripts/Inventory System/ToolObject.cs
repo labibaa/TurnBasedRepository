@@ -19,7 +19,7 @@ public class ToolObject : ItemClass
             //WeaponManager.instance.SetDaggerAvailableActions(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch"));
             return this;
         }
-        UI.instance.SendNotification("Not enough EXP");
+        ActionNotification.instance.AnimateNotification("Not enough EXP");
         return null;
     }
 

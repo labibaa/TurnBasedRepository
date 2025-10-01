@@ -17,6 +17,11 @@ public class ActionSpawner : MonoBehaviour
     public GameObject actionButtonPrefab;
     bool isWarning;
 
+    [SerializeField] private TextMeshProUGUI currencyText;
+    [SerializeField] private TextMeshProUGUI currentLevel;
+    [SerializeField] private Image playerHP;
+    [SerializeField] private Image mainCharacterSprite;
+
     private void Awake()
     {
         if (Instance == null) 
@@ -40,6 +45,16 @@ public class ActionSpawner : MonoBehaviour
            // WeaponManager.instance.WeaponLevelUp();
         }
 
+    }
+    public void ShowMainCharacterData()
+    {
+        var currentMC = InventoryManager.Instance.GetCurrentMC();
+        // ShowSavedData.Instance.LoadTemporaryStatsNextScene(currentMC); 
+
+        mainCharacterSprite.sprite = currentMC.GetComponent<TemporaryStats>().avatarHead;
+        playerHP.fillAmount = currentMC.GetComponent<CharacterBaseClasses>().HealthPoints;
+        currencyText.text = CurrencySystem.instance.GetCurrency().ToString();
+        currentLevel.text = currentMC.GetComponent<CharacterBaseClasses>().Level.ToString();
     }
     public void ShowActionDetails(string details)
     {

@@ -18,7 +18,7 @@ public class CharacterStats_UI : MonoBehaviour
     [SerializeField] TextMeshProUGUI currentLvl_txt;
     [SerializeField] TextMeshProUGUI maxXP_txt;
     [SerializeField] GameObject xpNotification;
-
+    
     void Update()
     {
         
@@ -26,7 +26,7 @@ public class CharacterStats_UI : MonoBehaviour
 
     public void CharacterStatsUI()
     {
-        GameObject crntPlayer =  TempManager.instance.attacker.gameObject;
+        GameObject crntPlayer = SwitchMC.Instance.mainCharacter;
         StatsPanel.SetActive(true);
         characterName_txt.text = crntPlayer.GetComponent<CharacterBaseClasses>().characterName.ToString();
         currentXP_txt.text = crntPlayer.GetComponent<TemporaryStats>().CurrentExp.ToString();
@@ -42,14 +42,14 @@ public class CharacterStats_UI : MonoBehaviour
 
     public void LevelUpCharacter()
     {
-        GameObject crntPlayer = TempManager.instance.attacker.gameObject;
+        GameObject crntPlayer = SwitchMC.Instance.mainCharacter;
         //upgrade cost 	"Upgrade Cost=10×(Current Stat Level)^2"
         if (crntPlayer.GetComponent<TemporaryStats>().CurrentExp >= (10 * crntPlayer.GetComponent<CharacterBaseClasses>().Level * crntPlayer.GetComponent<CharacterBaseClasses>().Level))
         {
             crntPlayer.GetComponent<TemporaryStats>().CurrentExp -= (10 * crntPlayer.GetComponent<CharacterBaseClasses>().Level * crntPlayer.GetComponent<CharacterBaseClasses>().Level);
             crntPlayer.GetComponent<CharacterBaseClasses>().LevelUp();
             crntPlayer.GetComponent<TemporaryStats>().SetCharacterStat();
-            CharacterStatsUI();
+            //CharacterStatsUI();
         }
         else
         {

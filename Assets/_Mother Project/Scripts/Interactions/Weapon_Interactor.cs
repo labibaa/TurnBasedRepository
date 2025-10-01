@@ -20,6 +20,7 @@ public class Weapon_Interactor : MonoBehaviour, IInteractable
         Cursor.lockState = CursorLockMode.None;
         WeaponPanelHolder.SetActive(true);
         Time.timeScale = 0f;
+        ActionSpawner.Instance.ShowMainCharacterData();
         ActionSpawner.Instance.Loadout();
         ActionSpawner.Instance.FillDefaultSlot();
     }

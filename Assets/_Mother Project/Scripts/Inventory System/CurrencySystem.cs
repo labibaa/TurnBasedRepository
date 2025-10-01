@@ -31,7 +31,7 @@ public class CurrencySystem : MonoBehaviour
         GameObject currentMC = InventoryManager.Instance.GetCurrentMC();
         if (currentMC.GetComponent<CharacterBaseClasses>().characterName == "Mon")
         {
-            if (item.GetItem() != null && item.GetToolObject() != null)
+            if (item.GetItem() != null )//&& item.GetToolObject() != null)
             {
                 OnItemAdded?.Invoke(item);
 
@@ -42,7 +42,7 @@ public class CurrencySystem : MonoBehaviour
         }
         else if (currentMC.GetComponent<CharacterBaseClasses>().characterName == "Roud")
         {
-            if (item.GetItem() != null && item.GetConsumableObject() != null)
+            if (item.GetItem() != null)// && item.GetConsumableObject() != null)
             {
                 OnItemAdded?.Invoke(item);
 
