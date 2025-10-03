@@ -147,7 +147,7 @@ public class ButtonStackManager : MonoBehaviour
         // Add RectTransform component and set its size
         RectTransform panelRectTransform = playerPanel.AddComponent<RectTransform>();
         VerticalLayoutGroup layoutGroup = playerPanel.AddComponent<VerticalLayoutGroup>();
-        layoutGroup.spacing = 23f;
+        layoutGroup.spacing = 5f;
 
         layoutGroup.childControlWidth = false;
         layoutGroup.childControlHeight = false;
