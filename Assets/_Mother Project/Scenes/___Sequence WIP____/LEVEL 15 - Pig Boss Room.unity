@@ -1678,6 +1678,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25dc77fc3efd54247ba3e75732de51e4, type: 2}
   - {fileID: 11400000, guid: dd2c826a9d4f3dd419c567b8eca1689e, type: 2}
   - {fileID: 11400000, guid: e5cbf9e39a5f04e4197889badc4ea8bd, type: 2}
+  - {fileID: 11400000, guid: 7eda667d39f1c884cbc3456a35df5117, type: 2}
+  - {fileID: 11400000, guid: 7eda667d39f1c884cbc3456a35df5117, type: 2}
   DaggerActiveActions: []
   TalismanActiveActions: []
 --- !u!43 &37687791
@@ -159127,37 +159129,37 @@ PrefabInstance:
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -573.38995
+      value: -569.80786
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -326.85397
+      value: -333.11996
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 168.48643
+      value: 156.66133
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.633049
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.11131806
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9659258
+      value: -0.7544901
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.25881907
+      value: 0.13267279
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
@@ -159187,7 +159189,7 @@ PrefabInstance:
     - target: {fileID: 5694500526413457173, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: field of view
-      value: 60
+      value: 60.000004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -166471,6 +166473,11 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[2].value
       value: 
       objectReference: {fileID: 1802930870}
+    - target: {fileID: 6508460134386450635, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Priority
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
@@ -174456,10 +174463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerWaves:
-  - CharactersOfTheWave:
-    - {fileID: 7823975018350207408}
-    - {fileID: 1800869750}
-    - {fileID: 6837623681510801014}
   - CharactersOfTheWave:
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
@@ -233840,18 +233843,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6837623681510801014 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7579106995180375953, guid: 165ed1648b3b37e469b295be293d11f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 7719130871399722332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &6851687511477283290
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -75,7 +75,7 @@ public class ActionSpawner : MonoBehaviour
             ObjectDragDrop btn = existButton.GetComponent<ObjectDragDrop>();
             btn.isPrevAction = true;
             var action = playerAvailableAction[i];
-            btn.ButtonSetup(action.ActionName, action);
+            btn.ButtonSetup(action.ActionName, action, action.actionIcon);
 
             existButton.GetComponent<Button>().onClick.AddListener(
                 () => ShowActionDetails(action.Description)
@@ -149,7 +149,7 @@ public class ActionSpawner : MonoBehaviour
         {
             GameObject newButton = Instantiate(actionButtonPrefab, actionButtonContainer);
             ObjectDragDrop btn = newButton.GetComponent<ObjectDragDrop>();
-            btn.ButtonSetup(scriptable.ActionName, scriptable);
+            btn.ButtonSetup(scriptable.ActionName, scriptable, scriptable.actionIcon);
             newButton.GetComponent<Button>().onClick.AddListener(() => ShowActionDetails(scriptable.Description));
         }
     }
