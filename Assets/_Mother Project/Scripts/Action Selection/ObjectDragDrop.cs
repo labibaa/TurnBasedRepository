@@ -13,6 +13,7 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     public int originalSiblingIndex { get; private set; }
     Transform mainPanel;
     [SerializeField] TextMeshProUGUI actionName;
+    [SerializeField] GameObject IconHolder;
     public ImprovedActionStat actionScriptable { get; private set; }
     public bool isPrevAction;
 
@@ -26,10 +27,11 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         mainPanel = ActionSpawner.Instance.mainPanel;
 
     }
-    public void ButtonSetup(string name, ImprovedActionStat scriptable)
+    public void ButtonSetup(string name, ImprovedActionStat scriptable, GameObject iconPrefab)
     {
         actionName.text = name;
         actionScriptable = scriptable;
+        GameObject icon = Instantiate(iconPrefab, IconHolder.transform);
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
