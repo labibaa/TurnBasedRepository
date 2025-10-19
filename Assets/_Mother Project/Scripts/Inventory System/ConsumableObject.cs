@@ -26,7 +26,7 @@ public class ConsumableObject : ItemClass
     }
     public override void UseObject(TemporaryStats player)
     {
-        player.CurrentHealth = HealthManager.instance.HealthCap(player.PlayerHealth, HealthManager.instance.HealthCalculation(-ObjectBuff, player.CurrentHealth));
+        player.CurrentHealth = HealthManager.instance.HealthCap(player.GetComponent<CharacterBaseClasses>().HealthPoints, HealthManager.instance.HealthCalculation(-ObjectBuff, player.CurrentHealth));
         Debug.Log(ObjectBuff + " is Healed");
         //ActionArchive.instance.GroundBlast();
     }

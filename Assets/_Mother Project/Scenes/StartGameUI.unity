@@ -753,6 +753,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roud Rigged Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: healthPoints
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: resolvePoints
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2550685254932437964, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_Enabled
@@ -856,6 +866,7 @@ GameObject:
   - component: {fileID: 343072346}
   - component: {fileID: 343072345}
   - component: {fileID: 343072347}
+  - component: {fileID: 343072348}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -924,8 +935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: ee548f05ff583b54a8b73869cd4f3321, type: 3}
-    m_SceneName: StoreRoom
+    m_SceneAsset: {fileID: 102900000, guid: 79d097824aca7a241939c219a4fdac5b, type: 3}
+    m_SceneName: LEVEL 0 - Store Room
   LastPosition: 
 --- !u!114 &343072345
 MonoBehaviour:
@@ -942,6 +953,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 0}
   stackPanel: {fileID: 1926104813}
   parentPanel: {fileID: 1629616122}
+  itemParentPanel: {fileID: 0}
   ultimateBar: {fileID: 8708651445363156946, guid: 6924f101f18b72142938259e64d211fb,
     type: 3}
   UltimateRectPanel: {fileID: 699917775}
@@ -976,6 +988,18 @@ MonoBehaviour:
   actionButtons: []
   activateColor: {r: 0, g: 0, b: 0, a: 0}
   deactivateColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &343072348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343072341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be02a83363ff49078f9cd07bebdefab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &497445640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,16 +2113,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1300978614}
-        m_TargetAssemblyTypeName: LoadSceneManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 343072344}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LEVEL 0 - Store Room
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1802696983

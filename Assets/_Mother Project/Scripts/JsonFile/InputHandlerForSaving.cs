@@ -9,7 +9,6 @@ public class InputHandlerForSaving : MonoBehaviour
 {
     [SerializeField] string userName;
     [SerializeField] string fileName; // use the name wanted to save the file and add .json extention
-    [SerializeField] Button loginBtn;
     [SerializeField] TMP_InputField userNameInput;
  
     public List<SaveTurnInformation> toSaveData = new List<SaveTurnInformation>(); //put the list that needs to be saved in json

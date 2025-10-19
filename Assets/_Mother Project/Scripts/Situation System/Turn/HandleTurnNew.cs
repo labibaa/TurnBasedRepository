@@ -54,7 +54,7 @@ public class HandleTurnNew : MonoBehaviour
             await PerformTurn(turnsToBePerformed[i]);
         }
        
-        if(TurnManager.instance.players.Count>TurnManager.instance.currentPlayerIndex )
+        if(TurnManager.instance.players.Count > TurnManager.instance.currentPlayerIndex)
         {
             TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].myTurn = false;
         }
@@ -66,7 +66,7 @@ public class HandleTurnNew : MonoBehaviour
 
         allTurnsOfPlayer.Clear();
         TemporaryStats currentPlayerTemporaryStates = TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].GetComponent<TemporaryStats>();
-        TeamManager.instance.IsTeamEmpty(currentPlayerTemporaryStates.CharacterTeam);
+        TeamManager.instance.IsTeamEmpty(currentPlayerTemporaryStates.CharacterTeam);            // NO EFFECTS!!!
         //currentPlayerTemporaryStates.playerUltimateBarCount= currentPlayerTemporaryStates.playerUltimateBarCount+totalActionthisTurn;
 
         if (!SituationEndCondition)
@@ -75,7 +75,7 @@ public class HandleTurnNew : MonoBehaviour
             if (currentPlayerTemporaryStates.tag == StringData.PlayerTag)
             {
                 currentPlayerTemporaryStates.GetComponent<PlayerTurn>().isMoveOn = true;
-                currentPlayerTemporaryStates.CurrentAP = ActionResolver.instance.APCarryOver(currentPlayerTemporaryStates.CurrentAP,2);
+                currentPlayerTemporaryStates.CurrentAP = ActionResolver.instance.APCarryOver(currentPlayerTemporaryStates.CurrentAP, 2);
             }
 
             TurnManager.instance.StartTurn();
@@ -105,7 +105,7 @@ public class HandleTurnNew : MonoBehaviour
     async Task PerformTurn(Turn turn)
     {
         
-        if (turn.target==null ||TurnManager.instance.players.Contains(turn.target.GetComponent<PlayerTurn>()))
+        if (turn.target == null || TurnManager.instance.players.Contains(turn.target.GetComponent<PlayerTurn>()))
         {
             await turn.Command.Execute();
         }

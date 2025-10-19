@@ -119,12 +119,6 @@ public class GridActivation : MonoBehaviour
 
     private void DisableSituationSystem()
     {
-      /*  foreach(GameObject character_Go in playableCharacter)
-        {
-            character_Go.SetActive(true);
-        }
-        */
-
         foreach (Transform child in grid.transform)
         {
             // Destroy the child GameObject
@@ -166,7 +160,7 @@ public class GridActivation : MonoBehaviour
 
         GridSystem.instance.IsGridOn = false;
         // HandleTurnNew.instance.SituationEndCondition = false;
-
+        LoadSceneManager.instance.SaveGame();
         WaitDelay(2f);
         SwitchMC.Instance.CharacterSwitch();
 
@@ -188,14 +182,7 @@ public class GridActivation : MonoBehaviour
     {
         foreach (GameObject p in players)
         {
-            /*if(p.GetComponent<TemporaryStats>().CharacterTeam != myTeam)
-            {*/
-                p.SetActive(false);
-            //}
-          /*  else
-            {
-               // p.GetComponent<NavMeshAgent>().enabled= true;
-            }*/
+             p.SetActive(false);
            
         }
 

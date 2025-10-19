@@ -37,7 +37,7 @@ public class SoulTransfer : ICommand
             
             int healPoint = Mathf.RoundToInt(playerTempStats.CurrentHealth / 2) * -1;
             await HandleAnimation();
-            targetTempStats.CurrentHealth = HealthManager.instance.HealthCap(targetTempStats.PlayerHealth, HealthManager.instance.HealthCalculation(healPoint, targetTempStats.CurrentHealth));
+            targetTempStats.CurrentHealth = HealthManager.instance.HealthCap(player.HealthPoints, HealthManager.instance.HealthCalculation(healPoint, targetTempStats.CurrentHealth));
             playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(((-1)*healPoint), playerTempStats.CurrentHealth);
 
             UI.instance.ShowFlyingText((healPoint * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.green);

@@ -1,12 +1,13 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Linq;
-using System;
+using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
-using Cysharp.Threading.Tasks;
 public class LoadSceneManager : MonoBehaviour
 {
     public static LoadSceneManager instance;
@@ -55,6 +56,13 @@ public class LoadSceneManager : MonoBehaviour
          persistableDataList = FindAllIPersitableDataObjects();
         // OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
+
+    public async UniTask NormalSceneLoading(string SceneName)
+    {
+        await SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Single).ToUniTask();
+        persistableDataList = FindAllIPersitableDataObjects();
+        LoadGame();
+    }
     public async void LoadScene(string sceneName) // new scene load async
     {
         if (!isPrevScene)
@@ -97,10 +105,11 @@ public class LoadSceneManager : MonoBehaviour
         foreach (IPersistableData player_GO in persistableDataList)
         {
             GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
-            ShowSavedData.Instance.DefaultCharacterData(Ch_obj);
+            ShowSavedData.Instance.DefaultCharacterData(Ch_obj);      
             Debug.Log("default");
            // LoadGame();
         }
+        WeaponManager.instance.DefaultWeaponActions();
         IsnewGame = true;
     }
 
@@ -126,7 +135,8 @@ public class LoadSceneManager : MonoBehaviour
             ShowSavedData.Instance.LoadTemporaryStatsNextScene(Ch_obj); //load from json
             // player_GO.LoadData(playerDataSave);
             Debug.Log("Data Loaded");
-           //SwitchMC.Instance.CharacterSwitch();
+            Ch_obj.GetComponent<TemporaryStats>().SetCharacterStat();
+            //SwitchMC.Instance.CharacterSwitch();
         }
         if (!IsnewGame)
         {
@@ -141,7 +151,7 @@ public class LoadSceneManager : MonoBehaviour
 
     }
 
-    void SaveGame()
+    public void SaveGame() //call to save both character data
     {
         if (persistableDataList == null || persistableDataList.Count == 0)
         {

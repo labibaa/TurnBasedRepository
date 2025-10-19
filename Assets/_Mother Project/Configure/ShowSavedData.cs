@@ -62,14 +62,15 @@ public class ShowSavedData : MonoBehaviour
         SaveCharacterStats.Clear();
         PlayerDataSave playerdata = new PlayerDataSave(
               character.GetComponent<CharacterBaseClasses>().CharacterName,
-              character.GetComponent<TemporaryStats>().PlayerHealth,
+              character.GetComponent<CharacterBaseClasses>().HealthPoints,
+              character.GetComponent<CharacterBaseClasses>().HealthPoints,
               character.GetComponent<TemporaryStats>().PlayerAP,
-              character.GetComponent<TemporaryStats>().CurrentDex,
-              character.GetComponent<TemporaryStats>().CurrentEndurance,
-              character.GetComponent<TemporaryStats>().CurrentStrength,
-              character.GetComponent<TemporaryStats>().CurrentArcana,
-              character.GetComponent<TemporaryStats>().CurrentIntelligence,
-              character.GetComponent<TemporaryStats>().CurrentDamageMultiplier,
+              character.GetComponent<CharacterBaseClasses>().Dexterity,
+              character.GetComponent<CharacterBaseClasses>().Endurance,
+              character.GetComponent<CharacterBaseClasses>().Strength,
+              character.GetComponent<CharacterBaseClasses>().Arcana,
+              character.GetComponent<CharacterBaseClasses>().Intelligence,
+              character.GetComponent<CharacterBaseClasses>().DamageMultiplier,
               character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint,
               character.GetComponent<TemporaryStats>().CharacterTeam,
               character.GetComponent<TemporaryStats>().isMainCharacter,
@@ -86,14 +87,15 @@ public class ShowSavedData : MonoBehaviour
         SaveCharacterStats.Clear();
         PlayerDataSave playerdtate = new PlayerDataSave(
               character.GetComponent<CharacterBaseClasses>().CharacterName,
-              character.GetComponent<TemporaryStats>().PlayerHealth,
+              character.GetComponent<CharacterBaseClasses>().HealthPoints,
+              character.GetComponent<TemporaryStats>().CurrentHealth,
               character.GetComponent<TemporaryStats>().PlayerAP,
-              character.GetComponent<TemporaryStats>().CurrentDex,
-              character.GetComponent<TemporaryStats>().CurrentEndurance,
-              character.GetComponent<TemporaryStats>().CurrentStrength,
-              character.GetComponent<TemporaryStats>().CurrentArcana,
-              character.GetComponent<TemporaryStats>().CurrentIntelligence,
-              character.GetComponent<TemporaryStats>().CurrentDamageMultiplier,
+              character.GetComponent<CharacterBaseClasses>().Dexterity,
+              character.GetComponent<CharacterBaseClasses>().Endurance,
+              character.GetComponent<CharacterBaseClasses>().Strength,
+              character.GetComponent<CharacterBaseClasses>().Arcana,
+              character.GetComponent<CharacterBaseClasses>().Intelligence,
+              character.GetComponent<CharacterBaseClasses>().DamageMultiplier,
               character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint,
               character.GetComponent<TemporaryStats>().CharacterTeam,
               character.GetComponent<TemporaryStats>().isMainCharacter,
@@ -119,13 +121,14 @@ public class ShowSavedData : MonoBehaviour
         foreach (var item in ReadCharacterStats)
         {
             character.GetComponent<CharacterBaseClasses>().name = item.Name;
+            character.GetComponent<CharacterBaseClasses>().HealthPoints = item.MaxPlayerHealth;
             character.GetComponent<TemporaryStats>().PlayerHealth = item.CurrentPlayerHealth;
             character.GetComponent<TemporaryStats>().PlayerAP = item.PlayerAP;
-            character.GetComponent<TemporaryStats>().CurrentDex = item.CurrentDex;
-            character.GetComponent<TemporaryStats>().CurrentEndurance = item.CurrentEndurance;
-            character.GetComponent<TemporaryStats>().CurrentStrength = item.CurrentStrength;
-            character.GetComponent<TemporaryStats>().CurrentArcana = item.CurrentArcana;
-            character.GetComponent<TemporaryStats>().CurrentIntelligence = item.CurrentIntelligence;
+            character.GetComponent<CharacterBaseClasses>().Dexterity = item.CurrentDex;
+            character.GetComponent<CharacterBaseClasses>().Endurance = item.CurrentEndurance;
+            character.GetComponent<CharacterBaseClasses>().Strength = item.CurrentStrength;
+            character.GetComponent<CharacterBaseClasses>().Arcana = item.CurrentArcana;
+            character.GetComponent<CharacterBaseClasses>().Intelligence = item.CurrentIntelligence;
             character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint = item.CurrentExp;
             character.GetComponent<TemporaryStats>().CharacterTeam = item.CharacterTeam;
             character.GetComponent<TemporaryStats>().isMainCharacter = item.IsMainCHaracter;

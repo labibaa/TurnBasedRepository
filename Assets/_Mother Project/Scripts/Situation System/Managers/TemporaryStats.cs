@@ -139,15 +139,13 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     }
     public void SetCharacterStat()
     {
-        PlayerHealth = _characterBaseClasses.HealthPoints; 
+        CurrentHealth = PlayerHealth;
         CurrentDex = _characterBaseClasses.Dexterity;
         CurrentStrength = _characterBaseClasses.Strength;
         CurrentIntelligence = _characterBaseClasses.Intelligence;
         CurrentEndurance = _characterBaseClasses.Endurance;
         CurrentArcana = _characterBaseClasses.Arcana;
         CurrentDamageMultiplier = _characterBaseClasses.DamageMultiplier;
-
-
     }
 
     void onEndFunction()
@@ -185,7 +183,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     }
     public void AssignSpawnPosition()
     {
-        SetCharacterStat();
+        //SetCharacterStat();
 
        // Animator animator = GetComponent<Animator>();
        // animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);

@@ -1,10 +1,13 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class SceneLoading : MonoBehaviour
 {
+
     [SerializeField] SceneField SceneName;
     public String LastPosition;
 
@@ -39,8 +42,8 @@ public class LoadScene : MonoBehaviour
         
     }
 
-    public void LoadNextScene()
+    public async void LoadNextScene()
     {
-        LoadSceneManager.instance.LoadScene(SceneName);
+        await LoadSceneManager.instance.NormalSceneLoading(SceneName);
     }
 }

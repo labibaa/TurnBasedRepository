@@ -78,7 +78,7 @@ public class HealthManager : MonoBehaviour
                 TurnManager.instance.players.Remove(TurnManager.instance.players[TurnManager.instance.players.Count-1]);
             }
             //Destroy(gameObject);
-            Vector2 deadPlayerGridPosition=GridSystem.instance.WorldToGrid(playerStat.transform.position);
+            Vector2 deadPlayerGridPosition = GridSystem.instance.WorldToGrid(playerStat.transform.position);
             GridSystem.instance._gridArray[(int)deadPlayerGridPosition.x, (int)deadPlayerGridPosition.y].GetComponent<GridStat>().ClearGrid();
             TeamManager.instance.PrintDictionary();
             TeamManager.instance.RemovePlayerFromTeamList(playerStat);
