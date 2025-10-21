@@ -62,6 +62,7 @@ public class SwitchMC : MonoBehaviour
         foreach (GameObject character in characters)
         {
             StartCoroutine(ResetCharacter(character));
+            character.GetComponent<TemporaryStats>().SetCharacterStat();
             if (character.GetComponent<TemporaryStats>().isMainCharacter)
             {
                 mainCharacter = character;

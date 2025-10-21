@@ -15284,6 +15284,7 @@ MonoBehaviour:
   lootUltiPoints: 3
   EquipedWeapon: 4
   characterAvailableActions: []
+  characterAvailableItems: []
   playerUltimateFactory: {fileID: 11400000, guid: ebbdabb8db8918f47bcbd6c952221055,
     type: 2}
   warpSurge: {fileID: 0}
@@ -15302,6 +15303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatarHead: {fileID: 0}
   CurrentHealth: 13
   PlayerHealth: 13
   Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
@@ -15315,10 +15317,10 @@ MonoBehaviour:
   CurrentIntelligence: 0
   CurrentExp: 0
   CurrentResolve: 20
-  CurrentDamageMultiplier: 0
+  CurrentDamageMultiplier: 1
   IsBlockActive: 0
   IsDodgeActive: 0
-  IsThirdRatePerformanceActive: 0
+  IsImbuementActive: 0
   IsCounterActive: 0
   AutoMove: 0
   playerUltimateBarCount: 0
@@ -15331,7 +15333,7 @@ MonoBehaviour:
   _spawnPosition: {x: 0, y: 0, z: 0}
   gridCoordinateSpawn: {x: 3, y: 2}
   lastPosition: {fileID: 0}
-  playerStatPanel: {fileID: 0}
+  playerItemPanel: {fileID: 0}
   PlayerActionListPanel: {fileID: 0}
   FlyingTextParent: {fileID: 6813012304627734583}
   CharacterTeam: 3

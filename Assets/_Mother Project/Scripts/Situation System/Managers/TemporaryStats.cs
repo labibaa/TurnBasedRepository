@@ -92,8 +92,8 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     {
         SetWeaponActions();
         onEndFunction();
-        //s
-        // Call the function MyFunction after one second
+        SetCharacterStat();
+  
         //Invoke("AssignPosition", 1.0f);
         currentScene = SceneManager.GetActiveScene().name;
     }
@@ -146,6 +146,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
         CurrentEndurance = _characterBaseClasses.Endurance;
         CurrentArcana = _characterBaseClasses.Arcana;
         CurrentDamageMultiplier = _characterBaseClasses.DamageMultiplier;
+        currentScene = SceneManager.GetActiveScene().name;
     }
 
     void onEndFunction()
@@ -183,7 +184,7 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     }
     public void AssignSpawnPosition()
     {
-        //SetCharacterStat();
+        SetCharacterStat();
 
        // Animator animator = GetComponent<Animator>();
        // animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);

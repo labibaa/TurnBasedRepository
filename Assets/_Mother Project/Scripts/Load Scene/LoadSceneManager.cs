@@ -135,7 +135,6 @@ public class LoadSceneManager : MonoBehaviour
             ShowSavedData.Instance.LoadTemporaryStatsNextScene(Ch_obj); //load from json
             // player_GO.LoadData(playerDataSave);
             Debug.Log("Data Loaded");
-            Ch_obj.GetComponent<TemporaryStats>().SetCharacterStat();
             //SwitchMC.Instance.CharacterSwitch();
         }
         if (!IsnewGame)
