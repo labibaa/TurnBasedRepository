@@ -8,13 +8,6 @@ public class RandomSceneLoad : MonoBehaviour
     [SerializeField] List<SceneField> sceneFields = new List<SceneField>();
     [SerializeField] SceneField FinalScene;
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    LoadRandomScene();
-        //}
-    }
 
     public void LoadRandomScene()
     {
@@ -32,20 +25,4 @@ public class RandomSceneLoad : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if (LoadSceneManager.instance.ToAddUnlinkedCharacter)
-            {
-                LoadRandomScene();
-            }
-            else
-            {
-                LoadRandomScene();
-            }
-
-        }
-
-    }
 }

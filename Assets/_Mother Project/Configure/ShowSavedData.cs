@@ -138,6 +138,17 @@ public class ShowSavedData : MonoBehaviour
         }
     }
 
+    public string GetDeathScene(GameObject character)
+    {
+        fileName = character.GetComponent<CharacterBaseClasses>().CharacterName + ".json";
+        ReadCharacterStats = FileHandler.LoadJsonData<PlayerDataSave>(fileName);
+        foreach (var item in ReadCharacterStats)
+        {
+           return  item.CurrentScene;
+        }
+        return null;
+    }
+
     public void PrintCharacterDataFromJson(GameObject character) //print by loading json
     {
         fileName = character.GetComponent<CharacterBaseClasses>().CharacterName + ".json";

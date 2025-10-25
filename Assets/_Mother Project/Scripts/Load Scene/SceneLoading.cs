@@ -11,14 +11,7 @@ public class SceneLoading : MonoBehaviour
     [SerializeField] SceneField SceneName;
     public String LastPosition;
 
-    private void Update()
-    {
-       /* if (Input.GetKeyUp(KeyCode.P))
-        {
-            PlayerPrefs.SetString("LastPosition", LastPosition);
-            LoadSceneManager.instance.LoadScene(SceneName);
-        }*/
-    }
+
     /* private void OnTriggerEnter(Collider other)
      {
          PlayerPrefs.SetString("LastPosition", LastPosition);
@@ -42,6 +35,7 @@ public class SceneLoading : MonoBehaviour
         
     }
 
+    //newgame button
     public async void LoadNextScene()
     {
         await LoadSceneManager.instance.NormalSceneLoading(SceneName);

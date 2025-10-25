@@ -309,7 +309,7 @@ public class TempManager : MonoBehaviour
             TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().SelectionParticle.SetActive(false);
             TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().PlayerActionListPanel.SetActive(false);
             TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().playerItemPanel.SetActive(false);
-            TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().PlayerUltimateBar.SetActive(false);
+           // TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().PlayerUltimateBar.SetActive(false);
             //UI.instance._circleSelector.Close();
         }
     }

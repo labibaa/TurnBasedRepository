@@ -19,10 +19,6 @@ public class CharacterStats_UI : MonoBehaviour
     [SerializeField] TextMeshProUGUI maxXP_txt;
     [SerializeField] GameObject xpNotification;
     
-    void Update()
-    {
-        
-    }
 
     public void CharacterStatsUI()
     {

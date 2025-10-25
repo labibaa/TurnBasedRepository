@@ -179,7 +179,7 @@ public class TurnManager : MonoBehaviour
         currentPlayer.SelectionParticle.SetActive(true);
         currentPlayer.PlayerActionListPanel.SetActive(true);
 
-        currentPlayer.PlayerUltimateBar.SetActive(true);
+       // currentPlayer.PlayerUltimateBar.SetActive(true);
         if(currentPlayer.CharacterTeam == TeamName.TeamA)
         {
             currentPlayer.playerItemPanel.SetActive(true);

@@ -121,6 +121,7 @@ public class HealthManager : MonoBehaviour
                 if(TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam != TeamName.TeamA)
                 {
                     Debug.Log("Mon loses");
+                    LoadSceneManager.instance.playerDefeatCounter++;
                     LoadSceneManager.instance.StartNewGame();
                     await LoadSceneManager.instance.NormalSceneLoading("LEVEL - HUB AREA 1");
                     UI.instance.inGameCanvas.SetActive(false);

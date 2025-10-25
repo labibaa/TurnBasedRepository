@@ -22,6 +22,7 @@ public class LoadSceneManager : MonoBehaviour
     public bool ToAddUnlinkedCharacter;
     public bool IsnewGame = true;
     GameObject gameObjectMC;
+    public int playerDefeatCounter = 0;
     private void Awake()
     {
         if(instance == null)
@@ -106,7 +107,6 @@ public class LoadSceneManager : MonoBehaviour
         {
             GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
             ShowSavedData.Instance.DefaultCharacterData(Ch_obj);      
-            Debug.Log("default");
            // LoadGame();
         }
         WeaponManager.instance.DefaultWeaponActions();

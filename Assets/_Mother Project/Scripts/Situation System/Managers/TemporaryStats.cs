@@ -157,9 +157,9 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
         playerItemPanel = ButtonStackManager.instance.PopulateItemPanel(_characterBaseClasses);
         playerItemPanel.SetActive(false);
         
-        PlayerUltimateBar = ButtonStackManager.instance.PopulateUltimateBar(_characterBaseClasses);
+       // PlayerUltimateBar = ButtonStackManager.instance.PopulateUltimateBar(_characterBaseClasses);
         PlayerActionListPanel.SetActive(false);
-        PlayerUltimateBar.SetActive(false);
+       // PlayerUltimateBar.SetActive(false);
     }
 
    
