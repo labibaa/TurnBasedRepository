@@ -9,8 +9,9 @@ public class SceneLoading : MonoBehaviour
 {
 
     [SerializeField] SceneField SceneName;
+    [SerializeField] RandomSceneLoad RandomSceneLoad;
     public String LastPosition;
-
+    public bool IsRandom;
 
     /* private void OnTriggerEnter(Collider other)
      {
@@ -25,6 +26,10 @@ public class SceneLoading : MonoBehaviour
             if (LoadSceneManager.instance.ToAddUnlinkedCharacter)
             {
                 LoadSceneManager.instance.LoadScene(LoadSceneManager.instance.leftOutcharacters[0].GetComponent<TemporaryStats>().currentScene);
+            }
+            else if (IsRandom)
+            {
+                RandomSceneLoad.LoadRandomScene();
             }
             else
             {

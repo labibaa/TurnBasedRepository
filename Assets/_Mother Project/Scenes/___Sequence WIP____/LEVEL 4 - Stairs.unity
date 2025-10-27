@@ -35034,6 +35034,7 @@ MonoBehaviour:
   leftOutcharacters: []
   ToAddUnlinkedCharacter: 0
   IsnewGame: 0
+  playerDefeatCounter: 0
 --- !u!4 &1327883102
 Transform:
   m_ObjectHideFlags: 0
@@ -35066,7 +35067,7 @@ MonoBehaviour:
     m_SceneName: BlankScene
   - m_SceneAsset: {fileID: 102900000, guid: 81493a40ae67a664aaf5aeea370fdb14, type: 3}
     m_SceneName: characters_scene
-  - m_SceneAsset: {fileID: 102900000, guid: c9761e8f86b437744aa368ab8e1ca4a4, type: 3}
+  - m_SceneAsset: {fileID: 0}
     m_SceneName: Vfx
   FinalScene:
     m_SceneAsset: {fileID: 0}
@@ -55368,7 +55369,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: Test
   fileName: Save
-  loginBtn: {fileID: 0}
   userNameInput: {fileID: 0}
   toSaveData: []
   SavedData: []
@@ -55643,6 +55643,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!4 &2054318682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6729781765060537595, guid: efb61c518da76c348aa16edf69b4a415,
+    type: 3}
+  m_PrefabInstance: {fileID: 5177698785416928905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2057166242
 GameObject:
   m_ObjectHideFlags: 0
@@ -66213,7 +66219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1991469401589435374
 GameObject:
   m_ObjectHideFlags: 0
@@ -89757,8 +89763,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 6
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 2054318682}
+  m_Follow: {fileID: 2054318682}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 10
@@ -90154,8 +90160,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 5
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 2054318682}
+  m_Follow: {fileID: 2054318682}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 10

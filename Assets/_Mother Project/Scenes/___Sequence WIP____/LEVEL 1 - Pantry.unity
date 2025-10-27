@@ -169491,6 +169491,7 @@ MonoBehaviour:
   leftOutcharacters: []
   ToAddUnlinkedCharacter: 0
   IsnewGame: 0
+  playerDefeatCounter: 0
 --- !u!4 &1327883102
 Transform:
   m_ObjectHideFlags: 0
@@ -169523,7 +169524,7 @@ MonoBehaviour:
     m_SceneName: BlankScene
   - m_SceneAsset: {fileID: 102900000, guid: 81493a40ae67a664aaf5aeea370fdb14, type: 3}
     m_SceneName: characters_scene
-  - m_SceneAsset: {fileID: 102900000, guid: c9761e8f86b437744aa368ab8e1ca4a4, type: 3}
+  - m_SceneAsset: {fileID: 0}
     m_SceneName: Vfx
   FinalScene:
     m_SceneAsset: {fileID: 0}
@@ -215278,37 +215279,37 @@ PrefabInstance:
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -571.8927
+      value: -582.409
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -326.51398
+      value: -332.934
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 148.03304
+      value: 144.31592
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6830127
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18301274
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6830127
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.18301274
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
@@ -225155,6 +225156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.0000305
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508460134386450635, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Priority
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -247255,7 +247261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &2010970979629510820
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -268278,7 +268284,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 6
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 158347190105818596}
   m_Follow: {fileID: 158347190105818596}

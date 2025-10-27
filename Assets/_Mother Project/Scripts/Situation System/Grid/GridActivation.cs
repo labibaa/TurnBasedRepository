@@ -161,6 +161,7 @@ public class GridActivation : MonoBehaviour
         GridSystem.instance.IsGridOn = false;
         // HandleTurnNew.instance.SituationEndCondition = false;
         LoadSceneManager.instance.SaveGame();
+        LoadSceneManager.instance.LoadGame();
         WaitDelay(2f);
         SwitchMC.Instance.CharacterSwitch();
 

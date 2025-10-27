@@ -42869,6 +42869,7 @@ MonoBehaviour:
   leftOutcharacters: []
   ToAddUnlinkedCharacter: 0
   IsnewGame: 0
+  playerDefeatCounter: 0
 --- !u!4 &1327883102
 Transform:
   m_ObjectHideFlags: 0
@@ -49501,7 +49502,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 0}
   stackPanel: {fileID: 8393466968036537052}
   parentPanel: {fileID: 7963487876255566123}
-  itemParentPanel: {fileID: 0}
+  itemParentPanel: {fileID: 91809538155576846}
   ultimateBar: {fileID: 8708651445363156946, guid: 6924f101f18b72142938259e64d211fb,
     type: 3}
   UltimateRectPanel: {fileID: 84196381}
@@ -52476,37 +52477,37 @@ PrefabInstance:
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -641.4637
+      value: -649.07996
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -326.574
+      value: -332.99402
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.310002
+      value: -11.81
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6830127
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18301274
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6830127
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.18301274
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
@@ -58377,7 +58378,7 @@ PrefabInstance:
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -58387,7 +58388,7 @@ PrefabInstance:
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -58402,7 +58403,7 @@ PrefabInstance:
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -58449,6 +58450,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.9999981
       objectReference: {fileID: 0}
+    - target: {fileID: 6508460134386450635, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_Priority
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
@@ -58458,6 +58464,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CameraDistance
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711809605413740728, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75598145
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711809605413740728, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.3999996
       objectReference: {fileID: 0}
     - target: {fileID: 8983546823599016214, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -60519,6 +60535,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Situation UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5574928910821873379, guid: 9d202e185d5fcb544a5556a71b2cec53,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574928910821873379, guid: 9d202e185d5fcb544a5556a71b2cec53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574928910821873379, guid: 9d202e185d5fcb544a5556a71b2cec53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7719730685061612631, guid: 9d202e185d5fcb544a5556a71b2cec53,
         type: 3}
       propertyPath: m_Pivot.x
@@ -60624,6 +60655,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d202e185d5fcb544a5556a71b2cec53, type: 3}
+--- !u!224 &91809538155576846 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6852868628616084854, guid: 9d202e185d5fcb544a5556a71b2cec53,
+    type: 3}
+  m_PrefabInstance: {fileID: 91809538155576845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &140956021771318154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1608103044463764361, guid: 9d202e185d5fcb544a5556a71b2cec53,
@@ -70867,7 +70904,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 6
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 158347190105818596}
   m_Follow: {fileID: 158347190105818596}

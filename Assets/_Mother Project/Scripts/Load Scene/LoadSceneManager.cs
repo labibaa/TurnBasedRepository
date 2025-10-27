@@ -127,7 +127,7 @@ public class LoadSceneManager : MonoBehaviour
         LoadScene(gameObjectMC.GetComponent<TemporaryStats>().currentScene);
     }
 
-    void LoadGame()
+    public void LoadGame()
     {
         foreach (IPersistableData player_GO in persistableDataList)
         {
