@@ -74,14 +74,19 @@ public class InventoryManager : MonoBehaviour
 
         CurrencySystem.instance.SetCurrency(playerStats.CurrentExp);
     }
-    public void GetInventoryItems(GameObject owner)
+    public void SetInventoryItems(GameObject owner)
     {
         if (itemDictionaries.TryGetValue(owner, out var innerDict))
         {
             owner.GetComponent<CharacterBaseClasses>().SetAvailableItems( innerDict.Values.ToList()); // returns all InventoryItems for this GameObject
         }
     }
-
+    Dictionary<ItemClass,InventoryItem> GetInventoryItems(GameObject owner)
+    {
+        var newDict =  owner.GetComponent<CharacterBaseClasses>().GetAvailableItems().ToDictionary(item => item.itemClass, item => item);
+        itemDictionaries[owner] = newDict;
+        return newDict;
+    }
     public void AddItem(ItemClass item)
     {
         if (currentCharacter == null)
@@ -90,7 +95,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
-        var dictionary = itemDictionaries[currentCharacter];
+        var dictionary = GetInventoryItems(currentCharacter);
 
         if (dictionary.TryGetValue(item, out InventoryItem inventoryItem))
         {
@@ -103,7 +108,7 @@ public class InventoryManager : MonoBehaviour
             dictionary[item] = newInventoryItem;
             Debug.Log($"{item} added to inventory for {currentCharacter.name}");
         }
-        GetInventoryItems(currentCharacter);
+        SetInventoryItems(currentCharacter);
         //ShowSavedData.Instance.AddCharacterData(currentCharacter);
     }
 
@@ -115,7 +120,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
-        var dictionary = itemDictionaries[currentCharacter];
+        var dictionary = GetInventoryItems(currentCharacter);
 
         if (dictionary.TryGetValue(item, out InventoryItem inventoryItem))
         {
@@ -127,7 +132,7 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log($"{item} removed from {currentCharacter.name}'s inventory");
             }
         }
-        GetInventoryItems(currentCharacter);
+        SetInventoryItems(currentCharacter);
        // ShowSavedData.Instance.AddCharacterData(currentCharacter);
     }
 
@@ -139,7 +144,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
-        var dictionary = itemDictionaries[currentCharacter];
+        var dictionary = GetInventoryItems(currentCharacter);
 
         if (dictionary.TryGetValue(item, out InventoryItem inventoryItem))
         {
