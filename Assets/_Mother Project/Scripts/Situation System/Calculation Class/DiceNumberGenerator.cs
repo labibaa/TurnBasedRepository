@@ -24,7 +24,7 @@ public class DiceNumberGenerator : MonoBehaviour
             instance = this;
         }
     }
-    public int GetDiceValue(int probCluster1, int probCluster2, int probCluster3)
+    public int GetDiceValue(int probCluster1, int probCluster2, int probCluster3) //dice value for damage calculation of actions
     {
         // float rand = Random.value;
 

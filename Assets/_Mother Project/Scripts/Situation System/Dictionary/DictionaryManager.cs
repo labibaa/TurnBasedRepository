@@ -16,6 +16,8 @@ public class DictionaryManager : MonoBehaviour
     private void Start()
     {
 
+        //need to add all playable actions in the dictionary to excute them when called, actions can't have same names
+
         ActionMapper = new Dictionary<string, ActionDelegate>() {
 
         //{"GreaterStrike",ActionArchive.instance.GreaterStrike },
@@ -45,9 +47,43 @@ public class DictionaryManager : MonoBehaviour
         {"PushBack",ActionArchive.instance.PushBack },
         {"DaggerThrow",ActionArchive.instance.DaggerThrow },
         {"SwordSlash",ActionArchive.instance.SwordSlash },
-         {"Punch",ActionArchive.instance.Punch },
-         {"Stab",ActionArchive.instance.Stab },
-         {"SmokeCloud",ActionArchive.instance.SmokeCloud }
+        {"Punch",ActionArchive.instance.Punch },
+        {"Stab",ActionArchive.instance.Stab },
+        {"SmokeCloud",ActionArchive.instance.SmokeCloud },
+        {"BoneShield",ActionArchive.instance.BoneShield },
+        {"SoulTransfer",ActionArchive.instance.SoulTransfer },
+        {"SkeletonGrabRoud",ActionArchive.instance.SkeletonGrabRoud },
+        {"SoulSteal",ActionArchive.instance.SoulSteal },
+        {"MagicSiphon",ActionArchive.instance.MagicSiphon },
+        {"Impale",ActionArchive.instance.Impale },
+        {"BoneSpear",ActionArchive.instance.BoneSpear },
+        {"SpinningAttack",ActionArchive.instance.SpinningAttack },
+        {"SideAttack",ActionArchive.instance.SideAttack },
+        {"HammerGroundAttack",ActionArchive.instance.HammerGroundAttack },
+        {"TwoHitCombo",ActionArchive.instance.TwoHitCombo },
+        {"BossSpinningAttack",ActionArchive.instance.BossSpinningAttack },
+        {"FrontSlash",ActionArchive.instance.FrontSlash },
+        {"ThreeHitComboOverhead",ActionArchive.instance.ThreeHitComboOverhead },
+        {"ThreeHitComboSpinning",ActionArchive.instance.ThreeHitComboSpinning },
+        {"AxeAttackOverhead",ActionArchive.instance.AxeAttackOverhead },
+        {"DeathWheel",ActionArchive.instance.DeathWheel },
+        {"FourStabCombo",ActionArchive.instance.FourStabCombo },
+        {"SingleAttack",ActionArchive.instance.SingleAttack },
+        {"SpearAttackPlace4High",ActionArchive.instance.SpearAttackPlace4High },
+        {"Buff",ActionArchive.instance.Buff },
+        {"Debuff",ActionArchive.instance.Debuff },
+        {"Imbuement",ActionArchive.instance.Imbuement },
+        {"DaggerSweep",ActionArchive.instance.DaggerSweep },
+        {"Assassinate",ActionArchive.instance.Assassinate },
+        {"Puncture",ActionArchive.instance.Puncture },
+        {"DaggerRising",ActionArchive.instance.DaggerRising },
+        {"SpoonSmack",ActionArchive.instance.SpoonSmack },
+        {"ButcherSmack",ActionArchive.instance.ButcherSmack },
+        {"ButcherSmack1",ActionArchive.instance.ButcherSmack1 },
+        {"ButcherSmack2",ActionArchive.instance.ButcherSmack2 },
+        {"PigAttackOne",ActionArchive.instance.PigAttackOne },
+        {"GrenadeThrow",ActionArchive.instance.GrenadeThrow },
+        {"PigThrow",ActionArchive.instance.PigThrow }
 
 
     };
@@ -60,7 +96,7 @@ public class DictionaryManager : MonoBehaviour
             { OffenseModifier.Dexterity,x => x.Dexterity},
             { OffenseModifier.StrOrArc,x => Mathf.Max(x.Strength,x.Arcana)},
             { OffenseModifier.DexOrStr,x => Mathf.Max(x.Dexterity,x.Strength)},
-            { OffenseModifier.Charisma,x=>x.Charisma}
+            { OffenseModifier.Charisma,x=>x.Intelligence}
 
         };
 
@@ -136,106 +172,6 @@ public class DictionaryManager : MonoBehaviour
         ActionDelegate actionToExecute =  ActionMapper[actionName];//working
         actionToExecute.Invoke();
         return;
-
-        //if(actionName =="GreaterStrike"){
-        //    ActionArchive.instance.GreaterStrike(); 
-        //}
-        //else if (actionName == "Devour")
-        //{
-        //    ActionArchive.instance.Devour();
-        //}
-        //else if (actionName == "Threaten")
-        //{
-        //    ActionArchive.instance.Threaten();
-        //}
-        //else if (actionName == "Devour")
-        //{
-        //    ActionArchive.instance.Devour();
-        //}
-        //else if (actionName == "Devour")
-        //{
-        //    ActionArchive.instance.Devour();
-        //}
-        //else if (actionName == "CaptivatingPerformance")
-        //{
-        //    ActionArchive.instance.CaptivatingPerformance();
-        //}
-        //else if (actionName == "WitchesBolt")
-        //{
-        //    ActionArchive.instance.WitchesBolt();
-        //}
-        //else if (actionName == "Block")
-        //{
-        //    ActionArchive.instance.Block();
-        //}
-        //else if (actionName == "Dodge")
-        //{
-        //    ActionArchive.instance.Dodge();
-        //}
-        //else if (actionName == "KeenSenses")
-        //{
-        //    ActionArchive.instance.KeenSenses();
-        //}
-        //else if (actionName == "Counter")
-        //{
-        //    ActionArchive.instance.Counter();
-        //}
-        //else if (actionName == "ThirdRatePerformance")
-        //{
-        //    ActionArchive.instance.ThirdRatePerformance();
-        //}
-        //else if (actionName == "FearTacticts")
-        //{
-        //    ActionArchive.instance.FearTacticts();
-        //}
-        //else if (actionName == "KeenSenses")
-        //{
-        //    ActionArchive.instance.KeenSenses();
-        //}
-        //else if (actionName == "Seduce")
-        //{
-        //    ActionArchive.instance.Seduce();
-        //}
-        //else if (actionName == "MeleeAttack")
-        //{
-        //    ActionArchive.instance.MeleeAttack();
-        //}
-        //else if (actionName == "RangedAttack")
-        //{
-        //    ActionArchive.instance.RangedAttack();
-        //}
-        //else if (actionName == "MirrorMayhem")
-        //{
-        //    ActionArchive.instance.MirrorMayhem();
-        //}
-        //else if (actionName == "CrystalCascade")
-        //{
-        //    ActionArchive.instance.CrystalCascade();
-        //}
-        //else if (actionName == "LunarLullaby")
-        //{
-        //    ActionArchive.instance.LunarLullaby();
-        //}
-        //else if (actionName == "HexedHavoc")
-        //{
-        //    ActionArchive.instance.HexedHavoc();
-        //}
-        //else if (actionName == "CosmicCatastrophe")
-        //{
-        //    ActionArchive.instance.CosmicCatastrophe();
-        //}
-        //else if (actionName == "RavenousRoast")
-        //{
-        //    ActionArchive.instance.RavenousRoast();
-        //}
-        //else if (actionName == "PhantomFury")
-        //{
-        //    ActionArchive.instance.PhantomFury();
-        //}
-        //else if (actionName == "AstralAnnihilation")
-        //{
-        //    ActionArchive.instance.AstralAnnihilation();
-        //}
     }
 
     public ActionDelegate GiveRandomAction()

@@ -51,7 +51,7 @@ public class AutoGridMovement : MonoBehaviour
     }
 
 
-    public List<GameObject> FindPath(Vector2 start, Vector2 target)
+    public List<GameObject> FindPath(Vector2 start, Vector2 target) //find shortest path in grid 
     {
 
         List<GameObject> path = new List<GameObject>();

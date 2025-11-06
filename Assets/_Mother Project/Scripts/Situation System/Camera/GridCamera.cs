@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class GridCamera : MonoBehaviour
+public class
+    GridCamera : MonoBehaviour
 {
 
     [SerializeField]
@@ -19,13 +20,13 @@ public class GridCamera : MonoBehaviour
 
     private void OnEnable()
     {
-        GridSystem.OnGridGeneration += setCamera;
+        //GridSystem.OnGridGeneration += setCamera;
         HealthManager.OnGridDisable += setCamera;
     }
 
     private void OnDisable()
     {
-        GridSystem.OnGridGeneration -= setCamera;
+       // GridSystem.OnGridGeneration -= setCamera;
         HealthManager.OnGridDisable -= setCamera;
     }
 
@@ -36,12 +37,12 @@ public class GridCamera : MonoBehaviour
         if (!isGridCamera)
         {
             
-            gridCam.Priority = 11;
+            gridCam.Priority = 15;
             isGridCamera = true;
         }
         else
         {
-            gridCam.Priority = 9;
+            gridCam.Priority = 11;
             isGridCamera = false;
         }
        

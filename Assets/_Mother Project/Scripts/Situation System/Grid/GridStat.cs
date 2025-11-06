@@ -38,7 +38,7 @@ public class GridStat : MonoBehaviour
     public Dictionary<HexOrientation, Transform> directionTransformMap = new Dictionary<HexOrientation, Transform>();
 
 
-
+    // this script is for every grid tile data
 
     private void Awake()
     {

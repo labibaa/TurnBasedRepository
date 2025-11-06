@@ -30,7 +30,7 @@ public class KeenSenses : ICommand
 
     public async UniTask Execute()
     {
-        playerTempStats.CurrentEndurance = playerTempStats.CurrentEndurance * 1.5f;
+        playerTempStats.CurrentEndurance = playerTempStats.CurrentEndurance * 2;
     }
 
     public string GetActionName()

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+
 
 public class Dash : ICommand
 {
@@ -43,6 +43,7 @@ public class Dash : ICommand
         Agent.GetComponent<SpawnVFX>().SetVFXPrefab(dashScriptable.PlayerActionVFX);
         Agent.GetComponent<SpawnVFX>().SetOwnVFXPosition(Agent.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[dashScriptable.CharacterBodyLocation]);
         Agent.GetComponent<SpawnVFX>().PlayerVFX();
+        Agent.GetComponent<SpawnVFX>().HitVfx();
         Agent.gameObject.GetComponent<TemporaryStats>().AutoMove = Automove;
 
        // await CutsceneManager.instance.PlayAnimationForCharacter(Agent.gameObject,"Dash");
@@ -50,15 +51,15 @@ public class Dash : ICommand
         //Agent.gameObject.transform.position = Path[Path.Count-1].transform.position;
         await GridMovement.instance.MoveCharacterGrid(Path, Agent, SpeedAttributes, "Dash");
         Cursor.lockState = CursorLockMode.None;
-        //HandleAnimation();
+        HandleAnimation();
 
         //Agent.Stop();
 
     }
-    public void HandleAnimation()
+    public async void HandleAnimation()
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, Agent.GetComponent<CharacterBaseClasses>());
-        TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<CharacterBaseClasses>(), 2f);
+        await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<CharacterBaseClasses>(), 2f);
 
     }
 

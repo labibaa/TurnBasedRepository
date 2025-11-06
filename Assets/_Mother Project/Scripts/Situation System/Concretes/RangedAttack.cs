@@ -24,12 +24,6 @@ public class RangedAttack : ICommand
 
     }
 
-
-
-
-
-
-
     public async UniTask Execute()
     {
 
@@ -49,8 +43,8 @@ public class RangedAttack : ICommand
         {
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(rangedAttack.FirstPercentage, rangedAttack.SecondPercentage, rangedAttack.LastPercentage);
 
-            int damage = Mathf.RoundToInt( ActionResolver.instance.CalculateNewDamage(diceValue, rangedAttack) * player.damageMultiplier);
-
+            int damage = Mathf.RoundToInt( ActionResolver.instance.CalculateNewDamage(diceValue, rangedAttack) * playerTempStats.CurrentDamageMultiplier);
+            UI.instance.SendNotification(diceValue.ToString());
             if (targetTempStats.IsBlockActive)
             {
                 damage = damage / 2;
@@ -59,12 +53,12 @@ public class RangedAttack : ICommand
 
             if (targetTempStats.IsCounterActive)
             {
+                await HandleAnimation();
                 //playerTempStats.CurrentHealth = Mathf.Max(HealthManager.instance.HealthCalculation(damage / 2, playerTempStats.CurrentHealth), 1); 
-               targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-               await HandleAnimation();
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                UI.instance.ShowFlyingText((damage * -1).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-               await HealthManager.instance.PlayerMortality(playerTempStats, attackOrder);
-               await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+               await HealthManager.instance.PlayerMortality(playerTempStats, playerTempStats);
+               await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
                targetTempStats.IsCounterActive= false;
 
                 //ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch");
@@ -74,11 +68,11 @@ public class RangedAttack : ICommand
             }
             else
             {
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-               
+
                 await HandleAnimation();
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
             }
 
 
@@ -88,16 +82,16 @@ public class RangedAttack : ICommand
 
    async UniTask  HandleAnimation()
    {
-        TempManager.instance.CharacterRotation(target,player,2f);
+        await TempManager.instance.CharacterRotation(target, player, 2f);
 
-        player.GetComponent<PlayParticle>().target = target.gameObject;
+      /*  player.GetComponent<PlayParticle>().target = target.gameObject;
         player.GetComponent<PlayParticle>().actionSound = rangedAttack.actionSound;
         //player.GetComponent<PlayParticle>().InstantiateParticleEffect(rangedAttack.ParticleSystem);
         player.GetComponent<PlayParticle>().particlePrefab = rangedAttack.ParticleSystem;
         player.GetComponent<PlayParticle>().particlePrefabHit = rangedAttack.HitParticleSystem;
         target.GetComponent<PlayParticle>().particlePrefabHurt = rangedAttack.HurtParticleSystem;
         Debug.Log("RangedD");
-
+*/
         //CutsceneManager.instance.virtualCamera.Follow = player.gameObject.transform;
         //CutsceneManager.instance.virtualCamera.LookAt = player.gameObject.transform;
 

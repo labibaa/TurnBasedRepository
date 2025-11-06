@@ -4,8 +4,11 @@ using UnityEngine;
 
 public interface IUltimate 
 {
-    void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp);
-    void Execute();
+    // Interface for all the ultimate systems playable in grid system
+    void setValues(CharacterBaseClasses playerCh, TemporaryStats playerTemp, CharacterBaseClasses targetCh, TemporaryStats targetTemp);
+    void ExecuteUltimate();
     int GetultimateThreshold();
+    string GetUltimateActionName();
+    bool IsSingleTarget();
 
 }

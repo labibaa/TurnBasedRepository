@@ -73,7 +73,7 @@ public class GridMovement : MonoBehaviour
     #endregion
 
     #region
-    [SerializeField] Direction storePreviousDirection = Direction.none;
+   // [SerializeField] Direction storePreviousDirection = Direction.none;
     bool oppositeDirection;
 
     #endregion
@@ -204,7 +204,7 @@ public class GridMovement : MonoBehaviour
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         #region Mouse Pointer Mapping
-        if (Input.GetMouseButtonDown(0) && inPathSelection)
+        if (Input.GetMouseButtonDown(0) && inPathSelection)  // grid move mouse code
         {
             // Cast a ray from the mouse cursor into the scene with the specified layer mask
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -257,7 +257,7 @@ public class GridMovement : MonoBehaviour
         clickIcon.gameObject.SetActive(false);
     }
 
-    void AssignMovement()
+    void AssignMovement() //actions that include movement on grid are implemented here
     {
         ICommand MovementConrete;
         if (moveScriptable.moveName=="WarpSurge")
@@ -289,7 +289,7 @@ public class GridMovement : MonoBehaviour
 
         //int previousPV = HandleTurn.instance.GetLatestTurnWithCharacter(agent.gameObject.GetComponent<CharacterBaseClasses>())?.PriorityValue ?? 0;
         int previousPV = 20;
-        Turn turn = new Turn(agent.gameObject.GetComponent<CharacterBaseClasses>(), MovementConrete, previousPV + moveScriptable.PriorityValue);
+        Turn turn = new Turn(agent.gameObject.GetComponent<CharacterBaseClasses>(), MovementConrete, previousPV + moveScriptable.PriorityValue); //action adding to turn list
         HandleTurnNew.instance.AddTurn(turn);
         ResetPathSelection();
         ResetHighlightedPath();
@@ -304,7 +304,7 @@ public class GridMovement : MonoBehaviour
         
         UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        PlayerStatUI.instance.GetPlayerStatSummary(agent.gameObject.GetComponent<CharacterBaseClasses>());
+        PlayerStatUI.instance.GetPlayerStatSummary(agent.gameObject.GetComponent<CharacterBaseClasses>()); //character ui
         PlayerStatUI.instance.GetPlayerStatDetails(agent.gameObject.GetComponent<CharacterBaseClasses>());
     }
 
@@ -538,16 +538,16 @@ public class GridMovement : MonoBehaviour
 
 
 
-            if (agent.gameObject.name == "PlayerArmature")//have to change the hardcode later
+            if (agent.gameObject.CompareTag("Player") )//have to change the hardcode later
             {
                 if(actionName == "Dash")
                 {
                     agent.gameObject.GetComponent<Animator>().SetBool("dash", true);
                 }
-            
-                    gridPlayerAnim.SetMoveAnimation(10, 1);
-                
-               
+
+                // gridPlayerAnim.SetMoveAnimation(10, 1);
+                agent.GetComponent<GridPlayerAnimation>().SetMoveAnimation(10, 1);
+
             }
             else
             {
@@ -582,20 +582,20 @@ public class GridMovement : MonoBehaviour
 
         }
 
-        agent.GetComponent<PlayerMove>().startMoving = false;//setting the rotation and movement to zero . as all the path has been traversed 
+        //agent.GetComponent<PlayerMove>().startMoving = false;//setting the rotation and movement to zero . as all the path has been traversed 
         agent.speed = defaultSpeedAttribute.x;
         agent.angularSpeed = defaultSpeedAttribute.y;
         agent.acceleration = defaultSpeedAttribute.z;
         
         ResetPathSelection();
-        if (agent.gameObject.name == "PlayerArmature")
+        if (agent.gameObject.CompareTag("Player"))
         {
             if (actionName == "Dash")
             {
                 agent.gameObject.GetComponent<Animator>().SetBool("dash", false);
             }
-           
-                gridPlayerAnim.SetMoveAnimation(0, 1);//setting the idle animation
+
+            agent.GetComponent<GridPlayerAnimation>().SetMoveAnimation(0, 1);//setting the idle animation
            
            
         }

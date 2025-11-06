@@ -11,6 +11,7 @@ public class HealthManager : MonoBehaviour
 
 
     public static event Action OnGridDisable;
+    public static event Action OnCharacterDeath;
 
     public static HealthManager instance;
 
@@ -27,7 +28,7 @@ public class HealthManager : MonoBehaviour
        
     }
 
-    public int HealthCalculation(float damage,int health)
+    public int HealthCalculation(float damage,int health) // health calculation
     {
         //do some health stuff
         health = health-(int)damage;
@@ -38,6 +39,8 @@ public class HealthManager : MonoBehaviour
 
         return health;
     }
+
+    public int HealthCap(int maxHP, int currentHp) => (currentHp) > maxHP ? maxHP : (currentHp);
     public int ResolveCalculation(float damage, int resolve)
     {
         //do some health stuff
@@ -51,18 +54,23 @@ public class HealthManager : MonoBehaviour
 
 
 
-    public async UniTask PlayerMortality(TemporaryStats  playerStat,int attackOrder)
+    public async UniTask PlayerMortality(TemporaryStats  playerStat, TemporaryStats killer) //add attacker
     {
         
-        if (playerStat.CurrentHealth < 1)
+        if (playerStat.CurrentHealth < 1 && playerStat.playerMortality == Mortality.Alive)
         {
+            await UniTask.Delay(500);
             deadPlayerTurn = playerStat.gameObject.GetComponent<PlayerTurn>();
+
+            int deadPlayerIndex = TurnManager.instance.players.IndexOf(deadPlayerTurn);
+            bool shouldDecrementIndex = TurnManager.instance.currentPlayerIndex > deadPlayerIndex;
+
             playerStat.playerMortality = Mortality.Dead;
-            Debug.Log(deadPlayerTurn.name + "dead");
+            OnCharacterDeath?.Invoke();
+            killer.playerUltimateBarCount += playerStat.GetComponent<CharacterBaseClasses>().LootUltiPoints;//deadplayer give ulti points
+            Debug.Log(deadPlayerTurn.name + " dead");
             TurnManager.instance.players.Remove(deadPlayerTurn);
-            Debug.Log(deadPlayerTurn.name + "dead20");
             TurnManager.instance.target.Remove(deadPlayerTurn);
-            Debug.Log(deadPlayerTurn.name + "dead329");
 
             if (!RemoveAdjacentDuplicates(TurnManager.instance.players) && CheckIfElementIsDuplicate(TurnManager.instance.players,playerTurn ))
             {
@@ -70,19 +78,19 @@ public class HealthManager : MonoBehaviour
                 TurnManager.instance.players.Remove(TurnManager.instance.players[TurnManager.instance.players.Count-1]);
             }
             //Destroy(gameObject);
-            Vector2 deadPlayerGridPosition=GridSystem.instance.WorldToGrid(playerStat.transform.position);
+            Vector2 deadPlayerGridPosition = GridSystem.instance.WorldToGrid(playerStat.transform.position);
             GridSystem.instance._gridArray[(int)deadPlayerGridPosition.x, (int)deadPlayerGridPosition.y].GetComponent<GridStat>().ClearGrid();
-            TeamManager.instance.RemovePlayerFromTeamList(playerStat);
             TeamManager.instance.PrintDictionary();
+            TeamManager.instance.RemovePlayerFromTeamList(playerStat);
+           
             playerStat.gameObject.SetActive(false);
-            if (attackOrder<0)
+            if (shouldDecrementIndex)
             {
                 TurnManager.instance.currentPlayerIndex--;
             }
            
             
-            Debug.Log("Current" +
-            TurnManager.instance.currentPlayerIndex);
+            Debug.Log("Current" + TurnManager.instance.currentPlayerIndex);
             if ( TeamManager.instance.IsAnyTeamEmpty())//TurnManager.instance.players.Count<2)
             {
                 //UI.instance.SendNotification($"{TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam} has Won");
@@ -90,6 +98,17 @@ public class HealthManager : MonoBehaviour
                 //TurnManager.instance.players[0].gameObject.SetActive(false);
                
                 PlayerStatUI.instance.CharacterUIList.Clear();
+                
+
+                for (int i = PlayerStatUI.instance.SummaryStatParentEnemy.gameObject.transform.childCount - 1; i >= 0; i--)
+                {
+                    // Get the child at index 'i'
+                    Transform child = PlayerStatUI.instance.SummaryStatParentEnemy.gameObject.transform.GetChild(i);
+
+                    // Destroy the child GameObject
+                    Destroy(child.gameObject);
+                }
+
                 TempManager.instance.currentState = GameStates.SituationOff;
                 HandleTurnNew.instance.SituationEndCondition = true;
                 TurnManager.instance.currentPlayerIndex = 0;
@@ -101,8 +120,12 @@ public class HealthManager : MonoBehaviour
 
                 if(TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam != TeamName.TeamA)
                 {
+                    Debug.Log("Mon loses");
+                    LoadSceneManager.instance.playerDefeatCounter++;
+                    LoadSceneManager.instance.StartNewGame();
+                    await LoadSceneManager.instance.NormalSceneLoading("LEVEL - HUB AREA 1");
                     UI.instance.inGameCanvas.SetActive(false);
-                    UI.instance.winMenu.SetActive(true);
+                  //  UI.instance.winMenu.SetActive(true);
                 }
 
             }

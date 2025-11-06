@@ -11,7 +11,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] InteractionPromptUI promptUI;
     void Update()
     {
-        
+        //add the interactor to main characters and the itemclass(interactable objects)
+        //to the GO that are interactacble and change their layer to Interactable
 
         var nearestInteractableGameObject = GetNearInteractableObject();
 

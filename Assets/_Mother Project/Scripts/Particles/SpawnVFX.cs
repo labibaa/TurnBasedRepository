@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.VFX;
 
 public class SpawnVFX : MonoBehaviour
@@ -11,25 +12,19 @@ public class SpawnVFX : MonoBehaviour
 
     public static event Action hitAnimation;
     public static event Action targetLessVfx;
+    public static event Action OnRumbleShake;
+    public static event Action OnExplotionShake;
+    public static event Action OnStopVFX;
+    public static event Action OnStartVFX;
 
-    public List<VisualEffect> effectPrefabList;
-    public List<VisualEffect> hitEffectPrefabList;
-   
-    public List<Transform> hitEffectTransformList;
-    public List<Transform> effectTransformList;
-    public List<Transform> targetHitTransformList;
-
-    public List<ParticleSystem> particles;
+ 
     public GameObject TrailVisual;
 
     public float speed = 5f;
     public Animator charAnimator;
     public Animator targetAnimator;
 
-    public List<String> animationList;
-    public int animationIndex;
-   
-    bool startLerp;
+    [SerializeField] GameObject actionMoveCamTimelinePrefab;
     public bool isShieldUp;
 
     VisualEffect effect;
@@ -42,24 +37,6 @@ public class SpawnVFX : MonoBehaviour
 
     AudioClip vfxAudioClip;
 
-    void Awake()
-    {
-        //if(instance == null)
-        //{
-        //    instance = this;
-        //}
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-           // AnimationPlay(animationList, charAnimator,animationIndex);
-
-        }
-     
-    }
     private void OnEnable()
     {
         GridSystem.OnGridGenerationSpawn += CharacterTrailVisualOn;
@@ -137,7 +114,7 @@ public class SpawnVFX : MonoBehaviour
 
     public void PlayTargetVFX(VisualEffect hitEffectPrefab, Transform hitEffectPosition, Transform targetHitPosition, GameObject target)
     {
-        hiteffect = Instantiate(hitEffectPrefab, hitEffectPosition.position, Quaternion.identity);
+        hiteffect = Instantiate(hitEffectPrefab, hitEffectPosition.position, hitEffectPrefab.transform.rotation,hitEffectPosition.transform);
         //hiteffect.transform.localPosition = Vector3.zero;
         //hiteffect.transform.localRotation = Quaternion.identity;
         //hiteffect.transform.localScale = Vector3.one;
@@ -191,16 +168,6 @@ public class SpawnVFX : MonoBehaviour
     public void PlayHitEffect()
     {
 
-        //Hiteffect.transform.position = Vector3.MoveTowards(Hiteffect.transform.position, target.position, speed * Time.deltaTime);
-        //if (Hiteffect.transform.position == target.position)
-        //{
-        //    Hiteffect.SendEvent("hit");
-        //    startLerp = false;
-        //    // targetAnimator.Play("Damage1");
-        //    AnimationPlay("Damage1", targetAnimator);
-        //    hitTrigger?.Invoke();
-        //}
-
         if (isShieldUp)
         {
             Debug.Log("in");
@@ -212,7 +179,7 @@ public class SpawnVFX : MonoBehaviour
     {
 
         //AnimationPlay(animationList, targetAnimator, 12);
-        Debug.Log(target);
+        Debug.Log("target : "+ target);
         TriggerNextTurn();
         AnimationPlay(targetAnimationName, target.GetComponent<Animator>());
     }
@@ -248,10 +215,10 @@ public class SpawnVFX : MonoBehaviour
 
     public IEnumerator DestroyVFX(VisualEffect desEffect)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         Destroy(desEffect.gameObject);
       //  Destroy(hiteffect.gameObject);
-        Debug.Log("destroyt");
+        Debug.Log("destroyvfx");
     }
     public void PlayVFXSound()
     {
@@ -277,4 +244,35 @@ public class SpawnVFX : MonoBehaviour
             TrailVisual.SetActive(true);
         }
     }
+    public void RumbleShakeOn()
+    {
+        OnRumbleShake?.Invoke();
+    }
+    public void ExplotionShakeOn()
+    {
+        OnExplotionShake?.Invoke();
+    }
+    public void StopVFXEvent()
+    {
+        OnStopVFX?.Invoke();
+    }
+    public void StartVFXEvent()
+    {
+        OnStartVFX?.Invoke();
+    }
+    public void ActionCameraActivate()
+    {
+        if (actionMoveCamTimelinePrefab)
+        {
+            actionMoveCamTimelinePrefab.SetActive(true);
+        }
+    } 
+    public void ActionCameraDeactivate()
+    {
+        if (actionMoveCamTimelinePrefab)
+        {
+            actionMoveCamTimelinePrefab.SetActive(false);
+        }
+    }
+
 }

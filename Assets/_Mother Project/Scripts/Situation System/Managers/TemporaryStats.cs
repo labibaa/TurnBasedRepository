@@ -5,25 +5,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
-public class TemporaryStats : MonoBehaviour
+public class TemporaryStats : MonoBehaviour, IPersistableData
 {
+    public Sprite avatarHead;
     public int CurrentHealth;
     public int PlayerHealth;
     public GameObject Pathmark;
     public int CurrentAP;
-    public int PlayerAP;
+    public int PlayerAP; 
+    public int CurrentDex;
+    public int CurrentEndurance;
+    public int CurrentStrength;
+    public int CurrentArcana;
+    public int CurrentIntelligence;
+    public int CurrentExp;
     public int CurrentResolve;
+    public float CurrentDamageMultiplier;
     public bool IsBlockActive;
     public bool IsDodgeActive; 
-    public bool IsThirdRatePerformanceActive;
+    public bool IsImbuementActive;
     public bool IsCounterActive;
-    public float CurrentEndurance;
-    public int CurrentDex;
     public bool AutoMove;
     public int playerUltimateBarCount=0;
-    public GameObject PlayerUltimateBar; 
-    
+    public GameObject PlayerUltimateBar;
+
+    public bool isMainCharacter;
+    public bool isLinkOn;
+    public String currentScene;
     public Mortality playerMortality;
     
     public Vector3 currentPlayerGridPosition;
@@ -34,7 +45,7 @@ public class TemporaryStats : MonoBehaviour
 
     public GameObject lastPosition;
   
-    public Image playerStatPanel;
+    public GameObject playerItemPanel;
     public GameObject PlayerActionListPanel;
     CharacterBaseClasses _characterBaseClasses;
 
@@ -46,14 +57,23 @@ public class TemporaryStats : MonoBehaviour
     public GameObject EnemyTargetSelectionParticle;
     public int playerVisiblity=1;
 
+
     //Animator animator;
+
+    private void Awake()
+    {
+        _characterBaseClasses = GetComponent<CharacterBaseClasses>();
+        // animator = GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {
-       
 
         //GridSystem.OnGridGenerationSpawn += AssignSpawnPosition;
-        HealthManager.OnGridDisable += onEndFunction;
+       // HealthManager.OnGridDisable += onEndFunction;
+        WaveManager.OnGridInit += SetWeaponActions;
+        WaveManager.OnGridInit += onEndFunction;
+        ExperienceManager.instance.OnExperienceChanged += HandleExperienceChange;
 
     }
 
@@ -61,58 +81,116 @@ public class TemporaryStats : MonoBehaviour
     {
         
         //GridSystem.OnGridGenerationSpawn -= AssignSpawnPosition;
-        HealthManager.OnGridDisable -= onEndFunction;
+       // HealthManager.OnGridDisable -= onEndFunction;
+        WaveManager.OnGridInit -= SetWeaponActions;
+        WaveManager.OnGridInit -= onEndFunction;
+        ExperienceManager.instance.OnExperienceChanged -= HandleExperienceChange;
     }
 
 
     private void Start()
     {
+        SetWeaponActions();
         onEndFunction();
-        
-        //s
-        // Call the function MyFunction after one second
+        SetCharacterStat();
+  
         //Invoke("AssignPosition", 1.0f);
+        currentScene = SceneManager.GetActiveScene().name;
     }
 
+    public void SaveData(PlayerDataSave playerDataSave)
+    {
+        playerDataSave.Name = _characterBaseClasses.name;
+        playerDataSave.CurrentPlayerHealth = this.CurrentHealth;
+        playerDataSave.CurrentExp = this.CurrentExp;
+        playerDataSave.PlayerAP = this.PlayerAP;
+        playerDataSave.CurrentDex = _characterBaseClasses.Dexterity;
+        playerDataSave.CurrentStrength = _characterBaseClasses.Strength;
+        playerDataSave.CurrentEndurance = _characterBaseClasses.Endurance;
+        playerDataSave.CurrentArcana = _characterBaseClasses.Arcana;
+        playerDataSave.CurrentIntelligence = _characterBaseClasses.Intelligence;
+        playerDataSave.CharacterTeam = this.CharacterTeam;
+    }
+
+    public void LoadData(PlayerDataSave playerDataSave)
+    {
+        _characterBaseClasses.name = playerDataSave.Name ;
+         this.CurrentHealth = playerDataSave.CurrentPlayerHealth ;
+         this.CurrentExp = playerDataSave.CurrentExp ;
+        this.PlayerAP = playerDataSave.PlayerAP;
+        _characterBaseClasses.Dexterity = playerDataSave.CurrentDex ;
+        _characterBaseClasses.Strength = playerDataSave.CurrentStrength;
+        _characterBaseClasses.Endurance = playerDataSave.CurrentEndurance;
+        _characterBaseClasses.Arcana = playerDataSave.CurrentArcana;
+        _characterBaseClasses.Intelligence = playerDataSave.CurrentIntelligence;
+        this.CharacterTeam = playerDataSave.CharacterTeam;
+
+    }
+    public void SetWeaponActions()
+    {
+        if (WeaponManager.instance.weaponActions.TryGetValue(_characterBaseClasses.EquipedWeapon, out var actionGetter))
+        {
+            _characterBaseClasses.SetAvailableActions(actionGetter());
+        }
+        else
+        {
+            Debug.LogWarning($"No actions mapped for weapon: {_characterBaseClasses.EquipedWeapon}");
+        }
+    }
+    public void SetCharacterStat()
+    {
+        CurrentHealth = PlayerHealth;
+        CurrentDex = _characterBaseClasses.Dexterity;
+        CurrentStrength = _characterBaseClasses.Strength;
+        CurrentIntelligence = _characterBaseClasses.Intelligence;
+        CurrentEndurance = _characterBaseClasses.Endurance;
+        CurrentArcana = _characterBaseClasses.Arcana;
+        CurrentDamageMultiplier = _characterBaseClasses.DamageMultiplier;
+        currentScene = SceneManager.GetActiveScene().name;
+    }
 
     void onEndFunction()
     {
        // currentPlayerGridPosition = transform.position;
-       
-        
-
         PlayerActionListPanel = ButtonStackManager.instance.PopulateActionPanel(_characterBaseClasses);
-        PlayerUltimateBar = ButtonStackManager.instance.PopulateUltimateBar(_characterBaseClasses);
+        
+        playerItemPanel = ButtonStackManager.instance.PopulateItemPanel(_characterBaseClasses);
+        playerItemPanel.SetActive(false);
+        
+       // PlayerUltimateBar = ButtonStackManager.instance.PopulateUltimateBar(_characterBaseClasses);
         PlayerActionListPanel.SetActive(false);
-        PlayerUltimateBar.SetActive(false);
+       // PlayerUltimateBar.SetActive(false);
     }
 
-
-    private void Awake()
-    {
-        _characterBaseClasses = GetComponent<CharacterBaseClasses>();
-       // animator = GetComponent<Animator>();
-    }
-
-    public TemporaryStats(int health,int ap,int Dex)
-    {
-        CurrentHealth = health;
-        CurrentAP = ap;
-        CurrentDex = Dex;
-    }
    
+    private void HandleExperienceChange(int newExp)
+    {
+        CurrentExp += newExp;
+       /* if(CurrentExp >= _characterBaseClasses.MaxExperiencePoint)
+        {
+            _characterBaseClasses.LevelUp();
+        }*/
+    }
+    public IEnumerator ReStartCharacter()
+    {
+        // Deactivate the GameObject
+        this.gameObject.SetActive(false);
 
+        // Wait for a short delay to ensure full reset
+        yield return new WaitForSeconds(0.1f);
+
+        // Reactivate the GameObject
+        this.gameObject.SetActive(true);
+    }
     public void AssignSpawnPosition()
     {
+        SetCharacterStat();
 
-
-
+       // Animator animator = GetComponent<Animator>();
        // animator.Play(animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
 
         if ( gridCoordinateSpawn.x< GridSystem.instance._gridArray.GetLength(0) && gridCoordinateSpawn.x < GridSystem.instance._gridArray.GetLength(1))
         {
-           
-
             transform.position = GridSystem.instance._gridArray[(int)gridCoordinateSpawn.x, (int)gridCoordinateSpawn.y].transform.position;
         }
 
@@ -121,7 +199,7 @@ public class TemporaryStats : MonoBehaviour
         transform.position = currentPlayerGridPosition;
 
 
-        Debug.Log("hh: "+ currentPlayerGridPosition + "hh222" + transform.position);
+        Debug.Log(this.name + " hh: "+ currentPlayerGridPosition + " hh222 " + transform.position);
         playerMortality = Mortality.Alive;
         OrbSpawner.instance.PlayerReadyCounter();
         ResetStatForGrid();
@@ -144,7 +222,7 @@ public class TemporaryStats : MonoBehaviour
         IsDodgeActive = false;
         AutoMove = false;
         playerVisiblity = 1;
-        playerUltimateBarCount = 0;
+       // playerUltimateBarCount = 0;
         playerMortality = Mortality.Alive;
         GetComponent<PlayerTurn>().isMoveOn = true;
         CurrentAP = PlayerAP;
@@ -160,15 +238,24 @@ public class TemporaryStats : MonoBehaviour
             if(TempManager.instance.currentState == GameStates.TargetSelectionTurn && TurnManager.instance.targetsInRange.Contains(_characterBaseClasses))
             {
                 TempManager.instance.defender = gameObject;
-                //ActionArchive.instance.GetPlayerStats();
                 TempManager.instance.ChangeGameState(GameStates.MidTurn);
-                DictionaryManager.instance.GiveAction(TempManager.instance.actionName);
+                if (UltimateSystem._instance.IsUltimate)
+                {
+                    ActionArchive.instance.Ultimate(); // call this after selecting target                
+                }
+                else
+                {
+                    //ActionArchive.instance.GetPlayerStats();
+                    //TempManager.instance.ChangeGameState(GameStates.MidTurn);
+                    DictionaryManager.instance.GiveAction(TempManager.instance.actionName);
 
-                //DictionaryManager.instance.GiveAction(TempManager.instance.actionName).Invoke();
+                    //DictionaryManager.instance.GiveAction(TempManager.instance.actionName).Invoke();
+                }
                 GridMovement.instance.ResetHighlightedPath();
                 TurnManager.instance.ResetTargetHIghlightVisual();
                 TurnManager.instance.targetsInRange.Clear();
                 TurnManager.instance.nonCharacterTargetsInRange.Clear();
+
             }
 
             //UI.instance.ShowPanel(playerStatPanel);
@@ -176,4 +263,6 @@ public class TemporaryStats : MonoBehaviour
             //PlayerStatUI.instance.GetPlayerStatDetails(GetComponent<CharacterBaseClasses>());
         }
     }
+
+ 
 }

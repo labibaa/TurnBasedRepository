@@ -11,21 +11,12 @@ public class FlyingText : MonoBehaviour
     public float popupDuration = 0.01f;
     public float popupHeight = 1f;
 
-    private CinemachineVirtualCamera activeGridCam;
-    private CinemachineVirtualCamera[] gridCams;
+    private CinemachineVirtualCameraBase activeGridCam;
+    CinemachineBrain brain;
 
     private void Start()
     {
-        // Find all cameras with the tag "GridCam"
-        GameObject[] gridCamObjects = GameObject.FindGameObjectsWithTag("GridCam");
-        gridCams = new CinemachineVirtualCamera[gridCamObjects.Length];
-
-        for (int i = 0; i < gridCamObjects.Length; i++)
-        {
-            gridCams[i] = gridCamObjects[i].GetComponent<CinemachineVirtualCamera>();
-        }
-
-        // Select the camera with the highest priority
+         brain = Camera.main.GetComponent<CinemachineBrain>();
         SelectActiveGridCam();
     }
 
@@ -37,15 +28,13 @@ public class FlyingText : MonoBehaviour
 
     private void SelectActiveGridCam()
     {
-        activeGridCam = gridCams[0]; // Assume the first one is the highest to start
-
-        foreach (var cam in gridCams)
+       
+        if (brain != null)
         {
-            if (cam.Priority > activeGridCam.Priority)
-            {
-                activeGridCam = cam;
-            }
+            CinemachineVirtualCameraBase activeCam = (CinemachineVirtualCameraBase)brain.ActiveVirtualCamera;
+            activeGridCam = activeCam;
         }
+      
     }
 
     public void FlyTextUpward(string text, Color color)

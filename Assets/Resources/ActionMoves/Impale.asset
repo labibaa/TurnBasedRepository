@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65997b2d10b74c04e9ac0a65ce4ccdd5, type: 3}
+  m_Name: Impale
+  m_EditorClassIdentifier: 
+  RangeMappings:
+  - MinRangeValue: 1
+    MaxRangeValue: 4
+    MappedValue: 3
+  - MinRangeValue: 5
+    MaxRangeValue: 8
+    MappedValue: 3
+  - MinRangeValue: 9
+    MaxRangeValue: 15
+    MappedValue: 3
+  - MinRangeValue: 16
+    MaxRangeValue: 18
+    MappedValue: 4
+  - MinRangeValue: 19
+    MaxRangeValue: 20
+    MappedValue: 6
+  ActionRange: 1
+  ActionAccuracy: 100
+  ActionName: Impale
+  Description: 
+  PriorityValue: 20
+  FirstPercentage: 50
+  SecondPercentage: 30
+  LastPercentage: 20
+  APCost: 0
+  ParticleSystem: {fileID: 0}
+  HurtParticleSystem: {fileID: 0}
+  HitParticleSystem: {fileID: 0}
+  actionSound: {fileID: 8300000, guid: 0029ee934d0d834459ef9f168ffd72e4, type: 3}
+  actionIcon: {fileID: 195040, guid: b543219f9478a4448a23e9008b164a28, type: 3}
+  actionButton: {fileID: 3148980940342823002, guid: 56ae965ee4d70ca4bb877a1e04399ee1,
+    type: 3}
+  SoundReferences: []
+  PlayerActionVFX: {fileID: 0}
+  TargetHitVFX: {fileID: 4922923178748289442, guid: 8149f4cb8f66176428ec0b1b248235f0,
+    type: 3}
+  particle: {fileID: 0}
+  CharacterBodyLocation: RightHand
+  TargetCharacterBodyLocation: MidBody
+  TargetHurtAnimation: Damage1
+  actionStance: 1
+  actionType: 0

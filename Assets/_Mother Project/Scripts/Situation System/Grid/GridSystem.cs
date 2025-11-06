@@ -8,10 +8,12 @@ using StarterAssets;
 using Unity.AI.Navigation;
 using UnityEditor;
 
+
 public class GridSystem : MonoBehaviour
 {
     public static event Action OnGridGeneration;
     public static event Action OnGridGenerationSpawn;
+    public static event Action OnGridPositionInitialization;
 
 
     public static GridSystem instance;
@@ -36,7 +38,7 @@ public class GridSystem : MonoBehaviour
     [SerializeField]
     Vector3 leftBottomLocation = Vector3.zero;
     [SerializeField]
-    GameObject gridStartLocation;
+     public GameObject gridStartLocation;
 
     public GameObject[,] _gridArray;
     public Dictionary<Vector3, GameObject> cubeCoordinates = new Dictionary<Vector3, GameObject>();
@@ -56,14 +58,14 @@ public class GridSystem : MonoBehaviour
     [SerializeField]
     bool GridVisualOn = true;
 
-    
+    int expGain = 0;
 
     private void Awake()
     {
 
         if (instance != null)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
+            Debug.LogWarning("Found more than one GridSystem in the scene");
         }
         instance = this;
 
@@ -75,6 +77,7 @@ public class GridSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         
     }
 
@@ -84,12 +87,14 @@ public class GridSystem : MonoBehaviour
     {
         InputManager.OnInteractionPressed += GenerateGridOnButton;
         GridInput.GridEscape += OnExitGrid;
+        SwitchMC.OnCharacterChange += SetMainPlayer;
     }
 
     private void OnDisable()
     {
         InputManager.OnInteractionPressed -= GenerateGridOnButton;
         GridInput.GridEscape -= OnExitGrid;
+        SwitchMC.OnCharacterChange -= SetMainPlayer;
     }
 
 
@@ -118,13 +123,16 @@ public class GridSystem : MonoBehaviour
                 GridVisualOn= true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GenerateGridOnButton();
-        }
+        /* if (Input.GetKeyDown(KeyCode.F))
+         {
+             GenerateGridOnButton();
+         }*/     
     }
 
-
+    void SetMainPlayer()
+    {
+        player = SwitchMC.Instance.mainCharacter;
+    }
     public void GenerateGridOnButton()
     {
         if (IsGridOn)
@@ -133,17 +141,19 @@ public class GridSystem : MonoBehaviour
         }
         //IsGridOn = true;
         //leftBottomLocation = player.transform.position - new Vector3(Mathf.Floor(rows / 2f), 0f, Mathf.Floor(columns / 2f));
+        OnGridPositionInitialization?.Invoke();
         leftBottomLocation = gridStartLocation.transform.position;
         Invoke("InitializeGrid", 0f);
         InputManager.OnInteractionPressed -= GenerateGridOnButton;
         Cursor.lockState = CursorLockMode.None;
      
-        player.transform.position =    new Vector3(leftBottomLocation.x, leftBottomLocation.y+0.1f, leftBottomLocation.z);
-        
+        //player.transform.position =    new Vector3(leftBottomLocation.x, leftBottomLocation.y+0.1f, leftBottomLocation.z);
+        ExperienceManager.instance.AddExperiencePoints(expGain);
+        expGain += 100;
 
     }
 
-    async UniTask InitializeGrid()
+    async UniTask InitializeGrid() // initializes the grid when conditions are met
     {
 
         if (gridPrefab)

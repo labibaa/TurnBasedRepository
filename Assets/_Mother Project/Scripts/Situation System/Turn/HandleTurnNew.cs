@@ -1,19 +1,15 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 
 public class HandleTurnNew : MonoBehaviour
 {
     public static event Action OnTurnEnd;
-    public static event Action IsPlayer;
+    public static event Action OnNewAction;
     public delegate void UndoMechanics(bool isMove);
 
     public static event UndoMechanics IsPlayerUndo;
@@ -51,43 +47,26 @@ public class HandleTurnNew : MonoBehaviour
 
     public async UniTask PerformTurns()
     {
-        
-
         PlayerTurn currentPlayer = TurnManager.instance.players[TurnManager.instance.currentPlayerIndex];
         int totalActionthisTurn = turnsToBePerformed.Count;
         for (int i = 0; i < turnsToBePerformed.Count; i++)
         {
-            
-            //await PerformTurn(turnsToBePerformed[i]);
             await PerformTurn(turnsToBePerformed[i]);
-
-
         }
        
-        if(TurnManager.instance.players.Count>TurnManager.instance.currentPlayerIndex )
+        if(TurnManager.instance.players.Count > TurnManager.instance.currentPlayerIndex)
         {
-            
-                TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].myTurn = false;
-            
-            
+            TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].myTurn = false;
         }
        
        // currentPlayer.GetComponent<ShadowOfPlayer>().j = 0;
-      
-
-
         PlayerStatUI.instance.UpdateSummaryHUDUI();
-
-
 
         TurnManager.instance.currentPlayerIndex++;// =(TurnManager.instance.currentPlayerIndex + 1) % TurnManager.instance.players.Count; 
 
-        
-
-
         allTurnsOfPlayer.Clear();
         TemporaryStats currentPlayerTemporaryStates = TurnManager.instance.players[TurnManager.instance.players.IndexOf(currentPlayer)].GetComponent<TemporaryStats>();
-        TeamManager.instance.IsTeamEmpty(currentPlayerTemporaryStates.CharacterTeam);
+        TeamManager.instance.IsTeamEmpty(currentPlayerTemporaryStates.CharacterTeam);            // NO EFFECTS!!!
         //currentPlayerTemporaryStates.playerUltimateBarCount= currentPlayerTemporaryStates.playerUltimateBarCount+totalActionthisTurn;
 
         if (!SituationEndCondition)
@@ -96,7 +75,7 @@ public class HandleTurnNew : MonoBehaviour
             if (currentPlayerTemporaryStates.tag == StringData.PlayerTag)
             {
                 currentPlayerTemporaryStates.GetComponent<PlayerTurn>().isMoveOn = true;
-                currentPlayerTemporaryStates.CurrentAP = ActionResolver.instance.APCarryOver(currentPlayerTemporaryStates.CurrentAP,2);
+                currentPlayerTemporaryStates.CurrentAP = ActionResolver.instance.APCarryOver(currentPlayerTemporaryStates.CurrentAP, 2);
             }
 
             TurnManager.instance.StartTurn();
@@ -106,10 +85,7 @@ public class HandleTurnNew : MonoBehaviour
         {
             SituationEndCondition = false;
             TurnManager.instance.currentPlayerIndex = 0;
-        }
-        
-        
-        
+        }   
     }
 
     //public void ProceedToNextTurn()
@@ -129,23 +105,15 @@ public class HandleTurnNew : MonoBehaviour
     async Task PerformTurn(Turn turn)
     {
         
-        if (turn.target==null ||TurnManager.instance.players.Contains(turn.target.GetComponent<PlayerTurn>()))
+        if (turn.target == null || TurnManager.instance.players.Contains(turn.target.GetComponent<PlayerTurn>()))
         {
             await turn.Command.Execute();
         }
-        
-        
-
-
-
         turn.IsPerformed = true;
         OnActionExecution?.Invoke(turn);
 
         //turnsToBePerformed.Remove(turn);
         performedTurns.Add(turn);
-
-
-
     }
 
     public void AddTurn(Turn turn)
@@ -153,8 +121,9 @@ public class HandleTurnNew : MonoBehaviour
         allTurnsOfPlayer.Add(turn);
         if (turn.Command.GetActionType() != "MeleeMove")
         {
-            IsPlayer?.Invoke();
-            TextFadeInOut.instance.AddTextToQueue(turn);
+            Debug.Log(turn.Command.GetActionType());
+            OnNewAction?.Invoke();
+            //TextFadeInOut.instance.AddTextToQueue(turn);
         }
         
         PlayerStatUI.instance.UpdateSummaryHUDUI();

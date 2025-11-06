@@ -40,7 +40,7 @@ public class Devour : ICommand
             devour.BasePower = devour.BasePower - 30;
         }
 
-        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive)
+/*        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive)
         {
 
             Debug.Log("Devour executed");
@@ -52,10 +52,10 @@ public class Devour : ICommand
                 targetTempStats.CurrentHealth = 0;
                 playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(-damage / 2.0f, playerTempStats.CurrentHealth); ;
                 Debug.Log("health done");
-                HealthManager.instance.PlayerMortality(targetTempStats,0);
+                HealthManager.instance.PlayerMortality(targetTempStats,0,playerTempStats);
             }
 
-        }
+        }*/
         //if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !targetTempStats.IsThirdRatePerformanceActive) {
         //    bool isadjacent = GridMovement.instance.InAdjacentMatrix(player.gameObject.transform.position, target.gameObject.transform.position, devour.ActionRange);
         //    if (isadjacent) {

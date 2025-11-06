@@ -22,8 +22,6 @@ public class TempManager : MonoBehaviour
     public GameStates currentState;
     public PlayerType PlayerType;
 
-    PlayerArray PlayerArrayList;
-
     public int ApCost = 6;
 
     public static TempManager instance;
@@ -37,6 +35,7 @@ public class TempManager : MonoBehaviour
     public GameObject SituationUIPanel;
     public GameObject UlimateUIPanel;
     [SerializeField] GameObject SituationUI_MoveList;
+    [SerializeField] GameObject actionButton;
     [SerializeField] GameObject PressSpace;
     [SerializeField] float rotationSpeed = 0.2f;
 
@@ -65,17 +64,19 @@ public class TempManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (GridSystem.instance.IsGridOn && attacker.tag != "Player")
+     /*   if (GridSystem.instance.IsGridOn && attacker.tag != "Player")
         {
             SituationUI_MoveList.SetActive(false);
+            actionButton.SetActive(false);
             PressSpace.SetActive(true);
         }
         if (GridSystem.instance.IsGridOn && attacker.tag == "Player")
         {
             SituationUI_MoveList.SetActive(true);
+            actionButton.SetActive(true);
             PressSpace.SetActive(false);
-        }
-        if(GridSystem.instance.IsGridOn && currentState != GameStates.Simulation)
+        }*/
+        if(GridSystem.instance.IsGridOn && currentState != GameStates.Simulation )//&& !UltimateSystem._instance.IsUltimate)
         {
             RotateCharactersOnGrid();
         }
@@ -127,16 +128,18 @@ public class TempManager : MonoBehaviour
         playerRotation = Quaternion.Euler(playerEulerRotation);
 
         float elapsedTime = 0;
+        Quaternion initialTargetRot = target.transform.rotation;
+        Quaternion initialPlayerRot = player.transform.rotation;
+
         while (elapsedTime < speed)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / speed;
 
-            target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetRotation, t);
-            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, playerRotation, t);
-            //TempManager.instance.RotateCharactersOnGrid();
-            //await UniTask.Yield();
+            target.transform.rotation = Quaternion.Lerp(initialTargetRot, targetRotation, t);
+            player.transform.rotation = Quaternion.Lerp(initialPlayerRot, playerRotation, t);
 
+           // await UniTask.Yield();
         }
 
     }
@@ -221,7 +224,7 @@ public class TempManager : MonoBehaviour
         GridMovement.instance.ResetHighlightedPath();
         TurnManager.instance.targetsInRange.Clear();
         TurnManager.instance.nonCharacterTargetsInRange.Clear();
-        UI.instance.ClearTargetList();
+       // UI.instance.ClearTargetList();
         actionName = action;
         
         TempManager.instance.ChangeGameState(GameStates.TargetSelectionTurn);
@@ -268,7 +271,7 @@ public class TempManager : MonoBehaviour
         {
             UI.instance.ResetPanels();
             //ShowPanel(ksdActionParent);
-            UI.instance.ShowPanel(UI.instance.actionPanel);
+           // UI.instance.ShowPanel(UI.instance.actionPanel);
             //UI.instance._circleSelector.Open();
             SituationUIPanel.SetActive(true);
             UlimateUIPanel.SetActive(true);
@@ -285,7 +288,7 @@ public class TempManager : MonoBehaviour
         else if (currentState == GameStates.TargetSelectionTurn)
         {
             UI.instance.ResetPanels();
-            UI.instance.ShowPanel(UI.instance.targetListpanel);
+           // UI.instance.ShowPanel(UI.instance.targetListpanel);
             //UI.instance._circleSelector.Close();
             SituationUIPanel.SetActive(true);
             UlimateUIPanel.SetActive(true);
@@ -300,12 +303,13 @@ public class TempManager : MonoBehaviour
         else if (currentState == GameStates.Simulation)
         {
             UI.instance.HideAllPanel();
-            UI.instance.ShowPanel(UI.instance.timeLinePanel);
+           // UI.instance.ShowPanel(UI.instance.timeLinePanel);
             SituationUIPanel.SetActive(false);
             UlimateUIPanel.SetActive(false);
             TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().SelectionParticle.SetActive(false);
             TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().PlayerActionListPanel.SetActive(false);
-            TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().PlayerUltimateBar.SetActive(false);
+            TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().playerItemPanel.SetActive(false);
+           // TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].GetComponent<TemporaryStats>().PlayerUltimateBar.SetActive(false);
             //UI.instance._circleSelector.Close();
         }
     }
@@ -318,13 +322,6 @@ public class TempManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-    }
-
-
-    public void Simulate()
-    {
-        GetComponent<TimelineManager>().enabled = true;
-        //GetComponent<CountDownHandler>().enabled = true;
     }
 
 

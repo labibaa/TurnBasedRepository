@@ -36,19 +36,19 @@ public class WitchsBolt : ICommand
             witchsBolt.BasePower = witchsBolt.BasePower - 30;
         }
         Debug.Log("AA" + ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy));
-        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) && !playerTempStats.IsThirdRatePerformanceActive)
+        if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))// && !playerTempStats.IsThirdRatePerformanceActive)
         {
             float damage = ActionResolver.instance.CalculateKillDamage(player, target, witchsBolt);
             if (targetTempStats.IsCounterActive)
             {
                 playerTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(playerTempStats,0);
+                await HealthManager.instance.PlayerMortality(playerTempStats, playerTempStats);
             }
             else
             {
               
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HealthManager.instance.PlayerMortality(targetTempStats,0);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
                 await HandleAnimation();
                
 
@@ -78,7 +78,7 @@ public class WitchsBolt : ICommand
         // Create a rotation based on the direction and apply it to the player
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
         player.transform.rotation = targetRotation;
-        player.GetComponent<PlayParticle>().target = target.gameObject;
+      //  player.GetComponent<PlayParticle>().target = target.gameObject;
         await CutsceneManager.instance.PlayAnimationForCharacter(player.gameObject, GetActionName());
        
         //CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject, "Hurt");

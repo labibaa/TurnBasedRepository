@@ -8,15 +8,15 @@ public class PushDetector : MonoBehaviour
 
     public CharacterBaseClasses currentPlayer;
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
 
         
 
 
-            if (other.tag == StringData.PlayerTag || other.tag == StringData.Ally)
-            {
-            Debug.Log("Colliderd");
+        if (other.tag == StringData.PlayerTag || other.tag == StringData.Ally)
+        {
+            
             if (other.GetComponent<ObjectToBePushed>().IsShoot)
             {
 
@@ -35,10 +35,10 @@ public class PushDetector : MonoBehaviour
                 other.GetComponent<ObjectToBePushed>().positionTraversed.Clear();
             }
 
-            }
+        }
         
     }
-
+*/
     
 
 

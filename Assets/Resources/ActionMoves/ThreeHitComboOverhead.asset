@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65997b2d10b74c04e9ac0a65ce4ccdd5, type: 3}
+  m_Name: ThreeHitComboOverhead
+  m_EditorClassIdentifier: 
+  RangeMappings:
+  - MinRangeValue: 1
+    MaxRangeValue: 2
+    MappedValue: 6
+  - MinRangeValue: 3
+    MaxRangeValue: 4
+    MappedValue: 6
+  - MinRangeValue: 5
+    MaxRangeValue: 14
+    MappedValue: 8
+  - MinRangeValue: 15
+    MaxRangeValue: 17
+    MappedValue: 8
+  - MinRangeValue: 18
+    MaxRangeValue: 20
+    MappedValue: 9
+  ActionRange: 2
+  ActionAccuracy: 100
+  ActionName: ThreeHitComboOverhead
+  Description: 
+  PriorityValue: 20
+  FirstPercentage: 20
+  SecondPercentage: 50
+  LastPercentage: 30
+  APCost: 7
+  ParticleSystem: {fileID: 0}
+  HurtParticleSystem: {fileID: 0}
+  HitParticleSystem: {fileID: 0}
+  actionSound: {fileID: 8300000, guid: f3d6f700fe65b8147950e7bdd52ce38e, type: 3}
+  actionIcon: {fileID: 195040, guid: 94452706f9cab234a83db094573c38b9, type: 3}
+  actionButton: {fileID: 8538063801286393506, guid: af910184adf60484780c1c8f6709077d,
+    type: 3}
+  SoundReferences: []
+  PlayerActionVFX: {fileID: 0}
+  TargetHitVFX: {fileID: 0}
+  particle: {fileID: 19872524, guid: 69124c5c2a2e6a3418a5570722a54db5, type: 3}
+  CharacterBodyLocation: MidBody
+  TargetCharacterBodyLocation: MidBody
+  TargetHurtAnimation: 3HitComboHurt
+  actionStance: 1
+  actionType: 1

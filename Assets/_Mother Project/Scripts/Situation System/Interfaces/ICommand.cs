@@ -6,9 +6,7 @@ using UnityEngine.AI;
 
 public interface ICommand 
 {
-
-    
-
+    // Interface for all the action sets playable in grid system
    UniTask Execute();
    int GetPVValue();
    int GetAPValue();

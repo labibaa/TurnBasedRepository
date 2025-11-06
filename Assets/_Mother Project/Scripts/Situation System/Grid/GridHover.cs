@@ -47,16 +47,13 @@ public class GridHover : MonoBehaviour
         }
        
     }
-    // Start is called before the first frame update
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            RestoreColor();
+          //  RestoreColor();
         }
-        {
-
-        }
+     
         if (TempManager.instance.currentState == GameStates.TargetSelectionTurn)
         {
             TargetRaycast();
@@ -74,7 +71,7 @@ public class GridHover : MonoBehaviour
     }
 
 
-    void TargetRaycast()
+    void TargetRaycast() //target selection while grid is on using mouse hover
     {
         
         if (Input.GetMouseButtonDown(0) && TempManager.instance.currentState == GameStates.TargetSelectionTurn)  // Change the input event as needed

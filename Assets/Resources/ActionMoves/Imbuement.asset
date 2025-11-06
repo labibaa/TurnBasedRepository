@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65997b2d10b74c04e9ac0a65ce4ccdd5, type: 3}
+  m_Name: Imbuement
+  m_EditorClassIdentifier: 
+  RangeMappings:
+  - MinRangeValue: 1
+    MaxRangeValue: 2
+    MappedValue: 1
+  - MinRangeValue: 3
+    MaxRangeValue: 4
+    MappedValue: 2
+  - MinRangeValue: 5
+    MaxRangeValue: 14
+    MappedValue: 3
+  - MinRangeValue: 15
+    MaxRangeValue: 17
+    MappedValue: 4
+  - MinRangeValue: 18
+    MaxRangeValue: 20
+    MappedValue: 5
+  ActionRange: 3
+  ActionAccuracy: 100
+  ActionName: Imbuement
+  Description: 
+  PriorityValue: 20
+  FirstPercentage: 20
+  SecondPercentage: 50
+  LastPercentage: 30
+  APCost: 4
+  ParticleSystem: {fileID: 0}
+  HurtParticleSystem: {fileID: 0}
+  HitParticleSystem: {fileID: 0}
+  actionSound: {fileID: 0}
+  actionIcon: {fileID: 195040, guid: 106e9ff71c7421143920e2ea860fef9d, type: 3}
+  actionButton: {fileID: 8538063801286393506, guid: 41e233de519b40046a64ebcb2a3b04a3,
+    type: 3}
+  SoundReferences: []
+  PlayerActionVFX: {fileID: 1741485166341647510, guid: 1a2ce10b8267048449db25fb0a8a64f8,
+    type: 3}
+  TargetHitVFX: {fileID: 0}
+  particle: {fileID: 0}
+  CharacterBodyLocation: MidBody
+  TargetCharacterBodyLocation: UpperBody
+  TargetHurtAnimation: 
+  actionStance: 0
+  actionType: 1

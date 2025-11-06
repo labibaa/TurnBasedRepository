@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FighterClass : CharacterBaseClasses
 {
-    protected override void LevelUp()
+    public override void LevelUp()
     {
         
     }

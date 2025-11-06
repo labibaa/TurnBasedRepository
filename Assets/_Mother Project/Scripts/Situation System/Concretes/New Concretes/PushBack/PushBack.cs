@@ -14,7 +14,7 @@ public class PushBack : ICommand
     TemporaryStats targetTempStats;
     ImprovedActionStat pushBack;
     string ActionType;
-    int counter = 0;
+    //int counter = 0;
 
 
 
@@ -129,11 +129,6 @@ public class PushBack : ICommand
 
     //}
 
-
-
-
-
-
     public async UniTask Execute()
     {
 
@@ -146,7 +141,7 @@ public class PushBack : ICommand
         target.GetComponent<PushDetector>().currentPlayer = player;
 
         Vector3 directionOfPushBackPosition = (target.transform.position - player.transform.position).normalized;
-        Vector3 twoStepDirection = directionOfPushBackPosition * 1.6f * 2f;
+        Vector3 twoStepDirection = directionOfPushBackPosition * 1.6f * 1f;
 
         Vector3 approximateTargetPosition = twoStepDirection + target.transform.position;
         Vector2 targetGridPosition = GridSystem.instance.WorldToGrid(approximateTargetPosition);
@@ -154,7 +149,7 @@ public class PushBack : ICommand
         Vector3 directionToTarget = target.transform.position - player.transform.position;
         directionToTarget.y = 0; // Zeroing out the y-component to prevent tilting up or down
 
-        Quaternion targetRotation = Quaternion.LookRotation(-directionToTarget);
+/*        Quaternion targetRotation = Quaternion.LookRotation(-directionToTarget);
         Vector3 eulerRotation = targetRotation.eulerAngles;
         eulerRotation.x = 0; // Locking rotation around x-axis
         eulerRotation.z = 0; // Locking rotation around z-axis
@@ -169,7 +164,7 @@ public class PushBack : ICommand
         playerEulerRotation.z = 0; // Locking rotation around z-axis
         playerRotation = Quaternion.Euler(playerEulerRotation);
 
-        player.transform.rotation = Quaternion.Slerp(player.transform.rotation, playerRotation, 20.0f * Time.deltaTime);
+        player.transform.rotation = Quaternion.Slerp(player.transform.rotation, playerRotation, 20.0f * Time.deltaTime);*/
 
         if (GridMovement.instance.InGridBounds(targetGridPosition))
         {
@@ -190,16 +185,13 @@ public class PushBack : ICommand
             {
                 int diceValue = DiceNumberGenerator.instance.GetDiceValue(pushBack.FirstPercentage, pushBack.SecondPercentage, pushBack.LastPercentage);
 
-                int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, pushBack) * player.damageMultiplier);
-                Debug.Log("Dice: " + diceValue + " Damage: " + damage);
-                
-               
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
+                int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, pushBack) * playerTempStats.CurrentDamageMultiplier);
+                Debug.Log("Dice: " + diceValue + " Damage: " + damage + " target: " + targetTempStats);
 
                 await HandleAnimation();
-
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
             }
             //play animation
@@ -249,10 +241,10 @@ public class PushBack : ICommand
                 }
             }
 
-            if (!foundValidPosition)
+    /*        if (!foundValidPosition)
             {
                await CutsceneManager.instance.PlayAnimationForCharacter(target.gameObject,"Damage1");
-            }
+            }*/
         }
 
 
@@ -261,7 +253,7 @@ public class PushBack : ICommand
 
     async UniTask HandleAnimation()
     {
-        TempManager.instance.CharacterRotation(target,player,2f);
+        await TempManager.instance.CharacterRotation(target, player, 2f);
 
         player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
         player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.GetComponent<VFXSpawnPosition>().CharacterBodyPosition[pushBack.CharacterBodyLocation]);
@@ -299,22 +291,6 @@ public class PushBack : ICommand
             return false; //Debug.Log("Target is between A and B");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public string GetActionName()
     {

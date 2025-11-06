@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,39 +9,28 @@ using UnityEngine.UI;
 public class PlayerStatUI : MonoBehaviour
 {
     #region summary HUD
-    [SerializeField] private Image playerStatSummaryPanel;
-    [SerializeField] private Image playerAvatarSummary;
-    [SerializeField] private TMP_Text playerNameTextSummary;
-    [SerializeField] private TMP_Text playerAPTextSummary;
-    [SerializeField] private TMP_Text playerHPTextSummary;
-    [SerializeField] private TMP_Text playerRPTextSummary;
+   
+    public HoverDisplayStats hoverDisplayStats;
 
     #endregion
 
     #region new Summary Stat
 
     public Image SummaryStatParent;
-    public Image AvatarSummaryPrefab;
+    public Image SummaryStatParentEnemy;
+    public RectTransform AvatarSummaryPrefab;
+    public RectTransform AvatarSummaryPrefabEnemy;
     public List<PlayableCharacterUI> CharacterUIList;
+    List<RectTransform> AvatarSummaryPrefabList;
 
     #endregion
 
-
     [SerializeField] private Image playerStatDetailsPanel;
     [SerializeField] private Image playerAvatarDetails;
-    //[SerializeField] private TMP_Text playerNameTextDetails;
-    //[SerializeField] private TMP_Text playerClassTextDetails;
-    [SerializeField] private TMP_Text playerAPTextDetails;
-    [SerializeField] private TMP_Text playerHPTextDetails;
-    //[SerializeField] private TMP_Text playerRPTextDetails;
-    //[SerializeField] private TMP_Text playerArcanaTextDetails;
-    //[SerializeField] private TMP_Text playerCharismaTextDetails;
-    //[SerializeField] private TMP_Text playerMindTextDetails;
-    //[SerializeField] private TMP_Text playerEnduranceTextDetails;
-    //[SerializeField] private TMP_Text playerSkillTextDetails;
-    //[SerializeField] private TMP_Text playerStrengthTextDetails;
-    //[SerializeField] private TMP_Text playerDexterityTextDetails;
-
+/*    [SerializeField] private TMP_Text playerAPTextDetails;
+    [SerializeField] private TMP_Text playerHPTextDetails;*/
+ 
+    Vector3 positionOffset = new Vector3(0, 2, 0);
     public static PlayerStatUI instance;
 
     private void Awake()
@@ -55,11 +45,11 @@ public class PlayerStatUI : MonoBehaviour
 
     public void GetPlayerStatSummary(CharacterBaseClasses currentPlayer)
     {
-        playerAvatarSummary.sprite = currentPlayer.avatarHead;
+        /*playerAvatarSummary.sprite = currentPlayer.avatarHead;
         playerNameTextSummary.text = currentPlayer.characterName;
         playerAPTextSummary.text = "AP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentAP.ToString();
         playerHPTextSummary.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();
-        playerRPTextSummary.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();
+        playerRPTextSummary.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();*/
     }
 
     #endregion
@@ -71,21 +61,50 @@ public class PlayerStatUI : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        
+        foreach (Transform child in SummaryStatParentEnemy.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
 
         HashSet<CharacterBaseClasses> uiPlayerHashSet = new HashSet<CharacterBaseClasses>();
         
         foreach (PlayerTurn pt in TurnManager.instance.players)
         {
-            uiPlayerHashSet.Add(pt.GetComponent<CharacterBaseClasses>());
+            
+                uiPlayerHashSet.Add(pt.GetComponent<CharacterBaseClasses>());
+            
+            
         }
 
         foreach (CharacterBaseClasses player in uiPlayerHashSet)
         {
-            Transform tempAvatarUI;
-            tempAvatarUI = Instantiate(AvatarSummaryPrefab.transform, SummaryStatParent.transform);
-            tempAvatarUI.GetComponent<PlayableCharacterUI>().myCharacter = player;
-            CharacterUIList.Add(tempAvatarUI.GetComponent<PlayableCharacterUI>());
+            
+                Transform tempAvatarUI;
+            if (player.GetComponent<TemporaryStats>().CharacterTeam == TeamName.TeamA)
+            {
+                
+                
+                tempAvatarUI = Instantiate(AvatarSummaryPrefab.transform, SummaryStatParent.transform);
+                tempAvatarUI.GetComponent<PlayableCharacterUI>().myCharacter = player;
+                CharacterUIList.Add(tempAvatarUI.GetComponent<PlayableCharacterUI>());
+               // AvatarSummaryPrefabList.Add(tempAvatarUI.GetComponent<RectTransform>());
+                    
+                
+            }
+            else
+            {
+                tempAvatarUI = Instantiate(AvatarSummaryPrefabEnemy.transform, SummaryStatParentEnemy.transform);
+                tempAvatarUI.GetComponent<PlayableCharacterUI>().myCharacter = player;
+                CharacterUIList.Add(tempAvatarUI.GetComponent<PlayableCharacterUI>());
+            }
+
+           
+
+
+
+
         }
         UpdateSummaryHUDUI();
     }
@@ -95,7 +114,25 @@ public class PlayerStatUI : MonoBehaviour
         foreach (PlayableCharacterUI summaryHUD in CharacterUIList)
         {
             summaryHUD.UpdateHUD();
+
         }
+
+        
+    }
+    private void SwapItemsInLayout(RectTransform item1, RectTransform item2)
+    {
+        if (item1 == null || item2 == null) return;
+
+        Vector3 pos1 = item1.anchoredPosition;
+        Vector3 pos2 = item2.anchoredPosition;
+
+        // Animate positions
+        item1.DOAnchorPos(pos2, .1f).SetEase(Ease.InOutQuad);
+        item2.DOAnchorPos(pos1, .1f).SetEase(Ease.InOutQuad);
+
+        // Rebuild layout after the swap
+        LayoutRebuilder.ForceRebuildLayoutImmediate(AvatarSummaryPrefab);
+
     }
 
     public void GetPlayerStatDetails(CharacterBaseClasses currentPlayer)
@@ -105,18 +142,12 @@ public class PlayerStatUI : MonoBehaviour
         playerAvatarDetails.sprite = currentPlayer.avatarHead;
         //playerNameTextDetails.text = currentPlayer.characterName;
         //playerClassTextDetails.text = currentPlayer.;
-
+/*
         playerAPTextDetails.text = "AP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentAP.ToString();
-        playerHPTextDetails.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();
-        //playerRPTextDetails.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();
-
-        //playerArcanaTextDetails.text = "Arcana: " + currentPlayer.Arcana.ToString();
-        //playerCharismaTextDetails.text = "Charisma: " + currentPlayer.Charisma.ToString();
-        //playerMindTextDetails.text = "Mind: " + currentPlayer.Mind.ToString();
-        //playerEnduranceTextDetails.text = "Endurance: " + currentPlayer.Endurance.ToString();
-        //playerSkillTextDetails.text = "Skill: " + currentPlayer.Skill.ToString();
-        //playerStrengthTextDetails.text = "Strength: " + currentPlayer.Strength.ToString();
-        //playerDexterityTextDetails.text = "Dexterity: " + currentPlayer.Dexterity.ToString();
+        playerHPTextDetails.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();*/
+     
 
     }
+
+
 }

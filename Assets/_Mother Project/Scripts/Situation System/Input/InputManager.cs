@@ -31,7 +31,7 @@ public class InputManager : MonoBehaviour
         starterInput.Player.Interact.Disable();
     }
 
-    private void Interect(InputAction.CallbackContext obj)
+    private void Interect(InputAction.CallbackContext obj)  //invoke when grid is enabled and disabled
     {
         OnInteractionPressed?.Invoke();
         //Debug.Log("pressed E");

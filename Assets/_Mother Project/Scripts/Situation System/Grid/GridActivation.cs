@@ -1,6 +1,8 @@
 using StarterAssets;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GridActivation : MonoBehaviour
 {
@@ -15,8 +17,7 @@ public class GridActivation : MonoBehaviour
     [SerializeField]
     List<GameObject> gameObjectsTobeEnabled = new List<GameObject>();
 
-    [SerializeField]
-    public GameObject playableCharacter;
+    public List<GameObject> playableCharacter = new List<GameObject>();
     [SerializeField]
     GameManager gameManager;
     [SerializeField]
@@ -30,12 +31,10 @@ public class GridActivation : MonoBehaviour
     [SerializeField]
     GameObject gridAudio;
 
+    public TeamName myTeam;
+   // int count =0;
 
-
-
-
-
-    int count =0;
+    //Enable and disable Grid system and corresponding UI with necessary components with it
     private void OnEnable()
     {
         WaveManager.OnGridReady += EnableSituaionUI;
@@ -57,11 +56,6 @@ public class GridActivation : MonoBehaviour
 //Failsafe2
 
     // Start is called before the first frame update
-    void Start()
-    {
-        count = 0;
-      //GridSystem.instance.GenerateGridOnButton();
-    }
 
     // Update is called once per frame
     void Update()
@@ -71,7 +65,8 @@ public class GridActivation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !GridSystem.instance.IsGridOn && count < 2)
+        playableCharacter = SwitchMC.Instance.characters;
+        if (other.CompareTag("Player") && !GridSystem.instance.IsGridOn)
         {
             
             GridSystem.instance.GenerateGridOnButton();
@@ -91,9 +86,10 @@ public class GridActivation : MonoBehaviour
         {
             ui.SetActive(true);
         }
+        
+        TurnManager.instance.StartTurn();
         PlayerStatUI.instance.CreateSummaryList();
         DisableUIObjects();
-        TurnManager.instance.StartTurn();
         gridAudio.GetComponent<AudioSource>().enabled = true;
         gridAudio.GetComponent<AudioSource>().Play();
         this.GetComponent<BoxCollider>().enabled = false;
@@ -123,8 +119,6 @@ public class GridActivation : MonoBehaviour
 
     private void DisableSituationSystem()
     {
-        playableCharacter.SetActive(true);
-
         foreach (Transform child in grid.transform)
         {
             // Destroy the child GameObject
@@ -142,18 +136,21 @@ public class GridActivation : MonoBehaviour
 
 
 
+        foreach(GameObject Pc in playableCharacter)
+        {
+            Pc.SetActive(true);
+            //playableCharacter.GetComponent<CharacterController>().enabled = true;
+            Pc.GetComponent<ThirdPersonController>().enabled = true;
+            Pc.GetComponent<ThirdPersonController>().DisableAnim();
+            //player.GetComponent<PlayerMove>().enabled = true;
+            Pc.GetComponent<TemporaryStats>().SelectionParticle.SetActive(false);
 
-        //playableCharacter.GetComponent<CharacterController>().enabled = true;
-        playableCharacter.GetComponent<ThirdPersonController>().enabled = true;
-        playableCharacter.GetComponent<ThirdPersonController>().DisableAnim();
-        
-        //player.GetComponent<PlayerMove>().enabled = true;
+            //might need to refactor this part, putting them on  a funciton
+            //player.GetComponent<GridInput>().enabled = true;
+            Pc.GetComponent<GridPlayerAnimation>().enabled = false;
+        }
 
-
-
-        //might need to refactor this part, putting them on  a funciton
-        //player.GetComponent<GridInput>().enabled = true;
-        playableCharacter.GetComponent<GridPlayerAnimation>().enabled = false;
+        Debug.Log("Grid Finish");
         gameManager.GetComponent<GridMovement>().enabled = false;
         gameManager.GetComponent<TurnManager>().enabled = false;
 
@@ -162,7 +159,11 @@ public class GridActivation : MonoBehaviour
         TempManager.instance.UlimateUIPanel.SetActive(false);
 
         GridSystem.instance.IsGridOn = false;
-       // HandleTurnNew.instance.SituationEndCondition = false;
+        // HandleTurnNew.instance.SituationEndCondition = false;
+        LoadSceneManager.instance.SaveGame();
+        LoadSceneManager.instance.LoadGame();
+        WaitDelay(2f);
+        SwitchMC.Instance.CharacterSwitch();
 
     }
     public void HandleCharacterSpawn()
@@ -182,7 +183,8 @@ public class GridActivation : MonoBehaviour
     {
         foreach (GameObject p in players)
         {
-            p.SetActive(false);
+             p.SetActive(false);
+           
         }
 
         foreach (GameObject p in gameObjectsTobeEnabled)
@@ -210,7 +212,12 @@ public class GridActivation : MonoBehaviour
     }
 
 
+    IEnumerator WaitDelay(float time)
+    {
+      
+        yield return new WaitForSeconds(time);
 
+    }
 
 
 }

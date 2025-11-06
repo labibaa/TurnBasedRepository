@@ -15,19 +15,9 @@ public class UI : MonoBehaviour
 {
 
     public static UI instance;
-    public UnityEngine.UI.Button killButton;
-    //[SerializeField] private GameObject killPanel;
-     public UnityEngine.UI.Button targetBTN;
+
    [SerializeField] ActionNotification actionNotification;
-    public Image playerStatSummary;
-    public Image playerStatDetailsPanel;
-    public Image timeLinePanel;
-    public Image targetListpanel;
-    public Image ksdActionParent;
-    public Image actionPanel;
-    public Image killPanel;
-    public Image survivePanel;
-    public Image dealPanel;
+
     public GameObject flyingTextPrefab;
 
     public PlayableDirector openingTimeline;
@@ -57,7 +47,7 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        ResetPanels();
+       
         //_circleSelector = SelectorActionOptions.GetComponent<CircleSelector>();
     }
 
@@ -72,24 +62,10 @@ public class UI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseGame();
+           // PauseGame();
         }
     }
 
-    private void OnEnable()
-    {
-        TempManager.GameStateChanged += OnGameStateChange;
-    }
-    private void OnDisable()
-    {
-        TempManager.GameStateChanged -= OnGameStateChange;
-    }
-
-    private void OnGameStateChange(GameStates states)
-    {
-        killButton.interactable = states == GameStates.StartTurn;
-       // Debug.Log(states);
-    }
 
     public void KillMove()
     {
@@ -102,20 +78,20 @@ public class UI : MonoBehaviour
 
     public void CreateTargetButton(CharacterBaseClasses target)
     {
-        Transform targetBtn = Instantiate(targetBTN.transform, targetListpanel.transform);
+      /*  Transform targetBtn = Instantiate(targetBTN.transform, targetListpanel.transform);
         targetBtn.GetComponent<TargetButton>().avatarHead.sprite = target.avatarHead;
         targetBtn.GetComponent<TargetButton>().avatarNameTxt.text = target.characterName;
-        targetBtn.GetComponent<TargetButton>().target = target;
+        targetBtn.GetComponent<TargetButton>().target = target;*/
 
 
     }
 
     public void ClearTargetList()
     {
-        foreach (Transform targetButtons in targetListpanel.transform)
+        /*foreach (Transform targetButtons in targetListpanel.transform)
         {
             Destroy(targetButtons.gameObject);
-        }
+        }*/
     }
     
     // player stat Summary
@@ -140,17 +116,7 @@ public class UI : MonoBehaviour
 
     public void HideAllPanel()
     {
-        // AudioController.instance.CloseSound();
-        HidePanel(playerStatSummary);
-        HidePanel(killPanel);
-        HidePanel(survivePanel);
-        HidePanel(dealPanel);
-        
-        //HidePanel(playerStatDetailsPanel);
-        HidePanel(timeLinePanel);
-        HidePanel(targetListpanel);
-        HidePanel(ksdActionParent);
-        HidePanel(actionPanel);
+     
     }
     public void HidePanel(Image imageToHide)
     {
@@ -164,7 +130,7 @@ public class UI : MonoBehaviour
     public void ShowMovesList(Image whichPanel)
     {
         TempManager.instance.ChangeGameState(GameStates.MidTurn);
-        actionPanel = whichPanel;
+        //actionPanel = whichPanel;
         HideAllPanel();
         ShowPanel(whichPanel);
     }

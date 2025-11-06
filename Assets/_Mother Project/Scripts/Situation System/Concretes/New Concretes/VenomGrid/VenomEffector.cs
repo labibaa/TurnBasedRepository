@@ -37,10 +37,11 @@ public class VenomEffector : MonoBehaviour
             if (gridObject != null)
             {
                 TemporaryStats targetTempStatsComponent = gridObject.GetComponent<TemporaryStats>();
-                if (targetTempStatsComponent != null && targetTempStatsComponent!= EffectOwner) // have to include a teamcheck if you want your ally's to not get affected
+                if (targetTempStatsComponent != null && targetTempStatsComponent!= EffectOwner && targetTempStatsComponent.CharacterTeam != EffectOwner.CharacterTeam) // have to include a teamcheck if you want your ally's to not get affected
                 {
                     int diceValue = DiceNumberGenerator.instance.GetDiceValue(Venom.FirstPercentage, Venom.SecondPercentage, Venom.LastPercentage);
-                    int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, Venom) * EffectOwner.GetComponent<CharacterBaseClasses>().damageMultiplier);
+                    UI.instance.SendNotification(diceValue.ToString());
+                    int damage = Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, Venom) * EffectOwner.GetComponent<TemporaryStats>().CurrentDamageMultiplier);
 
                    /* if (targetTempStatsComponent.IsBlockActive)
                     {

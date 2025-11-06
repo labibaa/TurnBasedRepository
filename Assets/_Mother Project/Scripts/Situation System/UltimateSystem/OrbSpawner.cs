@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class OrbSpawner : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class OrbSpawner : MonoBehaviour
     [SerializeField] GameObject orb;
     [SerializeField] GameObject spawnedOrb;
     [SerializeField] GameObject smokeGameObject;
+    [SerializeField] GameObject SkeletonGrabGameObject;
     int readyPlayer=0;
 
     // Start is called before the first frame update`````
@@ -41,7 +43,7 @@ public class OrbSpawner : MonoBehaviour
         if (readyPlayer>=TurnManager.instance.players.Count)
         {
            // SpawnObject();
-            Debug.Log("Y");
+           
         }
     }
 
@@ -78,9 +80,14 @@ public class OrbSpawner : MonoBehaviour
 
     public GameObject SpawnSmoke(Transform transform)
     {
-        return Instantiate(smokeGameObject,transform.position + new Vector3(0f,1f,0f),Quaternion.identity);
+        return Instantiate(smokeGameObject, transform.position + new Vector3(0f,1f,0f),Quaternion.identity);
     }
 
+    public GameObject SpawnDotVFX(VisualEffect visualEffect,Transform transform)
+    {
+        VisualEffect vs =  Instantiate(visualEffect, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity, transform.GetComponent<VFXSpawnPosition>().MidBody.transform);
+        return vs.gameObject;
+    }
     void ResetReadyCounter()
     {
         readyPlayer = 0;

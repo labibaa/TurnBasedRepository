@@ -22285,8 +22285,6 @@ GameObject:
   - component: {fileID: 6719925476913469258}
   - component: {fileID: 2595480528751406264}
   - component: {fileID: 5439259950950518841}
-  - component: {fileID: 7103101787612768247}
-  - component: {fileID: 927589609121339311}
   - component: {fileID: 4982487242529974451}
   - component: {fileID: 6623828745637797339}
   - component: {fileID: 2541258747483145782}
@@ -22313,8 +22311,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6309810652555908849}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -14.20433, y: 0.00000011920929, z: -1.052058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22327,7 +22325,7 @@ Transform:
   - {fileID: 4833295737884338678}
   - {fileID: 8478977437847382164}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1170907623191170863
 Animator:
   serializedVersion: 5
@@ -22399,28 +22397,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2f7550129e6804f9263440288077a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatarHead: {fileID: 0}
   CurrentHealth: 1
-  PlayerHealth: 13
+  PlayerHealth: 20
   Pathmark: {fileID: 2772190151137415937, guid: ca07928fa503827408c66ef4b24eeb64,
     type: 3}
   CurrentAP: 6
   PlayerAP: 7
+  CurrentDex: 3
+  CurrentEndurance: 10
+  CurrentStrength: 0
+  CurrentArcana: 0
+  CurrentIntelligence: 0
+  CurrentExp: 0
   CurrentResolve: 20
+  CurrentDamageMultiplier: 1
   IsBlockActive: 0
   IsDodgeActive: 0
-  IsThirdRatePerformanceActive: 0
+  IsImbuementActive: 0
   IsCounterActive: 0
-  CurrentEndurance: 10
-  CurrentDex: 3
   AutoMove: 0
   playerUltimateBarCount: 0
   PlayerUltimateBar: {fileID: 0}
+  isMainCharacter: 0
+  isLinkOn: 0
+  currentScene: 
   playerMortality: 0
   currentPlayerGridPosition: {x: 0, y: 0, z: 0}
   _spawnPosition: {x: 0, y: 0, z: 0}
   gridCoordinateSpawn: {x: 2, y: 4}
   lastPosition: {fileID: 0}
-  playerStatPanel: {fileID: 0}
+  playerItemPanel: {fileID: 0}
   PlayerActionListPanel: {fileID: 0}
   FlyingTextParent: {fileID: 2268637220384161097}
   CharacterTeam: 3
@@ -22446,7 +22453,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.18
-  m_BaseOffset: 0.3
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5439259950950518841
@@ -22464,41 +22471,9 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   startMoving: 0
   speed: 2
-  rotationSpeed: 12
   gridGenerator: {fileID: 0}
   clashParticle: {fileID: 2457991722314602123, guid: 90710e1559ae4304e859e841a3307d06,
     type: 3}
---- !u!114 &7103101787612768247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6309810652555908849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54509b975f871a440bed10c8ba9c8132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 5
---- !u!114 &927589609121339311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6309810652555908849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d98be979eea79a4ab36454d955d5d57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1170907623191170863}
-  particlePrefab: {fileID: 0}
-  particlePrefabHit: {fileID: 0}
-  particlePrefabHurt: {fileID: 0}
-  target: {fileID: 0}
-  actionSound: {fileID: 0}
 --- !u!54 &4982487242529974451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22576,23 +22551,28 @@ MonoBehaviour:
   level: 5
   strength: 5
   dexterity: 5
-  charisma: 5
+  intelligence: 0
   arcana: 5
-  skill: 5
   endurance: 5
-  mind: 5
-  healthPoints: 50
+  healthPoints: 20
   resolvePoints: 25
+  skill: 5
+  mind: 5
   damageMultiplier: 1
+  MaxExp: 0
+  lootUltiPoints: 0
+  EquipedWeapon: 0
   characterAvailableActions:
   - {fileID: 11400000, guid: 853e9c58f3d88ee4dbe34e4153324edd, type: 2}
   - {fileID: 11400000, guid: 115dd138f5c68e747acbc0a771e6ea86, type: 2}
   - {fileID: 11400000, guid: 51c2375332cf7e1478f842ba0cd3abc1, type: 2}
+  characterAvailableItems: []
   playerUltimateFactory: {fileID: 11400000, guid: ebbdabb8db8918f47bcbd6c952221055,
     type: 2}
   warpSurge: {fileID: 0}
   groundBlast: {fileID: 0}
   dash: {fileID: 0}
+  move: {fileID: 0}
 --- !u!114 &3754418836914419529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22708,18 +22688,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00974c49c138ed84aba7d1c1bd49a392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefabList: []
-  hitEffectPrefabList: []
-  hitEffectTransformList: []
-  effectTransformList: []
-  targetHitTransformList: []
-  particles: []
   TrailVisual: {fileID: 0}
   speed: 5
   charAnimator: {fileID: 1170907623191170863}
   targetAnimator: {fileID: 0}
-  animationList: []
-  animationIndex: 0
+  actionMoveCamTimelinePrefab: {fileID: 0}
   isShieldUp: 0
 --- !u!114 &8933773828350446642
 MonoBehaviour:

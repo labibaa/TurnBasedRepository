@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,9 +9,7 @@ public class InputHandlerForSaving : MonoBehaviour
 {
     [SerializeField] string userName;
     [SerializeField] string fileName; // use the name wanted to save the file and add .json extention
-    [SerializeField] Button loginBtn;
     [SerializeField] TMP_InputField userNameInput;
-    [SerializeField] TextMeshProUGUI savedDataText;
  
     public List<SaveTurnInformation> toSaveData = new List<SaveTurnInformation>(); //put the list that needs to be saved in json
     public List<SaveTurnInformation> SavedData = new List<SaveTurnInformation>(); 
@@ -24,6 +23,7 @@ public class InputHandlerForSaving : MonoBehaviour
         PlayerPrefs.Save();
         fileName= userName+ fileName + runCount.ToString() +".json";
     }
+
     public void SaveTurnToJson() //call function to save data
     {
         
@@ -33,14 +33,7 @@ public class InputHandlerForSaving : MonoBehaviour
 
     public void LoadDataFromJson()
     {
-        SavedData = FileHandler.LoadJsonData<SaveTurnInformation>(fileName);
-
-        foreach (var item in SavedData)
-        {
-            savedDataText.text = item.ToString();
-        }
-
-       
+        SavedData = FileHandler.LoadJsonData<SaveTurnInformation>(fileName);       
     }
 
     public void setUserName()
@@ -49,4 +42,6 @@ public class InputHandlerForSaving : MonoBehaviour
         
         userNameInput.gameObject.SetActive(false);
     }
+
+    public String GetFileName { get => fileName;}
 }

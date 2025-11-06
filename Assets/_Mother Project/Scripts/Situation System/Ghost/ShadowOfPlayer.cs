@@ -23,13 +23,13 @@ public class ShadowOfPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        HandleTurnNew.IsPlayer += UpdateList;
+        HandleTurnNew.OnNewAction += UpdateList;
         HandleTurnNew.IsPlayerUndo += UndoGhost;
     }
 
     private void OnDisable()
     {
-        HandleTurnNew.IsPlayer -= UpdateList;
+        HandleTurnNew.OnNewAction -= UpdateList;
         HandleTurnNew.IsPlayerUndo -= UndoGhost;
    
     }
@@ -52,13 +52,13 @@ public class ShadowOfPlayer : MonoBehaviour
         if (TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
         {
             ActionTurnListForGhost = HandleTurnNew.instance.GetAllTurns();
-            if (ActionTurnListForGhost.Count<2)
+         /* if (ActionTurnListForGhost.Count<2)
             {
                 
                // ActionGhostRepeat();
-            }
+            }*/
             TempManager.instance.ChangeGameState(GameStates.GhostPlay);
-            Debug.Log("ding dong");
+           // Debug.Log("ding dong");
             ActionGhostSingular();
             
         }
@@ -68,7 +68,7 @@ public class ShadowOfPlayer : MonoBehaviour
         }
     }
 
-    public async void ActionGhostRepeat()
+    public async void ActionGhostRepeat() //repeat preview of action using player shadow
     {
   
             if (IsSpawned == null)
@@ -77,20 +77,18 @@ public class ShadowOfPlayer : MonoBehaviour
                 initialPositionOfGhost = IsSpawned.transform.position;
 
 
-        }
+            }
 
             // for (int i = 0; i <= ActionTurnListForGhost.Count; i++)
             while (true)
             {
-
-               
                 await CompleteAction(i);
 
-                i = (i + 1) % ActionTurnListForGhost.Count;
-            if (i == 0)
-            {
-                IsSpawned.transform.position = initialPositionOfGhost;
-            }
+                    i = (i + 1) % ActionTurnListForGhost.Count;
+                if (i == 0)
+                {
+                    IsSpawned.transform.position = initialPositionOfGhost;
+                }
                 if (TempManager.instance.currentState == GameStates.Simulation|| TempManager.instance.currentState == GameStates.StartTurn)
                 {
                     Destroy(IsSpawned);
@@ -102,7 +100,7 @@ public class ShadowOfPlayer : MonoBehaviour
 
     }
 
-    public async void ActionGhostSingular()
+    public async void ActionGhostSingular()  // preview of action using player shadow
     {
 
         if (IsSpawned == null)
@@ -115,11 +113,11 @@ public class ShadowOfPlayer : MonoBehaviour
 
         // for (int i = 0; i <= ActionTurnListForGhost.Count; i++)
 
-        Debug.Log("j"+j+"ping dong"+ ActionTurnListForGhost.Count);
+       // Debug.Log("j"+j+"ping dong"+ ActionTurnListForGhost.Count);
 
 
         for (;j<ActionTurnListForGhost.Count;) {
-            Debug.Log("ing dong");
+           // Debug.Log("ing dong");
             if (ActionTurnListForGhost[j].Command.GetActionType()!="Melee")
             {
                 lastPositionGhosts.Push(IsSpawned.transform.position);
@@ -132,8 +130,6 @@ public class ShadowOfPlayer : MonoBehaviour
             if (TempManager.instance.currentState == GameStates.Simulation )
             {
                 Destroy(IsSpawned);
-
-
             }
             j++;
           
@@ -184,14 +180,14 @@ public class ShadowOfPlayer : MonoBehaviour
             return;
         }
         
-        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Move"))
+        if (ActionTurnListForGhost[index].Command.GetActionName().Equals("Dash") || ActionTurnListForGhost[index].Command.GetActionName().Equals("Move") || ActionTurnListForGhost[index].Command.GetActionName().Equals("WarpSurge"))
         {
             
             List<GameObject>pathToDestination = ActionTurnListForGhost[index].Command.GetPaths();
-            IsSpawned.GetComponent<Animator>().Play("Move");
+            IsSpawned.GetComponent<Animator>().Play("Dash");
           
             await IsSpawned.GetComponent<LerpAndLoop>().MoveToDestination(IsSpawned.transform.position,pathToDestination[pathToDestination.Count-1].transform.position );
-            IsSpawned.GetComponent<Animator>().Play("BreathingIdle");
+            IsSpawned.GetComponent<Animator>().Play("Idle");
            
         }
        

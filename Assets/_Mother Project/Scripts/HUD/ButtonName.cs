@@ -11,4 +11,8 @@ public class ButtonName : MonoBehaviour
     {
         return actionName;
     }
+    public void SetButtonName(string actionName)
+    {
+        this.actionName = actionName;
+    }
 }

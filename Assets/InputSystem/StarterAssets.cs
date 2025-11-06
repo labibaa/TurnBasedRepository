@@ -233,7 +233,7 @@ namespace Starter
                 {
                     ""name"": """",
                     ""id"": ""ddda7ac5-d670-4ab5-a871-422bf44fd0d3"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

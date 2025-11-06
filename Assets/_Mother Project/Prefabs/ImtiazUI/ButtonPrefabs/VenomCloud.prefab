@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 8477815177551376660}
   - component: {fileID: 4443214540053392649}
   - component: {fileID: 913986896747571053}
+  - component: {fileID: -6861602208595451210}
   m_Layer: 5
   m_Name: VenomCloud
   m_TagString: Untagged
@@ -168,7 +169,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7501521271911790843}
   m_Father: {fileID: 0}
@@ -284,8 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04364b64ef4f8b041b2f6e567a9ba8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverScale: 1.2
-  hoverOffset: 20
+  hoverScale: 1.1
   hoverColor: {r: 0.16078432, g: 0.7254902, b: 0.8509804, a: 1}
 --- !u!114 &913986896747571053
 MonoBehaviour:
@@ -300,3 +300,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: VenomCloud
+--- !u!225 &-6861602208595451210
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538063801286393506}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

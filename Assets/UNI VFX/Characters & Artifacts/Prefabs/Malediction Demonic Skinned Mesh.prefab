@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687737978859861261}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6687737979462131832}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &6687737978859861300
 VisualEffect:
@@ -46,10 +46,11 @@ VisualEffect:
   m_GameObject: {fileID: 6687737978859861261}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 0c735d65c1e823646a58a3d0560948ec, type: 3}
-  m_InitialEventName: 
+  m_InitialEventName: create
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -367,6 +368,7 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
+          m_ColorSpace: -1
           m_NumColorKeys: 6
           m_NumAlphaKeys: 2
         m_Name: ColorOverLife
@@ -398,6 +400,7 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
+          m_ColorSpace: -1
           m_NumColorKeys: 5
           m_NumAlphaKeys: 2
         m_Name: ColorOverLife 1
@@ -429,6 +432,7 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
+          m_ColorSpace: -1
           m_NumColorKeys: 6
           m_NumAlphaKeys: 2
         m_Name: SecondaryGradient
@@ -565,6 +569,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687737979462131835}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -573,13 +578,13 @@ Transform:
   - {fileID: 6687737978859861298}
   - {fileID: 5197345717940809110}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6687737978227958213
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6687737979462131832}
     m_Modifications:
     - target: {fileID: 1508477343246109779, guid: f290f26e408eb2c4789521ece2f0de54,
@@ -643,6 +648,9 @@ PrefabInstance:
       value: Ellen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f290f26e408eb2c4789521ece2f0de54, type: 3}
 --- !u!137 &5197345717929475346 stripped
 SkinnedMeshRenderer:

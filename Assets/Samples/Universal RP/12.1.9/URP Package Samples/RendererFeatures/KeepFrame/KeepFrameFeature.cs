@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -12,6 +12,7 @@ public class KeepFrameFeature : ScriptableRendererFeature
     class CopyFramePass : ScriptableRenderPass
     {
         private RenderTargetIdentifier source { get; set; }
+        [Obsolete]
         private RenderTargetHandle destination { get; set; }
 
         public void Setup(RenderTargetIdentifier source, RenderTargetHandle destination)
@@ -51,6 +52,7 @@ public class KeepFrameFeature : ScriptableRendererFeature
         private RenderTargetHandle m_handle;
         private string m_textureName;
 
+        [Obsolete]
         public void Setup(Material drawOldFrameMaterial, RenderTargetHandle handle, string textureName)
         {
             m_DrawOldFrameMaterial = drawOldFrameMaterial;
@@ -92,7 +94,7 @@ public class KeepFrameFeature : ScriptableRendererFeature
 
     private CopyFramePass m_CopyFrame;
     private DrawOldFramePass m_DrawOldFame;
-
+    [Obsolete]
     private RenderTargetHandle m_OldFrameHandle;
 
     public Settings settings = new Settings();
@@ -119,3 +121,4 @@ public class KeepFrameFeature : ScriptableRendererFeature
         renderer.EnqueuePass(m_DrawOldFame);
     }
 }
+*/

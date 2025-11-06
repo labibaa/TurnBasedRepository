@@ -22,24 +22,13 @@ public class GridPlayerAnimation : MonoBehaviour
         controller = GetComponent<CharacterController>();
         AssignAnimationID();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private void AssignAnimationID()
     {
         animIDSpeed = Animator.StringToHash("Speed");
         animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
     }
+    // Controls player animation in a grid-based movement system.
     public void SetMoveAnimation(float animValue,int animMotionValue)
     {
         animator.SetFloat(animIDSpeed,animValue);

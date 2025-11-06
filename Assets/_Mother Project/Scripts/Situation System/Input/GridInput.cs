@@ -7,6 +7,8 @@ using Starter;
 //using UnityEngine.Rendering.Universal.Internal;
 using Unity.VisualScripting;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.VirtualTexturing;
+using UnityEngine.Windows;
 
 public class GridInput : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class GridInput : MonoBehaviour
     public static event Action GridEscape;
     public static event Action GridMoveUndo;
 
-    private void OnEnable()
+    private void OnEnable() //Initializes input system and subscribes to input events.
     {
         starterInput = new StarterInput();
 
@@ -38,7 +40,7 @@ public class GridInput : MonoBehaviour
         starterInput.Grid.UndoMove.performed += GridUndo;
     }
 
-    private void GridUndo(InputAction.CallbackContext obj)
+    private void GridUndo(InputAction.CallbackContext obj) // Triggers the GridMoveUndo event when the undo move input is performed.
     {
         GridMoveUndo?.Invoke();
     }
@@ -63,7 +65,7 @@ public class GridInput : MonoBehaviour
     }
 
 
-    private void GridRes(InputAction.CallbackContext obj)
+    private void GridRes(InputAction.CallbackContext obj)  //Triggers the GridReset event when the reset input is performed.
     {
         GridReset?.Invoke();
     }

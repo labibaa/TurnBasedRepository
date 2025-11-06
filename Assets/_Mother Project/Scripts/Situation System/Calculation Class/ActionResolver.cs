@@ -102,7 +102,7 @@ public class ActionResolver : MonoBehaviour
     public int CalculateNewDamage(int diceValue,ImprovedActionStat actionScriptable)
     {
         
-        foreach(var rangeMapping in actionScriptable.RangeMappings)
+        foreach(var rangeMapping in actionScriptable.RangeMappings) //action damage range from dice value
         {
             if (diceValue>= rangeMapping.MinRangeValue && diceValue<=rangeMapping.MaxRangeValue)
             {

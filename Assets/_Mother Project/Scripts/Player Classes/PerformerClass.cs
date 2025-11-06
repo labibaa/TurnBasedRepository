@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PerformerClass : CharacterBaseClasses
 {
-    protected override void LevelUp()
+    public override void LevelUp()
     {
-        
+        HealthPoints += 10 + (Endurance * 2);
     }
 }

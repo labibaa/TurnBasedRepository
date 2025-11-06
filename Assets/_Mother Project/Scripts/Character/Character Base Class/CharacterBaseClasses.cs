@@ -8,18 +8,22 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     public string characterClass;
     [SerializeField] private string description;
     [SerializeField] private int level;
-    [SerializeField] private float strength;
-    [SerializeField] private float dexterity;
-    [SerializeField] private float charisma;
-    [SerializeField] private float arcana;
-    [SerializeField] private float skill;
-    [SerializeField] private float endurance;
-    [SerializeField] private float mind;
+    [SerializeField] private int strength;
+    [SerializeField] private int dexterity;
+    [SerializeField] private int intelligence;
+    [SerializeField] private int arcana;
+    [SerializeField] private int endurance;
     [SerializeField] private int healthPoints;
     [SerializeField] private int resolvePoints;
-    public float damageMultiplier;
+    [SerializeField] private float skill;
+    [SerializeField] private float mind;
+    [SerializeField] float damageMultiplier;
+    [SerializeField] int MaxExp;
+    [SerializeField] int lootUltiPoints;
+    public CurrentWeapon EquipedWeapon;
     [SerializeField]
     protected List<ImprovedActionStat> characterAvailableActions = new List<ImprovedActionStat>();
+    [SerializeField] protected List<InventoryItem> characterAvailableItems = new List<InventoryItem>();
     [SerializeField]
     protected UltimateActionsFactory playerUltimateFactory;
     protected IUltimate playerUltimate;
@@ -29,6 +33,8 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     protected ActionStat groundBlast; 
     [SerializeField]
     protected ActionStat dash;
+    [SerializeField]
+    protected ActionStat move;
 
 
     //  [SerializeField] private int baseDamage;
@@ -38,17 +44,19 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     public string Description { get => description; set => description = value; }
 
     public int Level { get => level; set => level = value; }
-    public float Strength { get => strength; set => strength = value; }
-    public float Dexterity { get => dexterity; set => dexterity = value; }
-    public float Charisma { get => charisma; set => charisma = value; }
-    public float Arcana { get => arcana; set => arcana = value; }
+    public int Strength { get => strength; set => strength = value; }
+    public int Dexterity { get => dexterity; set => dexterity = value; }
+    public int Intelligence { get => intelligence; set => intelligence = value; }
+    public int Arcana { get => arcana; set => arcana = value; }
     public float Skill { get => skill; set => skill = value; }
-    public float Endurance { get => endurance; set => endurance = value; }
+    public int Endurance { get => endurance; set => endurance = value; }
     public float Mind { get => mind; set => mind = value; }
     public int HealthPoints { get => healthPoints; set => healthPoints = value; }
     public int ResolvePoints { get => resolvePoints; set => resolvePoints = value; }
     // public int BaseDamage { get => baseDamage; set => baseDamage = value; }
-
+    public float DamageMultiplier { get => damageMultiplier; set => damageMultiplier = value; }
+    public int MaxExperiencePoint { get => MaxExp; set => MaxExp = value; }
+    public int LootUltiPoints { get => lootUltiPoints; set => lootUltiPoints = value; }
 
     //public float BaseDamage;
 
@@ -61,7 +69,7 @@ public abstract class CharacterBaseClasses : MonoBehaviour
             playerUltimate = playerUltimateFactory.CreateUltimate();
         }
     }
-    protected abstract void LevelUp();
+    public abstract void LevelUp();
 
     protected virtual void AddActionToAbility(ImprovedActionStat improvedAction) { 
 
@@ -83,6 +91,19 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     {
         return characterAvailableActions;
     }
+    public List<InventoryItem> GetAvailableItems()
+    {
+        return characterAvailableItems;
+    }
+    public void SetAvailableItems(List<InventoryItem> items)
+    {
+       characterAvailableItems = items;
+    }
+
+    public void SetAvailableActions(List<ImprovedActionStat> weaponActions)
+    {
+         characterAvailableActions = weaponActions;
+    }
     public ActionStat GetWarpAction()
     {
         return warpSurge;
@@ -90,6 +111,11 @@ public abstract class CharacterBaseClasses : MonoBehaviour
     public ActionStat GetDashAction()
     {
         return dash;
+    } 
+    
+    public ActionStat GetMoveAction()
+    {
+        return move;
     }
     public ActionStat GetGroundBlastAction()
     {

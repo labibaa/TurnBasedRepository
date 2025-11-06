@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -46,9 +46,7 @@ public class Counter : ICommand
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, player.GetComponent<CharacterBaseClasses>());
         TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), player, 2f);
 
-        player.GetComponent<PlayParticle>().actionSound = counter.actionSound;
-        player.GetComponent<PlayParticle>().particlePrefab = counter.ParticleSystem;
-        player.GetComponent<PlayParticle>().particlePrefabHit = counter.HitParticleSystem;
+        
         //CutsceneManager.instance.virtualCamera.LookAt = player.gameObject.transform;
         //CutsceneManager.instance.virtualCamera.Follow = player.gameObject.transform;
         //CutsceneManager.instance.virtualCamera.Priority = 15;

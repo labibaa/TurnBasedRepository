@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3531789289432434639}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &3531789289432434633
 VisualEffect:
@@ -42,10 +42,11 @@ VisualEffect:
   m_GameObject: {fileID: 3531789289432434639}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 4db4a387ce8248047900a1eec59af06f, type: 3}
-  m_InitialEventName: 
+  m_InitialEventName: in
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -162,13 +163,15 @@ VisualEffect:
           atime6: 0
           atime7: 0
           m_Mode: 0
+          m_ColorSpace: -1
           m_NumColorKeys: 4
           m_NumAlphaKeys: 2
         m_Name: ColorOverLife
         m_Overridden: 1
     m_NamedObject:
       m_Array:
-      - m_Value: {fileID: -2035068574203303680, guid: 11f75a8f8c051214caba1cff347e03a5, type: 3}
+      - m_Value: {fileID: -2035068574203303680, guid: 11f75a8f8c051214caba1cff347e03a5,
+          type: 3}
         m_Name: Mesh
         m_Overridden: 1
       - m_Value: {fileID: 2800000, guid: 009df1b40bbd4d746b5298a61cfd3936, type: 3}

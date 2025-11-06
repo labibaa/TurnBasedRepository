@@ -1,23 +1,25 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
 
 public class ActionNotification : MonoBehaviour
 {
-  
+    public static ActionNotification instance;
+    
     public RectTransform notification;
     public TextMeshProUGUI ActionNotificationText;
 
-    public RectTransform notification1;
-    public Text ActionNotificationText1;
     public float slideDuration = 1f;
     public float waitDuration = 1f;
 
- 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     public void AnimateNotification(string actionName)
     {
         // Calculate the target position for the slide-in animation
@@ -34,15 +36,6 @@ public class ActionNotification : MonoBehaviour
             .SetEase(Ease.OutQuint)
             .OnComplete(() => WaitAndSlideOut());
 
-    }
-
-    public void TextEdit(string text)
-    {
-      
-       
-        ActionNotificationText1.text = text;
-       
-        Debug.Log(text);
     }
 
     private void WaitAndSlideOut()

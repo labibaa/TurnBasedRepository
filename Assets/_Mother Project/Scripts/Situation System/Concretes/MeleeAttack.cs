@@ -1,5 +1,3 @@
-
-
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System.Collections;
@@ -7,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UIElements;
 
 public class MeleeAttack : ICommand
 {
@@ -29,19 +28,22 @@ public class MeleeAttack : ICommand
         ActionType = actionType;
 
     }
-
-
-
-
-
-
-
     public async UniTask Execute()
     {
        
         int attackOrder = checkOrder();
 
         float actionAccuracy = meleeAttack.ActionAccuracy;
+
+        if(meleeAttack.ActionName == "Stab" && playerTempStats.IsImbuementActive) // imbuement
+        {
+            ImprovedActionStat venomScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Stab");
+            ICommand puncture = new Puncture(player, target, playerTempStats, targetTempStats, venomScriptable, "melee");
+            puncture.Execute();
+            playerTempStats.IsImbuementActive = false;
+            player.GetComponent<SpawnVFX>().StopVFXEvent();
+        }
+
         if (targetTempStats.IsDodgeActive)
         {
             actionAccuracy = actionAccuracy - 50;
@@ -54,8 +56,8 @@ public class MeleeAttack : ICommand
         if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy) )
         {
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(meleeAttack.FirstPercentage, meleeAttack.SecondPercentage, meleeAttack.LastPercentage);
-
-            int damage =Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, meleeAttack) * player.damageMultiplier);
+            UI.instance.SendNotification(diceValue.ToString());
+            int damage =Mathf.RoundToInt(ActionResolver.instance.CalculateNewDamage(diceValue, meleeAttack) * playerTempStats.CurrentDamageMultiplier);
             Debug.Log("Dice: " + diceValue + " Damage: " + damage);
             if (targetTempStats.IsBlockActive)
             {
@@ -66,12 +68,12 @@ public class MeleeAttack : ICommand
             if (targetTempStats.IsCounterActive)
             {
                 //damages attacker is counter on
+                await HandleAnimation();
                 playerTempStats.CurrentHealth = Mathf.Max(HealthManager.instance.HealthCalculation(damage / 2, playerTempStats.CurrentHealth), 1);
                 targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                await HandleAnimation();
                 UI.instance.ShowFlyingText((damage * -1).ToString(), player.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(playerTempStats,attackOrder);
-                await HealthManager.instance.PlayerMortality(targetTempStats, attackOrder);
+                await HealthManager.instance.PlayerMortality(playerTempStats, playerTempStats);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
                 //ImprovedActionStat meleeScriptable = DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Punch");
                 //ICommand meleeAction = new MeleeAttack(target, player, targetTempStats, playerTempStats, meleeScriptable, "SingleMelee");
@@ -80,12 +82,10 @@ public class MeleeAttack : ICommand
             }
             else
             {
-                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
-                
                 await HandleAnimation();
-
+                targetTempStats.CurrentHealth = HealthManager.instance.HealthCalculation(damage, targetTempStats.CurrentHealth);
                 UI.instance.ShowFlyingText((damage * -1).ToString(), target.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
-                await HealthManager.instance.PlayerMortality(targetTempStats,attackOrder);
+                await HealthManager.instance.PlayerMortality(targetTempStats, playerTempStats);
 
             }
 
@@ -96,14 +96,14 @@ public class MeleeAttack : ICommand
 
     async UniTask HandleAnimation()
     {
-        TempManager.instance.CharacterRotation(target, player, 2f);
-        player.GetComponent<PlayParticle>().target = target.gameObject;
+        await TempManager.instance.CharacterRotation(target, player, 2f);
+      /*  player.GetComponent<PlayParticle>().target = target.gameObject;
         player.GetComponent<PlayParticle>().actionSound = meleeAttack.actionSound;
         // player.GetComponent<PlayParticle>().InstantiateParticleEffect(meleeAttack.ParticleSystem);
 
         player.GetComponent<PlayParticle>().particlePrefab = meleeAttack.ParticleSystem;
         player.GetComponent<PlayParticle>().particlePrefabHit = meleeAttack.HitParticleSystem;
-        target.GetComponent<PlayParticle>().particlePrefabHurt = meleeAttack.HurtParticleSystem;
+        target.GetComponent<PlayParticle>().particlePrefabHurt = meleeAttack.HurtParticleSystem;*/
 
         //CutsceneManager.instance.virtualCamera.Follow = player.gameObject.transform;
         //CutsceneManager.instance.virtualCamera.LookAt = player.gameObject.transform;

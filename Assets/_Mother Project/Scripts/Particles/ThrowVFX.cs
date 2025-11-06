@@ -14,7 +14,8 @@ public class ThrowVFX : MonoBehaviour
     public float ThrowSpeed = 12.0f;
     public static event Action hitTrigger;
     public ParticleSystem particlePrefab;
-   // public Vector3 controlPointOffset = new Vector3(0, 5, 0);
+    // public Vector3 controlPointOffset = new Vector3(0, 5, 0);
+    public String hurtAnimation;
     bool Intarget;
 
     void Update()
@@ -58,9 +59,17 @@ public class ThrowVFX : MonoBehaviour
                
                 Intarget = true;
                 hitTrigger?.Invoke();
-                if(targetAnimator!= null)
+                if(targetAnimator!= null )
                 {
-                    targetAnimator.GetComponent<Animator>().Play("Damage1");
+                    if(hurtAnimation != null)
+                    {
+                        targetAnimator.GetComponent<Animator>().Play(hurtAnimation);
+                    }
+                    else
+                    {
+                        targetAnimator.GetComponent<Animator>().Play("Damage1"); //change the hard coded animation 
+                    }
+                   
                 }
                
             }
