@@ -90,9 +90,9 @@ void Start()
 	{
 		Vector3 downforce = Vector3.down; 
 		float downPressure;
-		if (rb.velocity.magnitude > 5)
+		if (rb.linearVelocity.magnitude > 5)
 		{
-			downPressure = rb.velocity.magnitude;
+			downPressure = rb.linearVelocity.magnitude;
 			rb.AddForce(downforce * downPressure, ForceMode.Force);
 		}
 	}
@@ -110,7 +110,7 @@ void Start()
 		maxSteeringAngle = Mathf.LerpAngle(
 			maxSteeringAngle, 
 			//These two magic numbers were derived by doing a linear regression (on constants from the 20 lines that this replaced).
-			Mathf.Clamp(66.614f * Mathf.Pow(0.893982f, rb.velocity.magnitude), 5, 50), 
+			Mathf.Clamp(66.614f * Mathf.Pow(0.893982f, rb.linearVelocity.magnitude), 5, 50), 
 			speedSteerControlTime
 		);			
 	}
@@ -131,7 +131,7 @@ void Start()
 		Vector3 currentRot = transform.rotation.eulerAngles;
 
 		//Case: not moving much
-		if (rb.velocity.magnitude < 1)
+		if (rb.linearVelocity.magnitude < 1)
 		{
 			layingAmount = Mathf.LerpAngle(layingAmount, 0f, 0.05f);		
 			transform.rotation = Quaternion.Euler(currentRot.x, currentRot.y, layingAmount);

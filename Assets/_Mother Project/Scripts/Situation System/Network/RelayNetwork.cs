@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
-using Unity.Services.Authentication;
+
 using Unity.Services.Core;
-using Unity.Services.Relay;
-using Unity.Services.Relay.Models;
+
+
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
@@ -33,82 +33,82 @@ public class RelayNetwork : MonoBehaviour
         await UnityServices.InitializeAsync();
 
 
-        AuthenticationService.Instance.SignedIn += (() => {
-            Debug.Log("Signed in as " + AuthenticationService.Instance.PlayerId);
-        });
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        //AuthenticationService.Instance.SignedIn += (() => {
+        //    Debug.Log("Signed in as " + AuthenticationService.Instance.PlayerId);
+        //});
+        //await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
 
-    public async void CreateRelay()
-    {
-        try
-        {
-            Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
-            string joinCodeHost = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-            Debug.Log("JoinCode:" + joinCodeHost);
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
-                allocation.RelayServer.IpV4,
-                (ushort)allocation.RelayServer.Port,
-                allocation.AllocationIdBytes,
-                allocation.Key,
-                allocation.ConnectionData
+    //public async void CreateRelay()
+    //{
+        //try
+        //{
+            //Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
+            //string joinCodeHost = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+        //    Debug.Log("JoinCode:" + joinCodeHost);
+        //    NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
+        //        allocation.RelayServer.IpV4,
+        //        (ushort)allocation.RelayServer.Port,
+        //        allocation.AllocationIdBytes,
+        //        allocation.Key,
+        //        allocation.ConnectionData
 
-                );
-            roomJoinCode.text = joinCodeHost;
-            NetworkManager.Singleton.StartHost();
-            codeInputField.SetActive(false);
-            serverBtn.SetActive(false);
-            clientBtn.SetActive(false);
-            hostBtn.SetActive(false);
+        //        );
+        //    roomJoinCode.text = joinCodeHost;
+        //    NetworkManager.Singleton.StartHost();
+        //    codeInputField.SetActive(false);
+        //    serverBtn.SetActive(false);
+        //    clientBtn.SetActive(false);
+        //    hostBtn.SetActive(false);
 
-        }
-        catch (RelayServiceException exception)
-        {
-            Debug.Log(exception.Message);
-        }
-
-
-    }
-
-    async void JoinRelay(string joinCode)
-    {
-        try
-        {
-            Debug.Log("Joining relay : " + joinCode);
-            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+        //}
+        //catch (RelayServiceException exception)
+        //{
+        //    Debug.Log(exception.Message);
+        //}
 
 
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(
-                joinAllocation.RelayServer.IpV4,
-                (ushort)joinAllocation.RelayServer.Port,
-                joinAllocation.AllocationIdBytes,
-                joinAllocation.Key,
-                joinAllocation.ConnectionData,
-                joinAllocation.HostConnectionData
+    //}
+
+    //async void JoinRelay(string joinCode)
+    //{
+        //try
+        //{
+        //    Debug.Log("Joining relay : " + joinCode);
+        //    JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
 
-                );
-            NetworkManager.Singleton.StartClient();
-            roomJoinCode.text = joinCode;
-            codeInputField.SetActive(false);
-            serverBtn.SetActive(false);
-            clientBtn.SetActive(false);
-            hostBtn.SetActive(false);
+        //    NetworkManager.Singleton.GetComponent<UnityTransport>().SetClientRelayData(
+        //        joinAllocation.RelayServer.IpV4,
+        //        (ushort)joinAllocation.RelayServer.Port,
+        //        joinAllocation.AllocationIdBytes,
+        //        joinAllocation.Key,
+        //        joinAllocation.ConnectionData,
+        //        joinAllocation.HostConnectionData
 
 
-        }
-        catch (RelayServiceException exception)
-        {
-            Debug.Log(exception.Message);
-        }
+        //        );
+        //    NetworkManager.Singleton.StartClient();
+        //    roomJoinCode.text = joinCode;
+        //    codeInputField.SetActive(false);
+        //    serverBtn.SetActive(false);
+        //    clientBtn.SetActive(false);
+        //    hostBtn.SetActive(false);
 
-    }
+
+        //}
+        //catch (RelayServiceException exception)
+        //{
+        //    Debug.Log(exception.Message);
+        //}
+
+    //}
 
     public void JoinRelayHelper()
     {
-        string joinCode = joinCodeInput.text;
-        JoinRelay(joinCode);
+        //string joinCode = joinCodeInput.text;
+        //JoinRelay(joinCode);
     }
 
 
