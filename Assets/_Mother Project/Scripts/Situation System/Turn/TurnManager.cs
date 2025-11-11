@@ -180,11 +180,11 @@ public class TurnManager : MonoBehaviour
         currentPlayer.PlayerActionListPanel.SetActive(true);
 
        // currentPlayer.PlayerUltimateBar.SetActive(true);
-        if(currentPlayer.CharacterTeam == TeamName.TeamA)
-        {
-            currentPlayer.playerItemPanel.SetActive(true);
-            currentPlayer.GetComponent<IsoMetricToTPS>().enabled = true;
-        }
+        //if(currentPlayer.CharacterTeam == TeamName.TeamA)
+        //{
+        //    currentPlayer.playerItemPanel.SetActive(true);
+        //    currentPlayer.GetComponent<IsoMetricToTPS>().enabled = true;
+        //}
 
         TeamManager.instance.TeamMemberList(currentPlayer.CharacterTeam);
 

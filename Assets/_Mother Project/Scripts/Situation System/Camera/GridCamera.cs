@@ -20,13 +20,13 @@ public class
 
     private void OnEnable()
     {
-        //GridSystem.OnGridGeneration += setCamera;
+        GridSystem.OnGridGeneration += setCamera;
         HealthManager.OnGridDisable += setCamera;
     }
 
     private void OnDisable()
     {
-       // GridSystem.OnGridGeneration -= setCamera;
+       GridSystem.OnGridGeneration -= setCamera;
         HealthManager.OnGridDisable -= setCamera;
     }
 
@@ -42,7 +42,7 @@ public class
         }
         else
         {
-            gridCam.Priority = 11;
+            gridCam.Priority = 2;
             isGridCamera = false;
         }
        

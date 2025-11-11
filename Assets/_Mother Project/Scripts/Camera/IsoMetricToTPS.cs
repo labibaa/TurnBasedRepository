@@ -13,8 +13,8 @@ public class IsoMetricToTPS : MonoBehaviour
     {
         if (isoCamera != null && tpsCamera != null)
         {
-            isoCamera.Priority = 15;
-            tpsCamera.Priority = 5;
+            isoCamera.Priority = 5;
+            tpsCamera.Priority = 15;
         }
         else
         {
