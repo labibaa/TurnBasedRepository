@@ -37,12 +37,12 @@ public class
         if (!isGridCamera)
         {
             
-            gridCam.Priority = 15;
+            gridCam.Priority = 20;
             isGridCamera = true;
         }
         else
         {
-            gridCam.Priority = 2;
+            //gridCam.Priority = 2;
             isGridCamera = false;
         }
        
