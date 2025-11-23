@@ -48,7 +48,7 @@ public class TVInteractor : MonoBehaviour, IInteractable
         textMeshPro.text = "";
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
 
         ShowText("This TV seems to be older than me. Takes me back to the time we all used to enjoy laughing at hindi soap dramas. ");

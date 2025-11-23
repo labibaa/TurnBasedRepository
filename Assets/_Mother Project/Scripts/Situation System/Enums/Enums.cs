@@ -9,6 +9,7 @@ public enum GameStates
     EnemyTurn,
     Simulation,
     GhostPlay,
+    Objective,
     SituationOff
 
 }
@@ -308,6 +309,14 @@ public enum SceneIndexes {
     PersistantScene=0
 
 
+}
+
+public enum ObjectiveState
+{
+    Locked,
+    Active,
+    Completed,
+    Failed
 }
 
 

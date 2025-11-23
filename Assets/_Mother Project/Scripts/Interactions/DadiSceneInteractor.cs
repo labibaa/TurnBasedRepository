@@ -11,7 +11,7 @@ public class DadiSceneInteractor : MonoBehaviour, IInteractable
         SceneManager.LoadScene(1);
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
         dadiSceneChange();
 

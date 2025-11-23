@@ -58,8 +58,11 @@ public class Dash : ICommand
     }
     public async void HandleAnimation()
     {
-        Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, Agent.GetComponent<CharacterBaseClasses>());
-        await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<CharacterBaseClasses>(), 2f);
+        if (!TempManager.instance.IsObjective)
+        {
+            Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, Agent.GetComponent<CharacterBaseClasses>());
+            await TempManager.instance.CharacterRotation(closestTarget.GetComponent<CharacterBaseClasses>(), Agent.GetComponent<CharacterBaseClasses>(), 2f);
+        }
 
     }
 

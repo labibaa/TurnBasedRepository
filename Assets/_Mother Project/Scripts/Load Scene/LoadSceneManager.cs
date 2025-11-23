@@ -40,16 +40,16 @@ public class LoadSceneManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
+       /* SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;*/
         SwitchMC.OnCharacterRemove += LeftOutCharacter;
         SwitchMC.OnPrevScene += LoadPrevScene;
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        /*SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;*/
         SwitchMC.OnPrevScene -= LoadPrevScene;
     }
     private void Start()
@@ -195,5 +195,14 @@ public class LoadSceneManager : MonoBehaviour
         prevScene = leftOutcharacters[0].GetComponent<TemporaryStats>().currentScene;
         LoadScene(prevScene);
        
+    }
+
+    public void GameDataLoad()
+    {
+        foreach (IPersistableData player_GO in persistableDataList)
+        {
+            GameObject Ch_obj = ((MonoBehaviour)player_GO).gameObject;
+            ShowSavedData.Instance.LoadTemporaryStatsNextScene(Ch_obj); //load from json
+        }
     }
 }

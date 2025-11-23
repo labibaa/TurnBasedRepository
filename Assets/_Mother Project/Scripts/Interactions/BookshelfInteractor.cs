@@ -44,7 +44,7 @@ public class BookshelfInteractor : MonoBehaviour, IInteractable
         textMeshPro.text = "";
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
         ShowText("Mon runs her fingers along the spines of the books, feeling a strange sense of curiosity mingled with apprehension.");
 

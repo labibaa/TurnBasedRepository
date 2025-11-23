@@ -7,7 +7,7 @@ public class InventoryInteractor : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject InventoryHolder;
     [SerializeField] Inventory_UI inventoryUI;
-    public void Interact()
+    public void Interact(GameObject p)
     {
         ActivateInventory();
     }
