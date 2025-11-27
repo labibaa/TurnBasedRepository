@@ -67,7 +67,7 @@ public class CameraController : MonoBehaviour
         {
             if (isGridOn)
             {
-                // Grid turned ON -> make the vcam follow & look at this GameObject
+                // Grid turned ON -> make the vcam follow & look at this GameObject (the rig)
                 cinemachineVirtualCamera.Follow = this.transform;
                 cinemachineVirtualCamera.LookAt = this.transform;
             }
@@ -87,14 +87,10 @@ public class CameraController : MonoBehaviour
             HandleMovement();
             
         }
-        else
-        {
-            // when grid is off, camera is controlled by Cinemachine following the mainCharacter
-            // nothing else to do every frame here
-        }
-
         HandleRotation();
         HandleZoom();
+
+        // when grid is off, camera is controlled by Cinemachine following the mainCharacter
     }
 
     /// <summary>
@@ -127,43 +123,58 @@ public class CameraController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 inputMoveDir = new Vector3(0, 0, 0);
+        Vector3 inputMoveDir = Vector3.zero;
+
         if (Input.GetKey(KeyCode.W))
-        {
-            inputMoveDir.z = +1f;
-        }
+            inputMoveDir.z += 1f;
         if (Input.GetKey(KeyCode.S))
-        {
-            inputMoveDir.z = -1f;
-        }
+            inputMoveDir.z -= 1f;
         if (Input.GetKey(KeyCode.A))
-        {
-            inputMoveDir.x = -1f;
-        }
+            inputMoveDir.x -= 1f;
         if (Input.GetKey(KeyCode.D))
-        {
-            inputMoveDir.x = +1f;
-        }
+            inputMoveDir.x += 1f;
+
+        if (inputMoveDir.sqrMagnitude < 0.01f)
+            return;
+
+        inputMoveDir = inputMoveDir.normalized;
 
         float moveSpeed = 10f;
 
-        Vector3 moveVector = transform.forward * inputMoveDir.z + transform.right * inputMoveDir.x;
+        // Use the *camera's* orientation for movement
+        Transform camT = cinemachineVirtualCamera.transform;
+
+        Vector3 forward = camT.forward;
+        forward.y = 0f;
+        forward.Normalize();
+
+        Vector3 right = camT.right;
+        right.y = 0f;
+        right.Normalize();
+
+        Vector3 moveVector = forward * inputMoveDir.z + right * inputMoveDir.x;
+
+        // Move the rig (this), camera follows via Cinemachine
         transform.position += moveVector * moveSpeed * Time.deltaTime;
     }
+
 
     private void HandleRotation()
     {
         float rotationInput = 0f;
-        if (Input.GetKey(KeyCode.Q)) rotationInput = +1f;
-        if (Input.GetKey(KeyCode.E)) rotationInput = -1f;
+        if (Input.GetKey(KeyCode.Q)) rotationInput += 1f;
+        if (Input.GetKey(KeyCode.E)) rotationInput -= 1f;
+
+        if (Mathf.Abs(rotationInput) < 0.01f)
+            return;
 
         float rotationSpeed = 100f;
         float delta = rotationInput * rotationSpeed * Time.deltaTime;
 
-       
-        cinemachineVirtualCamera.transform.Rotate(0f, delta, 0f, Space.World);
-        
+        // Rotate the virtual camera around world Y
+        cinemachineVirtualCamera.transform.Rotate(Vector3.up, delta, Space.World);
     }
+
 
 
     private void HandleZoom()
@@ -171,18 +182,19 @@ public class CameraController : MonoBehaviour
         if (framingTransposer == null) return;
 
         float zoomAmount = 1f;
-        if (Input.mouseScrollDelta.y > 0)
-        {
+
+        if (Input.mouseScrollDelta.y > 0f)
             targetCameraDistance -= zoomAmount;
-        }
-        if (Input.mouseScrollDelta.y < 0)
-        {
+        else if (Input.mouseScrollDelta.y < 0f)
             targetCameraDistance += zoomAmount;
-        }
 
         targetCameraDistance = Mathf.Clamp(targetCameraDistance, MIN_CAMERA_DISTANCE, MAX_CAMERA_DISTANCE);
 
         float zoomSpeed = 10f;
-        framingTransposer.m_CameraDistance = Mathf.Lerp(framingTransposer.m_CameraDistance, targetCameraDistance, Time.deltaTime * zoomSpeed);
+        framingTransposer.m_CameraDistance = Mathf.Lerp(
+            framingTransposer.m_CameraDistance,
+            targetCameraDistance,
+            Time.deltaTime * zoomSpeed
+        );
     }
 }

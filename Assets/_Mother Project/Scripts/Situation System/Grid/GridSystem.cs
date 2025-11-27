@@ -60,6 +60,9 @@ public class GridSystem : MonoBehaviour
 
     int expGain = 0;
 
+    [SerializeField]
+    private List<GameObject> enemiesToDestroyOnGridStart = new List<GameObject>();
+
     private void Awake()
     {
 
@@ -129,6 +132,23 @@ public class GridSystem : MonoBehaviour
          }*/     
     }
 
+    private void DestroyEnemiesOnGridStart()
+    {
+        if (enemiesToDestroyOnGridStart == null || enemiesToDestroyOnGridStart.Count == 0)
+            return;
+
+        foreach (var enemy in enemiesToDestroyOnGridStart)
+        {
+            if (enemy != null)
+            {
+                Destroy(enemy);
+            }
+        }
+
+        // Optional: clear the list so this only happens once
+        enemiesToDestroyOnGridStart.Clear();
+    }
+
     void SetMainPlayer()
     {
         player = SwitchMC.Instance.mainCharacter;
@@ -159,6 +179,7 @@ public class GridSystem : MonoBehaviour
         if (gridPrefab)
         {
             OnGridGeneration?.Invoke();//Gridcamera is subscribed to this event and Camera is switched to  gridCamera 
+            DestroyEnemiesOnGridStart();
             player.GetComponent<ThirdPersonController>().DisableAnim();
             player.GetComponent<ThirdPersonController>().enabled = false;
             //player.GetComponent<CharacterController>().enabled = false;
