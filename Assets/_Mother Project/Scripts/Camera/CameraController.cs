@@ -17,6 +17,13 @@ public class CameraController : MonoBehaviour
     // track previous grid state so we react only on changes
     private bool prevIsGridOn = false;
 
+    // -------- NEW: how the rig follows the main character when grid is OFF --------
+    [Header("Rig follow when Grid is OFF")]
+    [SerializeField] private Vector3 rigOffsetFromCharacter = Vector3.zero;
+    [SerializeField] private float rigFollowLerpSpeed = 20f;
+    [SerializeField] private bool copyRotationWhenGridOff = false;
+    // ------------------------------------------------------------------------------
+
     private void OnEnable()
     {
         // update follow target when SwitchMC signals a change
@@ -75,6 +82,9 @@ public class CameraController : MonoBehaviour
             {
                 // Grid turned OFF -> follow main character (if any)
                 UpdateFollowTarget();
+
+                // Also snap the rig to the main character so there is no jump when toggling back
+                SnapRigToMainCharacter();
             }
 
             prevIsGridOn = isGridOn;
@@ -85,12 +95,22 @@ public class CameraController : MonoBehaviour
         if (isGridOn)
         {
             HandleMovement();
-            
         }
+
         HandleRotation();
         HandleZoom();
 
         // when grid is off, camera is controlled by Cinemachine following the mainCharacter
+        // and the rig itself will follow the main character in LateUpdate (see below).
+    }
+
+    private void LateUpdate()
+    {
+        // When grid is OFF, keep the rig moving along with the main character
+        if (GridSystem.instance != null && !GridSystem.instance.IsGridOn)
+        {
+            SmoothFollowRigToMainCharacter();
+        }
     }
 
     /// <summary>
@@ -120,6 +140,46 @@ public class CameraController : MonoBehaviour
             cinemachineVirtualCamera.LookAt = null;
         }
     }
+
+    // -------- NEW: Rig follow helpers --------
+    private void SmoothFollowRigToMainCharacter()
+    {
+        if (SwitchMC.Instance == null || SwitchMC.Instance.mainCharacter == null) return;
+
+        Transform mainT = SwitchMC.Instance.mainCharacter.transform;
+
+        // Position follow
+        Vector3 targetPos = mainT.position + rigOffsetFromCharacter;
+        transform.position = Vector3.Lerp(
+            transform.position,
+            targetPos,
+            rigFollowLerpSpeed * Time.deltaTime
+        );
+
+        // Optional: copy rotation
+        if (copyRotationWhenGridOff)
+        {
+            transform.rotation = Quaternion.Lerp(
+                transform.rotation,
+                mainT.rotation,
+                rigFollowLerpSpeed * Time.deltaTime
+            );
+        }
+    }
+
+    private void SnapRigToMainCharacter()
+    {
+        if (SwitchMC.Instance == null || SwitchMC.Instance.mainCharacter == null) return;
+
+        Transform mainT = SwitchMC.Instance.mainCharacter.transform;
+        transform.position = mainT.position + rigOffsetFromCharacter;
+
+        if (copyRotationWhenGridOff)
+        {
+            transform.rotation = mainT.rotation;
+        }
+    }
+    // -----------------------------------------
 
     private void HandleMovement()
     {
@@ -158,7 +218,6 @@ public class CameraController : MonoBehaviour
         transform.position += moveVector * moveSpeed * Time.deltaTime;
     }
 
-
     private void HandleRotation()
     {
         float rotationInput = 0f;
@@ -174,8 +233,6 @@ public class CameraController : MonoBehaviour
         // Rotate the virtual camera around world Y
         cinemachineVirtualCamera.transform.Rotate(Vector3.up, delta, Space.World);
     }
-
-
 
     private void HandleZoom()
     {
