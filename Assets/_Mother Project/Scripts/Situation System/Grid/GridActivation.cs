@@ -1,4 +1,5 @@
-using StarterAssets;
+﻿using StarterAssets;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,9 @@ public class GridActivation : MonoBehaviour
 
     [SerializeField]
     GameObject gridAudio;
+
+    public CanvasGroup blackScreen;
+
 
     public TeamName myTeam;
    // int count =0;
@@ -85,8 +89,10 @@ public class GridActivation : MonoBehaviour
         foreach (GameObject ui in uiGameObjects)
         {
             ui.SetActive(true);
+            StartCoroutine(BlackScreenTransition());
+
         }
-        
+
         TurnManager.instance.StartTurn();
         PlayerStatUI.instance.CreateSummaryList();
         DisableUIObjects();
@@ -94,6 +100,28 @@ public class GridActivation : MonoBehaviour
         gridAudio.GetComponent<AudioSource>().Play();
         this.GetComponent<BoxCollider>().enabled = false;
 
+    }
+
+    private IEnumerator BlackScreenTransition()
+    {
+        // Fade in (0 → 1)
+        for (float t = 0; t < 0.1f; t += Time.deltaTime)
+        {
+            blackScreen.alpha = t;
+            yield return null;
+        }
+        blackScreen.alpha = 1;
+
+        // Hold for 3s
+        yield return new WaitForSeconds(1f);
+
+        // Fade out (1 → 0)
+        for (float t = 0; t < 1f; t += Time.deltaTime)
+        {
+            blackScreen.alpha = 1 - t;
+            yield return null;
+        }
+        blackScreen.alpha = 0;
     }
 
 
