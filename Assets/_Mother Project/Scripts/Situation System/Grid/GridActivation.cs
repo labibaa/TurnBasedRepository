@@ -104,19 +104,19 @@ public class GridActivation : MonoBehaviour
 
     private IEnumerator BlackScreenTransition()
     {
-        // Fade in (0 → 1)
-        for (float t = 0; t < 0.1f; t += Time.deltaTime)
+        // Fade in (0 → 0.2)
+        for (float t = 0; t < 0.2f; t += Time.deltaTime)
         {
             blackScreen.alpha = t;
             yield return null;
         }
         blackScreen.alpha = 1;
 
-        // Hold for 3s
-        yield return new WaitForSeconds(1f);
+        // Hold for 1.5s
+        yield return new WaitForSeconds(1.5f);
 
-        // Fade out (1 → 0)
-        for (float t = 0; t < 1f; t += Time.deltaTime)
+        // Fade out (1 → 0.2)
+        for (float t = 0; t < 0.2f; t += Time.deltaTime)
         {
             blackScreen.alpha = 1 - t;
             yield return null;
