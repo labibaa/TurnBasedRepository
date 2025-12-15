@@ -71272,15 +71272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a4862a68f8229439294a3ccd945175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Objectives:
-  - ObjectiveID: 
-    Title: 
-    Description: 
-    RequiredObjectives:
-    - ObjectiveID: 
-      Title: 
-      Description: 
-      RequiredObjectives: []
+  Objectives: []
 --- !u!1 &770068393
 GameObject:
   m_ObjectHideFlags: 0
@@ -197644,6 +197636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733330556}
+  - component: {fileID: 1733330557}
   m_Layer: 0
   m_Name: ----------MANAGERS---------
   m_TagString: Untagged
@@ -197671,6 +197664,18 @@ Transform:
   - {fileID: 766571507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1733330557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733330555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ccb8d532cd10e54a81b8194d15e786f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1753216374
 GameObject:
   m_ObjectHideFlags: 0
@@ -217188,6 +217193,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 16642268}
     m_Modifications:
+    - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: CurrentResolve
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: gridCoordinateSpawn.x

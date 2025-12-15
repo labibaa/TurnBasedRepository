@@ -69,7 +69,14 @@ public abstract class CharacterBaseClasses : MonoBehaviour
             playerUltimate = playerUltimateFactory.CreateUltimate();
         }
     }
+
     public abstract void LevelUp();
+    public abstract void HealthLevelUp();
+    public abstract void DexterityLevelUp();
+    public abstract void ArcanaLevelUp();
+    public abstract void IntelligenceLevelUp();
+    public abstract void StregthLevelUp();
+    public abstract void EnduranceLevelUp();  
 
     protected virtual void AddActionToAbility(ImprovedActionStat improvedAction) { 
 

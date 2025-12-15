@@ -21,7 +21,7 @@ public class ActionSpawner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentLevel;
     [SerializeField] private Image playerHP;
     [SerializeField] private Image mainCharacterSprite;
-
+    [SerializeField] TextMeshProUGUI characterName_txt;
     private void Awake()
     {
         if (Instance == null) 
@@ -39,21 +39,21 @@ public class ActionSpawner : MonoBehaviour
         //    FillDefaultSlot();
         //}
 
-        if (Input.GetKeyDown(KeyCode.V))
+        /*if (Input.GetKeyDown(KeyCode.V))
         {
             SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().LevelUp();
            // WeaponManager.instance.WeaponLevelUp();
-        }
+        }*/
 
     }
     public void ShowMainCharacterData()
     {
         var currentMC = InventoryManager.Instance.GetCurrentMC();
         // ShowSavedData.Instance.LoadTemporaryStatsNextScene(currentMC); 
-
+        characterName_txt.text = currentMC.GetComponent<CharacterBaseClasses>().characterName.ToString();
         mainCharacterSprite.sprite = currentMC.GetComponent<TemporaryStats>().avatarHead;
         playerHP.fillAmount = currentMC.GetComponent<CharacterBaseClasses>().HealthPoints;
-        currencyText.text = CurrencySystem.instance.GetCurrency().ToString();
+        currencyText.text = currentMC.GetComponent<TemporaryStats>().CurrentExp.ToString();
         currentLevel.text = currentMC.GetComponent<CharacterBaseClasses>().Level.ToString();
     }
     public void ShowActionDetails(string details)

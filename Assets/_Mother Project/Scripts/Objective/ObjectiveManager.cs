@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectiveManager : MonoBehaviour
@@ -16,6 +17,12 @@ public class ObjectiveManager : MonoBehaviour
         }
         Instance = this;
     }
+
+    public Objective GetObjective(string objectiveID)
+    {
+        return Objectives.FirstOrDefault(o => o.ObjectiveID == objectiveID);
+    }
+
 
     // Call when something happens that MAY affect objective progress or completion
     public void TriggerEvaluation(Objective obj)
