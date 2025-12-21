@@ -93,31 +93,8 @@ public class HealthManager : MonoBehaviour
             Debug.Log("Current" + TurnManager.instance.currentPlayerIndex);
             if ( TeamManager.instance.IsAnyTeamEmpty())//TurnManager.instance.players.Count<2)
             {
-                //UI.instance.SendNotification($"{TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam} has Won");
-               
-                //TurnManager.instance.players[0].gameObject.SetActive(false);
-               
-                PlayerStatUI.instance.CharacterUIList.Clear();
-                
 
-                for (int i = PlayerStatUI.instance.SummaryStatParentEnemy.gameObject.transform.childCount - 1; i >= 0; i--)
-                {
-                    // Get the child at index 'i'
-                    Transform child = PlayerStatUI.instance.SummaryStatParentEnemy.gameObject.transform.GetChild(i);
-
-                    // Destroy the child GameObject
-                    Destroy(child.gameObject);
-                }
-
-                TempManager.instance.currentState = GameStates.SituationOff;
-                HandleTurnNew.instance.SituationEndCondition = true;
-                TurnManager.instance.currentPlayerIndex = 0;
-                //TeamManager.instance.ResetPlayerTeamList();
-                //TeamManager.instance.PopulateTeamPlayerList();
-                OnGridDisable?.Invoke();
-                //UI.instance.inGameCanvas.SetActive(false);
-                //UI.instance.winMenu.SetActive(true);
-
+                GridStop();
                 if(TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam != TeamName.TeamA)
                 {
                     Debug.Log("Mon loses");
@@ -153,6 +130,33 @@ public class HealthManager : MonoBehaviour
 
     }
 
+    public void GridStop()
+    {
+        //UI.instance.SendNotification($"{TurnManager.instance.players[0].GetComponent<TemporaryStats>().CharacterTeam} has Won");
+
+        //TurnManager.instance.players[0].gameObject.SetActive(false);
+
+        PlayerStatUI.instance.CharacterUIList.Clear();
+
+
+        for (int i = PlayerStatUI.instance.SummaryStatParentEnemy.gameObject.transform.childCount - 1; i >= 0; i--)
+        {
+            // Get the child at index 'i'
+            Transform child = PlayerStatUI.instance.SummaryStatParentEnemy.gameObject.transform.GetChild(i);
+
+            // Destroy the child GameObject
+            Destroy(child.gameObject);
+        }
+
+        TempManager.instance.currentState = GameStates.SituationOff;
+        HandleTurnNew.instance.SituationEndCondition = true;
+        TurnManager.instance.currentPlayerIndex = 0;
+        //TeamManager.instance.ResetPlayerTeamList();
+        //TeamManager.instance.PopulateTeamPlayerList();
+        OnGridDisable?.Invoke();
+        //UI.instance.inGameCanvas.SetActive(false);
+        //UI.instance.winMenu.SetActive(true);
+    }
     public static bool RemoveAdjacentDuplicates(List<PlayerTurn> list)
     {
         if (list.Count < 2) // Handle lists with less than 2 elements

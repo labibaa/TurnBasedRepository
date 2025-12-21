@@ -29,7 +29,7 @@ public class DiceNumberGenerator : MonoBehaviour
         // float rand = Random.value;
 
 
-         randomProbability = Random.Range(1, 101);
+         randomProbability = Random.Range(1, 101);// change this random number with logic for crit chance
 
         if (randomProbability <= probCluster1)
         {

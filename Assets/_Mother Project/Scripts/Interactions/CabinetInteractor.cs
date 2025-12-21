@@ -43,7 +43,7 @@ public class CabinetInteractor : MonoBehaviour, IInteractable
         textMeshPro.text = "";
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
         ShowText("Mon opens the cabinet doors cautiously, revealing a collection of dusty board games and a hint of nostalgia.");
 

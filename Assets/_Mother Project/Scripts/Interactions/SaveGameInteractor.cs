@@ -10,7 +10,7 @@ public class SaveGameInteractor : MonoBehaviour,IInteractable
         persistableDataList = LoadSceneManager.instance.FindAllIPersitableDataObjects();
        
     }
-    public void Interact()
+    public void Interact(GameObject p)
     {
         SaveGameData();
     }

@@ -10,7 +10,7 @@ public class BoxInteract : MonoBehaviour,IInteractable
       //  UI.instance.SendNotification("Player Rp is Zero");
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
         boxInterracted();
     }

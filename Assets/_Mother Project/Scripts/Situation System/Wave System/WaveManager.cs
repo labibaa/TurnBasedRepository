@@ -55,13 +55,10 @@ public class WaveManager : MonoBehaviour
         TotalNumberOfWavesThisScene = PlayerWaves.Count;
     }
 
-    void Update()
-    {
-        // No changes needed in Update
-    }
 
     void GridWaveStartLocation()
     {
+        MoveMatchedToFirst(PlayerWaves[ currentWaveCount], SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
         GridSystem.instance.gridStartLocation = gridWaveStartLocation[currentWaveCount];
     }
 
@@ -164,5 +161,20 @@ public class WaveManager : MonoBehaviour
     {
         UnLinkedCharacter = gameObject;
     }
- 
+
+    public void MoveMatchedToFirst(WaveWrapperClass wave, PlayerTurn target)
+    {
+        if (wave == null || wave.CharactersOfTheWave == null)
+            return;
+
+        var list = wave.CharactersOfTheWave;
+
+        int index = list.IndexOf(target);
+        if (index <= 0)
+            return; // not found or already first
+
+        list.RemoveAt(index);
+        list.Insert(0, target);
+    }
+
 }

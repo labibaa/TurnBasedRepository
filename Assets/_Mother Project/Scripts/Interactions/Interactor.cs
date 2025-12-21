@@ -30,7 +30,7 @@ public class Interactor : MonoBehaviour
             
             if( nearestInteractableGameObject != null )
             {
-                nearestInteractableGameObject.Interact();
+                nearestInteractableGameObject.Interact(gameObject);
 
                
             }

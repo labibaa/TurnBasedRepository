@@ -4,6 +4,33 @@ using UnityEngine;
 
 public class CasterClass : CharacterBaseClasses
 {
+    public override void ArcanaLevelUp()
+    {
+    }
+
+    public override void DexterityLevelUp()
+    {
+
+    }
+
+    public override void EnduranceLevelUp()
+    {
+     
+    }
+
+    public override void HealthLevelUp()
+    {
+       
+    }
+
+    public override void IntelligenceLevelUp()
+    {
+       
+    }
+    public override void StregthLevelUp()
+    {
+       
+    }
     public override void LevelUp()
     {
         // Increase the character's attributes based on a predetermined formula.
@@ -22,4 +49,6 @@ public class CasterClass : CharacterBaseClasses
         Level++;
         // Add any additional logic or side effects as needed.
     }
+
+  
 }

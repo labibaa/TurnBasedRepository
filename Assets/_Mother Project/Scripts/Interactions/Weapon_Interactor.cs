@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon_Interactor : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject WeaponPanelHolder;
-    public void Interact()
+    public void Interact(GameObject p)
     {
         ActivateWeaponShop();
     }

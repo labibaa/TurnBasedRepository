@@ -42,7 +42,7 @@ public class SwordInteractor : MonoBehaviour, IInteractable
         textMeshPro.text = "";
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
         ShowText("A decorative sword adorning the wall. If only it could recount the stories it's witnessed.");
 

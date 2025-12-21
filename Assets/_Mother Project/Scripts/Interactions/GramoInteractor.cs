@@ -42,7 +42,7 @@ public class GramoInteractor : MonoBehaviour, IInteractable
         textMeshPro.text = "";
     }
 
-    public void Interact()
+    public void Interact(GameObject p)
     {
         ShowText("A gramophone, frozen in time. Music has a way of bridging the present and the past.");
 

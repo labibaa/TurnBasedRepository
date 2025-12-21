@@ -38,9 +38,21 @@ public class RangedAttack : ICommand
         //{
         //    greaterStrike.BasePower = greaterStrike.BasePower - 30;
         //}
+        int fp = rangedAttack.FirstPercentage;
+        int sp = rangedAttack.SecondPercentage;
+        int lp = rangedAttack.LastPercentage;
+
+        if (playerTempStats.CurrentHealth <= player.HealthPoints * 0.2)
+        {
+            Debug.Log(playerTempStats.CurrentHealth + " >= " + player.HealthPoints * 0.2);
+            rangedAttack.FirstPercentage = 0;
+            rangedAttack.SecondPercentage = 20;
+            rangedAttack.LastPercentage = 80;
+        }
 
         if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))
         {
+            //rangedAttack.FirstPercentage ==> this percentage can be used as crit chance logic
             int diceValue = DiceNumberGenerator.instance.GetDiceValue(rangedAttack.FirstPercentage, rangedAttack.SecondPercentage, rangedAttack.LastPercentage);
 
             int damage = Mathf.RoundToInt( ActionResolver.instance.CalculateNewDamage(diceValue, rangedAttack) * playerTempStats.CurrentDamageMultiplier);
@@ -77,6 +89,9 @@ public class RangedAttack : ICommand
 
 
         }
+        rangedAttack.FirstPercentage = fp;
+        rangedAttack.SecondPercentage = sp;
+        rangedAttack.LastPercentage = lp;
     }
 
 

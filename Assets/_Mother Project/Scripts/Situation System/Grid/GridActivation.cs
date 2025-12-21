@@ -59,20 +59,20 @@ public class GridActivation : MonoBehaviour
     }
 //Failsafe2
 
-    // Start is called before the first frame update
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         playableCharacter = SwitchMC.Instance.characters;
         if (other.CompareTag("Player") && !GridSystem.instance.IsGridOn)
         {
-            
+            if (gameObject.CompareTag("ObjectiveGrid"))
+            {
+                TempManager.instance.IsObjective = true;
+            }
+            else
+            {
+                TempManager.instance.IsObjective = false;
+            }
             GridSystem.instance.GenerateGridOnButton();
         }
     }
@@ -189,7 +189,7 @@ public class GridActivation : MonoBehaviour
         GridSystem.instance.IsGridOn = false;
         // HandleTurnNew.instance.SituationEndCondition = false;
         LoadSceneManager.instance.SaveGame();
-        LoadSceneManager.instance.LoadGame();
+        LoadSceneManager.instance.GameDataLoad();
         WaitDelay(2f);
         SwitchMC.Instance.CharacterSwitch();
 
