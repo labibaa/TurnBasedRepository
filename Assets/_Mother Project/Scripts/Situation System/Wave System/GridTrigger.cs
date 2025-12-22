@@ -9,11 +9,8 @@ public class GridTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !GridSystem.instance.IsGridOn )
         {
-            
-           
-            
+            WaveManager.instance.GridStartAttackAnimation(other.gameObject);
             GridSystem.instance.GenerateGridOnButton();
-            
         }
     }
 }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -58,7 +59,7 @@ public class WaveManager : MonoBehaviour
 
     void GridWaveStartLocation()
     {
-        MoveMatchedToFirst(PlayerWaves[ currentWaveCount], SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
+       // MoveMatchedToFirst(PlayerWaves[ currentWaveCount], SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
         GridSystem.instance.gridStartLocation = gridWaveStartLocation[currentWaveCount];
     }
 
@@ -162,7 +163,7 @@ public class WaveManager : MonoBehaviour
         UnLinkedCharacter = gameObject;
     }
 
-    public void MoveMatchedToFirst(WaveWrapperClass wave, PlayerTurn target)
+    public void MoveMatchedToFirst(WaveWrapperClass wave, PlayerTurn target) //1st player for grid
     {
         if (wave == null || wave.CharactersOfTheWave == null)
             return;
@@ -176,5 +177,9 @@ public class WaveManager : MonoBehaviour
         list.RemoveAt(index);
         list.Insert(0, target);
     }
-
+    public void GridStartAttackAnimation(GameObject Attacker)
+    {
+       // await CutsceneManager.instance.PlayAnimationForCharacter(Attacker, "Fall on back");
+        MoveMatchedToFirst(PlayerWaves[currentWaveCount], SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
+    }
 }
