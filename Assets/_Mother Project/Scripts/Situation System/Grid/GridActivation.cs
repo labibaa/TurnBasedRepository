@@ -89,7 +89,7 @@ public class GridActivation : MonoBehaviour
         foreach (GameObject ui in uiGameObjects)
         {
             ui.SetActive(true);
-            StartCoroutine(BlackScreenTransition());
+            //StartCoroutine(BlackScreenTransition());
 
         }
 
