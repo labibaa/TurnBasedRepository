@@ -47,4 +47,8 @@ public class SwordInteractor : MonoBehaviour, IInteractable
         ShowText("A decorative sword adorning the wall. If only it could recount the stories it's witnessed.");
 
     }
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

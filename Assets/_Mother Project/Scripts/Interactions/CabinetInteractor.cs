@@ -48,5 +48,8 @@ public class CabinetInteractor : MonoBehaviour, IInteractable
         ShowText("Mon opens the cabinet doors cautiously, revealing a collection of dusty board games and a hint of nostalgia.");
 
     }
-
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

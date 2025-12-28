@@ -14,4 +14,8 @@ public class BoxInteract : MonoBehaviour,IInteractable
     {
         boxInterracted();
     }
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

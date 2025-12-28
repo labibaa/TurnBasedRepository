@@ -16,4 +16,8 @@ public class DadiSceneInteractor : MonoBehaviour, IInteractable
         dadiSceneChange();
 
     }
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

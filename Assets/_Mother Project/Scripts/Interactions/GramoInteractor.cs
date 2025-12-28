@@ -47,4 +47,8 @@ public class GramoInteractor : MonoBehaviour, IInteractable
         ShowText("A gramophone, frozen in time. Music has a way of bridging the present and the past.");
 
     }
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

@@ -7,7 +7,8 @@ public class Interactor : MonoBehaviour
 {
     public float interactRadius ;
     public Collider[] collidersBuffer = new Collider[10]; // Adjust the buffer size as needed   
-
+    bool timerTrigger = true;
+    float timer = 1f;
     [SerializeField] InteractionPromptUI promptUI;
     void Update()
     {
@@ -28,13 +29,24 @@ public class Interactor : MonoBehaviour
         if(Input.GetKeyDown( KeyCode.I ) )
         {
             
-            if( nearestInteractableGameObject != null )
+           if( nearestInteractableGameObject != null )
+           {
+                nearestInteractableGameObject.Interact(gameObject);
+               
+           }
+
+        }
+        if (nearestInteractableGameObject.IsGridTrigger() && timerTrigger)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0f) 
             {
                 nearestInteractableGameObject.Interact(gameObject);
-
-               
+                timerTrigger = false;
+                return;
             }
-
+            
+           
         }
      
     }
@@ -77,10 +89,5 @@ public class Interactor : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, interactRadius);
     }
-
-
-
-
-
 
 }

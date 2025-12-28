@@ -54,4 +54,8 @@ public class TVInteractor : MonoBehaviour, IInteractable
         ShowText("This TV seems to be older than me. Takes me back to the time we all used to enjoy laughing at hindi soap dramas. ");
 
     }
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

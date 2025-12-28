@@ -9,7 +9,10 @@ public class Weapon_Interactor : MonoBehaviour, IInteractable
     {
         ActivateWeaponShop();
     }
-
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
     public void ActivateWeaponShop()
     {
         /*foreach (var player in SwitchMC.Instance.characters)

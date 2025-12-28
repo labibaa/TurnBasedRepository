@@ -23,5 +23,8 @@ public class SaveGameInteractor : MonoBehaviour,IInteractable
             ShowSavedData.Instance.AddCharacterData(Ch_obj);
         }
     }
-
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

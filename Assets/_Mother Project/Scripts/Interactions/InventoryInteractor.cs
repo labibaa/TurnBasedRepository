@@ -26,5 +26,8 @@ public class InventoryInteractor : MonoBehaviour, IInteractable
 
         Time.timeScale = 0f;
     }
-
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

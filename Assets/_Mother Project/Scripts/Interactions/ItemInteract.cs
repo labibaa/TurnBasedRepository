@@ -11,7 +11,7 @@ public class ItemInteract : MonoBehaviour, IInteractable
     {
         Debug.Log("Box says bye");
         Objective currentObjective =  ObjectiveManager.Instance.GetObjective("OBJ_1");
-        SwitchMC.Instance.mainCharacter.GetComponent<TemporaryStats>().CurrentResolve++;
+        SwitchMC.Instance.mainCharacter.GetComponent<TemporaryStats>().CurrentResolve++; //wip for now
         ObjectiveManager.Instance.TriggerEvaluation(currentObjective);
         await CutsceneManager.instance.PlayAnimationForCharacter(p, "Fall on back");
         Destroy(this.gameObject);
@@ -28,5 +28,9 @@ public class ItemInteract : MonoBehaviour, IInteractable
     {
         itemInterracted(p);
 
+    }
+    public bool IsGridTrigger()
+    {
+        return false;
     }
 }

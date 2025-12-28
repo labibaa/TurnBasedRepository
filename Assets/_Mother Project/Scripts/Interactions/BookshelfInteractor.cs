@@ -49,5 +49,9 @@ public class BookshelfInteractor : MonoBehaviour, IInteractable
         ShowText("Mon runs her fingers along the spines of the books, feeling a strange sense of curiosity mingled with apprehension.");
 
     }
-   
+
+    public bool IsGridTrigger()
+    {
+        return false;
+    }
 }

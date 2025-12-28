@@ -177,9 +177,10 @@ public class WaveManager : MonoBehaviour
         list.RemoveAt(index);
         list.Insert(0, target);
     }
-    public void GridStartAttackAnimation(GameObject Attacker)
+    public void GridStartAssasinate()
     {
        // await CutsceneManager.instance.PlayAnimationForCharacter(Attacker, "Fall on back");
         MoveMatchedToFirst(PlayerWaves[currentWaveCount], SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
+        GridSystem.instance.GenerateGridOnButton();
     }
 }
