@@ -59,13 +59,6 @@ public class CameraRoam : MonoBehaviour
             transform.Translate(Camera.main.transform.right * Input.GetAxisRaw("Mouse X") * cameraPanSpeed, Space.World);
         }
 
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-
-            //target = ObjectInspection.next;
-            //FocusCameraOnGameObject(Camera.main, target);
-        }
         //Movement with W,A,S,D
 
         if (Input.GetKey("w") && Input.GetMouseButton(1))

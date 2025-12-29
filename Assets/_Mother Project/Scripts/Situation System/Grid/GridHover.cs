@@ -49,10 +49,6 @@ public class GridHover : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-          //  RestoreColor();
-        }
      
         if (TempManager.instance.currentState == GameStates.TargetSelectionTurn)
         {

@@ -8,7 +8,7 @@ public class Interactor : MonoBehaviour
     public float interactRadius ;
     public Collider[] collidersBuffer = new Collider[10]; // Adjust the buffer size as needed   
     bool timerTrigger = true;
-    float timer = 1f;
+    float timer = 10f;
     [SerializeField] InteractionPromptUI promptUI;
     void Update()
     {
@@ -36,18 +36,18 @@ public class Interactor : MonoBehaviour
            }
 
         }
-        if (nearestInteractableGameObject.IsGridTrigger() && timerTrigger)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0f) 
-            {
-                nearestInteractableGameObject.Interact(gameObject);
-                timerTrigger = false;
-                return;
-            }
+        //if (nearestInteractableGameObject.IsGridTrigger() && timerTrigger)
+        //{
+        //    timer -= Time.deltaTime;
+        //    if (timer <= 0f) 
+        //    {
+        //        nearestInteractableGameObject.Interact(gameObject);
+        //        timerTrigger = false;
+        //        return;
+        //    }
             
            
-        }
+        //}
      
     }
    
