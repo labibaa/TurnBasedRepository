@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class WaveWrapperClass 
 {
+    public int WaveID;
     public List<PlayerTurn> CharactersOfTheWave;
 }
