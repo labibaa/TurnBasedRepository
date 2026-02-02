@@ -53,9 +53,9 @@ public class RangedAttack : ICommand
         if (ActionResolver.instance.ActionAccuracyCalculation(actionAccuracy))
         {
             //rangedAttack.FirstPercentage ==> this percentage can be used as crit chance logic
-            int diceValue = DiceNumberGenerator.instance.GetDiceValue(rangedAttack.FirstPercentage, rangedAttack.SecondPercentage, rangedAttack.LastPercentage);
+            int diceValue = DiceNumberGenerator.instance.GetDiceValue(rangedAttack.FirstPercentage, rangedAttack.SecondPercentage, rangedAttack.LastPercentage);    
 
-            int damage = Mathf.RoundToInt( ActionResolver.instance.CalculateNewDamage(diceValue, rangedAttack) * playerTempStats.CurrentDamageMultiplier);
+            int damage = Mathf.RoundToInt( ActionResolver.instance.CalculateNewDamage(diceValue, rangedAttack) * playerTempStats.CurrentDamageMultiplier * (Mathf.FloorToInt((playerTempStats.CurrentDex + 3) / 2f) + 1));//(dexterity dmg effect formula )
             UI.instance.SendNotification(diceValue.ToString());
             if (targetTempStats.IsBlockActive)
             {

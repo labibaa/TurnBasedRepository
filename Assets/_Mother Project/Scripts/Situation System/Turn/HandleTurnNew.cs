@@ -75,7 +75,7 @@ public class HandleTurnNew : MonoBehaviour
             if (currentPlayerTemporaryStates.tag == StringData.PlayerTag)
             {
                 currentPlayerTemporaryStates.GetComponent<PlayerTurn>().isMoveOn = true;
-                currentPlayerTemporaryStates.CurrentAP = ActionResolver.instance.APCarryOver(currentPlayerTemporaryStates.CurrentAP, 2);
+                currentPlayerTemporaryStates.CurrentAP = ActionResolver.instance.APCarryOver(currentPlayerTemporaryStates.CurrentAP, 2) + Mathf.FloorToInt((currentPlayerTemporaryStates.CurrentIntelligence + 1) / 2f);
             }
 
             TurnManager.instance.StartTurn();

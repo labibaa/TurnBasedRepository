@@ -355,9 +355,6 @@ public class TurnManager : MonoBehaviour
         Ends turn*/
         if (GridSystem.instance.IsGridOn)
         {
-
-
-
             //auto turn add ==> random target selection
 
             int randomTargetIndex = UnityEngine.Random.Range(0, target.Count);
@@ -479,7 +476,7 @@ public class TurnManager : MonoBehaviour
             playerTempStat.CurrentDamageMultiplier = players[i].GetComponent<CharacterBaseClasses>().DamageMultiplier;
             if (playerTempStat.CompareTag("Player"))
             {
-                playerTempStat.CurrentAP = ActionResolver.instance.APCarryOver(playerTempStat.CurrentAP, 2);
+                playerTempStat.CurrentAP = ActionResolver.instance.APCarryOver(playerTempStat.CurrentAP, (2 + Mathf.FloorToInt((playerTempStat.CurrentIntelligence + 1) / 2f))); //ap increase based on intelligence
             }
             else
             {

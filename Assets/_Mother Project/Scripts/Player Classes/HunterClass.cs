@@ -60,4 +60,12 @@ public class HunterClass : CharacterBaseClasses
         Strength = (int)(Strength + (Level * 1.5f) + (Level * Level * 0.01)); // 1st value growth factor. 2nd value scaling factor
     }
 
+    int GetDexteritydmgValue(int n)
+    {
+        return Mathf.FloorToInt((n + 3) / 2f) + 1;
+    }
+    int GetIntelligenceApValue(int n)
+    {
+        return Mathf.FloorToInt((n + 1) / 2f);
+    }
 }
