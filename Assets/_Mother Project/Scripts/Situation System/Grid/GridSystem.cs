@@ -161,7 +161,7 @@ public class GridSystem : MonoBehaviour
         }
         //IsGridOn = true;
         //leftBottomLocation = player.transform.position - new Vector3(Mathf.Floor(rows / 2f), 0f, Mathf.Floor(columns / 2f));
-        OnGridPositionInitialization?.Invoke();
+        //OnGridPositionInitialization?.Invoke();
         leftBottomLocation = gridStartLocation.transform.position;
         Invoke("InitializeGrid", 0f);
         InputManager.OnInteractionPressed -= GenerateGridOnButton;

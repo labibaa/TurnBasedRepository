@@ -57,10 +57,10 @@ public class GridActivation : MonoBehaviour
         HealthManager.OnGridDisable -= HandleCharacterDeSpawn;
         //cameraController.SetActive(false);
     }
-//Failsafe2
+    //Failsafe2
 
 
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         playableCharacter = SwitchMC.Instance.characters;
         if (other.CompareTag("Player") && !GridSystem.instance.IsGridOn)
@@ -75,7 +75,7 @@ public class GridActivation : MonoBehaviour
             }
             GridSystem.instance.GenerateGridOnButton();
         }
-    }
+    }*/
 
 
     private void Awake()
@@ -98,7 +98,7 @@ public class GridActivation : MonoBehaviour
         DisableUIObjects();
         gridAudio.GetComponent<AudioSource>().enabled = true;
         gridAudio.GetComponent<AudioSource>().Play();
-        this.GetComponent<BoxCollider>().enabled = false;
+        //this.GetComponent<BoxCollider>().enabled = false;
 
     }
 

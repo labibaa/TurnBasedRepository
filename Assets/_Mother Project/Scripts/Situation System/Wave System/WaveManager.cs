@@ -22,7 +22,8 @@ public class WaveManager : MonoBehaviour
     GameObject UnLinkedCharacter;
 
     int TotalNumberOfWavesThisScene;
-    int currentWaveCount = 0;
+    public int currentWaveCount = 0;
+    public WaveWrapperClass currentWave;
 
     private void OnEnable()
     {
@@ -63,12 +64,23 @@ public class WaveManager : MonoBehaviour
         GridSystem.instance.gridStartLocation = gridWaveStartLocation[currentWaveCount];
     }
 
+    public void IniCurrentWave(GameObject waveTrigger)
+    {
+        GridTrigger trigger = waveTrigger.GetComponent<GridTrigger>();
+        foreach (var wave in PlayerWaves)
+        {
+            if (wave.WaveID == trigger.WaveTriggerID)
+            {
+                currentWave = wave; break;
+            }
+        }
+        waveTrigger.SetActive(false);
+    }
     void IncreaseWaveCount()
     {
-        if (currentWaveCount != 0)
-        {
-            WaveTriggers[currentWaveCount].SetActive(false);
-        }
+
+        //WaveTriggers[currentWaveCount].SetActive(false); // needs work // change because currentwavecount not functional
+
 
         // Play the timeline associated with the current wave
         if (currentWaveCount < WaveTimelines.Count)
@@ -110,18 +122,18 @@ public class WaveManager : MonoBehaviour
 
         WeaponManager.instance.LoadWeaponData();
         OnGridInit?.Invoke();
-        currentWaveCount++;
+        // currentWaveCount++; // change because currentwavecount not functional
 
         HandleWave();
         GridSystem.instance.IsGridOn = true;
         OnGridReady?.Invoke();
     }
 
-    void EnableNewTrigger()
+    void EnableNewTrigger() // change because currentwavecount not functional
     {
         if (currentWaveCount < TotalNumberOfWavesThisScene)
         {
-            WaveTriggers[currentWaveCount].SetActive(true);
+            //WaveTriggers[currentWaveCount].SetActive(true);
         }
     }
 
@@ -133,16 +145,16 @@ public class WaveManager : MonoBehaviour
         GridActivation.instance.players.Clear();
         if (TotalNumberOfWavesThisScene >= currentWaveCount)
         {
-            foreach (var waveCharacter in PlayerWaves[currentWaveCount - 1].CharactersOfTheWave.ToList())
+            foreach (var waveCharacter in currentWave.CharactersOfTheWave.ToList())
             {
                 if (UnLinkedCharacter != null && waveCharacter == UnLinkedCharacter.GetComponent<PlayerTurn>())
                 {
                     Debug.Log(waveCharacter);
-                    PlayerWaves[currentWaveCount - 1].CharactersOfTheWave.Remove(waveCharacter);
+                    currentWave.CharactersOfTheWave.Remove(waveCharacter);
                 }
             }
             HashSet<GameObject> currentPlayers = new HashSet<GameObject>();
-            foreach (PlayerTurn players in PlayerWaves[currentWaveCount - 1].CharactersOfTheWave)
+            foreach (PlayerTurn players in currentWave.CharactersOfTheWave)
             {
                 StartCoroutine(players.GetComponent<TemporaryStats>().ReStartCharacter());
                 TurnManager.instance.players.Add(players);
@@ -177,10 +189,10 @@ public class WaveManager : MonoBehaviour
         list.RemoveAt(index);
         list.Insert(0, target);
     }
-    public void GridStartAssasinate()
+    public void GridStartAssasinate() //need to add current wave and grid start location
     {
        // await CutsceneManager.instance.PlayAnimationForCharacter(Attacker, "Fall on back");
-        MoveMatchedToFirst(PlayerWaves[currentWaveCount], SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
+        MoveMatchedToFirst(currentWave, SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
         GridSystem.instance.GenerateGridOnButton();
     }
 }
