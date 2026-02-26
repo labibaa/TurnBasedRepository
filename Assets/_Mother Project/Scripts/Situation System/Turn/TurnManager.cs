@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -126,7 +127,7 @@ public class TurnManager : MonoBehaviour
 
     }
 
-    public void StartTurn()
+    public async Task StartTurn()
     {
         /*Starts turn timer
 
@@ -179,12 +180,7 @@ public class TurnManager : MonoBehaviour
         currentPlayer.SelectionParticle.SetActive(true);
         currentPlayer.PlayerActionListPanel.SetActive(true);
 
-       // currentPlayer.PlayerUltimateBar.SetActive(true);
-        //if(currentPlayer.CharacterTeam == TeamName.TeamA)
-        //{
-        //    currentPlayer.playerItemPanel.SetActive(true);
-        //    currentPlayer.GetComponent<IsoMetricToTPS>().enabled = true;
-        //}
+    
 
         TeamManager.instance.TeamMemberList(currentPlayer.CharacterTeam);
 
@@ -201,7 +197,13 @@ public class TurnManager : MonoBehaviour
         UI.instance.GetPlayerStats(players[currentPlayerIndex].GetComponent<CharacterBaseClasses>());
 
         TargetList();
-        
+        // currentPlayer.PlayerUltimateBar.SetActive(true);
+        if (currentPlayer.CharacterTeam != TeamName.TeamA)
+        {
+            //currentPlayer.playerItemPanel.SetActive(true);
+            //currentPlayer.GetComponent<IsoMetricToTPS>().enabled = true;
+            await currentPlayer.GetComponent<EnemyAIController>().StartEnemyTurn();
+        }
         //if (players[currentPlayerIndex].GetComponent<TemporaryStats>().CharacterTeam == TeamName.TeamD)
         //{
         //    Debug.Log("aw");

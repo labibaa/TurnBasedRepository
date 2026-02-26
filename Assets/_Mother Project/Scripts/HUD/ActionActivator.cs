@@ -22,12 +22,6 @@ public class ActionActivator : MonoBehaviour
         actionButtons.Clear();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateAvailableAction(CharacterBaseClasses playerCh, TemporaryStats playerTemp)
     {
         
