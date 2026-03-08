@@ -189,9 +189,23 @@ public class WaveManager : MonoBehaviour
         list.RemoveAt(index);
         list.Insert(0, target);
     }
-    public void GridStartAssasinate() //need to add current wave and grid start location
+    public void GridStartAssasinate(GameObject targetEnemy)
     {
-       // await CutsceneManager.instance.PlayAnimationForCharacter(Attacker, "Fall on back");
+        // Find the wave that contains the target enemy
+        PlayerTurn targetTurn = targetEnemy.GetComponent<PlayerTurn>();
+        for (int i = 0; i < PlayerWaves.Count; i++)
+        {
+            if (PlayerWaves[i].CharactersOfTheWave.Contains(targetTurn))
+            {
+                currentWave = PlayerWaves[i];
+                if (i < gridWaveStartLocation.Count)
+                {
+                    GridSystem.instance.gridStartLocation = gridWaveStartLocation[i];
+                }
+                break;
+            }
+        }
+
         MoveMatchedToFirst(currentWave, SwitchMC.Instance.mainCharacter.GetComponent<PlayerTurn>());
         GridSystem.instance.GenerateGridOnButton();
     }

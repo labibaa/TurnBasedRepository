@@ -15,7 +15,7 @@ public class GridInteract : MonoBehaviour, IInteractable
             p.GetComponent<SpawnVFX>().SetParticle(meleeScriptable.particle);
             await CutsceneManager.instance.PlayAnimationForCharacter(p, "Assassinate");
            
-            WaveManager.instance.GridStartAssasinate();
+            WaveManager.instance.GridStartAssasinate(TargetEnemy);
 
             TargetEnemy.GetComponent<TemporaryStats>().CurrentHealth = HealthManager.instance.HealthCalculation(1000, TargetEnemy.GetComponent<TemporaryStats>().CurrentHealth);
             UI.instance.ShowFlyingText((1000 * -1).ToString(), TargetEnemy.GetComponent<TemporaryStats>().FlyingTextParent, Color.red);
