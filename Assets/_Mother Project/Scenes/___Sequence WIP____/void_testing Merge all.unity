@@ -1273,7 +1273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 1
-  GridStartLocation: {fileID: 1805934341}
 --- !u!1 &80266461
 GameObject:
   m_ObjectHideFlags: 0
@@ -59501,7 +59500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 4
-  GridStartLocation: {fileID: 578293644}
 --- !u!65 &1107085513
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62100,7 +62098,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 2
-  GridStartLocation: {fileID: 1355076519}
 --- !u!65 &1273417421
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73284,7 +73281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 2
-  GridStartLocation: {fileID: 1355076519}
 --- !u!65 &1470083633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75611,7 +75607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 3
-  GridStartLocation: {fileID: 1962404674}
 --- !u!65 &1577075289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88391,7 +88386,7 @@ Transform:
   m_GameObject: {fileID: 1805934341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.33, y: 0, z: 150.58}
+  m_LocalPosition: {x: 87.93, y: 0, z: 150.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94153,7 +94148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 5
-  GridStartLocation: {fileID: 613703365}
 --- !u!65 &1886872816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96455,39 +96449,47 @@ MonoBehaviour:
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
     - {fileID: 1635738519}
+    GridStartLocation: {fileID: 1805934341}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 78612787}
   - WaveID: 2
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 1357918049}
+    - {fileID: 7823975018350207408}
     - {fileID: 13038052}
+    GridStartLocation: {fileID: 1355076519}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1273417418}
   - WaveID: 3
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 447559471}
+    - {fileID: 7823975018350207408}
+    GridStartLocation: {fileID: 1962404674}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1577075286}
   - WaveID: 4
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 1445861429}
+    - {fileID: 7823975018350207408}
+    GridStartLocation: {fileID: 578293644}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1107085510}
   - WaveID: 5
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 7823975018350207408}
-  WaveTriggers:
-  - {fileID: 78612787}
-  - {fileID: 1273417418}
-  - {fileID: 1577075286}
-  - {fileID: 1107085510}
-  WaveTimelines:
-  - {fileID: 0}
-  gridWaveStartLocation:
-  - {fileID: 1805934341}
-  - {fileID: 1355076519}
-  - {fileID: 1962404674}
-  - {fileID: 578293644}
-  currentWaveCount: 0
+    GridStartLocation: {fileID: 613703365}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1886872813}
   currentWave:
     WaveID: 0
     CharactersOfTheWave: []
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
 --- !u!114 &2046126998
 MonoBehaviour:
   m_ObjectHideFlags: 0
