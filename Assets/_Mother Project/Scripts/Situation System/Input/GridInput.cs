@@ -55,6 +55,8 @@ public class GridInput : MonoBehaviour
         starterInput.Grid.GridReset.performed -= GridRes;
         starterInput.Grid.ExitGrid.performed -= GridExit;
         starterInput.Grid.UndoMove.performed -= GridUndo;
+
+        starterInput.Grid.Disable();
     }
 
 
