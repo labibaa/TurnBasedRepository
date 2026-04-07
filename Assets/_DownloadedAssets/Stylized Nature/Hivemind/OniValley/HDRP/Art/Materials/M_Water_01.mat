@@ -73,6 +73,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 6c3effda0f2755345ab853f9f0756fac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RefractionNormal2:
+        m_Texture: {fileID: 2800000, guid: 6c3effda0f2755345ab853f9f0756fac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_6101d5b7c3ce4708a02b32831e6b0199_Texture_1:
         m_Texture: {fileID: 2800000, guid: a013e69cbaff35545a8293b0d20d2a69, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -92,15 +96,15 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_4ffc1f14c2964956bb4fe3f644b442f7: 0
-    - Vector1_1: 10
+    - Vector1_1: 50
     - Vector1_1d49f1a2d23a44c2b51dbd499d4dde70: 1
-    - Vector1_2: 1
+    - Vector1_2: 0.5
     - Vector1_204714b678f0451580d2b3058d258614: 1
-    - Vector1_4b6359e4138b4938b9a2234a3a431526: 0.01
-    - Vector1_77540afbbbf0453681562d5478321802: 8
+    - Vector1_4b6359e4138b4938b9a2234a3a431526: 0.015
+    - Vector1_77540afbbbf0453681562d5478321802: 3
     - Vector1_873cacf0119b4b9db2fc4b524937c07b: 5
     - Vector1_b9115520341e462a8318e8622b851afa: 1
-    - Vector1_b9115520341e462a8318e8622b851afa_1: 0
+    - Vector1_b9115520341e462a8318e8622b851afa_1: 1
     - Vector1_b9115520341e462a8318e8622b851afa_2: 0
     - Vector1_b9115520341e462a8318e8622b851afa_3: 1
     - Vector1_fc96597b428e46a2bdcf3aa68b48cb8b: 1
@@ -123,7 +127,7 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _DepthOffsetEnable: 0
-    - _Dist1: 5
+    - _Dist1: 3
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
@@ -133,7 +137,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _HeightFrequency: 5
-    - _NormalStrength: 0.1
+    - _NormalStrength: -0.2
     - _Opacity: 1
     - _OpaqueCullMode: 2
     - _QueueControl: 1
@@ -145,7 +149,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _Roughness: 0.8
+    - _Roughness: 0.7
     - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _StencilRef: 0
@@ -179,11 +183,11 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - Color_1: {r: 0.07841975, g: 0.47499996, b: 0.40662402, a: 0.43137255}
+    - Color_1: {r: 0.079432175, g: 0.3301887, b: 0.27875146, a: 0.2901961}
     - Color_13ec232c958d4c648c90624257c5b37c: {r: 1, g: 1, b: 1, a: 0.09803922}
     - Color_21fed8c222a347c79b773bdea87c50cb: {r: 1, g: 1, b: 1, a: 0}
-    - Color_35a38b55f4c144bd891ce06b7562e933: {r: 0.36957097, g: 0.51886785, b: 0.48154366,
-        a: 0.6117647}
+    - Color_35a38b55f4c144bd891ce06b7562e933: {r: 0.25832146, g: 0.4056604, b: 0.37076432,
+        a: 0.6392157}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
