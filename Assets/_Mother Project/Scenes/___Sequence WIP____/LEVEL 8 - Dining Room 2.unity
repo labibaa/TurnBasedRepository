@@ -1551,6 +1551,7 @@ GameObject:
   - component: {fileID: 149037781}
   - component: {fileID: 149037780}
   - component: {fileID: 149037784}
+  - component: {fileID: 149037785}
   m_Layer: 0
   m_Name: NextRoomCollider
   m_TagString: Untagged
@@ -1669,6 +1670,24 @@ MonoBehaviour:
   FinalScene:
     m_SceneAsset: {fileID: 0}
     m_SceneName: 
+--- !u!114 &149037785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149037778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b1383f472886146ad32878c14a91a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
+  RandomSceneLoad: {fileID: 149037784}
+  LastPosition: 
+  IsRandom: 1
 --- !u!224 &237100898 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8959094096237483222, guid: 08a4023a9da9f684e9d3544fe13fcb65,
