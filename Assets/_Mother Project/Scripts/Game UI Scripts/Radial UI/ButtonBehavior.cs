@@ -1,13 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
 public class ButtonBehavior : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject detailsPrefab;
-    private GameObject detailsInstance;
-    private RectTransform canvasRect;
 
     ImprovedActionStat actionScriptable;
     [SerializeField]
@@ -26,15 +23,10 @@ public class ButtonBehavior : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         if (actionScriptable != null)
         {
-
             actionNameText.text = actionScriptable.ActionName;
             apCost.text = "Ap Cost : " + actionScriptable.APCost;
             range.text = "Range : " + actionScriptable.ActionRange;
         }
-
-
-
-
 
 
 
@@ -53,13 +45,11 @@ public class ButtonBehavior : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         if (detailsPrefab != null && actionScriptable != null)
         {
-
-            actionNameText.text = actionScriptable.ActionName; ;
+            actionNameText.text = actionScriptable.ActionName;
             apCost.text = "Ap Cost : " + actionScriptable.APCost;
             range.text = "Range : " + actionScriptable.ActionRange;
             detailsPrefab.SetActive(true);
             ShowActionRange();
-
         }
     }
 
@@ -74,12 +64,14 @@ public class ButtonBehavior : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void ShowActionRange()
     {
-        GridMovement.instance.InAdjacentMatrix(TempManager.instance.attacker.GetComponent<TemporaryStats>().currentPlayerGridPosition, TempManager.instance.attacker.GetComponent<TemporaryStats>().CharacterTeam, actionScriptable.ActionRange,Color.red);
+        TemporaryStats attackerStats = TempManager.instance.attacker.GetComponent<TemporaryStats>();
+        GridMovement.instance.InAdjacentMatrix(attackerStats.currentPlayerGridPosition, attackerStats.CharacterTeam, actionScriptable.ActionRange, Color.red);
     }
 
     void ShowMoveRange()
     {
-        GridMovement.instance.InAdjacentMatrix(TempManager.instance.attacker.GetComponent<TemporaryStats>().currentPlayerGridPosition, TempManager.instance.attacker.GetComponent<TemporaryStats>().CharacterTeam,TempManager.instance.attacker.GetComponent<TemporaryStats>().CurrentDex,Color.red);
+        TemporaryStats attackerStats = TempManager.instance.attacker.GetComponent<TemporaryStats>();
+        GridMovement.instance.InAdjacentMatrix(attackerStats.currentPlayerGridPosition, attackerStats.CharacterTeam, attackerStats.CurrentDex, Color.red);
     }
 
     void HideActionRange()

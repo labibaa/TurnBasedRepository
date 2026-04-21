@@ -21,17 +21,35 @@ public class PlayableCharacterUI : MonoBehaviour
 
     public CharacterBaseClasses myCharacter;
 
+    [Header("Stat Change SFX")]
+    public AudioClip hpDamageSfx;
+    public AudioClip hpHealSfx;
+
+    private float _lastKnownHP = -1f;
+
+    // ==========================================
+    // LIFECYCLE
+    // ==========================================
+
+    // Runs an initial HUD refresh when the character UI spawns.
     private void Start()
     {
         UpdateHUD();
     }
 
+    // ==========================================
+    // HUD REFRESH
+    // ==========================================
+
+    // Refreshes HP bar fill, plays HP-change SFX, rebuilds the AP pips, updates the avatar, and scales the active player's HUD.
     public void UpdateHUD()
     {
         // Update HP bar
         float currentHP = myCharacter.GetComponent<TemporaryStats>().CurrentHealth;
         float maxHP = myCharacter.GetComponent<CharacterBaseClasses>().HealthPoints;
         hpBar.fillAmount = currentHP / maxHP;
+
+        PlayHPDeltaSfx(currentHP);
 
         // Update AP visibility
         UpdateAPImages();
@@ -41,6 +59,27 @@ public class PlayableCharacterUI : MonoBehaviour
         CurrentPlayerHUD();
     }
 
+    // Compares current HP against the last cached value and plays damage or heal SFX on change. Seeds silently on first call.
+    private void PlayHPDeltaSfx(float currentHP)
+    {
+        if (_lastKnownHP < 0f)
+        {
+            _lastKnownHP = currentHP;
+            return;
+        }
+
+        if (SoundManager.Instance != null)
+        {
+            if (currentHP < _lastKnownHP && hpDamageSfx != null)
+                SoundManager.Instance.PlaySound(hpDamageSfx);
+            else if (currentHP > _lastKnownHP && hpHealSfx != null)
+                SoundManager.Instance.PlaySound(hpHealSfx);
+        }
+
+        _lastKnownHP = currentHP;
+    }
+
+    // Toggles AP pip visibility so the count of enabled pips matches the character's current AP.
     private void UpdateAPImages()
     {
         int currentAP = myCharacter.GetComponent<TemporaryStats>().CurrentAP;
@@ -52,6 +91,11 @@ public class PlayableCharacterUI : MonoBehaviour
     }
 
 
+    // ==========================================
+    // ACTIVE-PLAYER HIGHLIGHT
+    // ==========================================
+
+    // Scales this HUD up if it belongs to the character whose turn it is, otherwise scales it back down.
     public void CurrentPlayerHUD()
     {
         //CurrentPlayerPanel.SetActive(myCharacter.GetComponent<PlayerTurn>().myTurn);
@@ -66,6 +110,7 @@ public class PlayableCharacterUI : MonoBehaviour
        //SwapItemsInLayout(currentItem,PrevItem);
     }
 
+    // Tweens the given RectTransform up to full scale with an OutBack ease to emphasize the active player.
     public void ScaleItem(RectTransform item)
     {
         if (item == null) return;
@@ -76,6 +121,7 @@ public class PlayableCharacterUI : MonoBehaviour
         thisRectTransform.DOScale(Vector3.one * 1f, 0.2f)
             .SetEase(Ease.OutBack);
     }
+    // Tweens this HUD's RectTransform back down to its idle scale for non-active characters.
     private void DescaleItem()
     {
         if (thisRectTransform == null) return;
@@ -85,6 +131,11 @@ public class PlayableCharacterUI : MonoBehaviour
             .SetEase(Ease.InBack);
     }
 
+    // ==========================================
+    // LAYOUT UTILITY
+    // ==========================================
+
+    // Animates two layout items into each other's anchored positions (currently unused, reserved for turn-order swaps).
     private void SwapItemsInLayout(RectTransform item1, RectTransform item2)
     {
         if (item1 == null || item2 == null) return;

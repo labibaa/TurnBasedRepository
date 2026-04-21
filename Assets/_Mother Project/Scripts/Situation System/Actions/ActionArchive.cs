@@ -22,6 +22,10 @@ public class ActionArchive : MonoBehaviour
     [SerializeField] List<GridInput> gridInput = new List<GridInput>();
     [SerializeField] PlayerStatUI playerStateUI;
 
+    [Header("Action Feedback SFX")]
+    public AudioClip noTargetSfx;
+    public AudioClip actionFailedSfx;
+
     public bool isTurnAdded = false;
 
     private void Awake()
@@ -475,6 +479,7 @@ public class ActionArchive : MonoBehaviour
         }
         else
         {
+            PlayActionFailedSfx();
             UI.instance.SendNotification("No AP left");
         }
     }
@@ -521,6 +526,7 @@ public class ActionArchive : MonoBehaviour
         }
         else
         {
+            PlayActionFailedSfx();
             UI.instance.SendNotification("No AP left");
         }
     }
@@ -570,6 +576,7 @@ public class ActionArchive : MonoBehaviour
         }
         else
         {
+            PlayActionFailedSfx();
             UI.instance.SendNotification("Can't Move Now");
             TempManager.instance.ChangeGameState(GameStates.MidTurn);
         }
@@ -607,12 +614,14 @@ public class ActionArchive : MonoBehaviour
             }
             else
             {
+                PlayActionFailedSfx();
                 UI.instance.SendNotification("No AP!!Can't Dash Now");
             }
 
         }
         else
         {
+            PlayActionFailedSfx();
             UI.instance.SendNotification("Can't Dash Now");
             TempManager.instance.ChangeGameState(GameStates.MidTurn);
         }
@@ -646,6 +655,7 @@ public class ActionArchive : MonoBehaviour
         }
         else
         {
+            PlayActionFailedSfx();
             UI.instance.SendNotification("Can't Warp Now");
             TempManager.instance.ChangeGameState(GameStates.MidTurn);
         }
@@ -680,6 +690,7 @@ public class ActionArchive : MonoBehaviour
         }
         else
         {
+            PlayActionFailedSfx();
             UI.instance.SendNotification("Can't Warp Now");
             TempManager.instance.ChangeGameState(GameStates.MidTurn);
         }
@@ -697,6 +708,13 @@ public class ActionArchive : MonoBehaviour
     void SendNotification(string action)
     {
         //actionNotification.StartImageAnimation(action);
+    }
+
+    // Plays the shared action-failed SFX (used for No AP / Can't Move / Can't Dash / Can't Warp notifications).
+    private void PlayActionFailedSfx()
+    {
+        if (SoundManager.Instance == null || actionFailedSfx == null) return;
+        SoundManager.Instance.PlaySound(actionFailedSfx);
     }
 
     public List<ImprovedActionStat> GetMeleeActions(List<ImprovedActionStat> actions)
@@ -767,6 +785,12 @@ public class ActionArchive : MonoBehaviour
     {
         TempManager.instance.SituationUIPanel.SetActive(false);
         TempManager.instance.UlimateUIPanel.SetActive(false);
+
+        if (SoundManager.Instance != null && noTargetSfx != null)
+        {
+            SoundManager.Instance.PlaySound(noTargetSfx);
+        }
+
         UI.instance.SendNotification("No target in your range");
 
 

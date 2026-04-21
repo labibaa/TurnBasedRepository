@@ -1,16 +1,15 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 
 public class ButtonStackManager : MonoBehaviour
 {
     public static ButtonStackManager instance;
     public GameObject imagePrefab; // Reference your image prefab
     public Transform stackPanel; // Reference your UI panel with Vertical Layout Group
-    GameObject actionPanel;
     [SerializeField]
     Transform parentPanel;
     [SerializeField]
@@ -29,20 +28,35 @@ public class ButtonStackManager : MonoBehaviour
     GameObject undoButtonPrefab;
 
     List<GameObject> commonButtons = new List<GameObject>();
+
+    // Maps action button names to their specific ActionArchive methods.
+    // Actions not in this map fall through to the default ShowTargetList behavior.
+    private Dictionary<string, Action> actionMap;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
-        // Ensure the stackPanel has a Vertical Layout Group component
         if (stackPanel == null || stackPanel.GetComponent<VerticalLayoutGroup>() == null)
         {
             Debug.LogError("The stackPanel is missing or doesn't have a Vertical Layout Group component.");
             return;
         }
-    }
-    private void Awake()
-    {
 
-        instance = this;
-
+        actionMap = new Dictionary<string, Action>
+        {
+            { "Block",      () => ActionArchive.instance.Block() },
+            { "Counter",    () => ActionArchive.instance.Counter() },
+            { "VenomCloud", () => ActionArchive.instance.VenomCloud() },
+            { "SmokeCloud", () => ActionArchive.instance.SmokeCloud() },
+            { "BoneShield", () => ActionArchive.instance.BoneShield() },
+            { "Imbuement",  () => ActionArchive.instance.Imbuement() },
+            { "DaggerSweep",() => ActionArchive.instance.DaggerSweep() },
+            { "Impale",     () => ActionArchive.instance.Impale() },
+        };
     }
 
     public void OnButtonPressed(GameObject imagePrefa)
@@ -91,190 +105,87 @@ public class ButtonStackManager : MonoBehaviour
         GameObject ultimateBarSpawned = Instantiate(ultimateBar, UltimateRectPanel.position, Quaternion.identity);
         ultimateBarSpawned.transform.SetParent(UltimateRectPanel, false);
         ultimateBarSpawned.name = player.name + "ultimate";
-        ultimateBarSpawned.GetComponent<UltimateUI>().maxProgress = player.GetPlayerUltimate().GetultimateThreshold();
-        ultimateBarSpawned.GetComponent<UltimateUI>().ultimateBarProgress = 0;
+        UltimateUI ultUI = ultimateBarSpawned.GetComponent<UltimateUI>();
+        ultUI.maxProgress = player.GetPlayerUltimate().GetultimateThreshold();
+        ultUI.ultimateBarProgress = 0;
         return ultimateBarSpawned;
     }
-    public GameObject PopulateItemPanel(CharacterBaseClasses player)
+    private GameObject CreatePanel(string panelName, Transform parent, CharacterBaseClasses player, float spacing)
     {
-        // Create a new player panel
-        GameObject playerItems = new GameObject("PlayerItems");
-        playerItems.transform.SetParent(itemParentPanel, false);
-        playerItems.name = player.name;
+        GameObject panel = new GameObject(panelName);
+        panel.transform.SetParent(parent, false);
+        panel.name = player.name;
 
-        // Add RectTransform component and set its size
-       
-                                                              // Limit to 3 buttons per row
+        RectTransform panelRect = panel.AddComponent<RectTransform>();
+        panelRect.sizeDelta = new Vector2(400, 600);
 
-        // Add RectTransform component and set its size
-        RectTransform panelRectTransform = playerItems.AddComponent<RectTransform>();
-        VerticalLayoutGroup layoutGroup = playerItems.AddComponent<VerticalLayoutGroup>();
-        layoutGroup.spacing = 10f;
-
+        VerticalLayoutGroup layoutGroup = panel.AddComponent<VerticalLayoutGroup>();
+        layoutGroup.spacing = spacing;
         layoutGroup.childControlWidth = false;
         layoutGroup.childControlHeight = false;
         layoutGroup.childForceExpandWidth = false;
         layoutGroup.childForceExpandHeight = false;
-
         layoutGroup.childAlignment = TextAnchor.MiddleRight;
 
-        panelRectTransform.sizeDelta = new Vector2(400, 600); // Set panel size as needed
+        return panel;
+    }
 
-        // Get the available actions from the player
+    public GameObject PopulateItemPanel(CharacterBaseClasses player)
+    {
+        GameObject playerItems = CreatePanel("PlayerItems", itemParentPanel, player, 10f);
+
         List<InventoryItem> playerAvailableItems = player.GetAvailableItems();
-        if (playerAvailableItems.Count > 0)
+        foreach (InventoryItem item in playerAvailableItems)
         {
+            GameObject button = Instantiate(item.itemClass.itemButton, playerItems.transform);
+            button.GetComponent<ButtonName>().SetButtonName(item.itemClass.itemName);
 
-            foreach (InventoryItem item in playerAvailableItems)
+            TextMeshProUGUI nameComponent = button.GetComponentInChildren<TextMeshProUGUI>();
+            if (nameComponent != null)
             {
-                // Instantiate each action button and set its function based on its name
-                GameObject button = Instantiate(item.itemClass.itemButton, playerItems.transform);
-                button.GetComponent<ButtonName>().SetButtonName(item.itemClass.itemName);
-                TextMeshProUGUI NameComponent = button.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-                NameComponent.text = item.itemClass.itemName;
+                nameComponent.text = item.itemClass.itemName;
             }
         }
 
         return playerItems;
     }
+
     public GameObject PopulateActionPanel(CharacterBaseClasses player)
     {
-        // Create a new player panel
-        GameObject playerPanel = new GameObject("PlayerPanel");
-        playerPanel.transform.SetParent(parentPanel, false);
-        playerPanel.name = player.name;
+        GameObject playerPanel = CreatePanel("PlayerPanel", parentPanel, player, 5f);
 
-        // Add RectTransform component and set its size
-        RectTransform panelRectTransform = playerPanel.AddComponent<RectTransform>();
-        VerticalLayoutGroup layoutGroup = playerPanel.AddComponent<VerticalLayoutGroup>();
-        layoutGroup.spacing = 5f;
-
-        layoutGroup.childControlWidth = false;
-        layoutGroup.childControlHeight = false;
-        layoutGroup.childForceExpandWidth = false;
-        layoutGroup.childForceExpandHeight = false;
-
-        layoutGroup.childAlignment = TextAnchor.MiddleRight;
-
-        panelRectTransform.sizeDelta = new Vector2(400, 600); // Set panel size as needed
-
-        //// Replace HorizontalLayoutGroup with GridLayoutGroup for button grid layout
-        //GridLayoutGroup gridLayoutGroup = playerPanel.AddComponent<GridLayoutGroup>();
-        //gridLayoutGroup.cellSize = new Vector2(70, 70);   // Size of each button
-        //gridLayoutGroup.spacing = new Vector2(40, 40);     // Spacing between buttons
-        //gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        //gridLayoutGroup.constraintCount = 3;               // Limit to 3 buttons per row
-
-        // Get the available actions from the player
         List<ImprovedActionStat> playerAvailableAction = player.GetAvailableActions();
         foreach (ImprovedActionStat scriptable in playerAvailableAction)
         {
-            // Instantiate each action button and set its function based on its name
             GameObject button = Instantiate(scriptable.actionButton, playerPanel.transform);
-            
+            string buttonName = scriptable.actionButton.name;
 
-            if (scriptable.actionButton.name == "Block")
+            if (actionMap.TryGetValue(buttonName, out Action action))
             {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Block());
-            }
-            else if (scriptable.actionButton.name == "Counter")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Counter());
-            }
-            else if (scriptable.actionButton.name == "VenomCloud")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.VenomCloud());
-            }
-            else if (scriptable.actionButton.name == "SmokeCloud")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.SmokeCloud());
-            }
-            else if (scriptable.actionButton.name == "BoneShield")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.BoneShield());
-            }
-            else if (scriptable.actionButton.name == "Imbuement")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Imbuement());
-            } 
-            else if (scriptable.actionButton.name == "DaggerSweep")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.DaggerSweep());
-            }
-            else if (scriptable.actionButton.name == "Impale")
-            {
-                button.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Impale());
+                button.GetComponent<Button>().onClick.AddListener(() => action());
             }
             else
             {
-                button.GetComponent<Button>().onClick.AddListener(() => TempManager.instance.ShowTargetList(scriptable.actionButton.name));
-                
+                button.GetComponent<Button>().onClick.AddListener(() => TempManager.instance.ShowTargetList(buttonName));
             }
 
-            // Add button to ActionActivator
             ActionActivator.instance.AddToActionButtons(button);
         }
 
-        // Add additional buttons for special actions like Warp, Dash, GroundBlast
-        if (player.GetWarpAction())
-        {
-            GameObject warpButton = Instantiate(player.GetWarpAction().actionButton, playerPanel.transform);
-            warpButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.WarpSurge());
-            ActionActivator.instance.AddToActionButtons(warpButton);
-        }
-
-        if (player.GetDashAction())
-        {
-            GameObject dashButton = Instantiate(player.GetDashAction().actionButton, playerPanel.transform);
-            dashButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Dash());
-            ActionActivator.instance.AddToActionButtons(dashButton);
-        }
-
-        if (player.GetGroundBlastAction())
-        {
-            GameObject groundBlastButton = Instantiate(player.GetGroundBlastAction().actionButton, playerPanel.transform);
-            groundBlastButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.GroundBlast());
-            ActionActivator.instance.AddToActionButtons(groundBlastButton);
-        }
-        if (player.GetMoveAction())
-        {
-            GameObject moveButton = Instantiate(player.GetMoveAction().actionButton, playerPanel.transform);
-            moveButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Move());
-            ActionActivator.instance.AddToActionButtons(moveButton);
-        }
-
-        // Add the undo button
-        //GameObject undoButton = Instantiate(undoButtonPrefab, playerPanel.transform);
-        //undoButton.GetComponent<Button>().onClick.AddListener(() => ButtonStackManager.instance.UndoStackEntry());
-        //ActionActivator.instance.AddToActionButtons(undoButton);
-
-        // Add the ultimate action button
-  /*      GameObject ultimateButton = Instantiate(player.GetUltimateScripitable().ultimateButton, playerPanel.transform);
-        if (player.GetPlayerUltimate().IsSingleTarget())
-        {
-            ultimateButton.GetComponent<Button>().onClick.AddListener(() => TurnManager.instance.UltimateTargetList(player.GetUltimateScripitable()));    
-           // ultimateButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Ultimate());
-        }
-        else
-        {
-            ultimateButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Ultimate());
-        }
-        ActionActivator.instance.AddToActionButtons(ultimateButton);*/
-
-
-        // Add the move action button
-        //GameObject moveButton = Instantiate(moveButtonPrefab, playerPanel.transform);
-        //moveButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Move());
-        //ActionActivator.instance.AddToActionButtons(moveButton);
+        AddSpecialActionButton(player.GetWarpAction(), playerPanel, () => ActionArchive.instance.WarpSurge());
+        AddSpecialActionButton(player.GetDashAction(), playerPanel, () => ActionArchive.instance.Dash());
+        AddSpecialActionButton(player.GetGroundBlastAction(), playerPanel, () => ActionArchive.instance.GroundBlast());
+        AddSpecialActionButton(player.GetMoveAction(), playerPanel, () => ActionArchive.instance.Move());
 
         return playerPanel;
     }
 
-
-    
-
-    public void AddCommonListeners()
+    private void AddSpecialActionButton(ActionStat actionStat, GameObject panel, Action callback)
     {
+        if (actionStat == null) return;
 
+        GameObject button = Instantiate(actionStat.actionButton, panel.transform);
+        button.GetComponent<Button>().onClick.AddListener(() => callback());
+        ActionActivator.instance.AddToActionButtons(button);
     }
 }

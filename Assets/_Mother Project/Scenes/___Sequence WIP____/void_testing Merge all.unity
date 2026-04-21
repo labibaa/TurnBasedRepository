@@ -13563,6 +13563,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -40966,6 +40976,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -62079,8 +62099,8 @@ Transform:
   m_GameObject: {fileID: 1273417418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1753, y: 0, z: 19.8368}
-  m_LocalScale: {x: 3.2020502, y: 1, z: 5.329717}
+  m_LocalPosition: {x: -2.1, y: 0, z: 19.25}
+  m_LocalScale: {x: 4.341943, y: 1, z: 4.038113}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485461714}
@@ -62270,6 +62290,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterName
       value: HammerFour
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
@@ -73262,8 +73292,8 @@ Transform:
   m_GameObject: {fileID: 1470083630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.4, y: 0, z: 17.61}
-  m_LocalScale: {x: 3.4095247, y: 1, z: 4.2941723}
+  m_LocalPosition: {x: -7.75, y: 0, z: 17.45}
+  m_LocalScale: {x: 3.241507, y: 1, z: 3.9069667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485461714}
@@ -94119,7 +94149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1886872814
 Transform:
   m_ObjectHideFlags: 0
@@ -95370,6 +95400,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -96446,33 +96486,33 @@ MonoBehaviour:
   PlayerWaves:
   - WaveID: 1
     CharactersOfTheWave:
+    - {fileID: 1635738519}
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
-    - {fileID: 1635738519}
     GridStartLocation: {fileID: 1805934341}
     WaveTimeline: {fileID: 0}
     Trigger: {fileID: 78612787}
   - WaveID: 2
     CharactersOfTheWave:
-    - {fileID: 1800869750}
     - {fileID: 1357918049}
-    - {fileID: 7823975018350207408}
+    - {fileID: 1800869750}
     - {fileID: 13038052}
+    - {fileID: 7823975018350207408}
     GridStartLocation: {fileID: 1355076519}
     WaveTimeline: {fileID: 0}
     Trigger: {fileID: 1273417418}
   - WaveID: 3
     CharactersOfTheWave:
-    - {fileID: 1800869750}
     - {fileID: 447559471}
+    - {fileID: 1800869750}
     - {fileID: 7823975018350207408}
     GridStartLocation: {fileID: 1962404674}
     WaveTimeline: {fileID: 0}
     Trigger: {fileID: 1577075286}
   - WaveID: 4
     CharactersOfTheWave:
-    - {fileID: 1800869750}
     - {fileID: 1445861429}
+    - {fileID: 1800869750}
     - {fileID: 7823975018350207408}
     GridStartLocation: {fileID: 578293644}
     WaveTimeline: {fileID: 0}
@@ -96651,6 +96691,16 @@ PrefabInstance:
     - target: {fileID: 5008635855878310425, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
       propertyPath: healthPoints
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,

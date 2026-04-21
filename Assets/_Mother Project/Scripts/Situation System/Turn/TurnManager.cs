@@ -179,8 +179,7 @@ public class TurnManager : MonoBehaviour
         players[currentPlayerIndex].GetComponent<NavMeshAgent>().enabled = true;
         currentPlayer.SelectionParticle.SetActive(true);
         currentPlayer.PlayerActionListPanel.SetActive(true);
-
-    
+        currentPlayer.playerItemPanel.SetActive(true);
 
         TeamManager.instance.TeamMemberList(currentPlayer.CharacterTeam);
 
@@ -200,7 +199,6 @@ public class TurnManager : MonoBehaviour
         // currentPlayer.PlayerUltimateBar.SetActive(true);
         if (currentPlayer.CharacterTeam != TeamName.TeamA)
         {
-            //currentPlayer.playerItemPanel.SetActive(true);
             //currentPlayer.GetComponent<IsoMetricToTPS>().enabled = true;
             await currentPlayer.GetComponent<EnemyAIController>().StartEnemyTurn();
         }

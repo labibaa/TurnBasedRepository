@@ -12,6 +12,7 @@ public class TextFadeInOut : MonoBehaviour
 
     private Queue<string> textQueue = new Queue<string>();
     private bool isFading = false;
+    private List<string> displayedLines = new List<string>();
 
     private void Awake()
     {
@@ -28,51 +29,44 @@ public class TextFadeInOut : MonoBehaviour
 
     public void AddTextToQueue(Turn turn)
     {
-        // Construct the text entry
         string newText = turn.Player.characterName + " used " + turn.Command.GetActionName();
-
-        // Add the entry to the queue
         textQueue.Enqueue(newText);
 
-
-        // If not currently fading, start the fade-in process
-        //if (!isFading)
-        //{
-            // Display the next text if the queue is not empty
-            if (textQueue.Count > 0)
-                DisplayNextText();
-        //}
+        if (!isFading && textQueue.Count > 0)
+        {
+            DisplayNextText();
+        }
     }
 
-    public void DisplayNextText()
+    private void DisplayNextText()
     {
-        // Get the next text from the queue
-        string nextText = textQueue.Dequeue();
-
-        // Fade in the text
-        StartCoroutine(FadeInText(nextText));
+        if (textQueue.Count > 0)
+        {
+            string nextText = textQueue.Dequeue();
+            StartCoroutine(FadeInText(nextText));
+        }
     }
 
     IEnumerator FadeInText(string newText)
     {
         isFading = true;
 
-        // Set the text
-        textMeshPro.text += "\n" + newText;
+        displayedLines.Add(newText);
+        textMeshPro.text = string.Join("\n", displayedLines);
 
-        // Fade in
         float fadeInTime = 0f;
         while (fadeInTime < fadeInDuration)
         {
-            float alpha = Mathf.Lerp(0f, 1f, fadeInTime / fadeInDuration);
-            textMeshPro.alpha = alpha;
+            textMeshPro.alpha = Mathf.Lerp(0f, 1f, fadeInTime / fadeInDuration);
             fadeInTime += Time.deltaTime;
             yield return null;
         }
 
         textMeshPro.alpha = 1f;
-
         isFading = false;
+
+        if (textQueue.Count > 0)
+            DisplayNextText();
     }
 
     public void ClearText()
@@ -97,36 +91,24 @@ public class TextFadeInOut : MonoBehaviour
 
         textMeshPro.alpha = 0f;
 
-        // Clear the text
         textMeshPro.text = "";
+        displayedLines.Clear();
 
         isFading = false;
     }
 
     public void RemoveLatestEntry()
     {
-        if (!isFading && textMeshPro.text != "")
+        if (!isFading && displayedLines.Count > 0)
         {
-            // Split text into lines
-            string[] lines = textMeshPro.text.Split('\n');
+            displayedLines.RemoveAt(displayedLines.Count - 1);
 
-            // Remove the last line
-            if (lines.Length > 1)
+            if (displayedLines.Count > 0)
             {
-                string newText = "";
-                for (int i = 0; i < lines.Length - 1; i++)
-                {
-                    if (i > 0)
-                        newText += "\n";
-                    newText += lines[i];
-                }
-
-                // Fade out and update text
-                StartCoroutine(FadeOutAndUpdateText(newText));
+                StartCoroutine(FadeOutAndUpdateText(string.Join("\n", displayedLines)));
             }
             else
             {
-                // If there's only one line, simply clear the text
                 ClearText();
             }
         }

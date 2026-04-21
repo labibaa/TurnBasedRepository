@@ -111,15 +111,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -152,6 +154,7 @@ GameObject:
   - component: {fileID: 4443214540053392649}
   - component: {fileID: 913986896747571053}
   - component: {fileID: -6861602208595451210}
+  - component: {fileID: 9151550807053850311}
   m_Layer: 5
   m_Name: VenomCloud
   m_TagString: Untagged
@@ -312,3 +315,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &9151550807053850311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538063801286393506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de5be4f3a977204487d20343e3acf3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverClip: {fileID: 8300000, guid: bce6b0fefe34c0e4fa511522c6f13603, type: 3}
+  clickClip: {fileID: 8300000, guid: 849cc2b6bd4d9c74d8a779f9afeb2a88, type: 3}
+  volumeScale: 1
