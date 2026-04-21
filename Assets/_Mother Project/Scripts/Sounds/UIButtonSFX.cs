@@ -63,14 +63,21 @@ public class UIButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     // Plays the assigned hover clip through the SoundManager.
     private void PlayHover()
     {
-        if (SoundManager.Instance == null || hoverClip == null) return;
+        if (SoundManager.Instance == null || hoverClip == null) 
+        {
+            Debug.Log("Missing Hover SFX");
+            return;
+        }  
         SoundManager.Instance.PlaySound(hoverClip, volumeScale);
     }
 
     // Plays the assigned click clip through the SoundManager.
     private void PlayClick()
     {
-        if (SoundManager.Instance == null || clickClip == null) return;
+        if (SoundManager.Instance == null || clickClip == null) 
+        {
+            Debug.Log("Missing Hover SFX"); return;
+        }
         SoundManager.Instance.PlaySound(clickClip, volumeScale);
     }
 }

@@ -78,6 +78,7 @@ public class PlayerStatUI : MonoBehaviour
                 tempAvatarUI = Instantiate(AvatarSummaryPrefab.transform, SummaryStatParent.transform);
                 PlayableCharacterUI charUI = tempAvatarUI.GetComponent<PlayableCharacterUI>();
                 charUI.myCharacter = player;
+                EnsureAvatarHoverEffect(charUI);
                 CharacterUIList.Add(charUI);
             }
             else
@@ -85,6 +86,7 @@ public class PlayerStatUI : MonoBehaviour
                 tempAvatarUI = Instantiate(AvatarSummaryPrefabEnemy.transform, SummaryStatParentEnemy.transform);
                 PlayableCharacterUI charUI = tempAvatarUI.GetComponent<PlayableCharacterUI>();
                 charUI.myCharacter = player;
+                EnsureAvatarHoverEffect(charUI);
                 CharacterUIList.Add(charUI);
             }
 
@@ -117,5 +119,11 @@ public class PlayerStatUI : MonoBehaviour
         playerAvatarDetails.sprite = currentPlayer.avatarHead;
     }
 
-
+    private static void EnsureAvatarHoverEffect(PlayableCharacterUI charUI)
+    {
+        if (charUI == null || charUI.avatarImage == null) return;
+        if (!charUI.avatarImage.raycastTarget) charUI.avatarImage.raycastTarget = true;
+        if (charUI.avatarImage.GetComponent<AvatarHoverEffect>() == null)
+            charUI.avatarImage.gameObject.AddComponent<AvatarHoverEffect>();
+    }
 }

@@ -69,18 +69,18 @@ public class TurnManager : MonoBehaviour
         //    EndTurn();
 
         //}
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //if (currentPlayer.CompareTag("Player"))
-            //{
-                EndTurn();
-            //}
-            //else
-            //{
-            //    EnemyAIAttack();
-            //}
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    //if (currentPlayer.CompareTag("Player"))
+        //    //{
+        //        EndTurn();
+        //    //}
+        //    //else
+        //    //{
+        //    //    EnemyAIAttack();
+        //    //}
 
-        }
+        //}
 
     }
 
@@ -555,6 +555,7 @@ public class TurnManager : MonoBehaviour
     {
         TempManager.instance.SituationUIPanel.SetActive(false);
         TempManager.instance.UlimateUIPanel.SetActive(false);
+        SoundManager.Instance.PlaySound(ActionArchive.instance.noTargetSfx);
         UI.instance.SendNotification("No target in your range");
 
 
