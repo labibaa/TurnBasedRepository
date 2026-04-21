@@ -222,7 +222,7 @@ public class SpawnVFX : MonoBehaviour
     }
     public void PlayVFXSound()
     {
-        AudioController.instance.PlaySound(vfxAudioClip);
+        SoundManager.Instance.PlaySound(vfxAudioClip);
     }
 
 

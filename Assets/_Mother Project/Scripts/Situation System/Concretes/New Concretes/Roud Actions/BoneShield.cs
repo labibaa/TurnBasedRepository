@@ -48,7 +48,7 @@ public class BoneShield: ICommand
         //player.GetComponent<SpawnVFX>().SetTargetAnimator(target.gameObject);
         //player.GetComponent<SpawnVFX>().SetTargetVFXPosition(target.gameObject);
         //player.GetComponent<SpawnVFX>().SetOwnVFXPosition(player.gameObject.GetComponent<VFXSpawnPosition>().MidBody);
-        
+        player.GetComponent<SpawnVFX>().SetVFXSound(boneShield.actionSound);
 
         await CutsceneManager.instance.PlayAnimationForCharacter(player.gameObject, GetActionName());
 

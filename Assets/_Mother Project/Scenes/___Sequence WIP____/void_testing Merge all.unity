@@ -1273,7 +1273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 1
-  GridStartLocation: {fileID: 1805934341}
 --- !u!1 &80266461
 GameObject:
   m_ObjectHideFlags: 0
@@ -6687,13 +6686,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182078765}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.039, y: 0, z: -0.775}
+  m_LocalRotation: {x: -0, y: 0.3306921, z: -0, w: 0.9437387}
+  m_LocalPosition: {x: -0.25, y: 0, z: -0.76}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 13038037}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 38.622, z: 0}
 --- !u!114 &182078767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13564,6 +13563,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -13572,7 +13581,8 @@ PrefabInstance:
       propertyPath: gridCoordinateSpawn.y
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3871633964034974237, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
@@ -13588,6 +13598,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1440905967}
+    - targetCorrespondingSourceObject: {fileID: 1311456976241067581, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440905985}
   m_SourcePrefab: {fileID: 100100000, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
 --- !u!1 &306769116
 GameObject:
@@ -34856,7 +34870,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767178728}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -40893,7 +40907,7 @@ PrefabInstance:
     - target: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -571.2
+      value: -564.33
       objectReference: {fileID: 0}
     - target: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
@@ -40903,7 +40917,7 @@ PrefabInstance:
     - target: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 156
+      value: 154.09
       objectReference: {fileID: 0}
     - target: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
@@ -40962,6 +40976,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -40970,14 +40994,19 @@ PrefabInstance:
       propertyPath: gridCoordinateSpawn.y
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3871633964034974237, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1817256824}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1311456976241067581, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1635738536}
   m_SourcePrefab: {fileID: 100100000, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
 --- !u!1001 &892237536
 PrefabInstance:
@@ -59320,6 +59349,20 @@ MonoBehaviour:
   NumObservers: 0
   Observers: []
   CachedTransform: {fileID: 0}
+--- !u!114 &1100020897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100020862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de75b9e125ed9e46ba816182d1fc48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPThreshold: 0.4
+  stepDelay: 0.6
 --- !u!1 &1104785444
 GameObject:
   m_ObjectHideFlags: 0
@@ -59477,7 +59520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 4
-  GridStartLocation: {fileID: 578293644}
 --- !u!65 &1107085513
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59506,7 +59548,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107085510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -59628,7 +59670,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117092426}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -62057,8 +62099,8 @@ Transform:
   m_GameObject: {fileID: 1273417418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1753, y: 0, z: 19.8368}
-  m_LocalScale: {x: 3.2020502, y: 1, z: 5.329717}
+  m_LocalPosition: {x: -2.1, y: 0, z: 19.25}
+  m_LocalScale: {x: 4.341943, y: 1, z: 4.038113}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485461714}
@@ -62076,7 +62118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 2
-  GridStartLocation: {fileID: 1355076519}
 --- !u!65 &1273417421
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62252,6 +62293,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -62260,7 +62311,8 @@ PrefabInstance:
       propertyPath: gridCoordinateSpawn.y
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3871633964034974237, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
@@ -62276,6 +62328,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1520283160}
+    - targetCorrespondingSourceObject: {fileID: 1311456976241067581, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1520283178}
   m_SourcePrefab: {fileID: 100100000, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
 --- !u!1 &1285676018 stripped
 GameObject:
@@ -62316,6 +62372,20 @@ MonoBehaviour:
   ObjectsToHide:
   - {fileID: 1674251644}
   - {fileID: 1331065331}
+--- !u!114 &1285676053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285676018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de75b9e125ed9e46ba816182d1fc48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPThreshold: 0.4
+  stepDelay: 0.6
 --- !u!1 &1289264142
 GameObject:
   m_ObjectHideFlags: 0
@@ -73093,6 +73163,20 @@ MonoBehaviour:
   NumObservers: 0
   Observers: []
   CachedTransform: {fileID: 0}
+--- !u!114 &1440905985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440905950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de75b9e125ed9e46ba816182d1fc48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPThreshold: 0.4
+  stepDelay: 0.6
 --- !u!4 &1445861414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
@@ -73208,8 +73292,8 @@ Transform:
   m_GameObject: {fileID: 1470083630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.4, y: 0, z: 17.14}
-  m_LocalScale: {x: 3.4095247, y: 1, z: 4.2941723}
+  m_LocalPosition: {x: -7.75, y: 0, z: 17.45}
+  m_LocalScale: {x: 3.241507, y: 1, z: 3.9069667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 485461714}
@@ -73227,7 +73311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 2
-  GridStartLocation: {fileID: 1355076519}
 --- !u!65 &1470083633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73256,7 +73339,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470083630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -74808,6 +74891,20 @@ MonoBehaviour:
   NumObservers: 0
   Observers: []
   CachedTransform: {fileID: 0}
+--- !u!114 &1520283178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520283143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de75b9e125ed9e46ba816182d1fc48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPThreshold: 0.4
+  stepDelay: 0.6
 --- !u!1001 &1528587406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75540,7 +75637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 3
-  GridStartLocation: {fileID: 1962404674}
 --- !u!65 &1577075289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81191,6 +81287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d385464b4e5f48edae959ab0a204ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1635738536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363548425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de75b9e125ed9e46ba816182d1fc48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPThreshold: 0.4
+  stepDelay: 0.6
 --- !u!1 &1636649346
 GameObject:
   m_ObjectHideFlags: 0
@@ -88306,7 +88416,7 @@ Transform:
   m_GameObject: {fileID: 1805934341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.33, y: 0, z: 150.58}
+  m_LocalPosition: {x: 87.93, y: 0, z: 150.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94039,7 +94149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1886872814
 Transform:
   m_ObjectHideFlags: 0
@@ -94068,7 +94178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 5
-  GridStartLocation: {fileID: 613703365}
 --- !u!65 &1886872816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95291,6 +95400,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -95299,7 +95418,8 @@ PrefabInstance:
       propertyPath: gridCoordinateSpawn.y
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3871633964034974237, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
@@ -95315,6 +95435,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1100020879}
+    - targetCorrespondingSourceObject: {fileID: 1311456976241067581, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1100020897}
   m_SourcePrefab: {fileID: 100100000, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
 --- !u!1 &1970754885
 GameObject:
@@ -96362,42 +96486,50 @@ MonoBehaviour:
   PlayerWaves:
   - WaveID: 1
     CharactersOfTheWave:
+    - {fileID: 1635738519}
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
-    - {fileID: 1635738519}
+    GridStartLocation: {fileID: 1805934341}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 78612787}
   - WaveID: 2
     CharactersOfTheWave:
-    - {fileID: 1800869750}
     - {fileID: 1357918049}
+    - {fileID: 1800869750}
     - {fileID: 13038052}
+    - {fileID: 7823975018350207408}
+    GridStartLocation: {fileID: 1355076519}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1273417418}
   - WaveID: 3
     CharactersOfTheWave:
-    - {fileID: 1800869750}
     - {fileID: 447559471}
+    - {fileID: 1800869750}
+    - {fileID: 7823975018350207408}
+    GridStartLocation: {fileID: 1962404674}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1577075286}
   - WaveID: 4
     CharactersOfTheWave:
-    - {fileID: 1800869750}
     - {fileID: 1445861429}
+    - {fileID: 1800869750}
+    - {fileID: 7823975018350207408}
+    GridStartLocation: {fileID: 578293644}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1107085510}
   - WaveID: 5
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 7823975018350207408}
-  WaveTriggers:
-  - {fileID: 78612787}
-  - {fileID: 1273417418}
-  - {fileID: 1577075286}
-  - {fileID: 1107085510}
-  WaveTimelines:
-  - {fileID: 0}
-  gridWaveStartLocation:
-  - {fileID: 1805934341}
-  - {fileID: 1355076519}
-  - {fileID: 1962404674}
-  - {fileID: 578293644}
-  currentWaveCount: 0
+    GridStartLocation: {fileID: 613703365}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 1886872813}
   currentWave:
     WaveID: 0
     CharactersOfTheWave: []
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
 --- !u!114 &2046126998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96563,6 +96695,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 1
       objectReference: {fileID: 0}
@@ -96571,7 +96713,8 @@ PrefabInstance:
       propertyPath: gridCoordinateSpawn.y
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3871633964034974237, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3451084458873253219, guid: 02108b175ba2b8745be26842a352dd6a,
@@ -96587,6 +96730,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1285676036}
+    - targetCorrespondingSourceObject: {fileID: 1311456976241067581, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1285676053}
   m_SourcePrefab: {fileID: 100100000, guid: 02108b175ba2b8745be26842a352dd6a, type: 3}
 --- !u!1 &2070199669
 GameObject:

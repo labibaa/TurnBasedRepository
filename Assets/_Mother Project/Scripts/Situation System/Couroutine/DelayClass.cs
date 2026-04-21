@@ -15,11 +15,7 @@ public class DelayClass : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
 
     public void AddDelay(float delayTime)

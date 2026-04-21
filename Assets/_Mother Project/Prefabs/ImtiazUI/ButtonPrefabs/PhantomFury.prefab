@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2531551913102199068}
   - component: {fileID: 5147573972664098771}
   - component: {fileID: 2322161974540899302}
+  - component: {fileID: -810172601576450316}
   m_Layer: 5
   m_Name: PhantomFury
   m_TagString: Untagged
@@ -175,6 +176,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-810172601576450316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236195275393407154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de5be4f3a977204487d20343e3acf3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverClip: {fileID: 8300000, guid: bce6b0fefe34c0e4fa511522c6f13603, type: 3}
+  clickClip: {fileID: 8300000, guid: 849cc2b6bd4d9c74d8a779f9afeb2a88, type: 3}
+  volumeScale: 1
 --- !u!1 &7148680052591272434
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,15 +302,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

@@ -1,15 +1,10 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Xamin;
-using static UnityEngine.Rendering.DebugUI;
 
 public class UI : MonoBehaviour
 {
@@ -27,106 +22,67 @@ public class UI : MonoBehaviour
     public GameObject winMenu;
     public GameObject inGameCanvas;
     public GameObject characterPanel;
+
+    [Header("Menu SFX")]
+    public AudioClip startGameSfx;
+    public AudioClip pauseSfx;
+    public AudioClip resumeSfx;
+    public AudioClip menuNavigateSfx;
     //public GameObject SituationUI;
-
-    //
-    //[SerializeField]
-    //GameObject SelectorActionOptions;
-    //public CircleSelector _circleSelector;
-
-
 
     [SerializeField]
     RectTransform _roundPanel;
 
+    // ==========================================
+    // LIFECYCLE
+    // ==========================================
 
+    // Sets up the singleton instance so other systems can dispatch UI events through UI.instance.
     private void Awake()
     {
         instance = this;
     }
 
-    private void Start()
-    {
-       
-        //_circleSelector = SelectorActionOptions.GetComponent<CircleSelector>();
-    }
+    // ==========================================
+    // PANEL VISIBILITY
+    // ==========================================
 
+    // Resets panel state by delegating to HideAllPanel.
     public void ResetPanels()
     {
         HideAllPanel();
-        //ShowPanel(playerStatSummary);
-
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-           // PauseGame();
-        }
-    }
-
-
-    public void KillMove()
-    {
-        //killPanel.SetActive(true);
-        
-
-       // TempManager.instance.OnGameState(GameStates.MidTurn);
-
-    }
-
-    public void CreateTargetButton(CharacterBaseClasses target)
-    {
-      /*  Transform targetBtn = Instantiate(targetBTN.transform, targetListpanel.transform);
-        targetBtn.GetComponent<TargetButton>().avatarHead.sprite = target.avatarHead;
-        targetBtn.GetComponent<TargetButton>().avatarNameTxt.text = target.characterName;
-        targetBtn.GetComponent<TargetButton>().target = target;*/
-
-
-    }
-
-    public void ClearTargetList()
-    {
-        /*foreach (Transform targetButtons in targetListpanel.transform)
-        {
-            Destroy(targetButtons.gameObject);
-        }*/
-    }
-    
-    // player stat Summary
-    // Player Stat Details Panel
-    // TimeLine Panel
-    // Target List panel
-    // Action Parent Panel
-    // Action Panel
-
+    // Makes a panel fully visible and interactable by flipping its CanvasGroup values on.
     public void ShowPanel(Image imageToShow)
     {
         if (imageToShow != null)
         {
-            //AudioController.instance.PlaySound();
-            imageToShow.GetComponent<CanvasGroup>().alpha = 1;
-            imageToShow.GetComponent<CanvasGroup>().interactable = true;
-            imageToShow.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            
+            CanvasGroup cg = imageToShow.GetComponent<CanvasGroup>();
+            cg.alpha = 1;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
         }
-     
     }
 
+    // Placeholder hook for hiding every panel in one call.
     public void HideAllPanel()
     {
-     
     }
+
+    // Hides a single panel by zeroing its CanvasGroup alpha and disabling interactions and raycasts.
     public void HidePanel(Image imageToHide)
     {
         if (imageToHide != null)
         {
-            imageToHide.GetComponent<CanvasGroup>().alpha = 0;
-            imageToHide.GetComponent<CanvasGroup>().interactable = false;
-            imageToHide.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            CanvasGroup cg = imageToHide.GetComponent<CanvasGroup>();
+            cg.alpha = 0;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
         }
     }
+
+    // Switches to the MidTurn state, hides all panels, and shows the provided moves list panel.
     public void ShowMovesList(Image whichPanel)
     {
         TempManager.instance.ChangeGameState(GameStates.MidTurn);
@@ -135,19 +91,29 @@ public class UI : MonoBehaviour
         ShowPanel(whichPanel);
     }
 
+    // ==========================================
+    // STAT DISPLAY
+    // ==========================================
+
+    // Forwards the current player's data to PlayerStatUI for both summary HUD and detail panel updates.
     public void GetPlayerStats(CharacterBaseClasses currentPlayer)
     {
-        GetComponent<PlayerStatUI>().GetPlayerStatSummary(currentPlayer);
-        GetComponent<PlayerStatUI>().GetPlayerStatDetails(currentPlayer);
+        PlayerStatUI statUI = GetComponent<PlayerStatUI>();
+        statUI.GetPlayerStatSummary(currentPlayer);
+        statUI.GetPlayerStatDetails(currentPlayer);
     }
 
+    // ==========================================
+    // NOTIFICATIONS & FLYING TEXT
+    // ==========================================
 
+    // Sends a notification string through the ActionNotification banner (also triggers its SFX).
     public void SendNotification(string notification)
     {
         actionNotification.AnimateNotification(notification);
     }
 
-
+    // Spawns a flying text prefab that floats upward from the given parent transform.
     public void ShowFlyingText(string text, Transform parent,Color color)
     {
         GameObject flyingTextGO = Instantiate(flyingTextPrefab, parent);
@@ -155,6 +121,11 @@ public class UI : MonoBehaviour
         flyingTextGO.GetComponent<FlyingText>().FlyTextUpward(text,color);
     }
 
+    // ==========================================
+    // ROUND PANEL ANIMATION
+    // ==========================================
+
+    // Slides the round panel in from the right, holds briefly, then slides it out to the left.
     public async UniTask AnimatePanelAsync()
     {
         Vector2 originalPosition = _roundPanel.anchoredPosition;
@@ -178,45 +149,75 @@ public class UI : MonoBehaviour
 
     }
 
+    // ==========================================
+    // MENU ACTIONS (each plays a menu SFX)
+    // ==========================================
+
+    // Plays the start-game SFX, hides the start menu, and kicks off the opening cinematic timeline.
     public void StartGame()
     {
+        PlayMenuSfx(startGameSfx);
         startMenu.SetActive(false);
         openingTimeline.Play();
 
     }
+
+    // Quits the application.
     public void ExitGame()
     {
         Application.Quit();
     }
 
+    // Reloads the currently active scene.
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    // Plays the pause SFX, freezes time, shows the pause menu, and hides the in-game canvas.
     public void PauseGame()
     {
+        PlayMenuSfx(pauseSfx);
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         inGameCanvas.SetActive(false);
 
     }
 
+    // Plays the resume SFX, un-freezes time, hides the pause menu, and restores the in-game canvas.
     public void ResumeGame()
     {
+        PlayMenuSfx(resumeSfx);
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         inGameCanvas.SetActive(true);
     }
+
+    // Plays the menu-navigate SFX and switches from the start menu to the character selection panel.
     public void CharacterMenu()
     {
+        PlayMenuSfx(menuNavigateSfx);
         startMenu.SetActive(false);
         characterPanel.SetActive(true);
     }
+
+    // Plays the menu-navigate SFX and returns from the character panel back to the start menu.
     public void GoBack()
     {
+        PlayMenuSfx(menuNavigateSfx);
         characterPanel.SetActive(false);
         startMenu.SetActive(true);
+    }
+
+    // ==========================================
+    // AUDIO HELPER
+    // ==========================================
+
+    // Null-safe wrapper for firing a single menu SFX through the SoundManager.
+    private void PlayMenuSfx(AudioClip clip)
+    {
+        if (SoundManager.Instance == null || clip == null) return;
+        SoundManager.Instance.PlaySound(clip);
     }
 
 }

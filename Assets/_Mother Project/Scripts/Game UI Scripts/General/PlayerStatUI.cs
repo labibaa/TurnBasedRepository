@@ -1,7 +1,5 @@
-using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +18,6 @@ public class PlayerStatUI : MonoBehaviour
     public RectTransform AvatarSummaryPrefab;
     public RectTransform AvatarSummaryPrefabEnemy;
     public List<PlayableCharacterUI> CharacterUIList;
-    List<RectTransform> AvatarSummaryPrefabList;
 
     #endregion
 
@@ -44,11 +41,6 @@ public class PlayerStatUI : MonoBehaviour
 
     public void GetPlayerStatSummary(CharacterBaseClasses currentPlayer)
     {
-        /*playerAvatarSummary.sprite = currentPlayer.avatarHead;
-        playerNameTextSummary.text = currentPlayer.characterName;
-        playerAPTextSummary.text = "AP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentAP.ToString();
-        playerHPTextSummary.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();
-        playerRPTextSummary.text = "RP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentResolve.ToString();*/
     }
 
     #endregion
@@ -83,26 +75,18 @@ public class PlayerStatUI : MonoBehaviour
                 Transform tempAvatarUI;
             if (player.GetComponent<TemporaryStats>().CharacterTeam == TeamName.TeamA)
             {
-                
-                
                 tempAvatarUI = Instantiate(AvatarSummaryPrefab.transform, SummaryStatParent.transform);
-                tempAvatarUI.GetComponent<PlayableCharacterUI>().myCharacter = player;
-                CharacterUIList.Add(tempAvatarUI.GetComponent<PlayableCharacterUI>());
-               // AvatarSummaryPrefabList.Add(tempAvatarUI.GetComponent<RectTransform>());
-                    
-                
+                PlayableCharacterUI charUI = tempAvatarUI.GetComponent<PlayableCharacterUI>();
+                charUI.myCharacter = player;
+                CharacterUIList.Add(charUI);
             }
             else
             {
                 tempAvatarUI = Instantiate(AvatarSummaryPrefabEnemy.transform, SummaryStatParentEnemy.transform);
-                tempAvatarUI.GetComponent<PlayableCharacterUI>().myCharacter = player;
-                CharacterUIList.Add(tempAvatarUI.GetComponent<PlayableCharacterUI>());
+                PlayableCharacterUI charUI = tempAvatarUI.GetComponent<PlayableCharacterUI>();
+                charUI.myCharacter = player;
+                CharacterUIList.Add(charUI);
             }
-
-           
-
-
-
 
         }
         UpdateSummaryHUDUI();
@@ -113,10 +97,7 @@ public class PlayerStatUI : MonoBehaviour
         foreach (PlayableCharacterUI summaryHUD in CharacterUIList)
         {
             summaryHUD.UpdateHUD();
-
         }
-
-        
     }
     private void SwapItemsInLayout(RectTransform item1, RectTransform item2)
     {
@@ -125,27 +106,15 @@ public class PlayerStatUI : MonoBehaviour
         Vector3 pos1 = item1.anchoredPosition;
         Vector3 pos2 = item2.anchoredPosition;
 
-        // Animate positions
         item1.DOAnchorPos(pos2, .1f).SetEase(Ease.InOutQuad);
         item2.DOAnchorPos(pos1, .1f).SetEase(Ease.InOutQuad);
 
-        // Rebuild layout after the swap
-        LayoutRebuilder.ForceRebuildLayoutImmediate(AvatarSummaryPrefab);
-
+        LayoutRebuilder.ForceRebuildLayoutImmediate(SummaryStatParent.rectTransform);
     }
 
     public void GetPlayerStatDetails(CharacterBaseClasses currentPlayer)
     {
-        
-
         playerAvatarDetails.sprite = currentPlayer.avatarHead;
-        //playerNameTextDetails.text = currentPlayer.characterName;
-        //playerClassTextDetails.text = currentPlayer.;
-/*
-        playerAPTextDetails.text = "AP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentAP.ToString();
-        playerHPTextDetails.text = "HP: " + currentPlayer.GetComponent<TemporaryStats>().CurrentHealth.ToString();*/
-     
-
     }
 
 
