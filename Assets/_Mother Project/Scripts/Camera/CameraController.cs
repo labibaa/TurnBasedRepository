@@ -6,8 +6,8 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     // For Framing Transposer we treat zoom as changing camera distance
-    private const float MIN_CAMERA_DISTANCE = 6f;
-    private const float MAX_CAMERA_DISTANCE = 18f;
+    [SerializeField] private float MIN_CAMERA_DISTANCE = 6f;
+    [SerializeField] private float MAX_CAMERA_DISTANCE = 18f;
 
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
