@@ -154,6 +154,10 @@ MonoBehaviour:
   - {fileID: 5679636455279912461}
   - {fileID: 8867718299275466085}
   myCharacter: {fileID: 0}
+  hpDamageSfx: {fileID: 0}
+  hpHealSfx: {fileID: 0}
+  hpWaveDuration: 0.6
+  hpWaveEase: 24
 --- !u!1 &2108751801106486794
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +816,6 @@ GameObject:
   - component: {fileID: 3122320162323517693}
   - component: {fileID: 4955729287036313656}
   - component: {fileID: 8597031715674720557}
-  - component: {fileID: 4052741410351374504}
   m_Layer: 5
   m_Name: HPHolder
   m_TagString: Untagged
@@ -878,20 +881,6 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4052741410351374504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7831048934509416306}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce33f6264baad0e4a8b159c5a39234a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 8597031715674720557}
-  hoverText: {fileID: 0}
 --- !u!1 &7854634986617451767
 GameObject:
   m_ObjectHideFlags: 0

@@ -18247,7 +18247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &149037780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166325,6 +166325,10 @@ MonoBehaviour:
   winMenu: {fileID: 0}
   inGameCanvas: {fileID: 1512594196}
   characterPanel: {fileID: 0}
+  startGameSfx: {fileID: 0}
+  pauseSfx: {fileID: 0}
+  resumeSfx: {fileID: 0}
+  menuNavigateSfx: {fileID: 0}
   _roundPanel: {fileID: 1936772775}
 --- !u!114 &1540509172
 MonoBehaviour:
@@ -166348,6 +166352,8 @@ MonoBehaviour:
   CharacterUIList: []
   playerStatDetailsPanel: {fileID: 0}
   playerAvatarDetails: {fileID: 1319574001}
+  swapDuration: 0.3
+  swapEase: 7
 --- !u!114 &1540509173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166391,6 +166397,7 @@ MonoBehaviour:
   ActionNotificationText: {fileID: 1483142637}
   slideDuration: 1
   waitDuration: 0.25
+  notificationSfx: {fileID: 0}
 --- !u!114 &1540509177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227460,6 +227467,8 @@ MonoBehaviour:
   - {fileID: 1800869753}
   - {fileID: 1404492586950431545}
   playerStateUI: {fileID: 1540509172}
+  noTargetSfx: {fileID: 0}
+  actionFailedSfx: {fileID: 0}
   isTurnAdded: 0
 --- !u!114 &2046126985
 MonoBehaviour:

@@ -1298,17 +1298,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 149037778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdaa0927407958747bc2b01c703c6dbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 53b1383f472886146ad32878c14a91a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneFields:
-  - m_SceneAsset: {fileID: 102900000, guid: 9912fc1a45edb1141a8d6cb9a74a056f, type: 3}
-    m_SceneName: LEVEL 16 - Swearage Corridor to Pig Boss Room
-  - m_SceneAsset: {fileID: 102900000, guid: 8f3b2ff3a352bb14fa5692d786af096d, type: 3}
+  SceneName:
+    m_SceneAsset: {fileID: 102900000, guid: 8f3b2ff3a352bb14fa5692d786af096d, type: 3}
     m_SceneName: LEVEL 10 - Hall Way to Stairs
-  FinalScene:
-    m_SceneAsset: {fileID: 0}
-    m_SceneName: 
+  RandomSceneLoad: {fileID: 0}
+  LastPosition: 
+  IsRandom: 0
 --- !u!1 &160073458
 GameObject:
   m_ObjectHideFlags: 0
@@ -10071,7 +10069,7 @@ MonoBehaviour:
     m_SceneName: BlankScene
   - m_SceneAsset: {fileID: 102900000, guid: 81493a40ae67a664aaf5aeea370fdb14, type: 3}
     m_SceneName: characters_scene
-  - m_SceneAsset: {fileID: 102900000, guid: c9761e8f86b437744aa368ab8e1ca4a4, type: 3}
+  - m_SceneAsset: {fileID: 0}
     m_SceneName: Vfx
   FinalScene:
     m_SceneAsset: {fileID: 0}
@@ -11877,6 +11875,10 @@ MonoBehaviour:
   winMenu: {fileID: 0}
   inGameCanvas: {fileID: 1512594196}
   characterPanel: {fileID: 0}
+  startGameSfx: {fileID: 0}
+  pauseSfx: {fileID: 0}
+  resumeSfx: {fileID: 0}
+  menuNavigateSfx: {fileID: 0}
   _roundPanel: {fileID: 1936772775}
 --- !u!114 &1540509172
 MonoBehaviour:
@@ -11900,6 +11902,8 @@ MonoBehaviour:
   CharacterUIList: []
   playerStatDetailsPanel: {fileID: 0}
   playerAvatarDetails: {fileID: 1319574001}
+  swapDuration: 0.3
+  swapEase: 7
 --- !u!114 &1540509173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11943,6 +11947,7 @@ MonoBehaviour:
   ActionNotificationText: {fileID: 1483142637}
   slideDuration: 1
   waitDuration: 0.25
+  notificationSfx: {fileID: 0}
 --- !u!114 &1540509177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16176,6 +16181,8 @@ MonoBehaviour:
   - {fileID: 1800869753}
   - {fileID: 1404492586950431545}
   playerStateUI: {fileID: 1540509172}
+  noTargetSfx: {fileID: 0}
+  actionFailedSfx: {fileID: 0}
   isTurnAdded: 0
 --- !u!114 &2046126985
 MonoBehaviour:
@@ -16380,16 +16387,15 @@ MonoBehaviour:
     - {fileID: 1813470059}
     - {fileID: 7823975018350207408}
     - {fileID: 2075121800}
-  WaveTriggers:
-  - {fileID: 78612787}
-  WaveTimelines:
-  - {fileID: 0}
-  gridWaveStartLocation:
-  - {fileID: 1805934341}
-  currentWaveCount: 0
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
   currentWave:
     WaveID: 0
     CharactersOfTheWave: []
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
 --- !u!114 &2046126998
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,16 @@ public class PlayableCharacterUI : MonoBehaviour
     public AudioClip hpDamageSfx;
     public AudioClip hpHealSfx;
 
+    [Header("HP Bar Wave")]
+    [SerializeField] private float hpWaveAmplitude = 0.015f;
+    [SerializeField] private float hpWaveCycle = 1.2f;
+    [SerializeField] private float hpChangeDuration = 0.5f;
+    [SerializeField] private Ease hpChangeEase = Ease.OutQuad;
+
     private float _lastKnownHP = -1f;
+    private float _baseFill = -1f;
+    private float _wavePhase;
+    private Tween _baseFillTween;
 
     // ==========================================
     // LIFECYCLE
@@ -35,6 +44,22 @@ public class PlayableCharacterUI : MonoBehaviour
     private void Start()
     {
         UpdateHUD();
+    }
+
+    // Drives the continuous wave bob on top of the smoothly-tweened base HP fill.
+    private void Update()
+    {
+        if (hpBar == null || _baseFill < 0f) return;
+        if (_baseFill > 0.001f)
+        {
+            _wavePhase += Time.deltaTime / Mathf.Max(0.01f, hpWaveCycle);
+            float offset = Mathf.Sin(_wavePhase * Mathf.PI * 2f) * hpWaveAmplitude;
+            hpBar.fillAmount = Mathf.Clamp01(_baseFill + offset);
+        }
+        else
+        {
+            hpBar.fillAmount = 0f;
+        }
     }
 
     // ==========================================
@@ -47,7 +72,17 @@ public class PlayableCharacterUI : MonoBehaviour
         // Update HP bar
         float currentHP = myCharacter.GetComponent<TemporaryStats>().CurrentHealth;
         float maxHP = myCharacter.GetComponent<CharacterBaseClasses>().HealthPoints;
-        hpBar.fillAmount = currentHP / maxHP;
+        float targetFill = Mathf.Clamp01(currentHP / maxHP);
+        if (_baseFill < 0f)
+        {
+            _baseFill = targetFill;
+        }
+        else
+        {
+            if (_baseFillTween != null && _baseFillTween.IsActive()) _baseFillTween.Kill();
+            _baseFillTween = DOTween.To(() => _baseFill, v => _baseFill = v, targetFill, hpChangeDuration)
+                .SetEase(hpChangeEase);
+        }
 
         PlayHPDeltaSfx(currentHP);
 
@@ -102,12 +137,13 @@ public class PlayableCharacterUI : MonoBehaviour
         if (myCharacter.GetComponent<PlayerTurn>().myTurn)
         {
             ScaleItem(thisRectTransform);
+            if (PlayerStatUI.instance != null)
+                PlayerStatUI.instance.PromoteActiveToFront(this);
         }
         else
         {
             DescaleItem();
         }
-       //SwapItemsInLayout(currentItem,PrevItem);
     }
 
     // Tweens the given RectTransform up to full scale with an OutBack ease to emphasize the active player.
@@ -118,7 +154,7 @@ public class PlayableCharacterUI : MonoBehaviour
         thisRectTransform = item;
         currentItem = item;
         // Scale up the item
-        thisRectTransform.DOScale(Vector3.one * 1f, 0.2f)
+        thisRectTransform.DOScale(Vector3.one * 0.85f, 0.2f)
             .SetEase(Ease.OutBack);
     }
     // Tweens this HUD's RectTransform back down to its idle scale for non-active characters.
@@ -127,25 +163,8 @@ public class PlayableCharacterUI : MonoBehaviour
         if (thisRectTransform == null) return;
         PrevItem = thisRectTransform;
         // Scale down the item back to normal
-        thisRectTransform.DOScale(Vector3.one * .65f, 0.2f)
+        thisRectTransform.DOScale(Vector3.one * .55f, 0.2f)
             .SetEase(Ease.InBack);
     }
 
-    // ==========================================
-    // LAYOUT UTILITY
-    // ==========================================
-
-    // Animates two layout items into each other's anchored positions (currently unused, reserved for turn-order swaps).
-    private void SwapItemsInLayout(RectTransform item1, RectTransform item2)
-    {
-        if (item1 == null || item2 == null) return;
-
-        Vector3 pos1 = item1.anchoredPosition;
-        Vector3 pos2 = item2.anchoredPosition;
-
-        // Animate positions
-        item1.DOAnchorPos(pos2, .1f).SetEase(Ease.InOutQuad);
-        item2.DOAnchorPos(pos1, .1f).SetEase(Ease.InOutQuad);
-
-    }
 }
