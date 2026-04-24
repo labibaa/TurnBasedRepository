@@ -56,11 +56,13 @@ public class PlayerStatUI : MonoBehaviour
 
         foreach (Transform child in SummaryStatParent.transform)
         {
+           // DisableUIParticles(child);
             Destroy(child.gameObject);
         }
         
         foreach (Transform child in SummaryStatParentEnemy.transform)
         {
+            //DisableUIParticles(child);
             Destroy(child.gameObject);
         }
 
