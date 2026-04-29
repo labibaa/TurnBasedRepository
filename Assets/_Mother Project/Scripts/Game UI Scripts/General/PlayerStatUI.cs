@@ -25,9 +25,15 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private Image playerAvatarDetails;
 /*    [SerializeField] private TMP_Text playerAPTextDetails;
     [SerializeField] private TMP_Text playerHPTextDetails;*/
- 
+
+    [Header("Active-Turn Swap")]
+    [SerializeField] private float swapDuration = 0.3f;
+    [SerializeField] private Ease swapEase = Ease.InOutQuad;
+
     Vector3 positionOffset = new Vector3(0, 2, 0);
     public static PlayerStatUI instance;
+
+    private Sequence activeSwap;
 
     private void Awake()
     {
@@ -50,11 +56,13 @@ public class PlayerStatUI : MonoBehaviour
 
         foreach (Transform child in SummaryStatParent.transform)
         {
+           // DisableUIParticles(child);
             Destroy(child.gameObject);
         }
         
         foreach (Transform child in SummaryStatParentEnemy.transform)
         {
+            //DisableUIParticles(child);
             Destroy(child.gameObject);
         }
 
@@ -78,6 +86,7 @@ public class PlayerStatUI : MonoBehaviour
                 tempAvatarUI = Instantiate(AvatarSummaryPrefab.transform, SummaryStatParent.transform);
                 PlayableCharacterUI charUI = tempAvatarUI.GetComponent<PlayableCharacterUI>();
                 charUI.myCharacter = player;
+                EnsureAvatarHoverEffect(charUI);
                 CharacterUIList.Add(charUI);
             }
             else
@@ -85,6 +94,7 @@ public class PlayerStatUI : MonoBehaviour
                 tempAvatarUI = Instantiate(AvatarSummaryPrefabEnemy.transform, SummaryStatParentEnemy.transform);
                 PlayableCharacterUI charUI = tempAvatarUI.GetComponent<PlayableCharacterUI>();
                 charUI.myCharacter = player;
+                EnsureAvatarHoverEffect(charUI);
                 CharacterUIList.Add(charUI);
             }
 
@@ -99,17 +109,65 @@ public class PlayerStatUI : MonoBehaviour
             summaryHUD.UpdateHUD();
         }
     }
-    private void SwapItemsInLayout(RectTransform item1, RectTransform item2)
+    public void PromoteActiveToFront(PlayableCharacterUI activeChar)
     {
-        if (item1 == null || item2 == null) return;
+        if (activeChar == null || SummaryStatParent == null) return;
+        RectTransform activeRT = activeChar.transform as RectTransform;
+        if (activeRT == null) return;
 
-        Vector3 pos1 = item1.anchoredPosition;
-        Vector3 pos2 = item2.anchoredPosition;
+        Transform parent = activeRT.parent;
+        if (parent != SummaryStatParent.transform) return;
+        if (parent.childCount < 2) return;
 
-        item1.DOAnchorPos(pos2, .1f).SetEase(Ease.InOutQuad);
-        item2.DOAnchorPos(pos1, .1f).SetEase(Ease.InOutQuad);
+        if (activeSwap != null && activeSwap.IsActive())
+            activeSwap.Complete(true);
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(SummaryStatParent.rectTransform);
+        if (activeRT.GetSiblingIndex() == 0) return;
+
+        RectTransform frontRT = parent.GetChild(0) as RectTransform;
+        if (frontRT == null || frontRT == activeRT) return;
+
+        SwapItemsInLayout(activeRT, frontRT);
+    }
+
+    public void SwapItemsInLayout(RectTransform a, RectTransform b)
+    {
+        if (a == null || b == null || a == b) return;
+
+        Transform parent = a.parent;
+        if (parent == null || parent != b.parent) return;
+
+        if (activeSwap != null && activeSwap.IsActive())
+            activeSwap.Complete(true);
+
+        Vector2 startA = a.anchoredPosition;
+        Vector2 startB = b.anchoredPosition;
+
+        LayoutGroup layout = parent.GetComponent<LayoutGroup>();
+        bool layoutWasEnabled = layout != null && layout.enabled;
+        if (layout != null) layout.enabled = false;
+
+        bool restored = false;
+        System.Action restore = () =>
+        {
+            if (restored) return;
+            restored = true;
+
+            int idxA = a.GetSiblingIndex();
+            int idxB = b.GetSiblingIndex();
+            a.SetSiblingIndex(idxB);
+            b.SetSiblingIndex(idxA);
+
+            if (layout != null) layout.enabled = layoutWasEnabled;
+            if (parent is RectTransform pr) LayoutRebuilder.ForceRebuildLayoutImmediate(pr);
+        };
+
+        Sequence swap = DOTween.Sequence();
+        swap.Join(a.DOAnchorPos(startB, swapDuration).SetEase(swapEase));
+        swap.Join(b.DOAnchorPos(startA, swapDuration).SetEase(swapEase));
+        swap.OnComplete(() => restore());
+        swap.OnKill(() => restore());
+        activeSwap = swap;
     }
 
     public void GetPlayerStatDetails(CharacterBaseClasses currentPlayer)
@@ -117,5 +175,11 @@ public class PlayerStatUI : MonoBehaviour
         playerAvatarDetails.sprite = currentPlayer.avatarHead;
     }
 
-
+    private static void EnsureAvatarHoverEffect(PlayableCharacterUI charUI)
+    {
+        if (charUI == null || charUI.avatarImage == null) return;
+        if (!charUI.avatarImage.raycastTarget) charUI.avatarImage.raycastTarget = true;
+        if (charUI.avatarImage.GetComponent<AvatarHoverEffect>() == null)
+            charUI.avatarImage.gameObject.AddComponent<AvatarHoverEffect>();
+    }
 }
