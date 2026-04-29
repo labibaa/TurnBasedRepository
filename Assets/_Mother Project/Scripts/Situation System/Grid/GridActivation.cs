@@ -188,9 +188,10 @@ public class GridActivation : MonoBehaviour
 
         GridSystem.instance.IsGridOn = false;
         // HandleTurnNew.instance.SituationEndCondition = false;
+        WaitDelay(2f);
+        ExperienceManager.instance.AddExperiencePoints(WaveManager.instance.currentWave.rewardExp);
         LoadSceneManager.instance.SaveGame();
         LoadSceneManager.instance.GameDataLoad();
-        WaitDelay(2f);
         SwitchMC.Instance.CharacterSwitch();
 
     }

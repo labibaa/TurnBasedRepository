@@ -10,4 +10,5 @@ public class WaveWrapperClass
     public GameObject GridStartLocation;
     public PlayableDirector WaveTimeline;
     public GameObject Trigger;
+    public int rewardExp;
 }

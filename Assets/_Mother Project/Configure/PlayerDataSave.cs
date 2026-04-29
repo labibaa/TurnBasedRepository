@@ -16,6 +16,7 @@ public class PlayerDataSave
     public int CurrentArcana;
     public int CurrentIntelligence;
     public float CurrentDamageMultiplier;
+    public int MaxExp;
     public int CurrentExp;
     public TeamName CharacterTeam;
     public bool IsMainCHaracter;
@@ -23,7 +24,7 @@ public class PlayerDataSave
     public string CurrentScene;
     public List<InventoryItem> Items = new List<InventoryItem>();
 
-    public PlayerDataSave(string name,int maxHealth,int playerHealth, int playerAP, int currentDex, int currentEndurance, int currentStrength, int currentArcana, int currentIntelligence,float currentDamageMultiplier, int exp ,TeamName teamName, bool isMain, bool isLinkOn, string currentScene, List<InventoryItem> items)
+    public PlayerDataSave(string name,int maxHealth,int playerHealth, int playerAP, int currentDex, int currentEndurance, int currentStrength, int currentArcana, int currentIntelligence,float currentDamageMultiplier, int maxExp , int exp ,TeamName teamName, bool isMain, bool isLinkOn, string currentScene, List<InventoryItem> items)
     {
         Name = name;
         MaxPlayerHealth = maxHealth;
@@ -35,6 +36,7 @@ public class PlayerDataSave
         CurrentArcana = currentArcana;
         CurrentIntelligence = currentIntelligence;
         CurrentDamageMultiplier = currentDamageMultiplier;
+        MaxExp = maxExp;
         CurrentExp = exp;
         CharacterTeam = teamName;
         IsMainCHaracter = isMain;

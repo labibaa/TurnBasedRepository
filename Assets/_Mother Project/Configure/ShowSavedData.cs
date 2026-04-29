@@ -72,6 +72,7 @@ public class ShowSavedData : MonoBehaviour
               character.GetComponent<CharacterBaseClasses>().Intelligence,
               character.GetComponent<CharacterBaseClasses>().DamageMultiplier,
               character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint,
+              character.GetComponent<TemporaryStats>().CurrentExp,
               character.GetComponent<TemporaryStats>().CharacterTeam,
               character.GetComponent<TemporaryStats>().isMainCharacter,
               character.GetComponent<TemporaryStats>().isLinkOn,
@@ -97,10 +98,11 @@ public class ShowSavedData : MonoBehaviour
               character.GetComponent<CharacterBaseClasses>().Intelligence,
               character.GetComponent<CharacterBaseClasses>().DamageMultiplier,
               character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint,
+              character.GetComponent<TemporaryStats>().CurrentExp,
               character.GetComponent<TemporaryStats>().CharacterTeam,
               character.GetComponent<TemporaryStats>().isMainCharacter,
               character.GetComponent<TemporaryStats>().isLinkOn,
-              character.GetComponent<TemporaryStats>().currentScene,
+              character.GetComponent<TemporaryStats>().currentScene, // NEED TO ADD EXP
               character.GetComponent<CharacterBaseClasses>().GetAvailableItems()
               );
         SaveCharacterStats.Add(playerdtate);
@@ -129,7 +131,8 @@ public class ShowSavedData : MonoBehaviour
             character.GetComponent<CharacterBaseClasses>().Strength = item.CurrentStrength;
             character.GetComponent<CharacterBaseClasses>().Arcana = item.CurrentArcana;
             character.GetComponent<CharacterBaseClasses>().Intelligence = item.CurrentIntelligence;
-            character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint = item.CurrentExp;
+            character.GetComponent<CharacterBaseClasses>().MaxExperiencePoint = item.MaxExp;
+            character.GetComponent<TemporaryStats>().CurrentExp = item.CurrentExp;
             character.GetComponent<TemporaryStats>().CharacterTeam = item.CharacterTeam;
             character.GetComponent<TemporaryStats>().isMainCharacter = item.IsMainCHaracter;
             character.GetComponent<TemporaryStats>().isLinkOn = item.IsLinkOn;

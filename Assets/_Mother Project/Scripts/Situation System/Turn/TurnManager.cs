@@ -395,13 +395,13 @@ public class TurnManager : MonoBehaviour
     }
 
 
-    public void EnemyAIAttack()
+/*    public void EnemyAIAttack()
     {
-         /*Gets target from EnemyAI component
+         *//*Gets target from EnemyAI component
 
         Selects AI - determined action
 
-        Delays action with Invoke*/
+        Delays action with Invoke*//*
         if (GridSystem.instance.IsGridOn && currentPlayer.tag != "Player")
         {
 
@@ -430,7 +430,7 @@ public class TurnManager : MonoBehaviour
 
         EndTurn();
 
-    }
+    }*/
 
 
 

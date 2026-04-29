@@ -58,8 +58,6 @@ public class GridSystem : MonoBehaviour
     [SerializeField]
     bool GridVisualOn = true;
 
-    int expGain = 0;
-
     [SerializeField]
     private List<GameObject> enemiesToDestroyOnGridStart = new List<GameObject>();
 
@@ -168,8 +166,6 @@ public class GridSystem : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
      
         //player.transform.position =    new Vector3(leftBottomLocation.x, leftBottomLocation.y+0.1f, leftBottomLocation.z);
-        ExperienceManager.instance.AddExperiencePoints(expGain);
-        expGain += 100;
 
     }
 
@@ -499,8 +495,6 @@ public class GridSystem : MonoBehaviour
         IsGridOn = false;
 
         player.GetComponent<ThirdPersonController>().enabled = true;
-
-
 
         //might need to refactor this part, putting them on  a funciton
         player.GetComponent<GridInput>().enabled = false;
