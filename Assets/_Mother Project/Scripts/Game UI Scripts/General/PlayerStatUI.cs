@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Coffee.UIExtensions;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,13 +57,13 @@ public class PlayerStatUI : MonoBehaviour
 
         foreach (Transform child in SummaryStatParent.transform)
         {
-           // DisableUIParticles(child);
+            DisableUIParticles(child);
             Destroy(child.gameObject);
         }
-        
+
         foreach (Transform child in SummaryStatParentEnemy.transform)
         {
-            //DisableUIParticles(child);
+            DisableUIParticles(child);
             Destroy(child.gameObject);
         }
 
@@ -181,5 +182,17 @@ public class PlayerStatUI : MonoBehaviour
         if (!charUI.avatarImage.raycastTarget) charUI.avatarImage.raycastTarget = true;
         if (charUI.avatarImage.GetComponent<AvatarHoverEffect>() == null)
             charUI.avatarImage.gameObject.AddComponent<AvatarHoverEffect>();
+    }
+
+    // Disables any UIParticle (Coffee UIExtensions) on the subtree so the package unregisters its renderer children
+    // via OnDisable before the GameObject is destroyed, preventing stale-reference MissingReferenceExceptions.
+    private static void DisableUIParticles(Transform root)
+    {
+        if (root == null) return;
+        UIParticle[] particles = root.GetComponentsInChildren<UIParticle>(true);
+        for (int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i] != null) particles[i].enabled = false;
+        }
     }
 }
