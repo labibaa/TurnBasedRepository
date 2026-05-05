@@ -25,6 +25,24 @@ public class Inventory_UI : MonoBehaviour
 
     public StoreObjects store;
 
+    private void OnEnable()
+    {
+        TemporaryStats.OnCurrentExpChanged += RefreshCurrencyText;
+    }
+
+    private void OnDisable()
+    {
+        TemporaryStats.OnCurrentExpChanged -= RefreshCurrencyText;
+    }
+
+    private void RefreshCurrencyText()
+    {
+        if (currencyText != null)
+        {
+            currencyText.text = CurrencySystem.instance.GetCurrency().ToString();
+        }
+    }
+
     private void Update()
     {
         //ShowMainCharacterSprite();

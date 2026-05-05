@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.TextCore.Text;
 
 public class TemporaryStats : MonoBehaviour, IPersistableData
@@ -21,7 +22,20 @@ public class TemporaryStats : MonoBehaviour, IPersistableData
     public int CurrentStrength;
     public int CurrentArcana;
     public int CurrentIntelligence;
-    public int CurrentExp;
+
+    [SerializeField, FormerlySerializedAs("CurrentExp")] private int _currentExp;
+    public int CurrentExp
+    {
+        get => _currentExp;
+        set
+        {
+            if (_currentExp == value) return;
+            _currentExp = value;
+            OnCurrentExpChanged?.Invoke();
+        }
+    }
+    public static event Action OnCurrentExpChanged;
+
     public int CurrentResolve;
     public float CurrentDamageMultiplier;
     public bool IsBlockActive;

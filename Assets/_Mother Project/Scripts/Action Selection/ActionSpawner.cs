@@ -24,9 +24,27 @@ public class ActionSpawner : MonoBehaviour
     [SerializeField] TextMeshProUGUI characterName_txt;
     private void Awake()
     {
-        if (Instance == null) 
+        if (Instance == null)
         {
             Instance = this;
+        }
+    }
+
+    private void OnEnable()
+    {
+        TemporaryStats.OnCurrentExpChanged += RefreshCurrencyText;
+    }
+
+    private void OnDisable()
+    {
+        TemporaryStats.OnCurrentExpChanged -= RefreshCurrencyText;
+    }
+
+    private void RefreshCurrencyText()
+    {
+        if (currencyText != null)
+        {
+            currencyText.text = CurrencySystem.instance.GetCurrency().ToString();
         }
     }
 

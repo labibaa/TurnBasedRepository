@@ -86,6 +86,11 @@ public class TempManager : MonoBehaviour
     public void RotateCharactersOnGrid()
     {
         Transform closestTarget = TurnManager.instance.FindClosestTarget(TurnManager.instance.target, attacker.GetComponent<CharacterBaseClasses>());
+        if (closestTarget == null)
+        {
+            Debug.LogWarning("RotateCharactersOnGrid: FindClosestTarget returned null — target list empty or no valid targets. Skipping rotation. (Likely round-end state without GridStop being called yet.)");
+            return;
+        }
         Vector3 directionToTarget = closestTarget.position - attacker.transform.position;
         directionToTarget.y = 0; // Zeroing out the y-component to prevent tilting up or down
 

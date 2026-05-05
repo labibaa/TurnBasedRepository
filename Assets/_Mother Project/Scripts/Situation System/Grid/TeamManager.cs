@@ -40,8 +40,13 @@ public class TeamManager : MonoBehaviour
 
     void OnStartGrid()
     {
-        currentTeamDic = new Dictionary<TeamName, int>();
-        // Initialize the dictionary with empty lists for each team
+        // Only initialize if null (first time). Don't wipe existing registrations:
+        // OnGridGenerationSpawn fires AFTER WaveManager has already registered characters.
+        // Round-end cleanup is handled by ResetPlayerTeamList via HealthManager.OnGridDisable.
+        if (currentTeamDic == null)
+        {
+            currentTeamDic = new Dictionary<TeamName, int>();
+        }
         PopulateTeamPlayerList();
     }
 
@@ -66,7 +71,7 @@ public class TeamManager : MonoBehaviour
 
     // Example method to add a player to its corresponding team list
     public void AddPlayerToTeamList(TemporaryStats playerStates)
-    {       
+    {
 
         if (playerStates != null)
         {
@@ -102,21 +107,28 @@ public class TeamManager : MonoBehaviour
     }
     public void RemovePlayerFromTeamList(TemporaryStats playerStates)
     {
-        if (playerStates != null)
-        {
-            if (teamPlayerLists.ContainsKey(playerStates.CharacterTeam))
-            {
-                Debug.Log("Deleted: " + playerStates.CharacterTeam + "Value: " + currentTeamDic[playerStates.CharacterTeam]);
-                currentTeamDic[playerStates.CharacterTeam]--;
-              
+        if (playerStates == null) return;
 
-                teamPlayerLists[playerStates.CharacterTeam].Remove(playerStates);
-                Debug.Log(playerStates.gameObject.name + " removed");
-            }
-            else
-            {
-                Debug.LogWarning("Team list does not contain key: " + playerStates.CharacterTeam);
-            }
+        var team = playerStates.CharacterTeam;
+
+        if (teamPlayerLists.TryGetValue(team, out var list))
+        {
+            list.Remove(playerStates);
+            Debug.Log(playerStates.gameObject.name + " removed");
+        }
+        else
+        {
+            Debug.LogWarning("teamPlayerLists missing key: " + team);
+        }
+
+        if (currentTeamDic.TryGetValue(team, out int count))
+        {
+            currentTeamDic[team] = count - 1;
+            Debug.Log($"Deleted: {team} Value: {currentTeamDic[team]}");
+        }
+        else
+        {
+            Debug.LogWarning($"currentTeamDic missing key {team} on remove — player was never registered via AddPlayerToTeamList");
         }
     }
 

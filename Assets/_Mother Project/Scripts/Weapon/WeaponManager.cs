@@ -11,7 +11,11 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
+    public const int MaxWeaponLevel = 10;
+    private const string WeaponLevelsFile = "WeaponLevels.json";
+
     public Dictionary<CurrentWeapon, Func<List<ImprovedActionStat>>> weaponActions;
+    public Dictionary<CurrentWeapon, int> weaponLevels;
 
     //list of weapons to assign to each character according to type
     [SerializeField] protected List<ImprovedActionStat> DaggerAvailableActions = new List<ImprovedActionStat>();
@@ -49,6 +53,11 @@ public class WeaponManager : MonoBehaviour
             { CurrentWeapon.Butcher,        GetButcherAvailableActions },
         };
 
+        weaponLevels = new Dictionary<CurrentWeapon, int>();
+        foreach (CurrentWeapon weapon in Enum.GetValues(typeof(CurrentWeapon)))
+        {
+            weaponLevels[weapon] = 0;
+        }
     }
     private void Update()
     {
@@ -170,34 +179,53 @@ public class WeaponManager : MonoBehaviour
     public void CheckWeaponlvlUpCost_PlayerXp()
     {
         GameObject crntPlayer = SwitchMC.Instance.mainCharacter;
-        if (crntPlayer.GetComponent<TemporaryStats>().CurrentExp >= (10 * crntPlayer.GetComponent<CharacterBaseClasses>().Level * crntPlayer.GetComponent<CharacterBaseClasses>().Level)) //add weapon level in base class
+        var stats = crntPlayer.GetComponent<TemporaryStats>();
+        var baseClasses = crntPlayer.GetComponent<CharacterBaseClasses>();
+        CurrentWeapon weapon = baseClasses.EquipedWeapon;
+
+        if (weaponLevels[weapon] >= MaxWeaponLevel)
         {
-            crntPlayer.GetComponent<TemporaryStats>().CurrentExp -= (10 * crntPlayer.GetComponent<CharacterBaseClasses>().Level * crntPlayer.GetComponent<CharacterBaseClasses>().Level);
-            WeaponLevelUp(crntPlayer);
+            Debug.Log($"{weapon} is already at max level ({MaxWeaponLevel}).");
+            return;
         }
+
+        int cost = 10 * baseClasses.Level * baseClasses.Level;
+        if (stats.CurrentExp < cost) return;
+
+        stats.CurrentExp -= cost;
+        WeaponLevelUp(crntPlayer);
     }
     void WeaponLevelUp(GameObject CurrentCharacter)
     {
-        //SwitchMC.Instance.mainCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon
-        if (weaponActions.TryGetValue(CurrentCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon, out var actionGetter)) 
-        {
-            foreach (var item in actionGetter())
-            {
-                for (int i = 0; i < item.RangeMappings.Length; i++)
-                {
-                    item.RangeMappings[i].MappedValue = item.RangeMappings[i].MappedValue + 2;
-                }
-                //SaveMappings(item);
-            }
-        }
-        else
+        CurrentWeapon weapon = CurrentCharacter.GetComponent<CharacterBaseClasses>().EquipedWeapon;
+        if (!weaponActions.TryGetValue(weapon, out var actionGetter))
         {
             Debug.LogWarning("No actions mapped for this weapon!");
+            return;
         }
+
+        foreach (var item in actionGetter())
+        {
+            if (item.RangeMappings == null || item.RangeMappings.Length == 0) continue;
+
+            int topTierIndex = 0;
+            for (int i = 1; i < item.RangeMappings.Length; i++)
+            {
+                if (item.RangeMappings[i].MaxRangeValue > item.RangeMappings[topTierIndex].MaxRangeValue)
+                    topTierIndex = i;
+            }
+            item.RangeMappings[topTierIndex].MappedValue += 1;
+
+            SaveMappings(item);
+        }
+
+        weaponLevels[weapon]++;
+        SaveWeaponLevels();
     }
 
-    public void LoadWeaponMapping() // call when continue game is pressed 
+    public void LoadWeaponMapping() // call when continue game is pressed
     {
+        LoadWeaponLevels();
         foreach(var character in SwitchMC.Instance.characters)
         {
             if (weaponActions.TryGetValue(character.GetComponent<CharacterBaseClasses>().EquipedWeapon, out var actionGetter))
@@ -211,6 +239,26 @@ public class WeaponManager : MonoBehaviour
             {
                 Debug.LogWarning("No actions mapped for this weapon!");
             }
+        }
+    }
+
+    private void SaveWeaponLevels()
+    {
+        var entries = new List<WeaponLevelEntry>();
+        foreach (var kv in weaponLevels)
+        {
+            entries.Add(new WeaponLevelEntry { weapon = kv.Key, level = kv.Value });
+        }
+        FileHandler.SaveToJsonData(entries, WeaponLevelsFile);
+    }
+
+    private void LoadWeaponLevels()
+    {
+        List<WeaponLevelEntry> loaded = FileHandler.LoadJsonData<WeaponLevelEntry>(WeaponLevelsFile);
+        if (loaded == null) return;
+        foreach (var entry in loaded)
+        {
+            weaponLevels[entry.weapon] = Mathf.Clamp(entry.level, 0, MaxWeaponLevel);
         }
     }
     public void SaveMappings(ImprovedActionStat actionStat)
@@ -245,4 +293,11 @@ public class WeaponManager : MonoBehaviour
 public class RangeMappingSaveData
 {
     public List<RangeMapping> mappings;
+}
+
+[Serializable]
+public struct WeaponLevelEntry
+{
+    public CurrentWeapon weapon;
+    public int level;
 }

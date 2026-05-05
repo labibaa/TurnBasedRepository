@@ -64,15 +64,6 @@ public class InventoryManager : MonoBehaviour
         {
             itemDictionaries[currentCharacter] = new Dictionary<ItemClass, InventoryItem>();
         }
-
-        TemporaryStats playerStats = currentCharacter.GetComponent<TemporaryStats>();
-        if (playerStats == null)
-        {
-            Debug.LogError("TemporaryStats component missing on mainCharacter.");
-            return;
-        }
-
-        CurrencySystem.instance.SetCurrency(playerStats.CurrentExp);
     }
     public void SetInventoryItems(GameObject owner)
     {

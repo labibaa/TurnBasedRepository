@@ -51,6 +51,7 @@ public class HandleTurnNew : MonoBehaviour
         int totalActionthisTurn = turnsToBePerformed.Count;
         for (int i = 0; i < turnsToBePerformed.Count; i++)
         {
+            if (SituationEndCondition) break;
             await PerformTurn(turnsToBePerformed[i]);
         }
        

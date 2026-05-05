@@ -156,8 +156,9 @@ public class TurnManager : MonoBehaviour
             //UI.instance.actionPanel = null; //because kill, survive, deal movelists overwrite fix
 
             ResetTurn();
+            return;
         }
-        
+
 
         UpdateTurnUI();//enabling current Turn Ui
 

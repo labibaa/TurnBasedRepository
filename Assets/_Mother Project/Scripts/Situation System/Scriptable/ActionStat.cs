@@ -34,6 +34,7 @@ public class ActionStat : ScriptableObject
 
     public string Description;
     public bool HasTargets;
+    public AudioClip actionSound;
     public GameObject actionIcon;
     public GameObject actionButton;
     public string moveName;
