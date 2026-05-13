@@ -165648,6 +165648,10 @@ MonoBehaviour:
   winMenu: {fileID: 0}
   inGameCanvas: {fileID: 1512594196}
   characterPanel: {fileID: 0}
+  startGameSfx: {fileID: 0}
+  pauseSfx: {fileID: 0}
+  resumeSfx: {fileID: 0}
+  menuNavigateSfx: {fileID: 0}
   _roundPanel: {fileID: 1936772775}
 --- !u!114 &1540509172
 MonoBehaviour:
@@ -165671,6 +165675,8 @@ MonoBehaviour:
   CharacterUIList: []
   playerStatDetailsPanel: {fileID: 0}
   playerAvatarDetails: {fileID: 1319574001}
+  swapDuration: 0.3
+  swapEase: 7
 --- !u!114 &1540509173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165714,6 +165720,7 @@ MonoBehaviour:
   ActionNotificationText: {fileID: 1483142637}
   slideDuration: 1
   waitDuration: 0.25
+  notificationSfx: {fileID: 0}
 --- !u!114 &1540509177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185161,12 +185168,12 @@ PrefabInstance:
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -555.3237
+      value: -552.9737
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -327.03702
+      value: -326.574
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
@@ -198280,12 +198287,12 @@ PrefabInstance:
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -566.34
+      value: -563.99
       objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -334.213
+      value: -333.75
       objectReference: {fileID: 0}
     - target: {fileID: 660679771762971530, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
@@ -198367,6 +198374,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.0000305
       objectReference: {fileID: 0}
+    - target: {fileID: 5859399235335750499, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 5859399235335750499, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 6689624603866758677, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: mainPlayer
@@ -206080,6 +206098,8 @@ MonoBehaviour:
   - {fileID: 1800869753}
   - {fileID: 1404492586950431545}
   playerStateUI: {fileID: 1540509172}
+  noTargetSfx: {fileID: 0}
+  actionFailedSfx: {fileID: 0}
   isTurnAdded: 0
 --- !u!114 &2046126985
 MonoBehaviour:
@@ -206284,16 +206304,17 @@ MonoBehaviour:
     - {fileID: 1852069705}
     - {fileID: 1813470059}
     - {fileID: 2075121800}
-  WaveTriggers:
-  - {fileID: 78612787}
-  WaveTimelines:
-  - {fileID: 0}
-  gridWaveStartLocation:
-  - {fileID: 1805934341}
-  currentWaveCount: 0
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
   currentWave:
     WaveID: 0
     CharactersOfTheWave: []
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
 --- !u!114 &2046126998
 MonoBehaviour:
   m_ObjectHideFlags: 0

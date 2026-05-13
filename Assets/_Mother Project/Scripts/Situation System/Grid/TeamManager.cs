@@ -75,14 +75,21 @@ public class TeamManager : MonoBehaviour
 
         if (playerStates != null)
         {
+            // Idempotent: if this player is already registered for this team,
+            // skip — re-spawns/re-inits across grid cycles must not inflate counts.
+            if (teamPlayerLists[playerStates.CharacterTeam].Contains(playerStates))
+            {
+                return;
+            }
+
             teamPlayerLists[playerStates.CharacterTeam].Add(playerStates);
 
 
             if (currentTeamDic.ContainsKey(playerStates.CharacterTeam))
             {
                 // Key exists, update the value
-                
-                
+
+
                 currentTeamDic[playerStates.CharacterTeam]++;
                 foreach (var kvp in currentTeamDic)
                 {
