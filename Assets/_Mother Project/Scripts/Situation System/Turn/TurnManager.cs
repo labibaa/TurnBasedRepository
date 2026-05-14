@@ -494,7 +494,7 @@ public class TurnManager : MonoBehaviour
 
 
 
-        //AssignTurnOrder(gameMode);
+        AssignTurnOrder(gameMode);
         StartTurn();
         await UI.instance.AnimatePanelAsync();
         //StartTurn();
