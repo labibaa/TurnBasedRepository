@@ -65,6 +65,8 @@ public class MeleeAttack : ICommand
                 targetTempStats.IsBlockActive = false;
             }
 
+            damage = ActionResolver.instance.ApplyPhysicalDefense(damage, targetTempStats.CurrentEndurance);
+
             if (targetTempStats.IsCounterActive)
             {
                 //damages attacker is counter on

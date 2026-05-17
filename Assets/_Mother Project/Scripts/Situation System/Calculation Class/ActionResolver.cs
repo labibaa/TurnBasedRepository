@@ -79,6 +79,11 @@ public class ActionResolver : MonoBehaviour
 
 
 
+    public int ApplyPhysicalDefense(int rawDamage, int targetEndurance)  // depends on target endurance
+    {
+        return Mathf.Max(1, rawDamage - Mathf.FloorToInt(targetEndurance / 4f));
+    }
+
     public int APResolver(int APPoint,int APCost)
     {
         
