@@ -29,7 +29,7 @@ public class TurnManager : MonoBehaviour
     TMP_Text roundNumber;
     [SerializeField]
     TMP_Text roundText;
-    int round = 1;
+    public int round { get; private set; } = 1;
     //public GameObject ActionUI;
     //public TMP_Text playerTxt;
     public List<CharacterBaseClasses> targetsInRange;
