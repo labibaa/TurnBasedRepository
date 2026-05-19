@@ -616,7 +616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9685a8ab5a6a9845b068a966cb3cfe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentXp: 0
 --- !u!114 &259394734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,6 +1201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103e65db51a8c214f8b0b76bc47f539e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MIN_CAMERA_DISTANCE: 6
+  MAX_CAMERA_DISTANCE: 18
   cinemachineVirtualCamera: {fileID: 1392962254}
   rigOffsetFromCharacter: {x: 0, y: 0, z: 0}
   rigFollowLerpSpeed: 20
@@ -2375,7 +2376,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 18
+  m_CameraDistance: 12
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -3910,7 +3911,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 0
-  GridStartLocation: {fileID: 0}
 --- !u!65 &1107085513
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5037,7 +5037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 0
-  GridStartLocation: {fileID: 0}
 --- !u!65 &1273417421
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5597,7 +5596,7 @@ Transform:
   m_GameObject: {fileID: 1392962252}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18219201, y: -0.5929354, z: 0.13997298, w: 0.771778}
-  m_LocalPosition: {x: -122.790405, y: -307.27292, z: 446.77765}
+  m_LocalPosition: {x: -127.97571, y: -309.95618, z: 448.1604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5803,7 +5802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 0
-  GridStartLocation: {fileID: 0}
 --- !u!65 &1470083633
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6238,6 +6236,10 @@ MonoBehaviour:
   winMenu: {fileID: 0}
   inGameCanvas: {fileID: 1512594196}
   characterPanel: {fileID: 0}
+  startGameSfx: {fileID: 0}
+  pauseSfx: {fileID: 0}
+  resumeSfx: {fileID: 0}
+  menuNavigateSfx: {fileID: 0}
   _roundPanel: {fileID: 1936772775}
 --- !u!114 &1540509172
 MonoBehaviour:
@@ -6261,6 +6263,8 @@ MonoBehaviour:
   CharacterUIList: []
   playerStatDetailsPanel: {fileID: 0}
   playerAvatarDetails: {fileID: 1319574001}
+  swapDuration: 0.3
+  swapEase: 7
 --- !u!114 &1540509173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6304,6 +6308,7 @@ MonoBehaviour:
   ActionNotificationText: {fileID: 1483142637}
   slideDuration: 1
   waitDuration: 0.25
+  notificationSfx: {fileID: 0}
 --- !u!114 &1540509177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6448,7 +6453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveTriggerID: 0
-  GridStartLocation: {fileID: 0}
 --- !u!65 &1577075289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8347,7 +8351,7 @@ Transform:
   m_GameObject: {fileID: 1996278183}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18219201, y: -0.5929354, z: 0.13997298, w: 0.771778}
-  m_LocalPosition: {x: 540.21985, y: 27.290174, z: 446.77765}
+  m_LocalPosition: {x: 535.03455, y: 24.606909, z: 448.1604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8612,6 +8616,8 @@ MonoBehaviour:
   - {fileID: 1800869753}
   - {fileID: 1404492586950431545}
   playerStateUI: {fileID: 1540509172}
+  noTargetSfx: {fileID: 0}
+  actionFailedSfx: {fileID: 0}
   isTurnAdded: 0
 --- !u!114 &2046126985
 MonoBehaviour:
@@ -8733,9 +8739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858117321fe10384f931e75325c14170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 532359700}
-  backgroundSound: {fileID: 0}
-  levelSong: []
 --- !u!114 &2046126993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8814,35 +8817,42 @@ MonoBehaviour:
     - {fileID: 7823975018350207408}
     - {fileID: 1800869750}
     - {fileID: 1635738519}
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
   - WaveID: 0
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 1357918049}
     - {fileID: 13038052}
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
   - WaveID: 0
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 447559471}
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
   - WaveID: 0
     CharactersOfTheWave:
     - {fileID: 1800869750}
     - {fileID: 1445861429}
-  WaveTriggers:
-  - {fileID: 78612787}
-  - {fileID: 1273417418}
-  - {fileID: 1577075286}
-  - {fileID: 1107085510}
-  WaveTimelines:
-  - {fileID: 0}
-  gridWaveStartLocation:
-  - {fileID: 1805934341}
-  - {fileID: 1355076519}
-  - {fileID: 1962404674}
-  - {fileID: 578293644}
-  currentWaveCount: 0
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
   currentWave:
     WaveID: 0
     CharactersOfTheWave: []
+    GridStartLocation: {fileID: 0}
+    WaveTimeline: {fileID: 0}
+    Trigger: {fileID: 0}
+    rewardExp: 0
 --- !u!114 &2046126998
 MonoBehaviour:
   m_ObjectHideFlags: 0
