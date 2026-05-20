@@ -249,7 +249,8 @@ public enum ActionType{
 public enum ActionStance
 {
     Defense,
-    Offense
+    Offense,
+    Support
 }
 
 public enum Mortality

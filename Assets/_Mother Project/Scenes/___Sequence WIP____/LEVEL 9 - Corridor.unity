@@ -1717,8 +1717,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: 8f3b2ff3a352bb14fa5692d786af096d, type: 3}
-    m_SceneName: LEVEL 10 - Hall Way to Stairs
+    m_SceneAsset: {fileID: 102900000, guid: de59603a2b1da5f4cab987cbf5e7d528, type: 3}
+    m_SceneName: LEVEL 6 - Library 2
   RandomSceneLoad: {fileID: 0}
   LastPosition: 
   IsRandom: 0
@@ -7102,6 +7102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1179453546690753743, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179453546690753743, guid: 08a4023a9da9f684e9d3544fe13fcb65,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 6
       objectReference: {fileID: 0}
@@ -7113,7 +7118,7 @@ PrefabInstance:
     - target: {fileID: 2848021832452628932, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
       propertyPath: healthPoints
-      value: 20
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6084242823365919326, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
@@ -22795,8 +22800,8 @@ MonoBehaviour:
   - WaveID: 1
     CharactersOfTheWave:
     - {fileID: 7823975018350207408}
-    - {fileID: 1800869750}
     - {fileID: 1305962247}
+    - {fileID: 1800869750}
     - {fileID: 1852069703}
     GridStartLocation: {fileID: 1805934341}
     WaveTimeline: {fileID: 0}
@@ -24404,6 +24409,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8902409962687837415, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: mainPlayer
+      value: 
+      objectReference: {fileID: 1800869811}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24562,7 +24572,7 @@ PrefabInstance:
     - target: {fileID: 3749474205516919722, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}
       propertyPath: healthPoints
-      value: 15
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8235307129235803732, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}
@@ -24573,6 +24583,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835962698016897830, guid: b952f558b62578e4e9d6156a9e116a96,
+        type: 3}
+      propertyPath: PlayerHealth
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835962698016897830, guid: b952f558b62578e4e9d6156a9e116a96,
+        type: 3}
+      propertyPath: CurrentHealth
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8835962698016897830, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}

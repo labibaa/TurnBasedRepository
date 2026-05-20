@@ -5428,6 +5428,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 848168317216837593, guid: ad0897dad02e4fe4bbcd187d308467dd,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 848168317216837593, guid: ad0897dad02e4fe4bbcd187d308467dd,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 3
       objectReference: {fileID: 0}
@@ -5435,6 +5440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gridCoordinateSpawn.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823571636101484346, guid: ad0897dad02e4fe4bbcd187d308467dd,
+        type: 3}
+      propertyPath: healthPoints
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3655071332193818201, guid: ad0897dad02e4fe4bbcd187d308467dd,
         type: 3}
@@ -17852,8 +17862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: 94efdf7dca40a754a813f546065ac6f5, type: 3}
-    m_SceneName: LEVEL 2 - Kitchen
+    m_SceneAsset: {fileID: 102900000, guid: a3b0f6a2a1d40c9428e3d797432a1810, type: 3}
+    m_SceneName: LEVEL 11 - Servants Corridor
   RandomSceneLoad: {fileID: 0}
   LastPosition: 
   IsRandom: 0
@@ -53320,7 +53330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &485461714
 Transform:
   m_ObjectHideFlags: 0
@@ -215353,6 +215363,12 @@ NavMeshAgent:
     type: 3}
   m_PrefabInstance: {fileID: 1912132891}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1800869786 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 629863055727247883, guid: 31c9dd2abad151c47975107e9bafd8dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1912132891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1802930867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242224,8 +242240,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1179453546690753743, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179453546690753743, guid: 08a4023a9da9f684e9d3544fe13fcb65,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848021832452628932, guid: 08a4023a9da9f684e9d3544fe13fcb65,
+        type: 3}
+      propertyPath: resolvePoints
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6885287169927894697, guid: 08a4023a9da9f684e9d3544fe13fcb65,
         type: 3}
@@ -267043,22 +267069,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roud Rigged Prefab
       objectReference: {fileID: 0}
-    - target: {fileID: 278052916022459049, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 659294627638206281, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 659294627638206281, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 4125902640138331067, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: isoCamera
@@ -267069,37 +267079,11 @@ PrefabInstance:
       propertyPath: tpsCamera
       value: 
       objectReference: {fileID: 8686788673576922632}
-    - target: {fileID: 4469698698262417035, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623877946105048720, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: gridCoordinateSpawn.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5623877946105048720, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: gridCoordinateSpawn.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6030752268258891936, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3559596248
       objectReference: {fileID: 0}
-    - target: {fileID: 8217421856037993182, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 8217421856037993182, guid: efb61c518da76c348aa16edf69b4a415,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8683327368853074611, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -267150,6 +267134,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8902409962687837415, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: mainPlayer
+      value: 
+      objectReference: {fileID: 1800869786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

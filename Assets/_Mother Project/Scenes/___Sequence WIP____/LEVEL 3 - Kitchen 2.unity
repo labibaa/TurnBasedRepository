@@ -18350,8 +18350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName:
-    m_SceneAsset: {fileID: 102900000, guid: de59603a2b1da5f4cab987cbf5e7d528, type: 3}
-    m_SceneName: LEVEL 6 - Library 2
+    m_SceneAsset: {fileID: 102900000, guid: 9912fc1a45edb1141a8d6cb9a74a056f, type: 3}
+    m_SceneName: LEVEL 16 - Swearage Corridor to Pig Boss Room
   RandomSceneLoad: {fileID: 1327883103}
   LastPosition: 
   IsRandom: 1
@@ -201883,37 +201883,37 @@ PrefabInstance:
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -562.3866
+      value: -566.8486
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -329.20865
+      value: -332.607
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 141.49004
+      value: 132.23322
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6830127
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18301274
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6830127
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.18301274
+      value: -2.3114565e-24
       objectReference: {fileID: 0}
     - target: {fileID: 1451358884824009639, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
@@ -201943,7 +201943,7 @@ PrefabInstance:
     - target: {fileID: 5694500526413457173, guid: 7d10e1ea40b86d740932f8dde2370d04,
         type: 3}
       propertyPath: field of view
-      value: 60
+      value: 60.000004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -218641,6 +218641,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
       propertyPath: CurrentResolve
       value: 0
       objectReference: {fileID: 0}
@@ -218652,6 +218657,26 @@ PrefabInstance:
     - target: {fileID: 126548385611617497, guid: 31c9dd2abad151c47975107e9bafd8dc,
         type: 3}
       propertyPath: gridCoordinateSpawn.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 217869352807926850, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: strength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 217869352807926850, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: dexterity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 217869352807926850, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: healthPoints
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 217869352807926850, guid: 31c9dd2abad151c47975107e9bafd8dc,
+        type: 3}
+      propertyPath: intelligence
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 638795718913286639, guid: 31c9dd2abad151c47975107e9bafd8dc,
@@ -227673,12 +227698,14 @@ MonoBehaviour:
     GridStartLocation: {fileID: 0}
     WaveTimeline: {fileID: 0}
     Trigger: {fileID: 0}
+    rewardExp: 0
   currentWave:
     WaveID: 0
     CharactersOfTheWave: []
     GridStartLocation: {fileID: 0}
     WaveTimeline: {fileID: 0}
     Trigger: {fileID: 0}
+    rewardExp: 0
 --- !u!114 &2046126998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238183,8 +238210,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
+      propertyPath: strength
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
       propertyPath: dexterity
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: healthPoints
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481072757295937722, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: intelligence
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3255496025928121792, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
@@ -238276,6 +238318,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8902409962687837415, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: mainPlayer
+      value: 
+      objectReference: {fileID: 1800869811}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

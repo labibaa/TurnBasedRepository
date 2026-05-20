@@ -768,6 +768,19 @@ public class ActionArchive : MonoBehaviour
         return availableActions;
     }
 
+    public List<ImprovedActionStat> GetSupportActions(List<ImprovedActionStat> actions)
+    {
+        List<ImprovedActionStat> availableActions = new List<ImprovedActionStat>();
+        foreach (ImprovedActionStat action in actions)
+        {
+            if (action.actionStance == ActionStance.Support)
+            {
+                availableActions.Add(action);
+            }
+        }
+        return availableActions;
+    }
+
     public List<ImprovedActionStat> GetActionsWithinAP(List<ImprovedActionStat> actions, TemporaryStats playerStats)
     {
         List<ImprovedActionStat> availableActions = new List<ImprovedActionStat>();

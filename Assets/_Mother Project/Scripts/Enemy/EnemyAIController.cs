@@ -56,11 +56,16 @@ public class EnemyAIController : MonoBehaviour
     // ─────────────────────────────────────────────────────────────
     private async UniTask ExecutePlan()
     {
+        // Blinded / zero-visibility — cannot act or move, end turn immediately
+        if (myStats.playerVisiblity == 0)
+            return;
+
         List<ImprovedActionStat> allActions = myBase.GetAvailableActions();
         List<ImprovedActionStat> offence = ActionArchive.instance.GetOffenseActions(allActions);
         List<ImprovedActionStat> rangedPool = ActionArchive.instance.GetRangedActions(offence);
         List<ImprovedActionStat> meleePool = ActionArchive.instance.GetMeleeActions(offence);
         List<ImprovedActionStat> defencePool = ActionArchive.instance.GetDefenceActions(allActions);
+        List<ImprovedActionStat> supportPool = ActionArchive.instance.GetSupportActions(allActions);
 
         int simulatedAP = myStats.CurrentAP;
         bool isLowHP = myStats.PlayerHealth > 0
@@ -103,17 +108,27 @@ public class EnemyAIController : MonoBehaviour
                 chosenAction = FindMostExpensiveAffordableExcluding(
                                    meleePool, simulatedAP, usedActions);
 
+            // If no offensive action fits budget, try support (ally-targeting)
+            if (chosenAction == null)
+                chosenAction = FindMostExpensiveAffordableExcluding(
+                                   supportPool, simulatedAP, usedActions);
+
             // Nothing affordable at all — stop spending
             if (chosenAction == null) break;
 
+            bool isSupportAction = chosenAction.actionStance == ActionStance.Support;
+
             // b) Find a target within THIS action's specific range
-            CharacterBaseClasses target = FindTargetInRange(chosenAction);
+            //    Support actions target the weakest alive ally; offensive actions target enemies
+            CharacterBaseClasses target = isSupportAction
+                ? FindAllyTargetInRange(chosenAction)
+                : FindTargetInRange(chosenAction);
 
             if (target == null)
             {
-                // c) No target in range for this action
-                //    If free Move is still available, move toward closest enemy and retry
-                if (!hasMoved && myPlayerTurn.isMoveOn)
+                // c) No target in range for offensive actions only — move and retry
+                //    Never move specifically to reach an ally for a support action
+                if (!isSupportAction && !hasMoved && myPlayerTurn.isMoveOn)
                 {
                     CharacterBaseClasses closestEnemy = ChooseClosestTarget();
                     if (closestEnemy != null)
@@ -169,6 +184,43 @@ public class EnemyAIController : MonoBehaviour
             TemporaryStats ts = pt.GetComponent<TemporaryStats>();
             if (ts == null) continue;
             if (ts.CharacterTeam == myStats.CharacterTeam) continue;
+            if (ts.CurrentHealth <= 0) continue;
+
+            bool inRange = GridMovement.instance.InAdjacentMatrix(
+                myStats.currentPlayerGridPosition,
+                pt.transform.position,
+                effectiveRange
+            );
+
+            if (inRange && ts.CurrentHealth < lowestHP)
+            {
+                lowestHP = ts.CurrentHealth;
+                best = pt.GetComponent<CharacterBaseClasses>();
+            }
+        }
+
+        return best;
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // FIND ALLY TARGET IN RANGE FOR SUPPORT ACTIONS (Buff, SoulTransfer, etc.)
+    // Targets the lowest-HP living ally (same team, not self) within range.
+    // ─────────────────────────────────────────────────────────────
+    private CharacterBaseClasses FindAllyTargetInRange(ImprovedActionStat action)
+    {
+        int effectiveRange = action.ActionRange * myStats.playerVisiblity;
+
+        CharacterBaseClasses best = null;
+        float lowestHP = Mathf.Infinity;
+
+        foreach (PlayerTurn pt in TurnManager.instance.target)
+        {
+            if (pt == null || !pt.gameObject.activeInHierarchy) continue;
+            if (pt.gameObject == gameObject) continue; // self-targeting belongs to Defense stance
+
+            TemporaryStats ts = pt.GetComponent<TemporaryStats>();
+            if (ts == null) continue;
+            if (ts.CharacterTeam != myStats.CharacterTeam) continue; // allies only
             if (ts.CurrentHealth <= 0) continue;
 
             bool inRange = GridMovement.instance.InAdjacentMatrix(
