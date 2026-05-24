@@ -475,14 +475,14 @@ public class TurnManager : MonoBehaviour
             playerTempStat.GetComponent<SpawnVFX>().StopVFXEvent();
             playerTempStat.IsCounterActive = false;
             playerTempStat.CurrentDamageMultiplier = players[i].GetComponent<CharacterBaseClasses>().DamageMultiplier;
-           // if (playerTempStat.CompareTag("Player"))
-            //{
+            if (playerTempStat.CharacterTeam == TeamName.TeamA)
+            {
                 playerTempStat.CurrentAP = ActionResolver.instance.APCarryOver(playerTempStat.CurrentAP, (2 + Mathf.FloorToInt((playerTempStat.CurrentIntelligence + 1) / 2f))); //ap increase based on intelligence
-            //}
-            // else
-            // {
-            //     playerTempStat.CurrentAP = ActionResolver.instance.APCarryOver(playerTempStat.CurrentAP, 6);
-            // }
+            }
+            else
+            {
+                playerTempStat.CurrentAP = ActionResolver.instance.APCarryOver(playerTempStat.CurrentAP, 6);
+            }
 
             players[i].GetComponent<PlayerTurn>().isMoveOn = true;
             PlayerStatUI.instance.GetPlayerStatSummary(players[i].GetComponent<CharacterBaseClasses>());
