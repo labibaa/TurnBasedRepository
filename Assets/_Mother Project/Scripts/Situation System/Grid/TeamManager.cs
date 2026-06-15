@@ -19,22 +19,22 @@ public class TeamManager : MonoBehaviour
     private void OnEnable()
     {
         HealthManager.OnGridDisable += ResetPlayerTeamList;
+        GridSystem.OnGridGeneration += ResetPlayerTeamList;
         GridSystem.OnGridGenerationSpawn += OnStartGrid;
     }
 
     private void OnDisable()
     {
         HealthManager.OnGridDisable -= ResetPlayerTeamList;
+        GridSystem.OnGridGeneration -= ResetPlayerTeamList;
         GridSystem.OnGridGenerationSpawn -= OnStartGrid;
     }
 
     private void Awake()
     {
-
-
         instance = this;
+        ResetPlayerTeamList();
         OnStartGrid();
-       
     }
 
 
@@ -64,9 +64,15 @@ public class TeamManager : MonoBehaviour
     public void ResetPlayerTeamList()
     {
         teamPlayerLists.Clear();
-        currentTeamDic.Clear();
-       currentTeams.Clear();
-
+        if (currentTeamDic != null)
+        {
+            currentTeamDic.Clear();
+        }
+        else
+        {
+            currentTeamDic = new Dictionary<TeamName, int>();
+        }
+        currentTeams.Clear();
     }
 
     // Example method to add a player to its corresponding team list

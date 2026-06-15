@@ -170,6 +170,7 @@ public class ActionArchive : MonoBehaviour
     public void CrystalCascade() => ExecuteStandardRanged();
     public void LunarLullaby() => ExecuteStandardRanged();
     public void HexedHavoc() => ExecuteStandardRanged();
+    public void CrossbowShoot() => ExecuteStandardRanged();
 
     // ==========================================
     // CUSTOM MELEE ACTIONS (unique command types)

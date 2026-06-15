@@ -28,6 +28,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] protected List<ImprovedActionStat> StaffAvailableActions = new List<ImprovedActionStat>();
     [SerializeField] protected List<ImprovedActionStat> SpoonAvailableActions = new List<ImprovedActionStat>();
     [SerializeField] protected List<ImprovedActionStat> ButcherAvailableActions = new List<ImprovedActionStat>();
+    [SerializeField] protected List<ImprovedActionStat> ArcherAvailableActions = new List<ImprovedActionStat>();
 
     public List<ImprovedActionStat> DaggerActiveActions  = new List<ImprovedActionStat>() ;
     public List<ImprovedActionStat> TalismanActiveActions  = new List<ImprovedActionStat>() ;
@@ -51,6 +52,7 @@ public class WeaponManager : MonoBehaviour
             { CurrentWeapon.Staff,          GetStaffAvailableActions },
             { CurrentWeapon.Spoon,          GetSpoonAvailableActions },
             { CurrentWeapon.Butcher,        GetButcherAvailableActions },
+            { CurrentWeapon.Archer,         GetArcherAvailableActions },
         };
 
         weaponLevels = new Dictionary<CurrentWeapon, int>();
@@ -133,6 +135,10 @@ public class WeaponManager : MonoBehaviour
     public List<ImprovedActionStat> GetButcherAvailableActions()
     {
         return ButcherAvailableActions;
+    }
+    public List<ImprovedActionStat> GetArcherAvailableActions()
+    {
+        return ArcherAvailableActions;
     }
 
     public void LoadWeaponData()
