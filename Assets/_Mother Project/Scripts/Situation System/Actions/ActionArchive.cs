@@ -155,6 +155,7 @@ public class ActionArchive : MonoBehaviour
     public void SpinningAttack() => ExecuteStandardMelee();
     public void SideAttack() => ExecuteStandardMelee();
     public void Stab() => ExecuteStandardMelee();
+    public void Pierce() => ExecuteStandardMelee();
     public void Punch() => ExecuteStandardMelee();
 
     // ==========================================
@@ -570,8 +571,8 @@ public class ActionArchive : MonoBehaviour
                 gridIp.enabled = true;
             }
 
-            GridMovement.instance.InAdjacentMatrix(ctx.attackerStats.currentPlayerGridPosition, TeamName.NullTeam, ctx.attackerStats.CurrentDex, Color.green);
-            GridMovement.instance.setMoveParam(moveScriptable, ctx.attackerStats.CurrentDex, ctx.attackerStats.currentPlayerGridPosition, ctx.attacker.gameObject.GetComponent<NavMeshAgent>());
+            GridMovement.instance.InAdjacentMatrix(ctx.attackerStats.currentPlayerGridPosition, TeamName.NullTeam, moveScriptable.ActionRange, Color.green);
+            GridMovement.instance.setMoveParam(moveScriptable, moveScriptable.ActionRange, ctx.attackerStats.currentPlayerGridPosition, ctx.attacker.gameObject.GetComponent<NavMeshAgent>());
 
             TempManager.instance.ChangeGameState(GameStates.MovementGridSelectionTurn);
         }

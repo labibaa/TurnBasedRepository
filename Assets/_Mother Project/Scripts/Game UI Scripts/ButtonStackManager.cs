@@ -118,6 +118,10 @@ public class ButtonStackManager : MonoBehaviour
 
         RectTransform panelRect = panel.AddComponent<RectTransform>();
         panelRect.sizeDelta = new Vector2(400, 600);
+        panelRect.anchorMin = new Vector2(1f, 0f); // bottom-right
+        panelRect.anchorMax = new Vector2(1f, 0f); // bottom-right
+        panelRect.pivot = new Vector2(1f, 0f); // pivot bottom-right
+        panelRect.anchoredPosition = new Vector2(-10f, 10f); // offset inward
 
         VerticalLayoutGroup layoutGroup = panel.AddComponent<VerticalLayoutGroup>();
         layoutGroup.spacing = spacing;
@@ -152,7 +156,7 @@ public class ButtonStackManager : MonoBehaviour
 
     public GameObject PopulateActionPanel(CharacterBaseClasses player)
     {
-        GameObject playerPanel = CreatePanel("PlayerPanel", parentPanel, player, 5f);
+        GameObject playerPanel = CreatePanel("PlayerPanel", parentPanel, player, 8f);
 
         List<ImprovedActionStat> playerAvailableAction = player.GetAvailableActions();
         foreach (ImprovedActionStat scriptable in playerAvailableAction)

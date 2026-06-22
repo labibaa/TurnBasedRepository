@@ -176,7 +176,7 @@ public class WeaponManager : MonoBehaviour
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulTransfer"));
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "MagicSiphon"));
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulSteal"));
-        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Impale"));
+       // TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Impale"));
 
         FileHandler.SaveToJsonData<ImprovedActionStat>(TalismanActiveActions, "Talisman.json");
 

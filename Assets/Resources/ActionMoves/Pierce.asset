@@ -10,46 +10,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65997b2d10b74c04e9ac0a65ce4ccdd5, type: 3}
-  m_Name: DaggerRising
+  m_Name: Pierce
   m_EditorClassIdentifier: 
   RangeMappings:
   - MinRangeValue: 1
     MaxRangeValue: 2
-    MappedValue: 3
+    MappedValue: 2
   - MinRangeValue: 3
     MaxRangeValue: 4
-    MappedValue: 3
+    MappedValue: 2
   - MinRangeValue: 5
     MaxRangeValue: 14
-    MappedValue: 4
+    MappedValue: 3
   - MinRangeValue: 15
     MaxRangeValue: 17
-    MappedValue: 4
+    MappedValue: 3
   - MinRangeValue: 18
     MaxRangeValue: 20
-    MappedValue: 6
+    MappedValue: 4
   ActionRange: 2
   ActionAccuracy: 100
-  ActionName: DaggerRising
+  ActionName: Pierce
   Description: 
-  PriorityValue: 20
+  PriorityValue: 2
   FirstPercentage: 20
   SecondPercentage: 60
   LastPercentage: 20
-  APCost: 4
+  APCost: 3
   ParticleSystem: {fileID: 0}
   HurtParticleSystem: {fileID: 0}
   HitParticleSystem: {fileID: 0}
   actionSound: {fileID: 8300000, guid: a7d2bfe6ac6fa5240911c9b315270e87, type: 3}
-  actionIcon: {fileID: 195040, guid: da1f3554db8fc76459a7939853bdd7c5, type: 3}
-  actionButton: {fileID: 3148980940342823002, guid: 8d9828fef8e929346a57389aba719ac3,
+  actionIcon: {fileID: 195040, guid: 54b7caa6bb822ae46bba6e11018a800a, type: 3}
+  actionButton: {fileID: 3148980940342823002, guid: 1a5635442cae74149a792aad93bd45b4,
     type: 3}
   SoundReferences: []
-  PlayerActionVFX: {fileID: 0}
+  PlayerActionVFX: {fileID: 1741485166341647510, guid: 1a2ce10b8267048449db25fb0a8a64f8,
+    type: 3}
   TargetHitVFX: {fileID: 0}
-  particle: {fileID: 0}
+  particle: {fileID: 19872524, guid: 7e7501e843e3d014186d1f48dc0a192b, type: 3}
   CharacterBodyLocation: MidBody
   TargetCharacterBodyLocation: MidBody
-  TargetHurtAnimation: DaggerRisingReacation
+  TargetHurtAnimation: KnockDownLight
   actionStance: 1
   actionType: 1

@@ -27,8 +27,8 @@ public class SmokeCloud : ICommand
     }
     public async UniTask Execute()
     {
-        Debug.Log("SmokeExecuted");
         Vector2 playerCoordinate = GridSystem.instance.WorldToGrid(player.transform.position);
+        await HandleAnimation();
         List<Vector2> TilesToDeployGas = GridMovement.instance.GetAdjacentNeighbors(playerCoordinate, smokeCloud.ActionRange);
         Debug.Log("Smoke Count" + TilesToDeployGas.Count);
         for (int i = 0; i < TilesToDeployGas.Count; i++)
@@ -45,7 +45,6 @@ public class SmokeCloud : ICommand
                 GridSystem.instance._gridArray[(int)TilesToDeployGas[i].x, (int)TilesToDeployGas[i].y].GetComponent<SmokeEffector>().SmokeObject = OrbSpawner.instance.SpawnSmoke(GridSystem.instance._gridArray[(int)TilesToDeployGas[i].x, (int)TilesToDeployGas[i].y].transform);
             }
         }
-        await HandleAnimation();
 
     }
     public async UniTask HandleAnimation()

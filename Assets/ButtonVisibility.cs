@@ -34,7 +34,7 @@ public class ButtonVisibility : MonoBehaviour
 
 
             // Set the button's visibility and interactability based on grid state
-            if (isGridOn)
+            if (isGridOn && TempManager.instance.attacker.GetComponent<TemporaryStats>().CharacterTeam == TeamName.TeamA)
             {
                 canvasGroup.alpha = 1f;  // Fully visible
                 canvasGroup.interactable = true;  // Interactable

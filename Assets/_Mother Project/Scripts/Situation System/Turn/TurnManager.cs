@@ -58,32 +58,6 @@ public class TurnManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-
-        // Check for player input
-        //if (Input.GetKeyDown(KeyCode.T))
-        //{
-        //    // End the player's turn when the spacebar is pressed
-        //    EndTurn();
-
-        //}
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    //if (currentPlayer.CompareTag("Player"))
-        //    //{
-        //        EndTurn();
-        //    //}
-        //    //else
-        //    //{
-        //    //    EnemyAIAttack();
-        //    //}
-
-        //}
-
-    }
-
     public async void EndTurn()
     {
 
@@ -179,8 +153,12 @@ public class TurnManager : MonoBehaviour
         CharacterBaseClasses currentPlayerBaseClass = currentPlayer.GetComponent<CharacterBaseClasses>();
         players[currentPlayerIndex].GetComponent<NavMeshAgent>().enabled = true;
         currentPlayer.SelectionParticle.SetActive(true);
-        currentPlayer.PlayerActionListPanel.SetActive(true);
-        currentPlayer.playerItemPanel.SetActive(true);
+        if (currentPlayer.CharacterTeam == TeamName.TeamA)
+        {
+            currentPlayer.PlayerActionListPanel.SetActive(true);
+            currentPlayer.playerItemPanel.SetActive(true);
+        }
+        
 
         TeamManager.instance.TeamMemberList(currentPlayer.CharacterTeam);
 
