@@ -7,8 +7,6 @@ using UnityEngine.Rendering;
 public class TeamManager : MonoBehaviour
 {
     public static TeamManager instance;
-
-
    
     public static Dictionary<TeamName, List<TemporaryStats>> teamPlayerLists = new Dictionary<TeamName, List<TemporaryStats>>();
     List<TeamName> currentTeams= new List<TeamName>();
@@ -85,6 +83,7 @@ public class TeamManager : MonoBehaviour
             // skip — re-spawns/re-inits across grid cycles must not inflate counts.
             if (teamPlayerLists[playerStates.CharacterTeam].Contains(playerStates))
             {
+                Debug.Log("returning to where");
                 return;
             }
 
