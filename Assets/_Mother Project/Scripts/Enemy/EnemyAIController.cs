@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +16,13 @@ using UnityEngine.AI;
 /// This ensures range checks are always done against the chosen action's
 /// ActionRange rather than guessing range before knowing the action.
 /// </summary>
+public enum EnemyAITrait
+{
+    Aggressive,
+    Defensive,
+    SaveAP
+}
+
 public class EnemyAIController : MonoBehaviour
 {
     [Header("AI Behaviour Settings")]
@@ -24,6 +31,10 @@ public class EnemyAIController : MonoBehaviour
 
     [Tooltip("Delay between steps for visual readability")]
     [SerializeField] private float stepDelay = 0.6f;
+
+    [Header("AI Trait Settings")]
+    [SerializeField] private EnemyAITrait myTrait;
+    [SerializeField] private bool assignRandomTraitOnStart = true;
 
     private TemporaryStats myStats;
     private CharacterBaseClasses myBase;
@@ -34,6 +45,15 @@ public class EnemyAIController : MonoBehaviour
         myStats = GetComponent<TemporaryStats>();
         myBase = GetComponent<CharacterBaseClasses>();
         myPlayerTurn = GetComponent<PlayerTurn>();
+    }
+
+    private void Start()
+    {
+        if (assignRandomTraitOnStart)
+        {
+            myTrait = (EnemyAITrait)UnityEngine.Random.Range(0, 3);
+            Debug.Log($"[EnemyAIController] {gameObject.name} assigned trait: {myTrait}");
+        }
     }
 
     // ─────────────────────────────────────────────────────────────
@@ -68,8 +88,21 @@ public class EnemyAIController : MonoBehaviour
         List<ImprovedActionStat> supportPool = ActionArchive.instance.GetSupportActions(allActions);
 
         int simulatedAP = myStats.CurrentAP;
-        bool isLowHP = myStats.PlayerHealth > 0
+        bool isLowHP = false;
+
+        if (myTrait == EnemyAITrait.Defensive)
+        {
+            // Defensive units prioritize survival at a higher health threshold
+            isLowHP = myStats.PlayerHealth > 0
+                           && ((float)myStats.CurrentHealth / myStats.PlayerHealth) <= 0.75f;
+        }
+        else if (myTrait == EnemyAITrait.SaveAP)
+        {
+            isLowHP = myStats.PlayerHealth > 0
                            && ((float)myStats.CurrentHealth / myStats.PlayerHealth) <= lowHPThreshold;
+        }
+        // Aggressive units never defend in Phase 1 (isLowHP remains false)
+
         bool hasMoved = !myPlayerTurn.isMoveOn; // already moved before this turn if false
 
         // ── Phase 1: Defensive action when low HP ──────────────────
@@ -87,48 +120,105 @@ public class EnemyAIController : MonoBehaviour
             }
         }
 
-        // ── Phase 2 onwards: Spend remaining AP on offence ─────────
+        // ── Phase 2 onwards: Spend remaining AP ──────────────────
         // Each iteration:
-        //   a) Pick best action (ranged first, then melee) by AP cost
-        //   b) Find a target within that action's ActionRange
+        //   a) Pick best action based on Trait priority
+        //   b) Find a target within that action's ActionRange (or self for defensive)
         //   c) If no target in range and Move available → move then retry once
         //   d) Queue the action, subtract AP, repeat
+
+        // For SaveAP trait: find the highest AP cost among available offensive actions (heavy attack cost)
+        int heavyAttackCost = 0;
+        if (myTrait == EnemyAITrait.SaveAP)
+        {
+            foreach (ImprovedActionStat action in offence)
+            {
+                if (action != null && action.APCost > heavyAttackCost)
+                {
+                    heavyAttackCost = action.APCost;
+                }
+            }
+        }
 
         List<ImprovedActionStat> usedActions = new List<ImprovedActionStat>();
 
         while (simulatedAP > 0)
         {
-            // a) Pick the best affordable action not yet used this turn
-            //    Ranged pool is tried first since ranged actions have larger range
-            ImprovedActionStat chosenAction = FindMostExpensiveAffordableExcluding(
-                                                rangedPool, simulatedAP, usedActions);
+            // If SaveAP trait and cannot afford the heavy attack, we save AP for the next turn
+            if (myTrait == EnemyAITrait.SaveAP && heavyAttackCost > 0 && simulatedAP < heavyAttackCost)
+            {
+                int maxAP = ActionResolver.instance != null ? ActionResolver.instance.MaxAP : 10;
+                bool hasSpentAP = simulatedAP < myStats.CurrentAP;
+                bool belowMaxAP = myStats.CurrentAP < maxAP;
 
-            // If no ranged action fits budget, try melee
-            if (chosenAction == null)
-                chosenAction = FindMostExpensiveAffordableExcluding(
-                                   meleePool, simulatedAP, usedActions);
+                if (belowMaxAP || hasSpentAP)
+                {
+                    break; // Save remaining AP and end turn
+                }
+            }
 
-            // If no offensive action fits budget, try support (ally-targeting)
-            if (chosenAction == null)
-                chosenAction = FindMostExpensiveAffordableExcluding(
-                                   supportPool, simulatedAP, usedActions);
+            // a) Pick the best affordable action not yet used this turn based on trait
+            ImprovedActionStat chosenAction = null;
+
+            if (myTrait == EnemyAITrait.Defensive)
+            {
+                // Defensive: Buff/heal allies -> Self defense -> Ranged -> Melee
+                chosenAction = FindMostExpensiveAffordableExcluding(supportPool, simulatedAP, usedActions);
+
+                if (chosenAction == null)
+                    chosenAction = FindMostExpensiveAffordableExcluding(defencePool, simulatedAP, usedActions);
+
+                if (chosenAction == null)
+                    chosenAction = FindMostExpensiveAffordableExcluding(rangedPool, simulatedAP, usedActions);
+
+                if (chosenAction == null)
+                    chosenAction = FindMostExpensiveAffordableExcluding(meleePool, simulatedAP, usedActions);
+            }
+            else if (myTrait == EnemyAITrait.Aggressive)
+            {
+                // Aggressive: Ranged -> Melee (No support or self-defense in main loop)
+                chosenAction = FindMostExpensiveAffordableExcluding(rangedPool, simulatedAP, usedActions);
+
+                if (chosenAction == null)
+                    chosenAction = FindMostExpensiveAffordableExcluding(meleePool, simulatedAP, usedActions);
+            }
+            else // SaveAP / Standard
+            {
+                // Normal/SaveAP: Ranged -> Melee -> Support
+                chosenAction = FindMostExpensiveAffordableExcluding(rangedPool, simulatedAP, usedActions);
+
+                if (chosenAction == null)
+                    chosenAction = FindMostExpensiveAffordableExcluding(meleePool, simulatedAP, usedActions);
+
+                if (chosenAction == null)
+                    chosenAction = FindMostExpensiveAffordableExcluding(supportPool, simulatedAP, usedActions);
+            }
 
             // Nothing affordable at all — stop spending
             if (chosenAction == null) break;
 
             bool isSupportAction = chosenAction.actionStance == ActionStance.Support;
+            bool isDefenseAction = chosenAction.actionStance == ActionStance.Defense;
 
             // b) Find a target within THIS action's specific range
-            //    Support actions target the weakest alive ally; offensive actions target enemies
-            CharacterBaseClasses target = isSupportAction
-                ? FindAllyTargetInRange(chosenAction)
-                : FindTargetInRange(chosenAction);
+            CharacterBaseClasses target = null;
+            if (isDefenseAction)
+            {
+                target = myBase; // Self targeting, always in range
+            }
+            else if (isSupportAction)
+            {
+                target = FindAllyTargetInRange(chosenAction);
+            }
+            else
+            {
+                target = FindTargetInRange(chosenAction);
+            }
 
             if (target == null)
             {
                 // c) No target in range for offensive actions only — move and retry
-                //    Never move specifically to reach an ally for a support action
-                if (!isSupportAction && !hasMoved && myPlayerTurn.isMoveOn)
+                if (!isSupportAction && !isDefenseAction && !hasMoved && myPlayerTurn.isMoveOn)
                 {
                     CharacterBaseClasses closestEnemy = ChooseClosestTarget();
                     if (closestEnemy != null)

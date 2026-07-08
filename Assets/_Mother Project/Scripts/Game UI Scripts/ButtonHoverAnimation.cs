@@ -11,6 +11,7 @@ public class ButtonHoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointe
     private Vector3 initialScale;
     private Color initialColor;
     private Image buttonImage;
+    public Image buttonHoverImage;
     private TextMeshProUGUI hoverText; // Reference to the TextMeshPro component
 
 
@@ -40,6 +41,10 @@ public class ButtonHoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointe
             initialColor = buttonImage.color;
             buttonImage.DOColor(hoverColor, 0.3f);
         }
+        if (buttonHoverImage != null) 
+        {
+            buttonHoverImage.gameObject.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -50,6 +55,10 @@ public class ButtonHoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointe
         if (buttonImage != null)
         {
             buttonImage.DOColor(initialColor, 0.3f);
+        }
+        if (buttonHoverImage != null)
+        {
+            buttonHoverImage.gameObject.SetActive(false);
         }
     }
     public GameObject GetHoverText()

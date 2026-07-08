@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SpearAttackPlace4High
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7809161375665036671}
@@ -230,7 +230,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Walking
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2798061985446591785}
@@ -278,10 +278,10 @@ AnimatorStateMachine:
     m_Position: {x: 438.4429, y: 494.8076, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3306162195159449250}
-    m_Position: {x: 110.35916, y: 389.34442, z: 0}
+    m_Position: {x: 180, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8445403462910947463}
-    m_Position: {x: 250, y: 130, z: 0}
+    m_Position: {x: 180, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3346907326090833080}
     m_Position: {x: 580, y: -130, z: 0}
@@ -299,7 +299,7 @@ AnimatorStateMachine:
     m_Position: {x: 850, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6829640166993587568}
-    m_Position: {x: 950, y: 240, z: 0}
+    m_Position: {x: 980, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6614478425218714969}
     m_Position: {x: 1000, y: 130, z: 0}
@@ -308,21 +308,21 @@ AnimatorStateMachine:
     m_Position: {x: 900, y: 400, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3200350020306400986}
-    m_Position: {x: 1250, y: 330, z: 0}
+    m_Position: {x: 1220, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3697928046435580945}
-    m_Position: {x: 1250, y: 280, z: 0}
+    m_Position: {x: 1230, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 447059642595338812}
-    m_Position: {x: 1250, y: 390, z: 0}
+    m_Position: {x: 990, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_AnyStatePosition: {x: -20, y: 20, z: 0}
+  m_EntryPosition: {x: 120, y: 260, z: 0}
+  m_ExitPosition: {x: 10, y: 210, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -1322210951049822370}
 --- !u!1102 &-4358868454322552271
@@ -333,7 +333,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FourStabCombo
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8842864666459694708}
@@ -589,7 +589,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SingleAttack
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 449405330619156881}
@@ -663,7 +663,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Spear_RP_Idle
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6828179173538411663}
@@ -907,7 +907,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DeathWheel
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6982856273127964405}

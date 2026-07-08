@@ -12,6 +12,11 @@ public class ActionResolver : MonoBehaviour
     [SerializeField]
     int maxAP;
 
+    public int MaxAP
+    {
+        get => maxAP;
+    }
+
     private void Awake()
     {
         if(instance == null)

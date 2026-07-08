@@ -22,7 +22,7 @@ public class Weapon_Interactor : MonoBehaviour, IInteractable
         WeaponManager.instance.LoadWeaponData();  //in scene loading function
         Cursor.lockState = CursorLockMode.None;
         WeaponPanelHolder.SetActive(true);
-        Time.timeScale = 0f;
+       // Time.timeScale = 0f;
         ActionSpawner.Instance.ShowMainCharacterData();
         ActionSpawner.Instance.Loadout();
         ActionSpawner.Instance.FillDefaultSlot();

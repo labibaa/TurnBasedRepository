@@ -16,7 +16,7 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     [SerializeField] GameObject IconHolder;
     public ImprovedActionStat actionScriptable { get; private set; }
     public bool isPrevAction;
-
+    private Canvas rootCanvas;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -25,7 +25,7 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         originalParent = transform.parent;
         originalSiblingIndex = transform.GetSiblingIndex();
         mainPanel = ActionSpawner.Instance.mainPanel;
-
+        rootCanvas = GetComponentInParent<Canvas>().rootCanvas;
     }
     public void ButtonSetup(string name, ImprovedActionStat scriptable, GameObject iconPrefab)
     {
@@ -42,7 +42,7 @@ public class ObjectDragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
+        rectTransform.anchoredPosition += eventData.delta / rootCanvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
