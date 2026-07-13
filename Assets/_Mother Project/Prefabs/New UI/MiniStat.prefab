@@ -172,7 +172,6 @@ MonoBehaviour:
   avatarImage: {fileID: 6825553691945787511}
   CurrentPlayerPanel: {fileID: 2232804859142348058}
   thisRectTransform: {fileID: 0}
-  hpBar: {fileID: 7400957345754697466}
   APImages:
   - {fileID: 503298770356655779}
   - {fileID: 4244939044835041352}
@@ -187,6 +186,20 @@ MonoBehaviour:
   - {fileID: 2679439694254474329}
   - {fileID: 1219668149918791473}
   myCharacter: {fileID: 0}
+  hpDamageSfx: {fileID: 0}
+  hpHealSfx: {fileID: 0}
+  fill: {fileID: 0}
+  damageGhost: {fileID: 0}
+  shine: {fileID: 0}
+  stripes: {fileID: 0}
+  fillDrainDuration: 0.28
+  ghostDelay: 0.35
+  ghostDrainDuration: 0.55
+  shineInterval: 3
+  shineDuration: 0.9
+  shineWidthFraction: 0.25
+  lowHpThreshold: 0.4
+  stripesMaxAlpha: 0.9
 --- !u!1 &526972785523518758
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +211,6 @@ GameObject:
   - component: {fileID: 4659504681752113833}
   - component: {fileID: 3403347962024378988}
   - component: {fileID: 2068170088443341689}
-  - component: {fileID: 6035788460068799228}
   m_Layer: 5
   m_Name: HPHolder
   m_TagString: Untagged
@@ -264,20 +276,6 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6035788460068799228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526972785523518758}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce33f6264baad0e4a8b159c5a39234a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 2068170088443341689}
-  hoverText: {fileID: 9009259502580321264}
 --- !u!1 &652767820815565695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,15 +1106,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -1392,15 +1392,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0

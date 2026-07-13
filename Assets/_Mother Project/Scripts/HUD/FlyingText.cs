@@ -16,7 +16,7 @@ public class FlyingText : MonoBehaviour
 
     private void Start()
     {
-         brain = Camera.main.GetComponent<CinemachineBrain>();
+        brain = Camera.main.GetComponent<CinemachineBrain>();
         SelectActiveGridCam();
     }
 
