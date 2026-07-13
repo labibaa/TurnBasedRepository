@@ -82169,7 +82169,7 @@ PrefabInstance:
     - target: {fileID: 2041247056633541391, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
       propertyPath: stepDelay
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2119214131042827783, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
@@ -82390,6 +82390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dexterity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008635855878310425, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: healthPoints
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5522310250385350718, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
@@ -82645,6 +82650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.39098948
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
+        type: 3}
+      propertyPath: PlayerHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8384446533757932818, guid: 02108b175ba2b8745be26842a352dd6a,
         type: 3}
@@ -163870,6 +163880,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1179453546690753743, guid: ca0163bbb71f80a4c934f8636bf48ea7,
         type: 3}
+      propertyPath: PlayerHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179453546690753743, guid: ca0163bbb71f80a4c934f8636bf48ea7,
+        type: 3}
       propertyPath: gridCoordinateSpawn.x
       value: 7
       objectReference: {fileID: 0}
@@ -163963,6 +163978,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.032109126
       objectReference: {fileID: 0}
+    - target: {fileID: 2848021832452628932, guid: ca0163bbb71f80a4c934f8636bf48ea7,
+        type: 3}
+      propertyPath: healthPoints
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2872482868364378094, guid: ca0163bbb71f80a4c934f8636bf48ea7,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -163992,6 +164012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.049867615
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852233099172482728, guid: ca0163bbb71f80a4c934f8636bf48ea7,
+        type: 3}
+      propertyPath: stepDelay
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3970730652994536390, guid: ca0163bbb71f80a4c934f8636bf48ea7,
         type: 3}
@@ -194316,6 +194341,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1664572135}
+    - targetCorrespondingSourceObject: {fileID: 5871202008783826352, guid: af5afc745cda8764392cf7da7b3e7d8c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1664572138}
+    - targetCorrespondingSourceObject: {fileID: 5871202008783826352, guid: af5afc745cda8764392cf7da7b3e7d8c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1664572137}
   m_SourcePrefab: {fileID: 100100000, guid: af5afc745cda8764392cf7da7b3e7d8c, type: 3}
 --- !u!1 &1617862232
 GameObject:
@@ -196244,6 +196277,41 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &1664572137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664572131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseLocalSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &1664572138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664572131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d8e0e8bb9af9d458be49e4d05e95b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseSource: {fileID: 1802930869}
 --- !u!1 &1667925346
 GameObject:
   m_ObjectHideFlags: 0
@@ -258614,6 +258682,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.020727098
       objectReference: {fileID: 0}
+    - target: {fileID: 8902409962687837415, guid: efb61c518da76c348aa16edf69b4a415,
+        type: 3}
+      propertyPath: mainPlayer
+      value: 
+      objectReference: {fileID: 1800869811}
     - target: {fileID: 8904026086607798479, guid: efb61c518da76c348aa16edf69b4a415,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -259580,7 +259653,7 @@ PrefabInstance:
     - target: {fileID: 3749474205516919722, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}
       propertyPath: healthPoints
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3905504850863942070, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}
@@ -259790,12 +259863,17 @@ PrefabInstance:
     - target: {fileID: 8667505165727603277, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}
       propertyPath: stepDelay
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8749348454118123554, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835962698016897830, guid: b952f558b62578e4e9d6156a9e116a96,
+        type: 3}
+      propertyPath: PlayerHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8835962698016897830, guid: b952f558b62578e4e9d6156a9e116a96,
         type: 3}

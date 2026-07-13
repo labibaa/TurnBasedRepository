@@ -181,6 +181,19 @@ public class ButtonStackManager : MonoBehaviour
         AddSpecialActionButton(player.GetGroundBlastAction(), playerPanel, () => ActionArchive.instance.GroundBlast());
         AddSpecialActionButton(player.GetMoveAction(), playerPanel, () => ActionArchive.instance.Move());
 
+        // Add the ultimate action button
+        GameObject ultimateButton = Instantiate(player.GetUltimateScripitable().ultimateButton, playerPanel.transform);
+              if (player.GetPlayerUltimate().IsSingleTarget())
+              {
+                  ultimateButton.GetComponent<Button>().onClick.AddListener(() => TurnManager.instance.UltimateTargetList(player.GetUltimateScripitable()));    
+                 // ultimateButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Ultimate());
+              }
+              else
+              {
+                  ultimateButton.GetComponent<Button>().onClick.AddListener(() => ActionArchive.instance.Ultimate());
+              }
+              ActionActivator.instance.AddToActionButtons(ultimateButton);
+
         return playerPanel;
     }
 
