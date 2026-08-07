@@ -5,6 +5,8 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 public class ShadowOfPlayer : MonoBehaviour
 {
+    public static bool IsShadowSystemEnabled { get; private set; } = true;
+
     public GameObject SpawnedGhost;
     GameObject IsSpawned;
     public List<Turn> ActionTurnListForGhost = new List<Turn>();
@@ -35,20 +37,51 @@ public class ShadowOfPlayer : MonoBehaviour
     }
     private void Update()
     {
+        if (TurnManager.instance != null && TurnManager.instance.players != null &&
+            TurnManager.instance.currentPlayerIndex < TurnManager.instance.players.Count &&
+            TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
+        {
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                SetShadowSystemEnabled(!IsShadowSystemEnabled);
+                if (UI.instance != null)
+                {
+                    UI.instance.SendNotification("Shadow System: " + (IsShadowSystemEnabled ? "ON" : "OFF"));
+                }
+            }
+        }
 
-
+        if (!IsShadowSystemEnabled)
+        {
+            if (IsSpawned != null)
+            {
+                Destroy(IsSpawned);
+            }
+            return;
+        }
 
         if (TempManager.instance.currentState == GameStates.Simulation|| TempManager.instance.currentState == GameStates.StartTurn)
         {
             Destroy(IsSpawned);
-
-            
         }
-
     }
 
     void UpdateList()
     {
+        if (!IsShadowSystemEnabled)
+        {
+            if (TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
+            {
+                ActionTurnListForGhost = HandleTurnNew.instance.GetAllTurns();
+                j = ActionTurnListForGhost.Count;
+            }
+            else
+            {
+                j = 0;
+            }
+            return;
+        }
+
         if (TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
         {
             ActionTurnListForGhost = HandleTurnNew.instance.GetAllTurns();
@@ -141,32 +174,69 @@ public class ShadowOfPlayer : MonoBehaviour
 
     void UndoGhost(bool isMeleeMove)
     {
-        
-
         if (TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject == this.gameObject)
         {
             if (isMeleeMove)
             {
                 j = j - 2;
-
             }
             else
             {
                 j--;
             }
+            if (j < 0) j = 0;
+
+            if (!IsShadowSystemEnabled)
+            {
+                return;
+            }
+
             //have to decrease j
-            if (lastPositionGhosts.Count>0)
+            if (lastPositionGhosts.Count>0 && IsSpawned != null)
             {
                 IsSpawned.transform.position = lastPositionGhosts.Pop();
             }
             
-            if (HandleTurnNew.instance.allTurnsOfPlayer.Count<1)
+            if (HandleTurnNew.instance.allTurnsOfPlayer.Count<1 && IsSpawned != null)
             {
                 Destroy(IsSpawned.gameObject);
             }
             //IsSpawned.transform.position = lastPositionOfGhost;
         }
-      
+    }
+
+    public static void SetShadowSystemEnabled(bool enabled)
+    {
+        if (IsShadowSystemEnabled == enabled) return;
+        IsShadowSystemEnabled = enabled;
+
+        if (enabled && TurnManager.instance != null && TurnManager.instance.players != null &&
+            TurnManager.instance.currentPlayerIndex < TurnManager.instance.players.Count)
+        {
+            var currentPlayerGO = TurnManager.instance.players[TurnManager.instance.currentPlayerIndex].gameObject;
+            var activeShadowScript = currentPlayerGO.GetComponent<ShadowOfPlayer>();
+            if (activeShadowScript != null)
+            {
+                activeShadowScript.ReplayGhostPreview();
+            }
+        }
+    }
+
+    public void ReplayGhostPreview()
+    {
+        if (!IsShadowSystemEnabled) return;
+
+        ActionTurnListForGhost = HandleTurnNew.instance.GetAllTurns();
+        j = 0;
+        if (ActionTurnListForGhost.Count > 0)
+        {
+            if (IsSpawned != null)
+            {
+                Destroy(IsSpawned);
+            }
+            TempManager.instance.ChangeGameState(GameStates.GhostPlay);
+            ActionGhostSingular();
+        }
     }
 
 

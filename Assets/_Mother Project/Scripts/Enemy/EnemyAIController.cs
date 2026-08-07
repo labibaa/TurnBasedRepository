@@ -307,22 +307,40 @@ public class EnemyAIController : MonoBehaviour
             usedActions.Add(chosenAction);
             simulatedAP -= chosenAction.APCost;
 
+            // Register committed damage so squad-mates can make smarter retargeting decisions
+            if (!isSupportAction && !isDefenseAction && SquadCoordinator.instance != null)
+            {
+                TemporaryStats targetStats = target.GetComponent<TemporaryStats>();
+                if (targetStats != null)
+                {
+                    int estDmg = EstimateActionDamage(chosenAction, targetStats);
+                    SquadCoordinator.instance.RegisterAttack(gameObject, target.gameObject, estDmg);
+                }
+            }
+
             await UniTask.Delay((int)(stepDelay * 500));
         }
     }
 
     // ─────────────────────────────────────────────────────────────
     // FIND TARGET IN RANGE FOR A SPECIFIC ACTION
-    // Checks all opposing living players against the chosen action's
+    // Checks all opposing living characters against the chosen action's
     // ActionRange * playerVisiblity — same multiplier used in
-    // TurnManager.PopulateTargetList()
-    // Returns the lowest-HP target in range, or null if none.
+    // TurnManager.PopulateTargetList().
+    // Scores every in-range candidate via TargetScoring, which accounts
+    // for kill potential, HP%, committed squad damage (SquadCoordinator),
+    // and the attacker soft cap. Returns the highest-scored candidate.
     // ─────────────────────────────────────────────────────────────
     private CharacterBaseClasses FindTargetInRange(ImprovedActionStat action)
     {
         int effectiveRange = action.ActionRange * myStats.playerVisiblity;
 
-        List<CharacterBaseClasses> validTargets = new List<CharacterBaseClasses>();
+        // 30 % threat-response roll is done once per call so the same roll
+        // applies uniformly to all candidates rather than re-rolling per-candidate.
+        bool threatResponseRoll = UnityEngine.Random.value <= 0.30f;
+
+        CharacterBaseClasses best = null;
+        float bestScore = float.MinValue;
 
         foreach (PlayerTurn pt in TurnManager.instance.target)
         {
@@ -338,87 +356,55 @@ public class EnemyAIController : MonoBehaviour
                 pt.transform.position,
                 effectiveRange
             );
+            if (!inRange) continue;
 
-            if (inRange)
-            {
-                validTargets.Add(pt.GetComponent<CharacterBaseClasses>());
-            }
-        }
-
-        if (validTargets.Count == 0) return null;
-
-        // 1. Kill-Priority Override: If any target is below lethal threshold, prefer finishing them
-        List<CharacterBaseClasses> killableTargets = new List<CharacterBaseClasses>();
-        foreach (var targetChar in validTargets)
-        {
-            TemporaryStats ts = targetChar.GetComponent<TemporaryStats>();
+            CharacterBaseClasses candidate = pt.GetComponent<CharacterBaseClasses>();
             int estDamage = EstimateActionDamage(action, ts);
-            bool isLethal = ts.CurrentHealth <= estDamage || ts.CurrentHealth <= (ts.PlayerHealth * 0.20f);
-            if (isLethal)
+
+            // Apply threat-response bonus only to the highest-AP target
+            TemporaryStats candidateTs = candidate.GetComponent<TemporaryStats>();
+            bool isThreatTarget = false;
+            if (threatResponseRoll)
             {
-                killableTargets.Add(targetChar);
+                // Find max AP across all valid in-range opponents (cheap to do inside the loop;
+                // we'll give the bonus to any target whose AP equals the rolling maximum).
+                isThreatTarget = IsHighestAPTarget(candidate, effectiveRange);
+            }
+
+            float score = TargetScoring.ScoreOffensiveTarget(candidate, estDamage, isThreatTarget);
+
+            if (score > bestScore)
+            {
+                bestScore = score;
+                best = candidate;
             }
         }
 
-        if (killableTargets.Count > 0)
+        return best;
+    }
+
+    /// Returns true if <paramref name="candidate"/> has the highest (or tied-highest)
+    /// CurrentAP among all living in-range opponents.
+    private bool IsHighestAPTarget(CharacterBaseClasses candidate, int effectiveRange)
+    {
+        TemporaryStats myCandidate = candidate.GetComponent<TemporaryStats>();
+        if (myCandidate == null) return false;
+
+        foreach (PlayerTurn pt in TurnManager.instance.target)
         {
-            CharacterBaseClasses best = null;
-            float lowestHP = Mathf.Infinity;
-            foreach (var targetChar in killableTargets)
-            {
-                float hp = targetChar.GetComponent<TemporaryStats>().CurrentHealth;
-                if (hp < lowestHP)
-                {
-                    lowestHP = hp;
-                    best = targetChar;
-                }
-            }
-            return best;
-        }
+            if (pt == null || !pt.gameObject.activeInHierarchy) continue;
+            if (pt.gameObject == candidate.gameObject) continue;
 
-        // 2. Threat Response (Banked AP): 30% chance to target character with most AP
-        if (UnityEngine.Random.value <= 0.30f)
-        {
-            CharacterBaseClasses best = null;
-            int maxAP = -1;
-            float lowestHP = Mathf.Infinity;
+            TemporaryStats ts = pt.GetComponent<TemporaryStats>();
+            if (ts == null || ts.CharacterTeam == myStats.CharacterTeam || ts.CurrentHealth <= 0) continue;
 
-            foreach (var targetChar in validTargets)
-            {
-                TemporaryStats ts = targetChar.GetComponent<TemporaryStats>();
-                if (ts.CurrentAP > maxAP)
-                {
-                    maxAP = ts.CurrentAP;
-                    best = targetChar;
-                    lowestHP = ts.CurrentHealth;
-                }
-                else if (ts.CurrentAP == maxAP)
-                {
-                    if (ts.CurrentHealth < lowestHP)
-                    {
-                        lowestHP = ts.CurrentHealth;
-                        best = targetChar;
-                    }
-                }
-            }
-            if (best != null) return best;
-        }
+            bool inRange = GridMovement.instance.InAdjacentMatrix(
+                myStats.currentPlayerGridPosition, pt.transform.position, effectiveRange);
+            if (!inRange) continue;
 
-        // 3. Default: Target lowest current HP
-        {
-            CharacterBaseClasses best = null;
-            float lowestHP = Mathf.Infinity;
-            foreach (var targetChar in validTargets)
-            {
-                float hp = targetChar.GetComponent<TemporaryStats>().CurrentHealth;
-                if (hp < lowestHP)
-                {
-                    lowestHP = hp;
-                    best = targetChar;
-                }
-            }
-            return best;
+            if (ts.CurrentAP > myCandidate.CurrentAP) return false;
         }
+        return true;
     }
 
     private int EstimateActionDamage(ImprovedActionStat action, TemporaryStats targetStats)
@@ -694,14 +680,17 @@ public class EnemyAIController : MonoBehaviour
 
     // ─────────────────────────────────────────────────────────────
     // FIND ALLY TARGET IN RANGE FOR SUPPORT ACTIONS (Buff, SoulTransfer, etc.)
-    // Targets the lowest-HP living ally (same team, not self) within range.
+    // Scores every in-range living ally via TargetScoring.ScoreSupportTarget,
+    // which prioritises missing HP% but penalises allies already claimed by
+    // another healer (SquadCoordinator).  The chosen ally is then claimed so
+    // the next support unit picks a different one.
     // ─────────────────────────────────────────────────────────────
     private CharacterBaseClasses FindAllyTargetInRange(ImprovedActionStat action)
     {
         int effectiveRange = action.ActionRange * myStats.playerVisiblity;
 
         CharacterBaseClasses best = null;
-        float lowestHP = Mathf.Infinity;
+        float bestScore = float.MinValue;
 
         foreach (PlayerTurn pt in TurnManager.instance.target)
         {
@@ -718,13 +707,21 @@ public class EnemyAIController : MonoBehaviour
                 pt.transform.position,
                 effectiveRange
             );
+            if (!inRange) continue;
 
-            if (inRange && ts.CurrentHealth < lowestHP)
+            CharacterBaseClasses candidate = pt.GetComponent<CharacterBaseClasses>();
+            float score = TargetScoring.ScoreSupportTarget(candidate, gameObject);
+
+            if (score > bestScore)
             {
-                lowestHP = ts.CurrentHealth;
-                best = pt.GetComponent<CharacterBaseClasses>();
+                bestScore = score;
+                best = candidate;
             }
         }
+
+        // Claim the chosen ally so other support units steer toward unclaimed ones
+        if (best != null && SquadCoordinator.instance != null)
+            SquadCoordinator.instance.TryClaimHealTarget(gameObject, best.gameObject);
 
         return best;
     }

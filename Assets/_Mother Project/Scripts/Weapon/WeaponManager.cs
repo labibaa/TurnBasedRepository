@@ -167,16 +167,17 @@ public class WeaponManager : MonoBehaviour
         DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Assassinate"));
         DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerSweep"));
         DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "DaggerRising"));
-        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Puncture"));
+       // DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Puncture"));
+        DaggerActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Imbuement"));
         //string fileName = "Dagger" + ".json";
         FileHandler.SaveToJsonData<ImprovedActionStat>(DaggerActiveActions, "Dagger.json");
         TalismanActiveActions.Clear();
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneShield"));
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "BoneSpear"));
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulTransfer"));
-        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "MagicSiphon"));
+       // TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "MagicSiphon"));
         TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "SoulSteal"));
-       // TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Impale"));
+        TalismanActiveActions.Add(DAOScriptableObject.instance.GetImprovedActionData(StringData.directory, "Impale"));
 
         FileHandler.SaveToJsonData<ImprovedActionStat>(TalismanActiveActions, "Talisman.json");
 
